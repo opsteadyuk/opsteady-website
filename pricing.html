@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pricing — Opsteady</title>
+<meta name="description" content="What things cost, why they're priced that way, and the refund policy in full.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin:2.25rem 0}
+@media (max-width:940px){.ladder{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.ladder{grid-template-columns:1fr}}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1.5rem;display:flex;flex-direction:column}
+.tier.free{border-top:3px solid var(--amber)}
+.tier:not(.free){border-top:3px solid var(--navy)}
+.tier h3{font-size:1.05rem;color:var(--navy);margin-bottom:.35rem}
+.tier .tdesc{font-size:.88rem;color:var(--slate);margin-bottom:1.1rem;flex-grow:1}
+.tbc-row{display:flex;justify-content:space-between;align-items:baseline;padding:.55rem 0;border-top:1px solid var(--line)}
+.tbc-row:first-of-type{border-top:1px solid var(--line)}
+.tbc-label{font-family:"Space Grotesk",sans-serif;font-size:.85rem;color:var(--slate)}
+.tbc-value{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:.95rem;color:var(--navy);letter-spacing:.03em}
+.tbc-value.free{color:var(--amber)}
+
+.rules{list-style:none;margin:1.5rem 0 0;padding:0;display:flex;flex-direction:column;gap:1.15rem}
+.rules li{display:flex;gap:.9rem;align-items:flex-start}
+.rules .rn{
+  font-family:"Space Grotesk",sans-serif;font-weight:700;color:var(--amber);
+  font-size:.85rem;flex-shrink:0;width:1.6rem;padding-top:.15rem;
+}
+.rules p{margin:0;font-size:1.02rem}
+
+.refund{
+  background:var(--navy);color:#fff;border-radius:10px;padding:2.25rem 2.25rem 2rem;margin:2.5rem 0;
+}
+.refund h2{color:#fff;font-size:1.5rem;margin-bottom:1.1rem}
+.refund p{color:#D7DEEA;font-size:1.03rem;line-height:1.7}
+.refund a{color:var(--amber)}
+.refund .rule-line{background:rgba(255,255,255,.15);margin:1.4rem 0}
+
+.cta-box{
+  background:var(--card);border:1px solid var(--line);border-radius:8px;padding:2rem 2.25rem;
+  margin-top:3rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;
+}
+.cta-box p{color:var(--slate);margin:0;max-width:26rem}
+.cta-box h3{color:var(--navy);font-size:1.3rem;margin-bottom:.35rem}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="#1B2E4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="56" cy="18" r="4.2" fill="#D08F25"/>
+      </svg>
+      <span class="brand-word">Opsteady</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1B2E4F" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="nav-links" aria-label="Primary">
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/the-method.html">The Method</a>
+      <a class="nav-link nav-cta" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+      <a class="nav-link" href="/catalogue.html">Catalogue</a>
+      <a class="nav-link current" href="/pricing.html">Pricing</a>
+      <a class="nav-link" href="/who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="section-tight prose">
+    <p class="eyebrow">Pricing</p>
+    <h1 class="page-title">What things cost, and why</h1>
+    <p class="lede">Numbers are still being set — we're running a pilot before locking them in, so you get a fair price instead of a guessed one. Here's the shape of it, and the rules that decide it either way.</p>
+  </div>
+
+  <div class="ladder">
+    <div class="tier">
+      <h3>Single tool</h3>
+      <p class="tdesc">One product. Spreadsheet or workbook, guide, and everything it needs to run.</p>
+      <div class="tbc-row"><span class="tbc-label">Essentials</span><span class="tbc-value">TBC</span></div>
+      <div class="tbc-row"><span class="tbc-label">Pro</span><span class="tbc-value">TBC</span></div>
+    </div>
+    <div class="tier">
+      <h3>Foundation / pillar bundle</h3>
+      <p class="tdesc">A related set of tools, priced to pull you toward the bundle rather than buying one at a time.</p>
+      <div class="tbc-row"><span class="tbc-label">Pro</span><span class="tbc-value">TBC</span></div>
+    </div>
+    <div class="tier">
+      <h3>Full-system bundle</h3>
+      <p class="tdesc">All twelve launch products. The saving is permanent — see the rules below.</p>
+      <div class="tbc-row"><span class="tbc-label">Pro</span><span class="tbc-value">TBC</span></div>
+    </div>
+    <div class="tier free">
+      <h3>Health Check</h3>
+      <p class="tdesc">Twenty-four questions, your report by email, always.</p>
+      <div class="tbc-row"><span class="tbc-label">&nbsp;</span><span class="tbc-value free">Free</span></div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="prose">
+    <h2 class="section-title">How we price</h2>
+    <ul class="rules">
+      <li><span class="rn">01</span><p>Some things are free. The Health Check is one of them, because reading where you stand is common knowledge, not something we invented — charging for the label would be dishonest.</p></li>
+      <li><span class="rn">02</span><p>Prices vary by product, because the value varies. A tool that rebuilds how you measure the whole operation and a one-page template don't earn their keep the same way, and pricing them identically would be lazy, not fair.</p></li>
+      <li><span class="rn">03</span><p>Essentials is complete on its own. For most sites it's everything you need to run the tool properly — not a taster for Pro.</p></li>
+      <li><span class="rn">04</span><p>The bundle saving is permanent. There's no flash sale, no "ends Friday." What it costs today is what it costs whenever you come back.</p></li>
+      <li><span class="rn">05</span><p>If a tool doesn't earn back what it cost within a month, get in touch. That's not a slogan — email us and we'll sort it out.</p></li>
+    </ul>
+  </div>
+
+  <div class="refund prose" style="max-width:none">
+    <h2>If it is not right, we refund it</h2>
+    <p>Ask within 30 days of purchase and we will refund you. We will not argue with you about it or ask you to prove anything.</p>
+    <p>We will ask one thing: tell us why. Not to talk you out of it. We are a small operation with no sales team, and the reason someone wanted their money back is the most useful thing anyone sends us. It is how these get better.</p>
+    <p>The same applies to bundles.</p>
+    <p style="margin-top:1.25rem"><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></p>
+  </div>
+
+  <div class="cta-box">
+    <div>
+      <h3>Not sure where to start?</h3>
+      <p>The Health Check tells you which stage each part of your operation is at, and which three tools would help most — free, about fifteen minutes.</p>
+    </div>
+    <a class="btn btn-amber btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <span class="brand-word">Opsteady</span>
+      <p class="footer-tagline">Run steady. Run better.</p>
+      <p>Practical tools and know-how to run a great operation. No consultants required.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Site</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/the-method.html">The Method</a></li>
+        <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+        <li><a href="/catalogue.html">Catalogue</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/who-we-are.html">Who We Are</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>More</h3>
+      <ul>
+        <li><a href="/sitemap.html">Contents</a></li>
+        <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+        <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Opsteady.</div>
+</footer>
+
+<script src="/site.js"></script>
+</body>
+</html>

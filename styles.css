@@ -1,0 +1,168 @@
+/* =========================================================
+   Opsteady — shared site styles
+   Plain CSS, no build step, edited directly (GitHub browser
+   editing is the intended workflow — see doc 18).
+   Loaded by every page in this folder plus the Health Check
+   nav/footer wrapper at healthcheck.opsteady.co.uk.
+========================================================= */
+
+:root{
+  --navy:#1B2E4F;
+  --navy-dark:#16263F;
+  --amber:#D08F25;
+  --amber-light:#FFF3DF;
+  --ink:#16202E;
+  --slate:#5A6B80;
+  --line:#DDE3EA;
+  --ground:#F2F4F6;
+  --card:#FFFFFF;
+  --focus:#D08F25;
+  --maxw:75rem;       /* wide shell: nav, footer, hero, grids */
+  --prose:40rem;       /* narrow reading column for long-form copy */
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.display{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;letter-spacing:-0.015em;line-height:1.15;margin:0}
+p{margin:0 0 1rem}
+p:last-child{margin-bottom:0}
+a{color:var(--navy)}
+img,svg{max-width:100%}
+ul,ol{padding-left:1.15rem}
+
+.shell{max-width:var(--maxw);margin:0 auto;padding-left:1.5rem;padding-right:1.5rem}
+.prose{max-width:var(--prose)}
+@media (max-width:640px){.shell{padding-left:1.15rem;padding-right:1.15rem}}
+
+/* ---------- nav ---------- */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(242,244,246,.98);
+  border-bottom:1px solid var(--line);
+  transition:box-shadow .2s ease;
+}
+/* backdrop-filter deliberately avoided here: it creates a new containing
+   block for position:fixed descendants, which breaks the full-screen
+   mobile nav-links overlay (it fixes to this bar instead of the viewport) */
+.site-nav.scrolled{box-shadow:0 2px 14px rgba(27,46,79,.07)}
+.site-nav-inner{
+  max-width:var(--maxw);margin:0 auto;padding:.85rem 1.5rem;
+  display:flex;align-items:center;gap:1.5rem;
+}
+@media (max-width:640px){.site-nav-inner{padding:.75rem 1.15rem}}
+
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;flex-shrink:0}
+.brand-mark{display:block;width:30px;height:26px}
+.brand-word{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.15rem;color:var(--navy);letter-spacing:-.02em}
+
+.nav-links{display:flex;align-items:center;gap:.35rem;margin-left:auto}
+.nav-link{
+  font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:.92rem;
+  color:var(--ink);text-decoration:none;padding:.55rem .7rem;border-radius:4px;
+  transition:background .12s,color .12s;
+}
+.nav-link:hover{background:rgba(27,46,79,.06)}
+.nav-link:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.nav-link.current{color:var(--navy)}
+.nav-link.current::after{content:"";display:block;height:2px;background:var(--amber);margin-top:.15rem;border-radius:2px}
+
+.nav-cta{
+  font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:.92rem;
+  background:var(--amber);color:var(--navy-dark);text-decoration:none;
+  padding:.6rem 1rem;border-radius:4px;margin-left:.25rem;white-space:nowrap;
+  transition:background .12s,transform .12s;
+}
+.nav-cta:hover{background:#E3A03B}
+.nav-cta:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+
+.nav-toggle{
+  display:none;margin-left:auto;background:none;border:none;padding:.4rem;cursor:pointer;
+}
+.nav-toggle svg{width:24px;height:24px;display:block}
+.nav-toggle:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+@media (max-width:860px){
+  .nav-links{
+    position:fixed;inset:0;top:0;background:var(--navy);
+    flex-direction:column;justify-content:center;align-items:stretch;
+    gap:0;padding:1.5rem;transform:translateX(100%);transition:transform .22s ease;
+  }
+  .nav-links.open{transform:translateX(0)}
+  .nav-link{color:#fff;font-size:1.3rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .nav-link:hover{background:none;color:var(--amber)}
+  .nav-link.current::after{display:none}
+  .nav-link.current{color:var(--amber)}
+  .nav-cta{margin:1.25rem 0 0;text-align:center;font-size:1.1rem;padding:.9rem}
+  .nav-toggle{display:block}
+  .nav-close{display:block;position:absolute;top:1.15rem;right:1.15rem;background:none;border:none;color:#fff;padding:.5rem;cursor:pointer}
+  .nav-close svg{width:24px;height:24px;display:block}
+}
+@media (min-width:861px){.nav-close{display:none}}
+body.nav-open{overflow:hidden}
+
+/* ---------- generic layout bits ---------- */
+.eyebrow{
+  font-family:"Space Grotesk",sans-serif;font-weight:500;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);
+  margin-bottom:.6rem;display:block;
+}
+.rule{height:1px;background:var(--line);margin:2.5rem 0;border:none}
+.section{padding:3.5rem 0}
+.section-tight{padding:2.25rem 0}
+@media (max-width:640px){.section{padding:2.5rem 0}}
+
+h1.page-title{font-size:clamp(2rem,5.5vw,2.9rem);color:var(--navy);margin-bottom:.6rem}
+.lede{font-size:1.15rem;color:var(--slate)}
+h2.section-title{font-size:clamp(1.4rem,3.5vw,1.85rem);color:var(--navy);margin-bottom:.75rem}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-block;background:var(--navy);color:#fff;border:none;border-radius:4px;
+  font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1rem;
+  padding:.9rem 1.6rem;cursor:pointer;text-decoration:none;text-align:center;
+  transition:background .12s,transform .12s;
+}
+.btn:hover{background:var(--navy-dark)}
+.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.btn-amber{background:var(--amber);color:var(--navy-dark)}
+.btn-amber:hover{background:#E3A03B}
+.btn-ghost{background:none;color:var(--navy);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--navy);background:rgba(27,46,79,.04)}
+.btn-lg{padding:1.1rem 2rem;font-size:1.08rem}
+.btn[disabled]{opacity:.4;cursor:not-allowed;pointer-events:none}
+
+/* ---------- cards / callouts ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1.5rem}
+.promise{
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--amber);
+  border-radius:2px;padding:1rem 1.15rem;
+}
+.promise strong{font-family:"Space Grotesk",sans-serif;color:var(--navy);display:block;margin-bottom:.25rem}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--navy);color:#C9D2E0;margin-top:4rem}
+.site-footer-inner{max-width:var(--maxw);margin:0 auto;padding:3rem 1.5rem 2rem;display:flex;flex-wrap:wrap;gap:2.5rem 4rem}
+.footer-brand{max-width:22rem}
+.footer-brand .brand-word{color:#fff}
+.footer-brand p{color:#9FADC4;font-size:.92rem;margin-top:.85rem}
+.footer-tagline{font-style:italic;color:#C9D2E0;margin-top:.35rem;font-size:.95rem}
+.footer-col h3{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#7C8FA8;margin-bottom:.9rem}
+.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem}
+.footer-col a{color:#DCE3ED;text-decoration:none;font-size:.95rem}
+.footer-col a:hover{color:var(--amber)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);max-width:var(--maxw);margin:0 auto;padding:1.25rem 1.5rem 2rem;font-size:.82rem;color:#7C8FA8}
+
+/* ---------- responsive helpers ---------- */
+@media (max-width:640px){
+  .site-footer-inner{padding:2.5rem 1.15rem 1.5rem;gap:2rem}
+  .footer-bottom{padding:1rem 1.15rem 1.75rem}
+}
