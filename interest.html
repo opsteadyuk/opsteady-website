@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Register interest — Opsteady</title>
+<meta name="description" content="Nothing is purchasable yet. Leave your email and hear once when a module is ready. Nothing else.">
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Register interest — Opsteady">
+<meta property="og:description" content="Nothing is purchasable yet. Leave your email and hear once when a module is ready. Nothing else.">
+<meta property="og:image" content="https://opsteady.co.uk/og/default.png">
+<meta property="og:url" content="https://opsteady.co.uk/interest.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.int-head{margin-bottom:.5rem}
+.int-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.status-tag{
+  display:inline-block;font-family:var(--ops-font-text);font-weight:600;font-size:.68rem;
+  letter-spacing:var(--ops-track-label);text-transform:uppercase;padding:.2rem .5rem;
+  border-radius:var(--ops-radius-4);line-height:1.3;
+}
+.status-ready{background:var(--ops-success-tint);color:var(--ops-success)}
+.status-dev{background:var(--ops-surface-subtle);color:var(--ops-n60)}
+
+.int-form{
+  background:var(--ops-surface);border:1px solid var(--ops-border);border-radius:var(--ops-radius-12);
+  padding:var(--ops-space-32);margin:2rem 0;
+}
+@media (max-width:640px){.int-form{padding:var(--ops-space-24)}}
+.int-form label{
+  display:block;font-family:var(--ops-font-text);font-weight:600;font-size:.85rem;color:var(--navy);margin-bottom:.4rem;
+}
+.int-form input[type="email"]{
+  width:100%;height:48px;padding:0 1rem;border:1px solid var(--ops-border-strong);border-radius:var(--ops-radius-8);
+  font-size:1rem;font-family:var(--ops-font-text);color:var(--ink);margin-bottom:.5rem;
+}
+.int-form input[type="email"]:focus-visible{outline:2px solid var(--ops-navy);outline-offset:1px}
+.int-help{font-size:.85rem;color:var(--slate);margin-bottom:1.1rem}
+.int-consent{
+  display:flex;gap:.6rem;align-items:flex-start;min-height:44px;padding:.4rem 0;
+  margin-bottom:.7rem;font-size:.85rem;color:var(--slate);cursor:pointer;
+}
+.int-consent input{width:20px;height:20px;margin-top:.1rem;flex-shrink:0;cursor:pointer}
+.int-error{color:var(--ops-error);font-size:.85rem;margin:-.3rem 0 .8rem;display:none}
+.int-confirm{
+  background:var(--ops-success-tint);border:1px solid var(--ops-success);border-radius:var(--ops-radius-8);
+  padding:1.25rem 1.5rem;color:var(--ops-success);font-weight:600;display:none;
+}
+
+.where-sits{margin:2.5rem 0}
+.where-sits .loop-mini{max-width:480px;margin:1.5rem 0}
+.where-sits .loop-mini text{font-family:var(--ops-font-text);font-weight:600;font-size:9px;letter-spacing:.05em;fill:var(--ops-text-secondary)}
+.where-sits .loop-mini circle{fill:var(--ops-navy)}
+.where-sits .loop-mini line,.where-sits .loop-mini path{stroke:var(--ops-navy);stroke-width:1.5;stroke-linecap:round;fill:none}
+
+.ready-now{margin:2.5rem 0}
+.ready-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.25rem}
+@media (max-width:780px){.ready-grid{grid-template-columns:1fr}}
+.ready-card{
+  background:var(--ops-surface);border:1px solid var(--ops-border);border-radius:var(--ops-radius-8);
+  padding:1.15rem 1.25rem;
+}
+.ready-card h3{font-family:var(--ops-font-text);font-weight:600;font-size:1rem;color:var(--navy);margin-bottom:.3rem}
+.ready-card h3 a{color:inherit;text-decoration:none}
+.ready-card h3 a:hover{text-decoration:underline}
+.ready-card p{font-size:.9rem;color:var(--slate);margin:0}
+
+.mod-select{
+  width:100%;max-width:26rem;height:48px;padding:0 1rem;border:1px solid var(--ops-border-strong);
+  border-radius:var(--ops-radius-8);font-size:1rem;font-family:var(--ops-font-text);color:var(--ink);
+  margin:1rem 0;background:var(--ops-surface);
+}
+
+.cta-box{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
+.cta-box p{color:var(--ops-text-inverse-secondary);margin:0;max-width:26rem}
+.cta-box h3{font-family:var(--ops-font-text);font-weight:600;color:#fff;font-size:1.3rem;margin-bottom:.35rem}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="var(--ops-navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="56" cy="18" r="4.2" fill="#D08F25"/>
+      </svg>
+      <span class="brand-word">Opsteady</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="nav-links" aria-label="Primary">
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+      <a class="nav-link nav-cta" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+      <a class="nav-link" href="/catalogue.html">Catalogue</a>
+      <a class="nav-link" href="/the-method.html">The Method</a>
+      <a class="nav-link" href="/pricing.html">Pricing</a>
+      <a class="nav-link" href="/who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+ <div class="shell">
+  <div class="section-tight prose" id="int-intro">
+    <p class="eyebrow">Register interest</p>
+    <div id="int-content">
+      <!-- populated by script -->
+      <noscript>
+        <h1 class="page-title">Register interest</h1>
+        <p class="lede">This page needs JavaScript to show module-specific details. You can still reach us directly at <a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a>.</p>
+      </noscript>
+    </div>
+  </div>
+
+  <div class="where-sits prose" id="where-sits">
+    <!-- populated by script -->
+  </div>
+
+  <div class="ready-now prose" id="ready-now">
+    <!-- populated by script, omitted entirely if empty -->
+  </div>
+ </div>
+
+  <div class="band band-navy">
+    <div class="shell band-pad cta-box">
+      <div>
+        <h3>Not sure which module you need?</h3>
+        <p>The Health Check reads your operation across twelve areas and tells you which three tools to start with, in order.</p>
+      </div>
+      <a class="btn btn-on-navy btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <span class="brand-word">Opsteady</span>
+      <p class="footer-tagline">Run steady. Run better.</p>
+      <p>Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Site</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/the-method.html">The Method</a></li>
+        <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+        <li><a href="/catalogue.html">Catalogue</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/who-we-are.html">Who We Are</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>More</h3>
+      <ul>
+        <li><a href="/sitemap.html">Contents</a></li>
+        <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms of sale</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
+        <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Opsteady.</div>
+</footer>
+
+<script src="/site.js"></script>
+<script>
+/* Canonical module data. Slugs are the only identifier ever shown in a
+   URL or on screen — F/P filing codes stay internal (see brief 6B.6)
+   and are given here only as comments for cross-reference. */
+(function(){
+  "use strict";
+
+  var GROUPS = {
+    foundations: "the Foundations",
+    p1: "Pillar 1 — People & Capability",
+    p2: "Pillar 2 — Daily Management & Performance",
+    p3: "Pillar 3 — Quality",
+    p4: "Pillar 4 — Delivery & Planning",
+    p5: "Pillar 5 — Asset Care & Maintenance",
+    p6: "Pillar 6 — Advanced Visual Management",
+    p7: "Pillar 7 — Continuous Improvement",
+    p8: "Pillar 8 — Cost & Resource",
+    enablers: "the Enablers"
+  };
+
+  var MODULES = {
+    // Foundations (F1-F4) — all ready
+    set_standards:              {name:"Set Standards", status:"ready", group:"foundations", kind:"foundation", lead:false},
+    kpi_blueprint_map:          {name:"KPI Blueprint Map", status:"ready", group:"foundations", kind:"foundation", lead:false},
+    culture:                    {name:"Culture", status:"ready", group:"foundations", kind:"foundation", lead:false},
+    visual_management_foundations:{name:"Visual Management Foundations", status:"ready", group:"foundations", kind:"foundation", lead:false},
+
+    // P1 People & Capability
+    skills_matrix:              {name:"Skills Matrix & Cross-Training Planner", status:"ready", group:"p1", kind:"pillar", lead:true},
+    supervisor_standard_work:   {name:"Supervisor Standard Work Pack", status:"dev", group:"p1", kind:"pillar", lead:false},
+    training_competency_signoff:{name:"Training Plan & Competency Sign-off", status:"dev", group:"p1", kind:"pillar", lead:false},
+    onboarding_induction:       {name:"Onboarding & Induction Pack", status:"dev", group:"p1", kind:"pillar", lead:false},
+    team_leader_development:    {name:"Team Leader Development Pathway", status:"dev", group:"p1", kind:"pillar", lead:false},
+
+    // P2 Daily Management & Performance
+    shift_handover:             {name:"Shift Handover System", status:"ready", group:"p2", kind:"pillar", lead:true},
+    tiered_meeting_structure:   {name:"Tiered Meeting Structure", status:"dev", group:"p2", kind:"pillar", lead:false},
+    sqdc_performance_board:     {name:"SQDC Performance Board Pack", status:"dev", group:"p2", kind:"pillar", lead:false},
+    kpi_definitions_cascade:    {name:"KPI Definitions & Cascade Guide", status:"dev", group:"p2", kind:"pillar", lead:false},
+
+    // P3 Quality
+    otif_rft_dashboard:         {name:"OTIF & RFT Dashboard", status:"ready", group:"p3", kind:"pillar", lead:true},
+    root_cause_analysis:        {name:"Root Cause Analysis Toolkit", status:"dev", group:"p3", kind:"pillar", lead:false},
+    non_conformance_tracker:    {name:"Non-Conformance Tracker & Trend Pack", status:"dev", group:"p3", kind:"pillar", lead:false},
+    layered_process_audit:      {name:"Layered Process Audit System", status:"dev", group:"p3", kind:"pillar", lead:false},
+
+    // P4 Delivery & Planning
+    production_schedule_adherence:{name:"Production Schedule Adherence Tracker", status:"ready", group:"p4", kind:"pillar", lead:true},
+    capacity_planning:          {name:"Capacity Planning Model", status:"dev", group:"p4", kind:"pillar", lead:false},
+    bottleneck_analysis:        {name:"Bottleneck Analysis Tool", status:"dev", group:"p4", kind:"pillar", lead:false},
+
+    // P5 Asset Care & Maintenance
+    downtime_tracking_pareto:   {name:"Downtime Tracking & Pareto Pack", status:"ready", group:"p5", kind:"pillar", lead:true},
+    pm_schedule_builder:        {name:"PM Schedule Builder & Compliance Tracker", status:"dev", group:"p5", kind:"pillar", lead:false},
+    maintenance_response:       {name:"Maintenance Response System", status:"dev", group:"p5", kind:"pillar", lead:false},
+    autonomous_maintenance:     {name:"Autonomous Maintenance Starter Pack", status:"dev", group:"p5", kind:"pillar", lead:false},
+
+    // P6 Advanced Visual Management
+    "5s_audit_pack":            {name:"5S Audit Pack", status:"ready", group:"p6", kind:"pillar", lead:true},
+    visual_standards_workplace: {name:"Visual Standards & Workplace Organisation Guide", status:"dev", group:"p6", kind:"pillar", lead:false},
+    safety_observation_near_miss:{name:"Safety Observation & Near-Miss System", status:"dev", group:"p6", kind:"pillar", lead:false},
+
+    // P7 Continuous Improvement
+    a3_problem_solving:         {name:"A3 Problem-Solving Templates", status:"ready", group:"p7", kind:"pillar", lead:true},
+    value_stream_mapping:       {name:"Value Stream Mapping Kit", status:"dev", group:"p7", kind:"pillar", lead:false},
+    kaizen_event_planner:       {name:"Kaizen Event Planner & Charter Pack", status:"dev", group:"p7", kind:"pillar", lead:false},
+    idea_suggestion_system:     {name:"Idea & Suggestion System", status:"dev", group:"p7", kind:"pillar", lead:false},
+
+    // P8 Cost & Resource
+    waste_cost_of_quality:      {name:"Waste & Cost-of-Quality Calculator", status:"ready", group:"p8", kind:"pillar", lead:true},
+    labour_planning_shift_pattern:{name:"Labour Planning & Shift Pattern Model", status:"dev", group:"p8", kind:"pillar", lead:false},
+    overtime_agency_spend:      {name:"Overtime & Agency Spend Tracker", status:"dev", group:"p8", kind:"pillar", lead:false},
+
+    // Enablers
+    working_with_ai:            {name:"Working with AI", status:"dev", group:"enablers", kind:"enabler", lead:false},
+    managing_change:            {name:"Managing Change That Sticks", status:"dev", group:"enablers", kind:"enabler", lead:false}
+  };
+
+  function qs(name){
+    return new URLSearchParams(window.location.search).get(name);
+  }
+  function el(tag, attrs, html){
+    var e = document.createElement(tag);
+    if(attrs) for(var k in attrs) e.setAttribute(k, attrs[k]);
+    if(html !== undefined) e.innerHTML = html;
+    return e;
+  }
+  function esc(s){
+    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+
+  var slug = qs("m");
+  var mod = slug ? MODULES[slug] : null;
+  var introEl = document.getElementById("int-content");
+  var whereEl = document.getElementById("where-sits");
+  var readyEl = document.getElementById("ready-now");
+
+  function foundationOrPillarLabel(m){
+    if(m.kind === "foundation") return "Foundation";
+    if(m.kind === "enabler") return "Enabler";
+    return GROUPS[m.group].split(" — ")[0]; // "Pillar N"
+  }
+
+  function renderKnown(slug, m){
+    var isReady = m.status === "ready";
+    var statusTag = isReady
+      ? '<span class="status-tag status-ready">Ready</span>'
+      : '<span class="status-tag status-dev">In development</span>';
+    var groupTag = m.kind === "enabler" ? "" : '<span class="status-tag status-dev" style="background:var(--ops-surface-subtle);color:var(--ops-n60)">' + esc(foundationOrPillarLabel(m)) + '</span>';
+
+    var body = '<h1 class="page-title">' + esc(m.name) + '</h1>' +
+      '<div class="int-tags">' + statusTag + groupTag + '</div>';
+
+    if(isReady){
+      body += '<p class="lede">This one is finished. Buying isn\'t open yet — the store goes live shortly, and the checkout is the last piece being put in place.</p>' +
+        '<p class="lede">Leave your email and you\'ll get one message when it opens. Nothing else.</p>';
+    } else {
+      body += '<p class="lede">This one is being built. Modules are finished in the order the Health Check says sites need them, so the lead module in each Pillar came first.</p>' +
+        '<p class="lede">Leave your email and you\'ll get one message when it\'s ready. Nothing else.</p>';
+    }
+
+    body += formHtml(m.name);
+    introEl.innerHTML = body;
+    wireForm(m.name);
+
+    // Where this sits
+    var precedes = "";
+    if(m.kind === "foundation"){
+      precedes = "Foundations come first — every Pillar module builds on them.";
+    } else if(m.kind === "enabler"){
+      precedes = "Enablers run alongside the Foundations and Pillars, not before or after them.";
+    } else if(m.lead){
+      precedes = "This is the entry point for " + GROUPS[m.group] + ". The four Foundations come before it.";
+    } else {
+      var leadName = Object.keys(MODULES).filter(function(k){return MODULES[k].group === m.group && MODULES[k].lead})[0];
+      precedes = "This follows " + (leadName ? MODULES[leadName].name : "the Pillar lead module") + ", the entry point for " + GROUPS[m.group] + ".";
+    }
+    whereEl.innerHTML = '<h2 class="section-title">Where this sits</h2>' +
+      '<p class="lede">' + precedes + ' See the full sequence on <a href="/the-method.html">The Method</a>.</p>';
+
+    // What's ready now
+    var siblings = Object.keys(MODULES).filter(function(k){
+      return k !== slug && MODULES[k].group === m.group && MODULES[k].status === "ready";
+    });
+    if(siblings.length === 0 && m.kind !== "foundation"){
+      siblings = Object.keys(MODULES).filter(function(k){ return k !== slug && MODULES[k].kind === "foundation"; });
+    }
+    if(siblings.length > 0){
+      var cards = siblings.slice(0,3).map(function(k){
+        return '<div class="ready-card"><h3><a href="/catalogue.html">' + esc(MODULES[k].name) + '</a></h3><p>Ready now, in the catalogue.</p></div>';
+      }).join("");
+      readyEl.innerHTML = '<h2 class="section-title">What\'s ready now</h2>' +
+        '<p class="lede">If this one isn\'t built yet, these are ready to use today.</p>' +
+        '<div class="ready-grid">' + cards + '</div>';
+    } else {
+      readyEl.innerHTML = "";
+    }
+  }
+
+  function renderFallback(){
+    var options = Object.keys(MODULES).map(function(k){
+      return '<option value="' + k + '">' + esc(MODULES[k].name) + (MODULES[k].status === "ready" ? " (Ready)" : " (In development)") + '</option>';
+    }).join("");
+    introEl.innerHTML =
+      '<h1 class="page-title">Register interest</h1>' +
+      '<p class="lede">Pick the module you want to hear about, or browse the full <a href="/catalogue.html">catalogue</a>.</p>' +
+      '<select class="mod-select" id="mod-picker" aria-label="Choose a module">' +
+      '<option value="">Choose a module…</option>' + options + '</select>';
+    whereEl.innerHTML = "";
+    readyEl.innerHTML = "";
+    document.getElementById("mod-picker").addEventListener("change", function(e){
+      if(e.target.value) window.location.href = "/interest.html?m=" + encodeURIComponent(e.target.value);
+    });
+  }
+
+  function formHtml(name){
+    return '<form class="int-form" id="int-form" novalidate>' +
+      '<label for="int-email">Email</label>' +
+      '<input type="email" id="int-email" name="email" autocomplete="email" inputmode="email" required placeholder="you@site.co.uk">' +
+      '<p class="int-error" id="int-error">Enter a valid email address.</p>' +
+      '<p class="int-help">One message when this is ready. Nothing else, and one click to stop.</p>' +
+      '<label class="int-consent"><input type="checkbox" id="int-consent" required> <span>I\'d like one email when ' + esc(name) + ' is ready. No other marketing.</span></label>' +
+      '<button type="submit" class="btn btn-lg">Tell me when it\'s ready</button>' +
+      '<div class="int-confirm" id="int-confirm" role="status"></div>' +
+      '</form>';
+  }
+
+  function wireForm(name){
+    var form = document.getElementById("int-form");
+    if(!form) return;
+    form.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      var email = document.getElementById("int-email");
+      var error = document.getElementById("int-error");
+      var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
+      if(!valid){ error.style.display = "block"; email.focus(); return; }
+      error.style.display = "none";
+      // NOTE: no backend exists on this static site yet. This is a
+      // front-end-only stand-in — wire to a real email-capture
+      // endpoint (Worker + D1, or a third-party list) before launch.
+      Array.prototype.forEach.call(form.children, function(x){
+        if(x.id !== "int-confirm") x.style.display = "none";
+      });
+      var confirm = document.getElementById("int-confirm");
+      confirm.style.display = "block";
+      confirm.textContent = "Done. You'll hear from us once, when " + name + " is ready.";
+    });
+  }
+
+  if(mod){
+    renderKnown(slug, mod);
+  } else {
+    renderFallback();
+  }
+})();
+</script>
+</body>
+</html>

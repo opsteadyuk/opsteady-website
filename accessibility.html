@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Accessibility statement — Opsteady</title>
+<meta name="description" content="What this site targets, what's already true, and the known gaps, listed honestly with dates rather than a blanket claim of compliance.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Accessibility statement — Opsteady">
+<meta property="og:description" content="What this site targets, what's already true, and the known gaps, listed honestly with dates rather than a blanket claim of compliance.">
+<meta property="og:image" content="https://opsteady.co.uk/og/accessibility.png">
+<meta property="og:url" content="https://opsteady.co.uk/accessibility.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.a11y-body h2{color:var(--navy);font-size:1.5rem;margin:2.5rem 0 1rem}
+.a11y-body h2:first-child{margin-top:0}
+.a11y-body p{font-size:1.05rem;line-height:1.75;color:var(--ink)}
+.a11y-body ul{padding-left:1.15rem;color:var(--ink);font-size:1.05rem;line-height:1.75}
+.issue-item{
+  background:var(--ops-surface-subtle);border-radius:var(--ops-radius-8);
+  padding:1rem 1.25rem;margin-bottom:1rem;
+}
+.issue-item p{margin:0;font-size:1rem}
+.issue-item .fix-date{
+  display:block;margin-top:.4rem;font-family:var(--ops-font-text);font-weight:600;font-size:.75rem;
+  letter-spacing:var(--ops-track-label);text-transform:uppercase;color:var(--ops-n60);
+}
+.reviewed-line{color:var(--slate);font-size:.9rem;margin-top:2.5rem}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="var(--ops-navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="56" cy="18" r="4.2" fill="#D08F25"/>
+      </svg>
+      <span class="brand-word">Opsteady</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="nav-links" aria-label="Primary">
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+      <a class="nav-link nav-cta" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+      <a class="nav-link" href="/catalogue.html">Catalogue</a>
+      <a class="nav-link" href="/the-method.html">The Method</a>
+      <a class="nav-link" href="/pricing.html">Pricing</a>
+      <a class="nav-link" href="/who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+ <div class="shell">
+  <div class="section-tight prose">
+    <p class="eyebrow">Accessibility</p>
+    <h1 class="page-title">Accessibility statement</h1>
+  </div>
+
+  <div class="prose a11y-body">
+    <h2>What we target</h2>
+    <p>This site is built to meet WCAG 2.2 at Level AA, with body text held to the stricter AAA contrast ratio. That is the standard we design and test against for every page in this domain (opsteady.co.uk).</p>
+
+    <h2>Scope</h2>
+    <p>This statement covers the main Opsteady website only. The Health Check tool lives on its own subdomain, healthcheck.opsteady.co.uk, with its own codebase, and is not covered by this statement.</p>
+
+    <h2>What's already true</h2>
+    <ul>
+      <li>A skip link is the first focusable element on every page.</li>
+      <li>Every page has a single H1 and proper landmark regions (header, nav, main, footer).</li>
+      <li>Focus is always visible — a 2px navy ring on the focused element, never suppressed.</li>
+      <li>Motion is disabled site-wide for anyone with <code>prefers-reduced-motion</code> set.</li>
+      <li>The language of the page is correctly set to British English.</li>
+    </ul>
+
+    <h2>Known issues</h2>
+    <p>Honesty here matters more than a clean-looking page, so this list is real rather than empty.</p>
+    <div class="issue-item">
+      <p>A full keyboard-only navigation pass and screen reader pass across every page have not yet been completed and independently verified.</p>
+      <span class="fix-date">Target: before buying opens</span>
+    </div>
+    <div class="issue-item">
+      <p>Testing at 200% browser zoom and at a 320px viewport width has not yet been completed on every page.</p>
+      <span class="fix-date">Target: before buying opens</span>
+    </div>
+    <div class="issue-item">
+      <p>Not every interactive element on every page has been individually checked against the 44 &times; 44px minimum target size.</p>
+      <span class="fix-date">Target: before buying opens</span>
+    </div>
+
+    <h2>Feedback</h2>
+    <p>If any part of this site is hard to use with a keyboard, a screen reader, or any other assistive technology, tell us and we'll fix it. Email <a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a> — we're a small operation and you'll hear back from a person, not a form response.</p>
+
+    <p class="reviewed-line">Last reviewed: 6 August 2026.</p>
+  </div>
+ </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <span class="brand-word">Opsteady</span>
+      <p class="footer-tagline">Run steady. Run better.</p>
+      <p>Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Site</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/the-method.html">The Method</a></li>
+        <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+        <li><a href="/catalogue.html">Catalogue</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/who-we-are.html">Who We Are</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>More</h3>
+      <ul>
+        <li><a href="/sitemap.html">Contents</a></li>
+        <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms of sale</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
+        <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Opsteady.</div>
+</footer>
+
+<script src="/site.js"></script>
+</body>
+</html>

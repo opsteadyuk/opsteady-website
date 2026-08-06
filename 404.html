@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Contents — Opsteady</title>
-<meta name="description" content="Every page on the Opsteady site, in one place.">
-<meta name="robots" content="index,follow">
-<meta property="og:title" content="Contents — Opsteady">
-<meta property="og:description" content="Every page on the Opsteady site, in one place.">
-<meta property="og:image" content="https://opsteady.co.uk/og/sitemap.png">
-<meta property="og:url" content="https://opsteady.co.uk/sitemap.html">
+<title>Page not found — Opsteady</title>
+<meta name="description" content="This page does not exist. Try the catalogue, or start with the Health Check.">
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Page not found — Opsteady">
+<meta property="og:description" content="This page does not exist. Try the catalogue, or start with the Health Check.">
+<meta property="og:image" content="https://opsteady.co.uk/og/404.png">
+<meta property="og:url" content="https://opsteady.co.uk/404.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -17,17 +17,9 @@
 <link rel="stylesheet" href="/tokens.css">
 <link rel="stylesheet" href="/styles.css">
 <style>
-.contents-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.contents-list li{border-bottom:1px solid var(--line)}
-.contents-list a{
-  display:flex;align-items:baseline;gap:1rem;padding:1.15rem 0;
-  text-decoration:none;color:var(--ink);
-}
-.contents-list a:hover .cn{color:var(--navy);text-decoration:underline}
-.contents-list .ci{font-family:"Space Grotesk",sans-serif;font-size:.8rem;color:var(--slate);width:1.4rem;flex-shrink:0}
-.contents-list .cn{font-family:"Space Grotesk",sans-serif;font-weight:600;color:var(--ink);font-size:1.1rem}
-.contents-list .cd{color:var(--slate);font-size:.92rem;margin-left:auto;text-align:right;max-width:20rem}
-@media (max-width:640px){.contents-list .cd{display:none}}
+.error-wrap{padding:5rem 0;max-width:34rem}
+.error-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.75rem}
+@media (max-width:640px){.error-wrap{padding:3rem 0}}
 </style>
 </head>
 <body>
@@ -58,61 +50,18 @@
   </div>
 </header>
 
-<main id="main" class="shell">
-  <div class="section-tight">
-    <p class="eyebrow">Contents</p>
-    <h1 class="page-title">Everything on this site, in one place</h1>
-    <p class="lede prose">If you'd rather not use the menu, here's every page — including the ones that don't sit in the top navigation on purpose.</p>
+<main id="main">
+ <div class="shell">
+  <div class="error-wrap">
+    <h1 class="page-title">This page does not exist</h1>
+    <p class="lede">It may have moved. Try the catalogue, or start with the Health Check.</p>
+    <h2 class="sr-only">What to do next</h2>
+    <div class="error-actions">
+      <a class="btn btn-ghost" href="/catalogue.html">See the catalogue</a>
+      <a class="btn" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+    </div>
   </div>
-
-  <h2 class="sr-only">All pages</h2>
-  <ul class="contents-list">
-    <li><a href="/">
-      <span class="ci">01</span>
-      <span class="cn">Home</span>
-      <span class="cd">What Opsteady is, who it's for, and where to start</span>
-    </a></li>
-    <li><a href="/the-method.html">
-      <span class="ci">02</span>
-      <span class="cn">The Method</span>
-      <span class="cd">The four-stage loop, and what "a step-by-step Monday" actually means</span>
-    </a></li>
-    <li><a href="https://healthcheck.opsteady.co.uk/">
-      <span class="ci">03</span>
-      <span class="cn">Health Check</span>
-      <span class="cd">Free, 24 questions, about fifteen minutes</span>
-    </a></li>
-    <li><a href="/catalogue.html">
-      <span class="ci">04</span>
-      <span class="cn">Catalogue</span>
-      <span class="cd">Four Foundations, eight Pillars, two Enablers — 36 modules in total</span>
-    </a></li>
-    <li><a href="/pricing.html">
-      <span class="ci">05</span>
-      <span class="cn">Pricing</span>
-      <span class="cd">The ladder, how we price, and the refund policy</span>
-    </a></li>
-    <li><a href="/who-we-are.html">
-      <span class="ci">06</span>
-      <span class="cn">Who We Are</span>
-      <span class="cd">No name, no photo, twenty years on real floors</span>
-    </a></li>
-    <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">
-      <span class="ci">07</span>
-      <span class="cn">Privacy</span>
-      <span class="cd">How we handle your data, in plain terms</span>
-    </a></li>
-    <li><a href="/terms.html">
-      <span class="ci">08</span>
-      <span class="cn">Terms of sale</span>
-      <span class="cd">Seller details, delivery, cancellation rights, and refunds</span>
-    </a></li>
-    <li><a href="/accessibility.html">
-      <span class="ci">09</span>
-      <span class="cn">Accessibility</span>
-      <span class="cd">What this site targets, and the known gaps, listed honestly</span>
-    </a></li>
-  </ul>
+ </div>
 </main>
 
 <footer class="site-footer">

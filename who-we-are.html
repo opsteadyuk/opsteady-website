@@ -6,56 +6,60 @@
 <title>Who We Are — Opsteady</title>
 <meta name="description" content="No name, no photograph, no team. Twenty years across four plants, apprentice to running the full site. Judge this by the work.">
 <meta name="robots" content="index,follow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<meta property="og:title" content="Who We Are — Opsteady">
+<meta property="og:description" content="No name, no photograph, no team. Twenty years across four plants, apprentice to running the full site. Judge this by the work.">
+<meta property="og:image" content="https://opsteady.co.uk/og/who-we-are.png">
+<meta property="og:url" content="https://opsteady.co.uk/who-we-are.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
 <link rel="stylesheet" href="/styles.css">
 <style>
-.wwa-body h2{color:var(--navy);font-size:1.4rem;margin:2.5rem 0 1rem}
+.wwa-body h2{color:var(--navy);font-size:1.5rem;margin:2.5rem 0 1rem}
 .wwa-body h2:first-child{margin-top:0}
 .wwa-body p{font-size:1.05rem;line-height:1.75;color:var(--ink)}
 .pull{
-  font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1.35rem;
-  color:var(--navy);line-height:1.4;margin:2.25rem 0;padding-left:1.15rem;
-  border-left:3px solid var(--amber);
+  font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1.5rem;
+  color:var(--navy);line-height:1.4;margin:2.25rem 0;padding:1.25rem 1.5rem;
+  background:var(--ops-surface-subtle);border-left:3px solid var(--amber);border-radius:var(--ops-radius-8);
 }
-.cta-box{
-  background:var(--navy);color:#fff;border-radius:8px;padding:2rem 2.25rem;
-  margin-top:3rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;
-}
-.cta-box p{color:#C9D2E0;margin:0;max-width:26rem}
-.cta-box h3{color:#fff;font-size:1.3rem;margin-bottom:.35rem}
+.cta-box{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:3rem}
+.cta-box p{color:var(--ops-text-inverse-secondary);margin:0;max-width:26rem}
+.cta-box h3{font-family:var(--ops-font-text);font-weight:600;color:#fff;font-size:1.3rem;margin-bottom:.35rem}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="site-nav">
   <div class="site-nav-inner">
     <a class="brand" href="/">
       <svg class="brand-mark" viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="#1B2E4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="var(--ops-navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         <circle cx="56" cy="18" r="4.2" fill="#D08F25"/>
       </svg>
       <span class="brand-word">Opsteady</span>
     </a>
     <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#1B2E4F" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <nav class="nav-links" aria-label="Primary">
       <button class="nav-close" type="button" aria-label="Close menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
       </button>
-      <a class="nav-link" href="/">Home</a>
-      <a class="nav-link" href="/the-method.html">The Method</a>
       <a class="nav-link nav-cta" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a class="nav-link" href="/catalogue.html">Catalogue</a>
+      <a class="nav-link" href="/the-method.html">The Method</a>
       <a class="nav-link" href="/pricing.html">Pricing</a>
       <a class="nav-link current" href="/who-we-are.html">Who We Are</a>
     </nav>
   </div>
 </header>
 
-<main class="shell">
+<main id="main">
+ <div class="shell">
   <div class="section-tight prose">
     <p class="eyebrow">Who We Are</p>
     <h1 class="page-title">There's no name or photograph on this site</h1>
@@ -97,13 +101,16 @@
     <h2>What we don't do</h2>
     <p>We don't come to your site. We don't run your projects. We don't tell you what your culture should be, because that's yours to shape and you know your people. And we won't claim to have invented ideas that have been documented for decades. Most of what's here builds on established thinking, credited where it's used. What Opsteady adds is deployment: what to do first, what conflicts with what, and what to do when it stalls.</p>
   </div>
+ </div>
 
-  <div class="cta-box">
-    <div>
-      <h3>Where to start</h3>
-      <p>The Health Check takes about fifteen minutes and costs nothing. It reads twelve areas of your operation, tells you which stage each one is at, and gives you three things to do next, in order. No one will call you.</p>
+  <div class="band band-navy">
+    <div class="shell band-pad cta-box">
+      <div>
+        <h3>Where to start</h3>
+        <p>The Health Check takes about fifteen minutes and costs nothing. It reads twelve areas of your operation, tells you which stage each one is at, and gives you three things to do next, in order. No one will call you.</p>
+      </div>
+      <a class="btn btn-on-navy btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
     </div>
-    <a class="btn btn-amber btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
   </div>
 </main>
 
@@ -112,7 +119,7 @@
     <div class="footer-brand">
       <span class="brand-word">Opsteady</span>
       <p class="footer-tagline">Run steady. Run better.</p>
-      <p>Practical tools and know-how to run a great operation. No consultants required.</p>
+      <p>Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
     </div>
     <div class="footer-col">
       <h3>Site</h3>
@@ -130,6 +137,8 @@
       <ul>
         <li><a href="/sitemap.html">Contents</a></li>
         <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms of sale</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
         <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
       </ul>
     </div>

@@ -1,0 +1,164 @@
+/* =========================================================
+   Opsteady — design tokens
+   Import before all other stylesheets. Every value in the
+   site references a token here. No raw hex, no raw pixel
+   spacing, anywhere in a component.
+========================================================= */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url('/fonts/space-grotesk.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/fonts/source-sans-3-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/source-sans-3-italic-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* ---- Brand ---- */
+  --ops-navy: #1B2E4F;
+  --ops-amber: #D08F25;        /* on navy only */
+  --ops-amber-deep: #9C6B1C;   /* on light only */
+
+  /* ---- Neutrals ---- */
+  --ops-n00: #FFFFFF;
+  --ops-n05: #F7F8FA;
+  --ops-n10: #EEF0F4;
+  --ops-n20: #DFE3EA;
+  --ops-n30: #C3CAD6;
+  --ops-n40: #9AA4B4;
+  --ops-n50: #6E7A8C;   /* NEVER body text: 4.35:1 fails AA */
+  --ops-n60: #4E5A6B;   /* lightest usable body text: 7.00:1 */
+  --ops-n70: #33404F;
+  --ops-n80: #1B2E4F;
+  --ops-n90: #111D31;
+
+  /* ---- Text ---- */
+  --ops-text-primary: var(--ops-n80);
+  --ops-text-secondary: var(--ops-n60);
+  --ops-text-disabled: var(--ops-n40);
+  --ops-text-inverse: var(--ops-n00);
+  /* Extensions beyond the brief's literal token list: muted body text
+     on navy surfaces (CTA bands, footer) needed two more steps than
+     --ops-text-inverse alone provides. Both meet 4.5:1 on navy. */
+  --ops-text-inverse-secondary: #C9D2E0;
+  --ops-text-inverse-muted: #9FADC4;
+
+  /* ---- Surfaces ---- */
+  --ops-surface: var(--ops-n00);
+  --ops-surface-sunken: var(--ops-n05);
+  --ops-surface-subtle: var(--ops-n10);
+  --ops-surface-inverse: var(--ops-n80);
+  --ops-surface-inverse-raised: var(--ops-n70);
+
+  /* ---- Borders ---- */
+  --ops-border-subtle: var(--ops-n10);
+  --ops-border: var(--ops-n20);
+  --ops-border-strong: var(--ops-n30);
+  --ops-border-inverse: var(--ops-n60);
+
+  /* ---- Semantic ---- */
+  --ops-success: #1F7A4D;  --ops-success-tint: #E8F4ED;
+  --ops-warning: #9C6B1C;  --ops-warning-tint: #FCF3E3;
+  --ops-error:   #B3261E;  --ops-error-tint:   #FBEBEA;
+  --ops-info:    #1B5E8F;  --ops-info-tint:    #E8F1F8;
+
+  /* ---- Charts, use in order ---- */
+  --ops-chart-1: #1B2E4F;
+  --ops-chart-2: #9C6B1C;
+  --ops-chart-3: #3D7A9E;
+  --ops-chart-4: #4E7A56;
+  --ops-chart-5: #A85438;
+  --ops-chart-6: #7A5C8F;
+  --ops-chart-comparison: #6E7A8C;
+
+  /* ---- Type ---- */
+  --ops-font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --ops-font-text: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --ops-font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --ops-track-hero: -0.02em;
+  --ops-track-h1: -0.015em;
+  --ops-track-h2: -0.01em;
+  --ops-track-h3: -0.005em;
+  --ops-track-label: 0.10em;
+  --ops-measure: 68ch;
+
+  /* ---- Spacing (8pt grid, 4 as half-step) ---- */
+  --ops-space-4: 4px;    --ops-space-8: 8px;    --ops-space-12: 12px;
+  --ops-space-16: 16px;  --ops-space-20: 20px;  --ops-space-24: 24px;
+  --ops-space-32: 32px;  --ops-space-40: 40px;  --ops-space-48: 48px;
+  --ops-space-64: 64px;  --ops-space-80: 80px;  --ops-space-96: 96px;
+  --ops-space-120: 120px;
+
+  /* ---- Radius ---- */
+  --ops-radius-4: 4px;
+  --ops-radius-8: 8px;
+  --ops-radius-12: 12px;
+  --ops-radius-pill: 999px;
+
+  /* ---- Elevation: borders by default ---- */
+  --ops-elevation-0: none;
+  --ops-elevation-1: 0 1px 3px rgba(27,46,79,0.10);
+  --ops-elevation-2: 0 2px 8px rgba(27,46,79,0.08), 0 1px 2px rgba(27,46,79,0.06);
+  --ops-elevation-3: 0 8px 32px rgba(27,46,79,0.12), 0 2px 8px rgba(27,46,79,0.08);
+
+  /* ---- Motion ---- */
+  --ops-duration-fast: 120ms;
+  --ops-duration-base: 180ms;
+  --ops-duration-slow: 240ms;
+  --ops-ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ops-ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ---- Layout ---- */
+  --ops-container-max: 1200px;
+  --ops-gutter: 16px;
+  --ops-margin: 16px;
+  --ops-columns: 4;
+  --ops-section-y: var(--ops-space-48);
+
+  /* ---- Layers ---- */
+  --ops-z-sticky: 100;  --ops-z-dropdown: 200; --ops-z-overlay: 300;
+  --ops-z-modal: 400;   --ops-z-toast: 500;    --ops-z-tooltip: 600;
+}
+
+@media (min-width: 768px) {
+  :root { --ops-gutter: 20px; --ops-margin: 32px; --ops-columns: 12;
+          --ops-section-y: var(--ops-space-80); }
+}
+@media (min-width: 1024px) {
+  :root { --ops-gutter: 24px; --ops-margin: 40px;
+          --ops-section-y: var(--ops-space-120); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -6,145 +6,195 @@
 <title>The Method — Opsteady</title>
 <meta name="description" content="Four stages, one loop, re-entered not finished — and what a step-by-step Monday actually means.">
 <meta name="robots" content="index,follow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<meta property="og:title" content="The Method — Opsteady">
+<meta property="og:description" content="Four stages, one loop, re-entered not finished — and what a step-by-step Monday actually means.">
+<meta property="og:image" content="https://opsteady.co.uk/og/the-method.png">
+<meta property="og:url" content="https://opsteady.co.uk/the-method.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
 <link rel="stylesheet" href="/styles.css">
 <style>
-.loop-wrap{display:flex;justify-content:center;margin:2.5rem 0 3rem}
-.loop-diagram{width:100%;max-width:420px;height:auto}
-.loop-diagram .stagelbl{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:13px;fill:var(--navy)}
-.loop-diagram .stagenum{font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:10px;fill:var(--amber);letter-spacing:.06em}
-.loop-diagram .centertext{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:14px;fill:var(--navy)}
-.loop-diagram .centersub{font-family:"IBM Plex Sans",sans-serif;font-style:italic;font-size:11px;fill:var(--slate)}
+.loop-wrap{display:flex;justify-content:center}
+.method-diagram{width:100%;height:auto}
+.method-diagram-desktop{max-width:640px;display:block}
+.method-diagram-mobile{max-width:220px;display:none}
+@media (max-width:767px){
+  .method-diagram-desktop{display:none}
+  .method-diagram-mobile{display:block}
+}
+.md-node{fill:#fff}
+.md-connector{stroke:#fff;stroke-width:1.5;stroke-linecap:round;fill:none}
+.md-return{stroke:#fff;stroke-width:1.5;stroke-linecap:round;fill:none}
+.md-label{
+  font-family:var(--ops-font-text);font-weight:600;font-size:10.5px;
+  letter-spacing:1px;fill:#fff;
+}
+.stage-icon{width:16px;height:16px;flex-shrink:0}
 
 .stagegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin:2rem 0}
 @media (max-width:900px){.stagegrid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.stagegrid{grid-template-columns:1fr}}
 .stagecard{border-radius:8px;padding:1.4rem 1.3rem;border:1px solid var(--line)}
-.stagecard .sn{font-family:"Space Grotesk",sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:.4rem;display:block}
-.stagecard h3{font-size:1.1rem;margin-bottom:.55rem}
+.stagecard .ops-stage-tag{margin-bottom:.6rem}
+.stagecard h3{font-family:var(--ops-font-text);font-weight:600;font-size:1.1rem;margin-bottom:.55rem}
 .stagecard p{font-size:.92rem;margin:0}
-.stagecard.s0{background:#EEF1F5}
-.stagecard.s1{background:#DCE4EE}
-.stagecard.s2{background:#7C8FA8;color:#fff}
+.stagecard.s0{background:var(--ops-n10)}
+.stagecard.s1{background:var(--ops-n30)}
+.stagecard.s2{background:var(--ops-n60);color:#fff}
 .stagecard.s2 h3{color:#fff}
 .stagecard.s3{background:var(--navy);color:#fff}
 .stagecard.s3 h3{color:#fff}
-.stagecard.s3 p{color:#C9D2E0}
+.stagecard.s3 p{color:var(--ops-text-inverse-secondary)}
 .stagecard.s2 p{color:#EDF0F4}
 
-.order-list{list-style:none;margin:1.5rem 0 0;padding:0;display:flex;flex-direction:column;gap:1.5rem}
-.order-item{display:flex;gap:1.1rem}
-.order-item .oi-mark{flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:var(--amber-light);display:flex;align-items:center;justify-content:center;margin-top:.15rem}
+.order-list{list-style:none;margin:1.5rem 0 0;padding:0;display:flex;flex-direction:column;gap:1rem}
+.order-item{
+  display:flex;gap:1.1rem;background:var(--ops-surface-subtle);
+  border-radius:var(--ops-radius-8);padding:1.15rem 1.25rem;
+}
+.order-item .oi-mark{flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:var(--ops-surface);display:flex;align-items:center;justify-content:center;margin-top:.15rem}
 .order-item .oi-mark svg{width:16px;height:16px}
-.order-item h3{font-size:1.05rem;color:var(--navy);margin-bottom:.3rem}
+.order-item h3{font-family:var(--ops-font-text);font-weight:600;font-size:1.05rem;color:var(--navy);margin-bottom:.3rem}
 .order-item p{font-size:.98rem;margin:0}
 
 .monday-box{
   background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);
   border-radius:6px;padding:1.75rem 1.9rem;margin:2rem 0;
 }
-.monday-box h2{color:var(--navy);font-size:1.35rem;margin-bottom:.9rem}
-.monday-steps{list-style:none;padding:0;margin:1.1rem 0 0;counter-reset:step}
-.monday-steps li{counter-increment:step;padding-left:2.4rem;position:relative;margin-bottom:.85rem;font-size:.98rem}
+.monday-box h2{color:var(--navy);font-size:1.5rem;margin-bottom:.9rem}
+.monday-steps{
+  list-style:none;padding:1.25rem 1.25rem 1.25rem 3rem;margin:1.1rem 0 0;counter-reset:step;
+  background:var(--ops-surface-sunken);border-radius:var(--ops-radius-8);
+}
+.monday-steps li{counter-increment:step;padding-left:1.4rem;position:relative;margin-bottom:.85rem;font-size:.98rem}
+.monday-steps li:last-child{margin-bottom:0}
 .monday-steps li::before{
-  content:counter(step);position:absolute;left:0;top:-.1rem;
+  content:counter(step);position:absolute;left:-1rem;top:-.1rem;
   width:1.7rem;height:1.7rem;border-radius:50%;background:var(--navy);color:#fff;
   font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:.85rem;
   display:flex;align-items:center;justify-content:center;
 }
 
-.cta-box{
-  background:var(--navy);color:#fff;border-radius:8px;padding:2rem 2.25rem;
-  margin-top:3rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;
-}
-.cta-box p{color:#C9D2E0;margin:0;max-width:26rem}
-.cta-box h3{color:#fff;font-size:1.3rem;margin-bottom:.35rem}
+.cta-box{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
+.cta-box p{color:var(--ops-text-inverse-secondary);margin:0;max-width:26rem}
+.cta-box h3{font-family:var(--ops-font-text);font-weight:600;color:#fff;font-size:1.3rem;margin-bottom:.35rem}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="site-nav">
   <div class="site-nav-inner">
     <a class="brand" href="/">
       <svg class="brand-mark" viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="#1B2E4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="var(--ops-navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         <circle cx="56" cy="18" r="4.2" fill="#D08F25"/>
       </svg>
       <span class="brand-word">Opsteady</span>
     </a>
     <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#1B2E4F" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <nav class="nav-links" aria-label="Primary">
       <button class="nav-close" type="button" aria-label="Close menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
       </button>
-      <a class="nav-link" href="/">Home</a>
-      <a class="nav-link current" href="/the-method.html">The Method</a>
       <a class="nav-link nav-cta" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a class="nav-link" href="/catalogue.html">Catalogue</a>
+      <a class="nav-link current" href="/the-method.html">The Method</a>
       <a class="nav-link" href="/pricing.html">Pricing</a>
       <a class="nav-link" href="/who-we-are.html">Who We Are</a>
     </nav>
   </div>
 </header>
 
-<main class="shell">
+<main id="main">
+ <div class="shell">
   <div class="section-tight prose">
     <p class="eyebrow">The Method</p>
     <h1 class="page-title">Four stages. One loop. Re-entered, not finished.</h1>
     <p class="lede">Operations aren't good or bad — they're somewhere. The Opsteady Method is how you read where, and what to do next in an order that actually holds. Nothing here is new. What's usually missing is the order.</p>
   </div>
+ </div>
 
-  <div class="loop-wrap">
-    <svg class="loop-diagram" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A loop of four stages: Observe and Learn, Stabilise, Improve, Sustain, re-entering at Observe and Learn">
+  <div class="band band-navy">
+   <div class="shell band-pad">
+    <h2 class="sr-only">The four stages</h2>
+    <div class="loop-wrap">
+    <svg class="method-diagram method-diagram-desktop" viewBox="0 0 720 132" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four stages in sequence: Observe and Learn, Stabilise, Improve, Sustain, then a return line back to Observe and Learn — the method is a loop, not a ladder">
       <defs>
-        <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="#1B2E4F"/>
+        <marker id="method-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#fff"/>
         </marker>
       </defs>
-      <path d="M150,45 A105,105 0 0 1 255,150" fill="none" stroke="#EEF1F5" stroke-width="28"/>
-      <path d="M255,150 A105,105 0 0 1 150,255" fill="none" stroke="#CBD5E1" stroke-width="28"/>
-      <path d="M150,255 A105,105 0 0 1 45,150" fill="none" stroke="#7C8FA8" stroke-width="28"/>
-      <path d="M45,150 A105,105 0 0 1 149.02,45.02" fill="none" stroke="#1B2E4F" stroke-width="28" marker-end="url(#arrow)"/>
-
-      <text x="261.7" y="38.3" class="stagenum" text-anchor="middle">01</text>
-      <text x="261.7" y="54.3" class="stagelbl" text-anchor="middle">Observe</text>
-
-      <text x="261.7" y="261.7" class="stagenum" text-anchor="middle">02</text>
-      <text x="261.7" y="277.7" class="stagelbl" text-anchor="middle">Stabilise</text>
-
-      <text x="38.3" y="261.7" class="stagenum" text-anchor="middle">03</text>
-      <text x="38.3" y="277.7" class="stagelbl" text-anchor="middle">Improve</text>
-
-      <text x="38.3" y="38.3" class="stagenum" text-anchor="middle">04</text>
-      <text x="38.3" y="54.3" class="stagelbl" text-anchor="middle">Sustain</text>
-
-      <text x="150" y="146" class="centertext" text-anchor="middle">A loop</text>
-      <text x="150" y="163" class="centersub" text-anchor="middle">not a ladder</text>
+      <line class="md-connector" x1="60" y1="40" x2="260" y2="40"/>
+      <line class="md-connector" x1="260" y1="40" x2="460" y2="40"/>
+      <line class="md-connector" x1="460" y1="40" x2="660" y2="40"/>
+      <path class="md-return" marker-end="url(#method-arrow)"
+        d="M660,47 L660,108 Q660,116 652,116 L68,116 Q60,116 60,108 L60,49"/>
+      <circle class="md-node" cx="60" cy="40" r="6"/>
+      <circle class="md-node" cx="260" cy="40" r="6"/>
+      <circle class="md-node" cx="460" cy="40" r="6"/>
+      <circle class="md-node" cx="660" cy="40" r="6"/>
+      <text class="md-label" x="60" y="66" text-anchor="middle">OBSERVE &amp; LEARN</text>
+      <text class="md-label" x="260" y="66" text-anchor="middle">STABILISE</text>
+      <text class="md-label" x="460" y="66" text-anchor="middle">IMPROVE</text>
+      <text class="md-label" x="660" y="66" text-anchor="middle">SUSTAIN</text>
     </svg>
+    <svg class="method-diagram method-diagram-mobile" viewBox="0 0 220 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four stages in sequence: Observe and Learn, Stabilise, Improve, Sustain, then a return line back to Observe and Learn — the method is a loop, not a ladder">
+      <defs>
+        <marker id="method-arrow-m" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#fff"/>
+        </marker>
+      </defs>
+      <line class="md-connector" x1="50" y1="46" x2="50" y2="174"/>
+      <line class="md-connector" x1="50" y1="186" x2="50" y2="314"/>
+      <line class="md-connector" x1="50" y1="326" x2="50" y2="454"/>
+      <path class="md-return" marker-end="url(#method-arrow-m)"
+        d="M44,460 L23,460 Q15,460 15,452 L15,48 Q15,40 23,40 L42,40"/>
+      <circle class="md-node" cx="50" cy="40" r="6"/>
+      <circle class="md-node" cx="50" cy="180" r="6"/>
+      <circle class="md-node" cx="50" cy="320" r="6"/>
+      <circle class="md-node" cx="50" cy="460" r="6"/>
+      <text class="md-label" x="70" y="44" text-anchor="start">OBSERVE &amp; LEARN</text>
+      <text class="md-label" x="70" y="184" text-anchor="start">STABILISE</text>
+      <text class="md-label" x="70" y="324" text-anchor="start">IMPROVE</text>
+      <text class="md-label" x="70" y="464" text-anchor="start">SUSTAIN</text>
+    </svg>
+    </div>
+   </div>
   </div>
 
+ <div class="shell">
   <div class="stagegrid">
     <div class="stagecard s0">
-      <span class="sn">01 · Observe &amp; Learn</span>
+      <span class="ops-stage-tag">
+        <svg class="stage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="2" y1="12" x2="8" y2="12"/><circle cx="12" cy="12" r="4"/><line x1="16" y1="12" x2="22" y2="12"/></svg>
+        01 · Observe &amp; Learn</span>
       <h3>Understand before you change</h3>
       <p>Watch how the work actually happens, not how the procedure says it happens. The Health Check lives here — it's the entry point into everything else.</p>
     </div>
     <div class="stagecard s1">
-      <span class="sn">02 · Stabilise</span>
+      <span class="ops-stage-tag">
+        <svg class="stage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6 L6 16 L10 8 L13 13 L16 11 L22 12"/></svg>
+        02 · Stabilise</span>
       <h3>Stop the firefighting</h3>
       <p>Make today repeatable before you try to make it better. A standard everyone actually follows, not one that just looks good in the folder.</p>
     </div>
     <div class="stagecard s2">
-      <span class="sn">03 · Improve</span>
+      <span class="ops-stage-tag ops-stage-tag-inverse">
+        <svg class="stage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 17 L10 17 L10 7 L22 7"/></svg>
+        03 · Improve</span>
       <h3>Improve from a base that holds</h3>
       <p>Once today is predictable, raise it. Improvement built on a moving target drifts back the moment attention moves elsewhere.</p>
     </div>
     <div class="stagecard s3">
-      <span class="sn">04 · Sustain</span>
+      <span class="ops-stage-tag ops-stage-tag-inverse">
+        <svg class="stage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="2" y1="12" x2="22" y2="12"/><circle cx="6" cy="12" r="1.8" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/><circle cx="18" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>
+        04 · Sustain</span>
       <h3>Make it stick without heroics</h3>
       <p>No one person carrying it, no burst of energy that fades. Then you re-enter at Observe &amp; Learn — an operation doesn't graduate, it keeps cycling with the bar a little higher.</p>
     </div>
@@ -159,28 +209,28 @@
 
   <ul class="order-list prose">
     <li class="order-item">
-      <span class="oi-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#D08F25" stroke-width="2.2" stroke-linecap="round"><path d="M4 12 L10 18 L20 6"/></svg></span>
+      <span class="oi-mark"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2.2" stroke-linecap="round"><path d="M4 12 L10 18 L20 6"/></svg></span>
       <div>
         <h3>Fix the standard before you improve it</h3>
         <p>Improving a standard nobody actually follows just moves the gap somewhere else. Get the floor and the paperwork saying the same thing first — that's Set Standards, and it's why it's a Foundation, not a pillar you get to later.</p>
       </div>
     </li>
     <li class="order-item">
-      <span class="oi-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#D08F25" stroke-width="2.2" stroke-linecap="round"><path d="M4 12 L10 18 L20 6"/></svg></span>
+      <span class="oi-mark"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2.2" stroke-linecap="round"><path d="M4 12 L10 18 L20 6"/></svg></span>
       <div>
         <h3>Trust the signal before you act on it</h3>
         <p>A KPI built on numbers nobody checks is a guess with a decimal point. See what's really happening before you build the measurement architecture, and build that before you chase a target with it.</p>
       </div>
     </li>
     <li class="order-item">
-      <span class="oi-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#D08F25" stroke-width="2.2" stroke-linecap="round"><path d="M4 12 L10 18 L20 6"/></svg></span>
+      <span class="oi-mark"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2.2" stroke-linecap="round"><path d="M4 12 L10 18 L20 6"/></svg></span>
       <div>
         <h3>Trust before audits</h3>
         <p>Check compliance before people trust the process, and you get compliance theatre — problems don't stop, they just go quiet. Culture isn't a soft add-on here; it's the medium every other tool runs through.</p>
       </div>
     </li>
     <li class="order-item">
-      <span class="oi-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#D08F25" stroke-width="2.2" stroke-linecap="round"><path d="M4 12 L10 18 L20 6"/></svg></span>
+      <span class="oi-mark"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2.2" stroke-linecap="round"><path d="M4 12 L10 18 L20 6"/></svg></span>
       <div>
         <h3>Three moves, not twelve</h3>
         <p>Everything at once beats nothing — but it also beats ownership. Every Health Check report gives three moves, in order, not a list of everything that's wrong. Three done properly outlasts twelve half-started.</p>
@@ -202,13 +252,16 @@
       <li>Fix those gaps. That's your first standard — one, done properly, not twelve done badly.</li>
     </ol>
   </div>
+ </div>
 
-  <div class="cta-box">
-    <div>
-      <h3>See where your operation sits in the loop</h3>
-      <p>The Health Check reads twelve areas against these four stages and gives you three moves, each with its own Monday.</p>
+  <div class="band band-navy">
+    <div class="shell band-pad cta-box">
+      <div>
+        <h3>See where your operation sits in the loop</h3>
+        <p>The Health Check reads twelve areas against these four stages and gives you three moves, each with its own Monday.</p>
+      </div>
+      <a class="btn btn-on-navy btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
     </div>
-    <a class="btn btn-amber btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
   </div>
 </main>
 
@@ -217,7 +270,7 @@
     <div class="footer-brand">
       <span class="brand-word">Opsteady</span>
       <p class="footer-tagline">Run steady. Run better.</p>
-      <p>Practical tools and know-how to run a great operation. No consultants required.</p>
+      <p>Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
     </div>
     <div class="footer-col">
       <h3>Site</h3>
@@ -235,6 +288,8 @@
       <ul>
         <li><a href="/sitemap.html">Contents</a></li>
         <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms of sale</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
         <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
       </ul>
     </div>

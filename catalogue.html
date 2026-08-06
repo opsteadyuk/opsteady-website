@@ -4,216 +4,622 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Catalogue — Opsteady</title>
-<meta name="description" content="Twelve tools, one per Health Check area. What each one does, who it's for, and what's inside.">
+<meta name="description" content="Four Foundations, eight Pillars, two Enablers. Thirty-six modules — twelve finished and ready, the rest on the way.">
 <meta name="robots" content="index,follow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<meta property="og:title" content="Catalogue — Opsteady">
+<meta property="og:description" content="Four Foundations, eight Pillars, two Enablers. Thirty-six modules — twelve finished and ready, the rest on the way.">
+<meta property="og:image" content="https://opsteady.co.uk/og/catalogue.png">
+<meta property="og:url" content="https://opsteady.co.uk/catalogue.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
 <link rel="stylesheet" href="/styles.css">
 <style>
 .cat-intro-note{
   background:var(--card);border:1px solid var(--line);border-left:3px solid var(--amber);
   border-radius:2px;padding:1rem 1.15rem;margin-top:1.5rem;font-size:.95rem;color:var(--slate);
 }
-.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin:2.5rem 0}
-@media (max-width:780px){.cat-grid{grid-template-columns:1fr}}
+.status-line{
+  display:block;margin-top:1.25rem;font-family:var(--ops-font-text);font-weight:600;font-size:.75rem;
+  letter-spacing:var(--ops-track-label);text-transform:uppercase;color:var(--ops-n60);
+}
+.pillar-section{margin:3.5rem 0}
+.pillar-section h2{margin-bottom:.4rem}
+.pillar-desc{color:var(--slate);margin-bottom:1.5rem;max-width:42rem}
+.foundations-desc{color:var(--slate);margin-bottom:1.5rem;max-width:42rem}
+
+.mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media (max-width:900px){.mod-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.mod-grid{grid-template-columns:1fr}}
+
 .prod-card{
-  background:var(--card);border:1px solid var(--line);border-radius:8px;
-  padding:1.5rem 1.6rem 1.6rem;display:flex;flex-direction:column;
+  background:var(--ops-surface);border:1px solid var(--ops-border);border-radius:var(--ops-radius-12);
+  padding:var(--ops-space-32);display:flex;flex-direction:column;
+  transition:border-color var(--ops-duration-fast) var(--ops-ease-out);
 }
-.prod-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem}
-.prod-num{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:.8rem;color:var(--slate)}
-.prod-tag{
-  font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
-  background:var(--amber-light);color:#9C6B15;padding:.2rem .55rem;border-radius:3px;
-}
-.prod-tag.foundation{background:#E4E9F1;color:var(--navy)}
-.prod-card h3{font-size:1.18rem;color:var(--navy);margin-bottom:.3rem}
-.prod-tiers{font-family:"Space Grotesk",sans-serif;font-size:.78rem;color:var(--slate);letter-spacing:.02em;margin-bottom:.85rem}
+.prod-card:hover{border-color:var(--ops-border-strong)}
+@media (max-width:640px){.prod-card{padding:var(--ops-space-24)}}
+.prod-card.in-dev{background:var(--ops-surface-sunken);border-color:var(--ops-border-subtle)}
+.prod-card.in-dev:hover{border-color:var(--ops-border)}
+.prod-top{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem}
+.prod-card h3{font-family:var(--ops-font-text);font-weight:600;font-size:1.18rem;color:var(--navy);margin-bottom:.3rem}
+.prod-card h3 a{color:inherit;text-decoration:none}
+.prod-card h3 a:hover{text-decoration:underline}
+.prod-card.in-dev h3 a{color:var(--ops-text-secondary)}
+.prod-outcome{font-size:1rem;color:var(--slate);margin-bottom:.5rem}
+.prod-tiers{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--slate);margin-bottom:.85rem}
 .prod-desc{font-size:.95rem;color:var(--ink);flex-grow:1}
 .prod-inside{font-size:.85rem;color:var(--slate);font-style:italic;margin-top:.6rem}
 .prod-who{
   font-size:.88rem;color:var(--slate);background:var(--ground);border-radius:5px;
   padding:.75rem .9rem;margin-top:1rem;
 }
-.prod-who strong{color:var(--navy);font-family:"Space Grotesk",sans-serif;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:.3rem}
-.prod-card .btn{margin-top:1.15rem;align-self:flex-start}
-.btn-ghost[disabled]{opacity:.55}
+.prod-who strong{color:var(--navy);font-family:var(--ops-font-text);font-size:.75rem;letter-spacing:var(--ops-track-label);text-transform:uppercase;display:block;margin-bottom:.3rem}
+.prod-card .prod-link{margin-top:1.15rem;align-self:flex-start;text-decoration:none}
 
-.cta-box{
-  background:var(--navy);color:#fff;border-radius:8px;padding:2rem 2.25rem;
-  margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;
+.status-tag{
+  display:inline-block;font-family:var(--ops-font-text);font-weight:600;font-size:.68rem;
+  letter-spacing:var(--ops-track-label);text-transform:uppercase;padding:.2rem .5rem;
+  border-radius:var(--ops-radius-4);line-height:1.3;
 }
-.cta-box p{color:#C9D2E0;margin:0;max-width:26rem}
-.cta-box h3{color:#fff;font-size:1.3rem;margin-bottom:.35rem}
+.status-ready{background:var(--ops-success-tint);color:var(--ops-success)}
+.status-dev{background:var(--ops-surface-subtle);color:var(--ops-n60)}
+.lead-tag{
+  font-family:var(--ops-font-text);font-weight:600;font-size:.68rem;
+  letter-spacing:var(--ops-track-label);text-transform:uppercase;color:var(--ops-n60);
+}
+
+.cta-box{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
+.cta-box p{color:var(--ops-text-inverse-secondary);margin:0;max-width:26rem}
+.cta-box h3{font-family:var(--ops-font-text);font-weight:600;color:#fff;font-size:1.3rem;margin-bottom:.35rem}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="site-nav">
   <div class="site-nav-inner">
     <a class="brand" href="/">
       <svg class="brand-mark" viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="#1B2E4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="var(--ops-navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         <circle cx="56" cy="18" r="4.2" fill="#D08F25"/>
       </svg>
       <span class="brand-word">Opsteady</span>
     </a>
     <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#1B2E4F" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <nav class="nav-links" aria-label="Primary">
       <button class="nav-close" type="button" aria-label="Close menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
       </button>
-      <a class="nav-link" href="/">Home</a>
-      <a class="nav-link" href="/the-method.html">The Method</a>
       <a class="nav-link nav-cta" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a class="nav-link current" href="/catalogue.html">Catalogue</a>
+      <a class="nav-link" href="/the-method.html">The Method</a>
       <a class="nav-link" href="/pricing.html">Pricing</a>
       <a class="nav-link" href="/who-we-are.html">Who We Are</a>
     </nav>
   </div>
 </header>
 
-<main class="shell">
+<main id="main">
+ <div class="shell">
   <div class="section-tight prose">
     <p class="eyebrow">Catalogue</p>
-    <h1 class="page-title">Twelve tools. One per Health Check area.</h1>
-    <p class="lede">Every tool ships as a real spreadsheet or workbook plus a guide — not a PDF you read once and file away. Essentials is the complete, standard version, ready to run for most sites. Pro adds every version and the judgement to build your own.</p>
-    <div class="cat-intro-note">Buy buttons are switched off for now — the checkout platform isn't picked yet. Everything else here, the descriptions, what's inside, who each one is for, is real. Pricing lives on the <a href="/pricing.html">Pricing page</a>, not here.</div>
+    <h1 class="page-title">The full range</h1>
+    <p class="lede">Four Foundations that every site needs, eight Pillars that go deep on one area each, and two that cut across everything. Thirty-six modules in total.</p>
+    <p class="lede">Twelve are finished and ready. The rest are being built in the order the Health Check says sites need them, which is why the lead module in each Pillar came first.</p>
+    <span class="status-line">12 of 36 ready · buying opens shortly</span>
+    <div class="cat-intro-note">Buy buttons are switched off for now — the checkout platform isn't picked yet. Registering interest costs nothing and asks for nothing but an email. Pricing lives on the <a href="/pricing.html">Pricing page</a>, not here.</div>
   </div>
 
-  <div class="cat-grid">
+  <div class="pillar-section">
+    <h2 class="section-title">Foundations</h2>
+    <p class="foundations-desc">Four Foundations and eight Pillars. Foundations come first — they're what every site needs regardless of where it's struggling. All four are built and ready.</p>
 
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">01</span><span class="prod-tag">Pillar</span></div>
-      <h3>Skills Matrix &amp; Cross-Training Planner</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">A working record of who can do what, at what level, and what happens if they're off sick. Built for team leaders who currently hold that picture in their head. Answers three questions from one spreadsheet: who to put where this morning, what someone's working toward, and proof of who was signed off to do a job on the day they did it.</p>
-      <p class="prod-inside">Inside: a 7-tab spreadsheet, a training record, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a team leader who currently carries the who-can-do-what picture in their head, and knows exactly how bad it'd be if they were off for a week.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
+    <div class="mod-grid">
 
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">02</span><span class="prod-tag foundation">Foundation</span></div>
-      <h3>Set Standards</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">The discipline that decides whether a written standard actually changes anything, not another SOP template. Most sites can produce paperwork. Fewer can say whether the floor still does it that way. This gives you a register that tracks whether your standards match practice and whether anyone actually reaches for them when something goes wrong.</p>
-      <p class="prod-inside">Inside: a standards register, an SOP template with a one-page Quick Guide version, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a site where the SOPs look fine in the folder and nobody's sure they match what actually happens on the floor.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-foundation">Foundation</span>
+          <span class="status-tag status-ready">Ready</span>
+        </div>
+        <h3><a href="/interest.html?m=set_standards">Set Standards</a></h3>
+        <p class="prod-outcome">— make the right way the easy way</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">The discipline that decides whether a written standard actually changes anything, not another SOP template. Most sites can produce paperwork. Fewer can say whether the floor still does it that way. This gives you a register that tracks whether your standards match practice and whether anyone actually reaches for them when something goes wrong.</p>
+        <p class="prod-inside">Inside: a standards register, an SOP template with a one-page Quick Guide version, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a site where the SOPs look fine in the folder and nobody's sure they match what actually happens on the floor.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=set_standards">Learn more</a>
+      </article>
 
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">03</span><span class="prod-tag foundation">Foundation</span></div>
-      <h3>KPI Blueprint Map</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">Maps how your numbers connect, from the figure the board watches down to the thing an operator can see and change this shift. Most sites measure plenty. Few can say why a number moved without a week of digging. Built around one rule: mark what you can't explain rather than inventing a plausible link.</p>
-      <p class="prod-inside">Inside: a 5-tab workbook, a printable tree canvas, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a manager who can see a number move and can't say why without a week of digging.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-foundation">Foundation</span>
+          <span class="status-tag status-ready">Ready</span>
+        </div>
+        <h3><a href="/interest.html?m=kpi_blueprint_map">KPI Blueprint Map</a></h3>
+        <p class="prod-outcome">— know why a number moved</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">Maps how your numbers connect, from the figure the board watches down to the thing an operator can see and change this shift. Most sites measure plenty. Few can say why a number moved without a week of digging. Built around one rule: mark what you can't explain rather than inventing a plausible link.</p>
+        <p class="prod-inside">Inside: a 5-tab workbook, a printable tree canvas, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a manager who can see a number move and can't say why without a week of digging.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=kpi_blueprint_map">Learn more</a>
+      </article>
 
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">04</span><span class="prod-tag foundation">Foundation</span></div>
-      <h3>Culture</h3>
-      <p class="prod-tiers">One guide, both depths</p>
-      <p class="prod-desc">A way of handling honest mistakes and near-misses that doesn't punish the person for telling you. Most "no blame" policies quietly punish disclosure anyway. This tracks two different things separately: silence because people are afraid, and silence because nothing ever changes when they speak up.</p>
-      <p class="prod-inside">Inside: a response tracker, a prompt card, one guide covering both depths.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a site where "no blame" is the policy but people still go quiet when something's gone wrong.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-foundation">Foundation</span>
+          <span class="status-tag status-ready">Ready</span>
+        </div>
+        <h3><a href="/interest.html?m=culture">Culture</a></h3>
+        <p class="prod-outcome">— build a team that says what happened, and improves</p>
+        <p class="prod-tiers">Essentials &amp; Pro, in one guide</p>
+        <p class="prod-desc">A way of handling honest mistakes and near-misses that doesn't punish the person for telling you. Most "no blame" policies quietly punish disclosure anyway. This tracks two different things separately: silence because people are afraid, and silence because nothing ever changes when they speak up.</p>
+        <p class="prod-inside">Inside: a response tracker, a prompt card, one guide covering both depths.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a site where "no blame" is the policy but people still go quiet when something's gone wrong.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=culture">Learn more</a>
+      </article>
 
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">05</span><span class="prod-tag foundation">Foundation</span></div>
-      <h3>Visual Management</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">Turns raw data into something anyone can read in five seconds: are we alright right now, or not. Deliberately kept to foundation depth, so it's a starting point rather than a full workplace-organisation overhaul.</p>
-      <p class="prod-inside">Inside: a visual controls register, a stranger-test walk sheet, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a floor where the data exists somewhere but nobody can tell at a glance whether today's alright.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-foundation">Foundation</span>
+          <span class="status-tag status-ready">Ready</span>
+        </div>
+        <h3><a href="/interest.html?m=visual_management_foundations">Visual Management Foundations</a></h3>
+        <p class="prod-outcome">— see the state of the operation at a glance</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">Turns raw data into something anyone can read in five seconds: are we alright right now, or not. Deliberately kept to foundation depth, so it's a starting point rather than a full workplace-organisation overhaul.</p>
+        <p class="prod-inside">Inside: a visual controls register, a stranger-test walk sheet, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a floor where the data exists somewhere but nobody can tell at a glance whether today's alright.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=visual_management_foundations">Learn more</a>
+      </article>
 
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">06</span><span class="prod-tag">Pillar</span></div>
-      <h3>OTIF &amp; RFT Dashboard</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">On-time-in-full and right-first-time, defined properly before they're tracked. Both terms mean something slightly different at every site that uses them, and that's usually where the argument starts. This makes you write your own definition down first, then gives you a dashboard that actually matches it.</p>
-      <p class="prod-inside">Inside: a workbook with definitions, logs and a dashboard, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a site where "on time" means something different depending on who you ask.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
-
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">07</span><span class="prod-tag">Pillar</span></div>
-      <h3>Production Schedule Adherence Tracker</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">Shows three different numbers instead of one blended figure: whether you hit volume, whether you hit it without overproducing somewhere else to cover a shortfall, and whether you hit it on time. Most trackers hide the second number, which is exactly the one that lets a bad week look fine.</p>
-      <p class="prod-inside">Inside: a workbook with a three-number dashboard, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a manager whose hit-rate number looks fine while everyone on the floor knows a bad week happened anyway.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
-
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">08</span><span class="prod-tag">Pillar</span></div>
-      <h3>Downtime Tracking &amp; Pareto Pack</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">Tracks stoppages with a hard rule: a stop only counts as planned if it was on the schedule before the shift started. That single guard closes the most common way downtime numbers get quietly reclassified after the fact.</p>
-      <p class="prod-inside">Inside: a workbook with definitions, a log and a dashboard, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a site that's stopped trusting its own downtime figures.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
-
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">09</span><span class="prod-tag">Pillar</span></div>
-      <h3>Waste &amp; Cost-of-Quality Calculator</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">Puts a cost against the eight lean wastes without forcing them into cost-of-quality categories they don't naturally fit. The two frameworks only overlap in one place, so this keeps them as two logs meeting at that one point, rather than mashing them together and misrepresenting both.</p>
-      <p class="prod-inside">Inside: a workbook with two logs and a dashboard, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For someone who can feel the waste on the floor but has never had to put a number on it.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
-
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">10</span><span class="prod-tag">Pillar</span></div>
-      <h3>Shift Handover System</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">A structure for the five things that need to pass between shifts, every time, so nothing depends on who happened to be on and who they happened to catch before they left.</p>
-      <p class="prod-inside">Inside: a workbook with a handover log, an actions tracker and a dashboard, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a site where what gets passed between shifts depends entirely on who's handing over.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
-
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">11</span><span class="prod-tag">Pillar</span></div>
-      <h3>5S Audit Pack</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">A scored, periodic 5S audit, built around a practitioner-authored form refined over years on real sites, not a generic checklist. Deliberately kept separate from the daily stranger-test check in Visual Management — blending the two is a documented reason 5S programmes stall. The Sustain score specifically checks whether last audit's low scores got followed up, not just whether the floor looks tidy today.</p>
-      <p class="prod-inside">Inside: a branded audit form with live scoring, a companion workbook, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a site whose 5S looked great for the launch photo and has been sliding quietly ever since.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
-
-    <article class="prod-card">
-      <div class="prod-top"><span class="prod-num">12</span><span class="prod-tag">Pillar</span></div>
-      <h3>A3 Problem-Solving Templates</h3>
-      <p class="prod-tiers">Essentials &amp; Pro</p>
-      <p class="prod-desc">A one-page problem-solving format with a built-in stop: root cause has to be verified before a single countermeasure can be written. The most freely available format in lean, so the value here is the checkpoint, not the template.</p>
-      <p class="prod-inside">Inside: an A3 template, a register workbook tracking every A3 in flight, guides for both tiers.</p>
-      <p class="prod-who"><strong>Who's this for</strong>For a team that jumps to a fix before anyone's checked it's fixing the right thing.</p>
-      <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
-    </article>
-
-  </div>
-
-  <div class="cta-box">
-    <div>
-      <h3>Not sure which three you need?</h3>
-      <p>The Health Check reads your operation across all twelve areas and tells you which three tools to start with, in order.</p>
     </div>
-    <a class="btn btn-amber btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+  </div>
+
+  <div class="pillar-section">
+    <h2 class="section-title">Pillar 1 — People &amp; Capability</h2>
+    <p class="pillar-desc">Who can do the job, who's next, and what happens when someone's off.</p>
+    <div class="mod-grid">
+
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-ready">Ready</span>
+          <span class="lead-tag">Pillar lead</span>
+        </div>
+        <h3><a href="/interest.html?m=skills_matrix">Skills Matrix &amp; Cross-Training Planner</a></h3>
+        <p class="prod-outcome">— cover every shift without guesswork</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">A working record of who can do what, at what level, and what happens if they're off sick. Built for team leaders who currently hold that picture in their head. Answers three questions from one spreadsheet: who to put where this morning, what someone's working toward, and proof of who was signed off to do a job on the day they did it.</p>
+        <p class="prod-inside">Inside: a 7-tab spreadsheet, a training record, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a team leader who currently carries the who-can-do-what picture in their head, and knows exactly how bad it'd be if they were off for a week.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=skills_matrix">Learn more</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=supervisor_standard_work">Supervisor Standard Work Pack</a></h3>
+        <p class="prod-outcome">— stop the shift running the supervisor</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=supervisor_standard_work">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=training_competency_signoff">Training Plan &amp; Competency Sign-off</a></h3>
+        <p class="prod-outcome">— know who can actually do the job</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=training_competency_signoff">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=onboarding_induction">Onboarding &amp; Induction Pack</a></h3>
+        <p class="prod-outcome">— get a new starter useful in weeks, not months</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=onboarding_induction">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=team_leader_development">Team Leader Development Pathway</a></h3>
+        <p class="prod-outcome">— grow the next team leader before you need them</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=team_leader_development">Tell me when it's ready</a>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="pillar-section">
+    <h2 class="section-title">Pillar 2 — Daily Management &amp; Performance</h2>
+    <p class="pillar-desc">What the shift needs to know before it starts, and whether the numbers agree with what's actually happening.</p>
+    <div class="mod-grid">
+
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-ready">Ready</span>
+          <span class="lead-tag">Pillar lead</span>
+        </div>
+        <h3><a href="/interest.html?m=shift_handover">Shift Handover System</a></h3>
+        <p class="prod-outcome">— stop losing information between crews</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">A structure for the five things that need to pass between shifts, every time, so nothing depends on who happened to be on and who they happened to catch before they left.</p>
+        <p class="prod-inside">Inside: a workbook with a handover log, an actions tracker and a dashboard, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a site where what gets passed between shifts depends entirely on who's handing over.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=shift_handover">Learn more</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=tiered_meeting_structure">Tiered Meeting Structure</a></h3>
+        <p class="prod-outcome">— make meetings decide something</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=tiered_meeting_structure">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=sqdc_performance_board">SQDC Performance Board Pack</a></h3>
+        <p class="prod-outcome">— make the board worth standing at</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=sqdc_performance_board">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=kpi_definitions_cascade">KPI Definitions &amp; Cascade Guide</a></h3>
+        <p class="prod-outcome">— make everyone count it the same way</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=kpi_definitions_cascade">Tell me when it's ready</a>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="pillar-section">
+    <h2 class="section-title">Pillar 3 — Quality</h2>
+    <p class="pillar-desc">Catching a problem before the customer does, not just writing it up after.</p>
+    <div class="mod-grid">
+
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-ready">Ready</span>
+          <span class="lead-tag">Pillar lead</span>
+        </div>
+        <h3><a href="/interest.html?m=otif_rft_dashboard">OTIF &amp; RFT Dashboard</a></h3>
+        <p class="prod-outcome">— agree what on time actually means</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">On-time-in-full and right-first-time, defined properly before they're tracked. Both terms mean something slightly different at every site that uses them, and that's usually where the argument starts. This makes you write your own definition down first, then gives you a dashboard that actually matches it.</p>
+        <p class="prod-inside">Inside: a workbook with definitions, logs and a dashboard, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a site where "on time" means something different depending on who you ask.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=otif_rft_dashboard">Learn more</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=root_cause_analysis">Root Cause Analysis Toolkit</a></h3>
+        <p class="prod-outcome">— get past the first plausible answer</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=root_cause_analysis">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=non_conformance_tracker">Non-Conformance Tracker &amp; Trend Pack</a></h3>
+        <p class="prod-outcome">— see the pattern before the customer does</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=non_conformance_tracker">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=layered_process_audit">Layered Process Audit System</a></h3>
+        <p class="prod-outcome">— check the process, not the people</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=layered_process_audit">Tell me when it's ready</a>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="pillar-section">
+    <h2 class="section-title">Pillar 4 — Delivery &amp; Planning</h2>
+    <p class="pillar-desc">Knowing what you can promise, and why a schedule slipped.</p>
+    <div class="mod-grid">
+
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-ready">Ready</span>
+          <span class="lead-tag">Pillar lead</span>
+        </div>
+        <h3><a href="/interest.html?m=production_schedule_adherence">Production Schedule Adherence Tracker</a></h3>
+        <p class="prod-outcome">— stop a bad week looking fine</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">Shows three different numbers instead of one blended figure: whether you hit volume, whether you hit it without overproducing somewhere else to cover a shortfall, and whether you hit it on time. Most trackers hide the second number, which is exactly the one that lets a bad week look fine.</p>
+        <p class="prod-inside">Inside: a workbook with a three-number dashboard, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a manager whose hit-rate number looks fine while everyone on the floor knows a bad week happened anyway.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=production_schedule_adherence">Learn more</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=capacity_planning">Capacity Planning Model</a></h3>
+        <p class="prod-outcome">— know what you can promise</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=capacity_planning">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=bottleneck_analysis">Bottleneck Analysis Tool</a></h3>
+        <p class="prod-outcome">— find the constraint, not the loudest problem</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=bottleneck_analysis">Tell me when it's ready</a>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="pillar-section">
+    <h2 class="section-title">Pillar 5 — Asset Care &amp; Maintenance</h2>
+    <p class="pillar-desc">Keeping equipment running without the surprises.</p>
+    <div class="mod-grid">
+
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-ready">Ready</span>
+          <span class="lead-tag">Pillar lead</span>
+        </div>
+        <h3><a href="/interest.html?m=downtime_tracking_pareto">Downtime Tracking &amp; Pareto Pack</a></h3>
+        <p class="prod-outcome">— trust your own downtime figures</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">Tracks stoppages with a hard rule: a stop only counts as planned if it was on the schedule before the shift started. That single guard closes the most common way downtime numbers get quietly reclassified after the fact.</p>
+        <p class="prod-inside">Inside: a workbook with definitions, a log and a dashboard, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a site that's stopped trusting its own downtime figures.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=downtime_tracking_pareto">Learn more</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=pm_schedule_builder">PM Schedule Builder &amp; Compliance Tracker</a></h3>
+        <p class="prod-outcome">— do the maintenance you said you would</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=pm_schedule_builder">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=maintenance_response">Maintenance Response System</a></h3>
+        <p class="prod-outcome">— stop the wait being longer than the fix</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=maintenance_response">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=autonomous_maintenance">Autonomous Maintenance Starter Pack</a></h3>
+        <p class="prod-outcome">— let the people on the machine look after it</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=autonomous_maintenance">Tell me when it's ready</a>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="pillar-section">
+    <h2 class="section-title">Pillar 6 — Advanced Visual Management</h2>
+    <p class="pillar-desc">Beyond the daily glance: standards that hold and safety that gets reported.</p>
+    <div class="mod-grid">
+
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-ready">Ready</span>
+          <span class="lead-tag">Pillar lead</span>
+        </div>
+        <h3><a href="/interest.html?m=5s_audit_pack">5S Audit Pack</a></h3>
+        <p class="prod-outcome">— make 5S survive the launch photo</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">A scored, periodic 5S audit, built around a practitioner-authored form refined over years on real sites, not a generic checklist. Deliberately separate from the daily stranger-test check in Visual Management Foundations — blending the two is a documented reason 5S programmes stall. The Sustain score specifically checks whether last audit's low scores got followed up, not just whether the floor looks tidy today.</p>
+        <p class="prod-inside">Inside: a branded audit form with live scoring, a companion workbook, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a site whose 5S looked great for the launch photo and has been sliding quietly ever since.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=5s_audit_pack">Learn more</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=visual_standards_workplace">Visual Standards &amp; Workplace Organisation Guide</a></h3>
+        <p class="prod-outcome">— make the standard obvious without asking</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=visual_standards_workplace">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=safety_observation_near_miss">Safety Observation &amp; Near-Miss System</a></h3>
+        <p class="prod-outcome">— hear about it before someone gets hurt</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=safety_observation_near_miss">Tell me when it's ready</a>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="pillar-section">
+    <h2 class="section-title">Pillar 7 — Continuous Improvement</h2>
+    <p class="pillar-desc">Turning one fix into a habit, not a one-off event.</p>
+    <div class="mod-grid">
+
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-ready">Ready</span>
+          <span class="lead-tag">Pillar lead</span>
+        </div>
+        <h3><a href="/interest.html?m=a3_problem_solving">A3 Problem-Solving Templates</a></h3>
+        <p class="prod-outcome">— fix it once, properly</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">A one-page problem-solving format with a built-in stop: root cause has to be verified before a single countermeasure can be written. The most freely available format in lean, so the value here is the checkpoint, not the template.</p>
+        <p class="prod-inside">Inside: an A3 template, a register workbook tracking every A3 in flight, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For a team that jumps to a fix before anyone's checked it's fixing the right thing.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=a3_problem_solving">Learn more</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=value_stream_mapping">Value Stream Mapping Kit</a></h3>
+        <p class="prod-outcome">— see where the time actually goes</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=value_stream_mapping">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=kaizen_event_planner">Kaizen Event Planner &amp; Charter Pack</a></h3>
+        <p class="prod-outcome">— make the week of effort stick</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=kaizen_event_planner">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=idea_suggestion_system">Idea &amp; Suggestion System</a></h3>
+        <p class="prod-outcome">— stop good ideas dying in a box</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=idea_suggestion_system">Tell me when it's ready</a>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="pillar-section">
+    <h2 class="section-title">Pillar 8 — Cost &amp; Resource</h2>
+    <p class="pillar-desc">Putting a number on waste, and matching people to demand.</p>
+    <div class="mod-grid">
+
+      <article class="prod-card">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-ready">Ready</span>
+          <span class="lead-tag">Pillar lead</span>
+        </div>
+        <h3><a href="/interest.html?m=waste_cost_of_quality">Waste &amp; Cost-of-Quality Calculator</a></h3>
+        <p class="prod-outcome">— put a number on what you can feel</p>
+        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
+        <p class="prod-desc">Puts a cost against the eight lean wastes without forcing them into cost-of-quality categories they don't naturally fit. The two frameworks only overlap in one place, so this keeps them as two logs meeting at that one point, rather than mashing them together and misrepresenting both.</p>
+        <p class="prod-inside">Inside: a workbook with two logs and a dashboard, guides for both tiers.</p>
+        <p class="prod-who"><strong>Who's this for</strong>For someone who can feel the waste on the floor but has never had to put a number on it.</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=waste_cost_of_quality">Learn more</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=labour_planning_shift_pattern">Labour Planning &amp; Shift Pattern Model</a></h3>
+        <p class="prod-outcome">— match the pattern to the demand</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=labour_planning_shift_pattern">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=overtime_agency_spend">Overtime &amp; Agency Spend Tracker</a></h3>
+        <p class="prod-outcome">— see what the gaps are costing you</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=overtime_agency_spend">Tell me when it's ready</a>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="pillar-section">
+    <h2 class="section-title">Enablers</h2>
+    <p class="pillar-desc">Belong to no single Pillar. Raise the success rate of everything else.</p>
+    <div class="mod-grid">
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=working_with_ai">Working with AI</a></h3>
+        <p class="prod-outcome">— use it without outsourcing your judgement</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=working_with_ai">Tell me when it's ready</a>
+      </article>
+
+      <article class="prod-card in-dev">
+        <div class="prod-top">
+          <span class="status-tag status-dev">In development</span>
+        </div>
+        <h3><a href="/interest.html?m=managing_change">Managing Change That Sticks</a></h3>
+        <p class="prod-outcome">— make it survive the second month</p>
+        <a class="btn btn-ghost prod-link" href="/interest.html?m=managing_change">Tell me when it's ready</a>
+      </article>
+
+    </div>
+  </div>
+
+ </div>
+
+  <div class="band band-navy">
+    <div class="shell band-pad cta-box">
+      <div>
+        <h3>Not sure which three you need?</h3>
+        <p>The Health Check reads your operation across all twelve areas and tells you which three tools to start with, in order.</p>
+      </div>
+      <a class="btn btn-on-navy btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+    </div>
   </div>
 </main>
 
@@ -222,7 +628,7 @@
     <div class="footer-brand">
       <span class="brand-word">Opsteady</span>
       <p class="footer-tagline">Run steady. Run better.</p>
-      <p>Practical tools and know-how to run a great operation. No consultants required.</p>
+      <p>Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
     </div>
     <div class="footer-col">
       <h3>Site</h3>
@@ -240,6 +646,8 @@
       <ul>
         <li><a href="/sitemap.html">Contents</a></li>
         <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms of sale</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
         <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
       </ul>
     </div>
