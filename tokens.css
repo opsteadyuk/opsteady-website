@@ -42,7 +42,7 @@
   /* ---- Brand ---- */
   --ops-navy: #1B2E4F;
   --ops-amber: #D08F25;        /* on navy only */
-  --ops-amber-deep: #9C6B1C;   /* on light only */
+  --ops-amber-deep: #946719;   /* on light only — 4.69:1 on n05, the worst-case background it appears on */
 
   /* ---- Neutrals ---- */
   --ops-n00: #FFFFFF;
