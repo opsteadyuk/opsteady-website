@@ -91,14 +91,14 @@ ul,ol{padding-left:1.15rem}
    mobile nav-links overlay (it fixes to this bar instead of the viewport) */
 .site-nav.scrolled{box-shadow:var(--ops-elevation-1)}
 .site-nav-inner{
-  max-width:var(--maxw);margin:0 auto;padding:.85rem 1.5rem;
+  max-width:var(--maxw);margin:0 auto;padding:1.05rem 1.5rem;
   display:flex;align-items:center;gap:1.5rem;
 }
-@media (max-width:640px){.site-nav-inner{padding:.75rem 1.15rem}}
+@media (max-width:640px){.site-nav-inner{padding:.9rem 1.15rem}}
 
-.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;flex-shrink:0}
-.brand-mark{display:block;width:30px;height:26px}
-.brand-word{font-family:var(--ops-font-display);font-weight:700;font-size:1.15rem;color:var(--navy);letter-spacing:-.02em}
+.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;flex-shrink:0}
+.brand-mark{display:block;width:42px;height:36px}
+.brand-word{font-family:var(--ops-font-display);font-weight:700;font-size:1.4rem;color:var(--navy);letter-spacing:-.02em}
 
 .nav-links{display:flex;align-items:center;gap:.35rem;margin-left:auto}
 .nav-link{

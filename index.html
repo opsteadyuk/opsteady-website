@@ -17,33 +17,36 @@
 <link rel="stylesheet" href="/tokens.css">
 <link rel="stylesheet" href="/styles.css">
 <style>
-.hero{padding:3.25rem 0 2.5rem}
+.hero{padding:3.25rem 0 2.5rem;max-width:50rem;margin:0 auto}
 .hero h1{
   font-family:var(--ops-font-display);font-weight:600;letter-spacing:var(--ops-track-hero);
-  font-size:2rem;line-height:1.19;color:var(--navy);margin-bottom:.6rem;max-width:34rem;
+  font-size:2rem;line-height:1.19;color:var(--navy);margin-bottom:.6rem;
 }
-@media (min-width:768px){.hero h1{font-size:2.5rem;line-height:1.2}}
+@media (min-width:768px){.hero h1{font-size:2.75rem;line-height:1.16}}
 @media (min-width:1024px){.hero h1{font-size:3.5rem;line-height:1.07}}
 .hero .tagline{font-style:italic;color:var(--slate);font-size:1.15rem;margin-bottom:1.4rem}
 .hero .who{
   font-size:1.05rem;font-family:var(--ops-font-display);font-weight:500;color:var(--navy);
-  margin-bottom:1rem;max-width:34rem;
+  margin-bottom:1rem;
 }
-.hero .alt{font-size:1.05rem;color:var(--ink);max-width:34rem;margin-bottom:2rem}
-.hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
+.hero .alt{font-size:1.05rem;color:var(--ink);margin-bottom:2rem}
+.hero-cta{display:flex;flex-direction:column;align-items:center;gap:.7rem;text-align:center}
 .hero-cta .btn{font-size:1.15rem;padding:1.2rem 2.3rem}
-.hero-cta .reassure{font-size:.88rem;color:var(--slate)}
+.hero-cta .reassure{font-size:.88rem;color:var(--slate);max-width:30rem}
 
-.mini-loop{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin:1.75rem 0}
-.mini-loop .ml-stage{
-  display:flex;align-items:center;gap:.5rem;font-family:"Space Grotesk",sans-serif;font-weight:600;
-  font-size:.9rem;padding:.55rem 1rem;border-radius:999px;white-space:nowrap;
+.loop-wrap{display:flex;justify-content:center;margin:1.75rem 0}
+.home-loop{width:100%;height:auto}
+.home-loop-desktop{max-width:480px;display:block}
+.home-loop-mobile{display:none}
+@media (max-width:639px){
+  .home-loop-desktop{display:none}
+  .home-loop-mobile{display:block;max-width:280px}
 }
-.mini-loop .ml-arrow{color:var(--slate);font-size:1.1rem}
-.s0{background:var(--ops-n10);color:var(--navy)}
-.s1{background:var(--ops-n30);color:var(--navy)}
-.s2{background:var(--ops-n60);color:#fff}
-.s3{background:var(--navy);color:#fff}
+.hl-node{stroke:#fff;stroke-width:3}
+.hl-connector{stroke:var(--ops-border-strong);stroke-width:1.5;stroke-linecap:round;fill:none}
+.hl-icon{stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.hl-ring{stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6;fill:none}
+.hl-label{font-family:var(--ops-font-display);font-weight:600;font-size:14px;fill:var(--navy)}
 
 .chiprow{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0}
 .chip{
@@ -68,7 +71,8 @@
 .promises-card p:last-child{margin-bottom:0}
 .promises-card strong{color:#fff}
 
-.cta-box{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
+.cta-box{display:flex;flex-direction:column;align-items:center;gap:1.25rem;text-align:center;max-width:34rem;margin:0 auto}
+.cta-box .cta-copy{text-align:left}
 .cta-box p{color:var(--ops-text-inverse-secondary);margin:0;max-width:26rem}
 .cta-box h3{font-family:var(--ops-font-text);font-weight:600;color:#fff;font-size:1.3rem;margin-bottom:.35rem}
 
@@ -115,7 +119,7 @@
     <p class="alt">Opsteady is a fifth option: the tools, the thinking built in, and the order they go in.</p>
     <div class="hero-cta">
       <a class="btn" href="https://healthcheck.opsteady.co.uk/">Take the free Health Check</a>
-      <p class="reassure">Twenty-four questions, about fifteen minutes. Your result appears on screen as soon as you finish: your shape, and the stage each area is at. One finding isn't on that chart. It's in the full report, sent by email if you ask for it. Nothing leaves your device until you do.</p>
+      <p class="reassure" style="text-align:left">Twenty-four questions, about fifteen minutes. Your result appears on screen as soon as you finish: your shape, and the stage each area is at. One finding isn't on that chart. It's in the full report, sent by email if you ask for it. Nothing leaves your device until you do.</p>
     </div>
   </div>
 
@@ -125,16 +129,89 @@
     <p class="eyebrow">The Method</p>
     <h2 class="section-title">Four stages. One loop, not a ladder.</h2>
     <p class="lede prose" style="margin-bottom:0">The Health Check reads where each part of your operation sits in this loop, then gives you three moves, in order.</p>
-    <div class="mini-loop">
-      <span class="ml-stage s0">Observe &amp; Learn</span>
-      <span class="ml-arrow">&rarr;</span>
-      <span class="ml-stage s1">Stabilise</span>
-      <span class="ml-arrow">&rarr;</span>
-      <span class="ml-stage s2">Improve</span>
-      <span class="ml-arrow">&rarr;</span>
-      <span class="ml-stage s3">Sustain</span>
-      <span class="ml-arrow">&#8635;</span>
+
+    <div class="loop-wrap">
+      <svg class="home-loop home-loop-desktop" viewBox="0 0 640 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four stages in a loop: Observe and Learn, Stabilise, Improve, Sustain, then back to Observe and Learn">
+        <defs>
+          <marker id="hl-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--ops-border-strong)"/>
+          </marker>
+        </defs>
+        <path class="hl-connector" marker-end="url(#hl-arrow)" d="M350,138 Q458,122 442,230"/>
+        <path class="hl-connector" marker-end="url(#hl-arrow)" d="M442,290 Q458,398 350,382"/>
+        <path class="hl-connector" marker-end="url(#hl-arrow)" d="M290,382 Q182,398 198,290"/>
+        <path class="hl-connector" marker-end="url(#hl-arrow)" d="M198,230 Q182,122 290,138"/>
+
+        <circle class="hl-ring" cx="320" cy="260" r="66"/>
+        <g transform="translate(320,260) scale(0.55) translate(-60,-18)" aria-hidden="true">
+          <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="var(--ops-navy)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="56" cy="18" r="5.5" fill="var(--ops-amber)"/>
+        </g>
+
+        <circle class="hl-node" cx="320" cy="108" r="42" fill="var(--ops-chart-1)"/>
+        <g transform="translate(320,108) scale(0.8) translate(-12,-12)">
+          <line class="hl-icon" x1="2" y1="12" x2="8" y2="12"/><circle class="hl-icon" cx="12" cy="12" r="4"/><line class="hl-icon" x1="16" y1="12" x2="22" y2="12"/>
+        </g>
+        <text class="hl-label" x="320" y="44" text-anchor="middle">1. Observe &amp; Learn</text>
+
+        <circle class="hl-node" cx="472" cy="260" r="42" fill="var(--ops-chart-3)"/>
+        <g transform="translate(472,260) scale(0.8) translate(-12,-12)">
+          <path class="hl-icon" d="M2 6 L6 16 L10 8 L13 13 L16 11 L22 12"/>
+        </g>
+        <text class="hl-label" x="530" y="266" text-anchor="start">2. Stabilise</text>
+
+        <circle class="hl-node" cx="320" cy="412" r="42" fill="var(--ops-chart-4)"/>
+        <g transform="translate(320,412) scale(0.8) translate(-12,-12)">
+          <path class="hl-icon" d="M2 17 L10 17 L10 7 L22 7"/>
+        </g>
+        <text class="hl-label" x="320" y="478" text-anchor="middle">3. Improve</text>
+
+        <circle class="hl-node" cx="168" cy="260" r="42" fill="var(--ops-chart-6)"/>
+        <g transform="translate(168,260) scale(0.8) translate(-12,-12)">
+          <line class="hl-icon" x1="2" y1="12" x2="22" y2="12"/>
+          <circle cx="6" cy="12" r="1.8" fill="#fff" stroke="none"/><circle cx="12" cy="12" r="1.8" fill="#fff" stroke="none"/><circle cx="18" cy="12" r="1.8" fill="#fff" stroke="none"/>
+        </g>
+        <text class="hl-label" x="110" y="266" text-anchor="end">4. Sustain</text>
+      </svg>
+
+      <svg class="home-loop home-loop-mobile" viewBox="0 0 300 590" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four stages in a loop: Observe and Learn, Stabilise, Improve, Sustain, then back to Observe and Learn">
+        <defs>
+          <marker id="hl-arrow-m" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--ops-border-strong)"/>
+          </marker>
+        </defs>
+        <line class="hl-connector" x1="70" y1="94" x2="70" y2="186" marker-end="url(#hl-arrow-m)"/>
+        <line class="hl-connector" x1="70" y1="254" x2="70" y2="346" marker-end="url(#hl-arrow-m)"/>
+        <line class="hl-connector" x1="70" y1="414" x2="70" y2="506" marker-end="url(#hl-arrow-m)"/>
+        <path class="hl-connector" marker-end="url(#hl-arrow-m)" d="M46,556 L28,556 Q18,556 18,546 L18,64 Q18,54 28,54 L48,54"/>
+
+        <circle class="hl-node" cx="70" cy="60" r="32" fill="var(--ops-chart-1)"/>
+        <g transform="translate(70,60) scale(0.68) translate(-12,-12)">
+          <line class="hl-icon" x1="2" y1="12" x2="8" y2="12"/><circle class="hl-icon" cx="12" cy="12" r="4"/><line class="hl-icon" x1="16" y1="12" x2="22" y2="12"/>
+        </g>
+        <text class="hl-label" x="116" y="66" text-anchor="start">1. Observe &amp; Learn</text>
+
+        <circle class="hl-node" cx="70" cy="220" r="32" fill="var(--ops-chart-3)"/>
+        <g transform="translate(70,220) scale(0.68) translate(-12,-12)">
+          <path class="hl-icon" d="M2 6 L6 16 L10 8 L13 13 L16 11 L22 12"/>
+        </g>
+        <text class="hl-label" x="116" y="226" text-anchor="start">2. Stabilise</text>
+
+        <circle class="hl-node" cx="70" cy="380" r="32" fill="var(--ops-chart-4)"/>
+        <g transform="translate(70,380) scale(0.68) translate(-12,-12)">
+          <path class="hl-icon" d="M2 17 L10 17 L10 7 L22 7"/>
+        </g>
+        <text class="hl-label" x="116" y="386" text-anchor="start">3. Improve</text>
+
+        <circle class="hl-node" cx="70" cy="540" r="32" fill="var(--ops-chart-6)"/>
+        <g transform="translate(70,540) scale(0.68) translate(-12,-12)">
+          <line class="hl-icon" x1="2" y1="12" x2="22" y2="12"/>
+          <circle cx="6" cy="12" r="1.8" fill="#fff" stroke="none"/><circle cx="12" cy="12" r="1.8" fill="#fff" stroke="none"/><circle cx="18" cy="12" r="1.8" fill="#fff" stroke="none"/>
+        </g>
+        <text class="hl-label" x="116" y="546" text-anchor="start">4. Sustain</text>
+      </svg>
     </div>
+
     <a class="arrow-link" href="/the-method.html">See the full method &rarr;</a>
   </div>
 
@@ -174,7 +251,7 @@
 
   <div class="band band-navy">
     <div class="shell band-pad cta-box">
-      <div>
+      <div class="cta-copy">
         <h3>Start with fifteen honest minutes</h3>
         <p>Twelve areas, read by stage. Three moves, in order. No score out of a hundred, no sales call.</p>
       </div>
@@ -212,7 +289,7 @@
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">&copy; 2026 Opsteady.</div>
+  <div class="footer-bottom">&copy; 2026 Opsteady. Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203. Registered office: 82A James Carter Road, Mildenhall, IP28 7DE.</div>
 </footer>
 
 <script src="/site.js"></script>
