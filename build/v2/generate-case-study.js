@@ -1,0 +1,111 @@
+#!/usr/bin/env node
+"use strict";
+const fs = require("fs");
+const path = require("path");
+const { page } = require("./shell.js");
+
+function buildBottleneckCaseStudy() {
+  const outDir = path.join(__dirname, "..", "..", "v2", "case-studies");
+  fs.mkdirSync(outDir, { recursive: true });
+
+  const body = `
+  <div class="shell"><nav class="sys-crumb" aria-label="Breadcrumb"><a href="/v2/">Home</a> / <a href="/v2/catalogue/bottleneck_analysis.html">Bottleneck Analysis Tool</a> / <span class="current">Case study</span></nav></div>
+
+  <section class="sys-hero shell" style="padding-top:1.5rem">
+    <div>
+      <span class="sys-showcase-flag">Fictional company, illustrative data</span>
+      <h1 style="font-size:2.2rem;margin-top:1rem">The station everyone blamed wasn't the one actually costing them the order</h1>
+      <p class="sys-lede">Riverside Fabrication, a 60-person steel fabrication shop, and Press 3 — the station its production meetings had blamed for six months.</p>
+    </div>
+    <div class="sys-readout">
+      <div class="sys-readout-head">Case at a glance</div>
+      <div class="sys-readout-body">
+        <div class="sys-readout-row"><span class="k">Module used</span><span class="v">Bottleneck Analysis (P4.1)</span></div>
+        <div class="sys-readout-row"><span class="k">Timeframe</span><span class="v">6 weeks</span></div>
+        <div class="sys-readout-row"><span class="k">Result</span><span class="v">180 &rarr; 224 units/wk</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sys-section shell">
+    <div class="sys-head"><span class="sys-num">01</span><div><h2>The problem</h2></div></div>
+    <div class="sys-prose">
+      <p>Riverside runs three presses feeding a single powder-coat and pack line. For most of the year, the Thursday production meeting opened the same way: Press 3 was behind, again, and the shift manager wanted a second press operator approved to catch it up. The operations director had queued the headcount request twice and pulled it back twice, uneasy that the same fix kept being asked for without ever quite working.</p>
+      <p>Nobody had actually measured anything. The belief that Press 3 was the constraint came from it being the newest, least familiar machine on the floor, and the one operators mentioned most often when a shipment ran late.</p>
+    </div>
+  </section>
+
+  <section class="sys-section shell">
+    <div class="sys-head"><span class="sys-num">02</span><div><h2>Starting condition</h2></div></div>
+    <div class="sys-prose">
+      <p>A Health Check taken by the operations director scored Delivery &amp; Planning as the site's lowest area, and flagged Bottleneck Analysis as the recommended first move — ahead of Capacity Planning, which it explicitly said was premature without a confirmed constraint first.</p>
+      <p>No downtime tracking existed yet. The only data anyone had was a gut feeling and a schedule-adherence number that had been sliding for two quarters.</p>
+    </div>
+  </section>
+
+  <section class="sys-section shell">
+    <div class="sys-head"><span class="sys-num">03</span><div><h2>Deployment</h2></div></div>
+    <div class="sys-prose">
+      <p>The shift manager ran the tool exactly as it's built: listed every step from raw steel to packed pallet, logged throughput and cycle time at each one for a full representative week, and noted where work-in-progress queued up between stations — not just at the one everyone already suspected.</p>
+      <div class="sys-readout" style="max-width:none;margin:1.2rem 0"><div class="sys-readout-head">Weekly throughput logged</div><div class="sys-readout-body"><div class="sys-readout-row"><span class="k">Press 1</span><span class="v">310 units/week</span></div><div class="sys-readout-row"><span class="k">Press 2</span><span class="v">295 units/week</span></div><div class="sys-readout-row"><span class="k">Press 3</span><span class="v">240 units/week</span></div><div class="sys-readout-row"><span class="k">Powder-coat &amp; pack</span><span class="v">180 units/week</span></div></div></div>
+      <p>Read at a glance, the numbers looked like they confirmed the story: Press 3 was the slowest press. But the tool's own confirmation check asks for two more signals before naming a constraint — where WIP is genuinely piling up, and where the next step stands idle waiting. Neither pointed at Press 3. WIP was stacking up in front of powder-coat and pack, and pack was the station standing idle at the start of most shifts, waiting on parts that had already cleared all three presses days earlier.</p>
+    </div>
+  </section>
+
+  <section class="sys-section shell">
+    <div class="sys-head"><span class="sys-num">04</span><div><h2>The finding, and the decisions made from it</h2></div></div>
+    <div class="sys-prose">
+      <p>The real constraint was powder-coat and pack, running at 180 units a week against a combined press output well above that. Press 3 wasn't fast, but it was never the ceiling — the finish line was, and every part waiting in front of it had already been made.</p>
+      <p>The operations director did not approve the second Press 3 operator. Instead, the shift manager worked the tool's exploit-and-subordinate step against the real constraint: removing an avoidable changeover delay on the coat line, and — the harder conversation — deliberately holding the two faster presses to the coat line's actual pace, rather than letting them keep running ahead and building a queue nobody could work through.</p>
+    </div>
+  </section>
+
+  <div class="sys-band">
+    <div class="shell sys-band-pad">
+      <div class="sys-head"><span class="sys-num">05</span><div><h2>Operational result</h2></div></div>
+      <div class="sys-stats">
+        <div><span class="v readout">180&rarr;224</span><span class="k">units/week through finishing, six weeks</span></div>
+        <div><span class="v readout">&pound;0</span><span class="k">spent on the headcount request that didn't happen</span></div>
+        <div><span class="v readout">2</span><span class="k">presses deliberately slowed, on purpose, to feed the real constraint</span></div>
+      </div>
+      <p style="color:var(--ops-text-inverse-secondary);margin-top:1.5rem;max-width:60ch">Schedule adherence, the number that had been sliding for two quarters, moved for the first time without anyone touching the schedule itself — because the actual limiting step, not the loudest one, was finally the one being worked.</p>
+    </div>
+  </div>
+
+  <section class="sys-section shell">
+    <div class="sys-head"><span class="sys-num">06</span><div><h2>Sustainment</h2></div></div>
+    <div class="sys-prose"><p>Riverside re-runs the throughput log monthly, not because the constraint is expected to move often, but because the tool's own guidance is that fixing one constraint reveals the next — and the site would rather confirm that on purpose than rediscover it six months late in another Thursday meeting.</p></div>
+  </section>
+
+  <section class="sys-section shell">
+    <div class="sys-panel" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem;padding:1.5rem">
+      <div>
+        <h3 style="font-size:1.1rem;margin-bottom:.4rem">Bottleneck Analysis Tool</h3>
+        <p style="color:var(--ops-n60);font-size:.92rem;margin:0">This case study shows the shape of the guide. The working file, the full playbook and the failure modes are in the product itself.</p>
+      </div>
+      <a class="sys-btn" href="/v2/catalogue/bottleneck_analysis.html">View the module</a>
+    </div>
+  </section>
+
+  <div class="sys-band">
+    <div class="shell sys-band-pad" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem">
+      <div>
+        <h3 style="font-family:var(--ops-font-display);font-weight:600;color:#fff;font-size:1.3rem;margin-bottom:.4rem">See where your own site actually stands</h3>
+        <p style="color:var(--ops-text-inverse-secondary);margin:0">Free, twenty-four questions, about fifteen minutes.</p>
+      </div>
+      <a class="sys-btn on-navy lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+    </div>
+  </div>
+`;
+
+  const html = page({
+    title: "The station everyone blamed wasn't the one actually costing them the order — Opsteady",
+    description: "A worked example: how the Bottleneck Analysis Tool found the real constraint at a fictional 60-person fabrication shop.",
+    current: "",
+    bodyHtml: body,
+  });
+  fs.writeFileSync(path.join(outDir, "bottleneck-analysis.html"), html, "utf8");
+  console.log("v2 case study written: bottleneck-analysis");
+}
+
+buildBottleneckCaseStudy();

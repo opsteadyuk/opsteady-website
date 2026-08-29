@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Opsteady 2.0 — an operational improvement system (design checkpoint)</title>
+<meta name="description" content="Know where your operation actually stands, then fix it yourself, in order. Design checkpoint prototype.">
+<meta name="robots" content="noindex,follow">
+
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/v2/system.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="sys-nav">
+  <div class="sys-nav-inner">
+    <a class="sys-brand" href="/v2/"><svg viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="var(--ops-navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="56" cy="18" r="4.2" fill="#D08F25"/>
+  </svg><span class="sys-brand-word">Opsteady</span></a>
+    <nav class="sys-nav-links" aria-label="Primary">
+      <a href="/v2/" class="current">Home</a>
+      <a href="/v2/catalogue.html">Catalogue</a>
+      <a href="/the-method.html">The Method</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/who-we-are.html">Who We Are</a>
+    </nav>
+    <a class="sys-nav-cta" href="https://healthcheck.opsteady.co.uk/">Run Diagnostic</a>
+  </div>
+</header>
+<main id="main">
+
+  <section class="sys-hero shell">
+    <div>
+      <span class="sys-label">OPERATIONAL IMPROVEMENT SYSTEM</span>
+      <h1>Know where your operation actually stands. Then fix it yourself, in order.</h1>
+      <p class="sys-lede">Opsteady is a diagnostic and a library of 70 practitioner-built interventions, sequenced so a manufacturing site with no consultancy budget can run its own improvement programme &mdash; not a pile of templates and not a call with a stranger.</p>
+      <div class="sys-hero-ctas">
+        <a class="sys-btn lg" href="https://healthcheck.opsteady.co.uk/">Run the Health Check</a>
+        <a class="sys-arrow" href="/v2/catalogue.html">Browse the catalogue &rarr;</a>
+      </div>
+      <p class="sys-hero-note">24 questions &middot; ~15 minutes &middot; free &middot; nothing leaves your device until you ask</p>
+    </div>
+    <div class="sys-readout" aria-label="The Opsteady deployment loop">
+      <div class="sys-readout-head">Deployment model</div>
+      <div class="sys-readout-body">
+        <div class="sys-loop-seq">
+          <div class="sys-loop-step"><span class="n">01</span><span class="t">Observe &amp; Learn</span></div>
+          <div class="sys-loop-step"><span class="n">02</span><span class="t">Stabilise</span></div>
+          <div class="sys-loop-step"><span class="n">03</span><span class="t">Improve</span></div>
+          <div class="sys-loop-step"><span class="n">04</span><span class="t">Sustain</span></div>
+        </div>
+        <div class="sys-loop-return">&#8635; re-entered, not finished &mdash; the loop runs continuously</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sys-band">
+    <div class="shell sys-band-pad">
+      <div class="sys-stats">
+        <div><span class="v readout">70</span><span class="k">Qualified modules</span></div>
+        <div><span class="v readout">6</span><span class="k">Foundations, built first</span></div>
+        <div><span class="v readout">2</span><span class="k">Commercial bands, no manufactured tiers</span></div>
+        <div><span class="v readout">1</span><span class="k">Free diagnostic, no sales call</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sys-section shell">
+    <div class="sys-head">
+      <span class="sys-num">01</span>
+      <div>
+        <h2>The problem this solves</h2>
+        <p class="sys-sub">A manufacturing site with a real problem has three options today: hire a consultant it can't afford, send someone on a course that teaches the theory but not the sequence, or search for a free template that answers the question it was asked &mdash; never the question that actually mattered first.</p>
+      </div>
+    </div>
+    <div class="sys-grid-3">
+      <div class="sys-grid-pad">
+        <h3 style="font-family:var(--ops-font-display);color:var(--ops-navy);font-size:1.05rem;margin-bottom:.5rem">A consultant</h3>
+        <p style="color:var(--ops-n70);font-size:.92rem">Brings the judgement. Costs more than most SME sites can carry, and takes the capability with them when they leave.</p>
+      </div>
+      <div class="sys-grid-pad">
+        <h3 style="font-family:var(--ops-font-display);color:var(--ops-navy);font-size:1.05rem;margin-bottom:.5rem">Free content</h3>
+        <p style="color:var(--ops-n70);font-size:.92rem">Answers the question you already know how to ask. It can't tell you your handovers should come before your 5S programme.</p>
+      </div>
+      <div class="sys-grid-pad">
+        <h3 style="font-family:var(--ops-font-display);color:var(--ops-navy);font-size:1.05rem;margin-bottom:.5rem">Opsteady</h3>
+        <p style="color:var(--ops-n70);font-size:.92rem">The diagnosis and the sequencing, delivered as products your own team runs &mdash; the judgement, without the person.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sys-section shell">
+    <div class="sys-head">
+      <span class="sys-num">02</span>
+      <div>
+        <h2>How the system works</h2>
+        <p class="sys-sub">One diagnostic, feeding one sequenced library. Every step exists for a reason &mdash; none of it is a separate product bolted on afterwards.</p>
+      </div>
+    </div>
+    <div class="sys-grid-2">
+      <div class="sys-grid-pad">
+        <span class="sys-panel-id" style="display:block;margin-bottom:.5rem">STEP 01</span>
+        <h3 style="font-family:var(--ops-font-display);color:var(--ops-navy);margin-bottom:.5rem">Diagnose</h3>
+        <p style="color:var(--ops-n70);font-size:.92rem;margin-bottom:1rem">The Health Check reads your operation across twelve areas and tells you which stage each one is genuinely at &mdash; not a score out of a hundred.</p>
+        <a class="sys-arrow" href="https://healthcheck.opsteady.co.uk/">Run it &rarr;</a>
+      </div>
+      <div class="sys-grid-pad">
+        <span class="sys-panel-id" style="display:block;margin-bottom:.5rem">STEP 02</span>
+        <h3 style="font-family:var(--ops-font-display);color:var(--ops-navy);margin-bottom:.5rem">Or come with a known problem</h3>
+        <p style="color:var(--ops-n70);font-size:.92rem;margin-bottom:1rem">The Health Check is the distinctive entry point, not a mandatory gate. If you already know it's your changeovers or your handovers, go straight to the module.</p>
+        <a class="sys-arrow" href="/v2/problems/flow-and-bottlenecks.html">See a problem page &rarr;</a>
+      </div>
+      <div class="sys-grid-pad">
+        <span class="sys-panel-id" style="display:block;margin-bottom:.5rem">STEP 03</span>
+        <h3 style="font-family:var(--ops-font-display);color:var(--ops-navy);margin-bottom:.5rem">Evaluate the module</h3>
+        <p style="color:var(--ops-n70);font-size:.92rem;margin-bottom:1rem">What it does, what it takes to deploy, what it costs, and where it sits in the sequence &mdash; before you commit to anything.</p>
+        <a class="sys-arrow" href="/v2/catalogue/bottleneck_analysis.html">See a module page &rarr;</a>
+      </div>
+      <div class="sys-grid-pad">
+        <span class="sys-panel-id" style="display:block;margin-bottom:.5rem">STEP 04</span>
+        <h3 style="font-family:var(--ops-font-display);color:var(--ops-navy);margin-bottom:.5rem">Deploy it yourself</h3>
+        <p style="color:var(--ops-n70);font-size:.92rem;margin-bottom:1rem">A real spreadsheet or workbook plus a guide, built for your own team to run &mdash; not a PDF you file away.</p>
+        <a class="sys-arrow" href="/v2/case-studies/bottleneck-analysis.html">See it worked through &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sys-section shell">
+    <div class="sys-head">
+      <span class="sys-num">03</span>
+      <div>
+        <h2>The library</h2>
+        <p class="sys-sub">70 modules. Foundations that every site needs, Pillars that go deep on one area each, Enablers that cut across everything. Every one qualified, priced, and evaluable on its own page.</p>
+      </div>
+    </div>
+    <div class="sys-grid-3">
+      <div class="sys-grid-pad">
+        <span class="sys-panel-id" style="display:block;margin-bottom:.5rem">FOUNDATIONS</span>
+        <p style="color:var(--ops-n70);font-size:.92rem">What every operation needs regardless of where it's struggling. Built first, on purpose.</p>
+      </div>
+      <div class="sys-grid-pad">
+        <span class="sys-panel-id" style="display:block;margin-bottom:.5rem">PILLARS</span>
+        <p style="color:var(--ops-n70);font-size:.92rem">Eight areas, each with a lead module and a sequence of depth behind it.</p>
+      </div>
+      <div class="sys-grid-pad">
+        <span class="sys-panel-id" style="display:block;margin-bottom:.5rem">ENABLERS</span>
+        <p style="color:var(--ops-n70);font-size:.92rem">Cross-cutting practices &mdash; working with AI, managing change &mdash; that apply everywhere.</p>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem"><a class="sys-arrow" href="/v2/catalogue.html">Browse the full catalogue &rarr;</a></p>
+  </section>
+
+  <div class="sys-band">
+    <div class="shell sys-band-pad">
+      <div class="sys-head">
+        <span class="sys-num">04</span>
+        <div>
+          <h2>See it worked through, start to finish</h2>
+          <p class="sys-sub" style="color:var(--ops-text-inverse-secondary)">Three Showcase Modules carry a full worked example on a fictional site &mdash; the same depth the actual guide contains, priced lower as your entry point.</p>
+        </div>
+      </div>
+      <div class="sys-grid-3" style="border-color:var(--ops-border-inverse)">
+        <div class="sys-grid-pad">
+          <span class="sys-showcase-flag" style="border-color:var(--ops-amber);color:var(--ops-amber)">Showcase</span>
+          <h3 style="color:#fff;margin:.75rem 0 .5rem">Bottleneck Analysis Tool</h3>
+          <p style="color:var(--ops-text-inverse-secondary);font-size:.92rem;margin-bottom:1rem">Find the real constraint, not the loudest one.</p>
+          <a class="sys-arrow" style="color:#fff;border-color:rgba(255,255,255,.4)" href="/v2/case-studies/bottleneck-analysis.html">Read the case study &rarr;</a>
+        </div>
+        <div class="sys-grid-pad">
+          <span class="sys-showcase-flag" style="border-color:rgba(255,255,255,.3);color:var(--ops-text-inverse-secondary)">Coming to checkpoint 2</span>
+          <h3 style="color:#fff;margin:.75rem 0 .5rem">Skills Matrix &amp; Cross-Training Planner</h3>
+          <p style="color:var(--ops-text-inverse-secondary);font-size:.92rem">Not yet built in this design system &mdash; see Attempt 1 for the content.</p>
+        </div>
+        <div class="sys-grid-pad">
+          <span class="sys-showcase-flag" style="border-color:rgba(255,255,255,.3);color:var(--ops-text-inverse-secondary)">Coming to checkpoint 2</span>
+          <h3 style="color:#fff;margin:.75rem 0 .5rem">SQDC Performance Board Pack</h3>
+          <p style="color:var(--ops-text-inverse-secondary);font-size:.92rem">Not yet built in this design system &mdash; see Attempt 1 for the content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sys-section shell no-rule">
+    <div class="sys-head">
+      <span class="sys-num">05</span>
+      <div>
+        <h2>Who built this</h2>
+        <p class="sys-sub">No name, no photo, twenty years on real floors. Built by someone who has had every one of these tools work and fail in real operations, from the apprentice end up.</p>
+      </div>
+    </div>
+    <div class="sys-grid-2">
+      <div class="sys-grid-pad">
+        <h3 style="font-family:var(--ops-font-display);color:var(--ops-navy);margin-bottom:.5rem">No consultant call</h3>
+        <p style="color:var(--ops-n70);font-size:.92rem">No one will call you. No discovery call, no pipeline you've just entered.</p>
+      </div>
+      <div class="sys-grid-pad">
+        <h3 style="font-family:var(--ops-font-display);color:var(--ops-navy);margin-bottom:.5rem">Your data stays yours</h3>
+        <p style="color:var(--ops-n70);font-size:.92rem">Health Check answers stay on your device. Nothing is sent anywhere until you ask for your report.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sys-band">
+    <div class="shell sys-band-pad" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem">
+      <div>
+        <h3 style="font-family:var(--ops-font-display);font-weight:600;color:#fff;font-size:1.4rem;margin-bottom:.4rem">Start with fifteen honest minutes</h3>
+        <p style="color:var(--ops-text-inverse-secondary);margin:0">Free, 24 questions, no score out of a hundred, no sales call.</p>
+      </div>
+      <a class="sys-btn on-navy lg" href="https://healthcheck.opsteady.co.uk/">Run the Health Check</a>
+    </div>
+  </div>
+
+</main>
+<footer class="sys-footer">
+  <div class="sys-footer-inner">
+    <div>
+      <h3>Opsteady</h3>
+      <p style="color:var(--ops-n70);font-size:.92rem;max-width:26rem">Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
+    </div>
+    <div>
+      <h3>System</h3>
+      <ul>
+        <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+        <li><a href="/v2/catalogue.html">Catalogue</a></li>
+        <li><a href="/the-method.html">The Method</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>More</h3>
+      <ul>
+        <li><a href="/who-we-are.html">Who We Are</a></li>
+        <li><a href="/terms.html">Terms of sale</a></li>
+        <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="sys-footer-bottom">&copy; 2026 Opsteady. Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203. Registered office: 82A James Carter Road, Mildenhall, IP28 7DE.</div>
+</footer>
+</body>
+</html>
