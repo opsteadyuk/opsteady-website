@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Catalogue — Opsteady</title>
-<meta name="description" content="Four Foundations, eight Pillars, two Enablers. Thirty-six modules — twelve finished and ready, the rest on the way.">
+<meta name="description" content="70 modules — every Opsteady intervention, organised by Foundation, Pillar and Enabler.">
 <meta name="robots" content="index,follow">
 <meta property="og:title" content="Catalogue — Opsteady">
-<meta property="og:description" content="Four Foundations, eight Pillars, two Enablers. Thirty-six modules — twelve finished and ready, the rest on the way.">
+<meta property="og:description" content="70 modules — every Opsteady intervention, organised by Foundation, Pillar and Enabler.">
 <meta property="og:image" content="https://opsteady.co.uk/og/catalogue.png">
 <meta property="og:url" content="https://opsteady.co.uk/catalogue.html">
 <meta property="og:type" content="website">
@@ -17,23 +17,12 @@
 <link rel="stylesheet" href="/tokens.css">
 <link rel="stylesheet" href="/styles.css">
 <style>
-.cat-intro-note{
-  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--amber);
-  border-radius:2px;padding:1rem 1.15rem;margin-top:1.5rem;font-size:.95rem;color:var(--slate);
-}
-.status-line{
-  display:block;margin-top:1.25rem;font-family:var(--ops-font-text);font-weight:600;font-size:.75rem;
-  letter-spacing:var(--ops-track-label);text-transform:uppercase;color:var(--ops-n60);
-}
 .pillar-section{margin:3.5rem 0}
 .pillar-section h2{margin-bottom:.4rem}
-.pillar-desc{color:var(--slate);margin-bottom:1.5rem;max-width:42rem}
 .foundations-desc{color:var(--slate);margin-bottom:1.5rem;max-width:42rem}
-
 .mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
 @media (max-width:900px){.mod-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){.mod-grid{grid-template-columns:1fr}}
-
 .prod-card{
   background:var(--ops-surface);border:1px solid var(--ops-border);border-radius:var(--ops-radius-12);
   padding:var(--ops-space-32);display:flex;flex-direction:column;
@@ -41,39 +30,15 @@
 }
 .prod-card:hover{border-color:var(--ops-border-strong)}
 @media (max-width:640px){.prod-card{padding:var(--ops-space-24)}}
-.prod-card.in-dev{background:var(--ops-surface-sunken);border-color:var(--ops-border-subtle)}
-.prod-card.in-dev:hover{border-color:var(--ops-border)}
 .prod-top{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem}
 .prod-card h3{font-family:var(--ops-font-text);font-weight:600;font-size:1.18rem;color:var(--navy);margin-bottom:.3rem}
 .prod-card h3 a{color:inherit;text-decoration:none}
 .prod-card h3 a:hover{text-decoration:underline}
-.prod-card.in-dev h3 a{color:var(--ops-text-secondary)}
-.prod-outcome{font-size:1rem;color:var(--slate);margin-bottom:.5rem}
-.prod-tiers{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--slate);margin-bottom:.85rem}
-.prod-desc{font-size:.95rem;color:var(--ink);flex-grow:1}
-.prod-inside{font-size:.85rem;color:var(--slate);font-style:italic;margin-top:.6rem}
-.prod-who{
-  font-size:.88rem;color:var(--slate);background:var(--ground);border-radius:5px;
-  padding:.75rem .9rem;margin-top:1rem;
-}
-.prod-who strong{color:var(--navy);font-family:var(--ops-font-text);font-size:.75rem;letter-spacing:var(--ops-track-label);text-transform:uppercase;display:block;margin-bottom:.3rem}
-.prod-card .prod-link{margin-top:1.15rem;align-self:flex-start;text-decoration:none}
-
-.status-tag{
-  display:inline-block;font-family:var(--ops-font-text);font-weight:600;font-size:.68rem;
-  letter-spacing:var(--ops-track-label);text-transform:uppercase;padding:.2rem .5rem;
-  border-radius:var(--ops-radius-4);line-height:1.3;
-}
-.status-ready{background:var(--ops-success-tint);color:var(--ops-success)}
-.status-dev{background:var(--ops-surface-subtle);color:var(--ops-n60)}
-.lead-tag{
-  font-family:var(--ops-font-text);font-weight:600;font-size:.68rem;
-  letter-spacing:var(--ops-track-label);text-transform:uppercase;color:var(--ops-n60);
-}
-
-.cta-box{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
-.cta-box p{color:var(--ops-text-inverse-secondary);margin:0;max-width:26rem}
-.cta-box h3{font-family:var(--ops-font-text);font-weight:600;color:#fff;font-size:1.3rem;margin-bottom:.35rem}
+.prod-outcome{font-size:1rem;color:var(--ink);margin-bottom:.5rem;flex-grow:1}
+.prod-tiers{font-size:.85rem;color:var(--slate);margin-bottom:.85rem;font-family:var(--ops-font-mono)}
+.prod-card .prod-link{margin-top:.25rem;align-self:flex-start;text-decoration:none}
+.lead-tag{font-family:var(--ops-font-text);font-weight:600;font-size:.68rem;letter-spacing:var(--ops-track-label);text-transform:uppercase;color:var(--ops-n60)}
+.cat-count{display:block;margin-top:1.25rem;font-family:var(--ops-font-text);font-weight:600;font-size:.75rem;letter-spacing:var(--ops-track-label);text-transform:uppercase;color:var(--ops-n60)}
 </style>
 </head>
 <body>
@@ -108,506 +73,812 @@
  <div class="shell">
   <div class="section-tight prose">
     <p class="eyebrow">Catalogue</p>
-    <h1 class="page-title">The full range</h1>
-    <p class="lede">Four Foundations that every site needs, eight Pillars that go deep on one area each, and two that cut across everything. Thirty-six modules in total.</p>
-    <p class="lede">Twelve are finished and ready. The rest are being built in the order the Health Check says sites need them, which is why the lead module in each Pillar came first.</p>
-    <span class="status-line">12 of 36 ready · buying opens shortly</span>
-    <div class="cat-intro-note">Buy buttons are switched off for now — the checkout platform isn't picked yet. Registering interest costs nothing and asks for nothing but an email. Pricing lives on the <a href="/pricing.html">Pricing page</a>, not here.</div>
+    <h1 class="page-title">The complete intervention library</h1>
+    <p class="lede">70 modules. Foundations that every site needs, Pillars that go deep on one area each, and Enablers that cut across everything.</p>
+    <p class="lede">Every module here is qualified and commercially available. Buying itself isn't live yet — the checkout platform is still being connected — but there's nothing provisional about what's on this page.</p>
+    <span class="cat-count">70 modules &middot; 13 Band 2 &middot; 57 Band 1</span>
   </div>
 
-  <div class="pillar-section">
+  <div class="pillar-section" data-section="Foundation">
     <h2 class="section-title">Foundations</h2>
-    <p class="foundations-desc">Four Foundations and eight Pillars. Foundations come first — they're what every site needs regardless of where it's struggling. All four are built and ready.</p>
-
-    <div class="mod-grid">
-
-      <article class="prod-card">
+    <p class="foundations-desc">What every site needs regardless of where it's struggling. Foundations come before Pillar work — the Marcus rule.</p>
+    <div class="mod-grid"><article class="prod-card" data-group="F1 Performance Framework" data-category="Foundation">
         <div class="prod-top">
           <span class="ops-marker ops-marker-foundation">Foundation</span>
-          <span class="status-tag status-ready">Ready</span>
+          <span class="lead-tag">Pillar lead</span>
+          
         </div>
-        <h3><a href="/interest.html?m=set_standards">Set Standards</a></h3>
-        <p class="prod-outcome">— make the right way the easy way</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">The discipline that decides whether a written standard actually changes anything, not another SOP template. Most sites can produce paperwork. Fewer can say whether the floor still does it that way. This gives you a register that tracks whether your standards match practice and whether anyone actually reaches for them when something goes wrong.</p>
-        <p class="prod-inside">Inside: a standards register, an SOP template with a one-page Quick Guide version, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a site where the SOPs look fine in the folder and nobody's sure they match what actually happens on the floor.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=set_standards">Learn more</a>
+        <h3><a href="/catalogue/kpi_blueprint_map.html">KPI Blueprint</a></h3>
+        <p class="prod-outcome">Know what moved and why.</p>
+        <p class="prod-tiers">Band 2 &middot; &pound;349</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/kpi_blueprint_map.html">View module</a>
       </article>
-
-      <article class="prod-card">
+<article class="prod-card" data-group="F1 Performance Framework" data-category="Foundation">
         <div class="prod-top">
           <span class="ops-marker ops-marker-foundation">Foundation</span>
-          <span class="status-tag status-ready">Ready</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=kpi_blueprint_map">KPI Blueprint Map</a></h3>
-        <p class="prod-outcome">— know why a number moved</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">Maps how your numbers connect, from the figure the board watches down to the thing an operator can see and change this shift. Most sites measure plenty. Few can say why a number moved without a week of digging. Built around one rule: mark what you can't explain rather than inventing a plausible link.</p>
-        <p class="prod-inside">Inside: a 5-tab workbook, a printable tree canvas, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a manager who can see a number move and can't say why without a week of digging.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=kpi_blueprint_map">Learn more</a>
+        <h3><a href="/catalogue/kpi_definitions_cascade.html">KPI Definitions &amp; Cascade Guide</a></h3>
+        <p class="prod-outcome">Make every number mean the same thing.</p>
+        <p class="prod-tiers">Band 2 &middot; from &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/kpi_definitions_cascade.html">View module</a>
       </article>
-
-      <article class="prod-card">
+<article class="prod-card" data-group="F2 Standards" data-category="Foundation">
         <div class="prod-top">
           <span class="ops-marker ops-marker-foundation">Foundation</span>
-          <span class="status-tag status-ready">Ready</span>
+          <span class="lead-tag">Pillar lead</span>
+          
         </div>
-        <h3><a href="/interest.html?m=culture">Culture</a></h3>
-        <p class="prod-outcome">— build a team that says what happened, and improves</p>
-        <p class="prod-tiers">Essentials &amp; Pro, in one guide</p>
-        <p class="prod-desc">A way of handling honest mistakes and near-misses that doesn't punish the person for telling you. Most "no blame" policies quietly punish disclosure anyway. This tracks two different things separately: silence because people are afraid, and silence because nothing ever changes when they speak up.</p>
-        <p class="prod-inside">Inside: a response tracker, a prompt card, one guide covering both depths.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a site where "no blame" is the policy but people still go quiet when something's gone wrong.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=culture">Learn more</a>
+        <h3><a href="/catalogue/set_standards.html">Set Standards</a></h3>
+        <p class="prod-outcome">Make the right way the easy way.</p>
+        <p class="prod-tiers">Band 2 &middot; &pound;349</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/set_standards.html">View module</a>
       </article>
-
-      <article class="prod-card">
+<article class="prod-card" data-group="F3 Culture" data-category="Foundation">
         <div class="prod-top">
           <span class="ops-marker ops-marker-foundation">Foundation</span>
-          <span class="status-tag status-ready">Ready</span>
-        </div>
-        <h3><a href="/interest.html?m=visual_management_foundations">Visual Management Foundations</a></h3>
-        <p class="prod-outcome">— see the state of the operation at a glance</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">Turns raw data into something anyone can read in five seconds: are we alright right now, or not. Deliberately kept to foundation depth, so it's a starting point rather than a full workplace-organisation overhaul.</p>
-        <p class="prod-inside">Inside: a visual controls register, a stranger-test walk sheet, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a floor where the data exists somewhere but nobody can tell at a glance whether today's alright.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=visual_management_foundations">Learn more</a>
-      </article>
-
-    </div>
-  </div>
-
-  <div class="pillar-section">
-    <h2 class="section-title">Pillar 1 — People &amp; Capability</h2>
-    <p class="pillar-desc">Who can do the job, who's next, and what happens when someone's off.</p>
-    <div class="mod-grid">
-
-      <article class="prod-card">
-        <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-ready">Ready</span>
           <span class="lead-tag">Pillar lead</span>
+          
         </div>
-        <h3><a href="/interest.html?m=skills_matrix">Skills Matrix &amp; Cross-Training Planner</a></h3>
-        <p class="prod-outcome">— cover every shift without guesswork</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">A working record of who can do what, at what level, and what happens if they're off sick. Built for team leaders who currently hold that picture in their head. Answers three questions from one spreadsheet: who to put where this morning, what someone's working toward, and proof of who was signed off to do a job on the day they did it.</p>
-        <p class="prod-inside">Inside: a 7-tab spreadsheet, a training record, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a team leader who currently carries the who-can-do-what picture in their head, and knows exactly how bad it'd be if they were off for a week.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=skills_matrix">Learn more</a>
+        <h3><a href="/catalogue/culture.html">Culture Guide</a></h3>
+        <p class="prod-outcome">Build a team that says what happened, and improves.</p>
+        <p class="prod-tiers">Band 2 &middot; &pound;349</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/culture.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="F4 Visual Management" data-category="Foundation">
         <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
-        </div>
-        <h3><a href="/interest.html?m=supervisor_standard_work">Supervisor Standard Work Pack</a></h3>
-        <p class="prod-outcome">— stop the shift running the supervisor</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=supervisor_standard_work">Tell me when it's ready</a>
-      </article>
-
-      <article class="prod-card in-dev">
-        <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
-        </div>
-        <h3><a href="/interest.html?m=training_competency_signoff">Training Plan &amp; Competency Sign-off</a></h3>
-        <p class="prod-outcome">— know who can actually do the job</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=training_competency_signoff">Tell me when it's ready</a>
-      </article>
-
-      <article class="prod-card in-dev">
-        <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
-        </div>
-        <h3><a href="/interest.html?m=onboarding_induction">Onboarding &amp; Induction Pack</a></h3>
-        <p class="prod-outcome">— get a new starter useful in weeks, not months</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=onboarding_induction">Tell me when it's ready</a>
-      </article>
-
-      <article class="prod-card in-dev">
-        <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
-        </div>
-        <h3><a href="/interest.html?m=team_leader_development">Team Leader Development Pathway</a></h3>
-        <p class="prod-outcome">— grow the next team leader before you need them</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=team_leader_development">Tell me when it's ready</a>
-      </article>
-
-    </div>
-  </div>
-
-  <div class="pillar-section">
-    <h2 class="section-title">Pillar 2 — Daily Management &amp; Performance</h2>
-    <p class="pillar-desc">What the shift needs to know before it starts, and whether the numbers agree with what's actually happening.</p>
-    <div class="mod-grid">
-
-      <article class="prod-card">
-        <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-ready">Ready</span>
+          <span class="ops-marker ops-marker-foundation">Foundation</span>
           <span class="lead-tag">Pillar lead</span>
+          
         </div>
-        <h3><a href="/interest.html?m=shift_handover">Shift Handover System</a></h3>
-        <p class="prod-outcome">— stop losing information between crews</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">A structure for the five things that need to pass between shifts, every time, so nothing depends on who happened to be on and who they happened to catch before they left.</p>
-        <p class="prod-inside">Inside: a workbook with a handover log, an actions tracker and a dashboard, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a site where what gets passed between shifts depends entirely on who's handing over.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=shift_handover">Learn more</a>
+        <h3><a href="/catalogue/visual_management_foundations.html">Visual Management Foundations</a></h3>
+        <p class="prod-outcome">See the state of the operation at a glance.</p>
+        <p class="prod-tiers">Band 2 &middot; &pound;349</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/visual_management_foundations.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="F5 Strategy Deployment" data-category="Foundation">
         <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          <span class="ops-marker ops-marker-foundation">Foundation</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=tiered_meeting_structure">Tiered Meeting Structure</a></h3>
-        <p class="prod-outcome">— make meetings decide something</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=tiered_meeting_structure">Tell me when it's ready</a>
-      </article>
-
-      <article class="prod-card in-dev">
-        <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
-        </div>
-        <h3><a href="/interest.html?m=sqdc_performance_board">SQDC Performance Board Pack</a></h3>
-        <p class="prod-outcome">— make the board worth standing at</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=sqdc_performance_board">Tell me when it's ready</a>
-      </article>
-
-      <article class="prod-card in-dev">
-        <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
-        </div>
-        <h3><a href="/interest.html?m=kpi_definitions_cascade">KPI Definitions &amp; Cascade Guide</a></h3>
-        <p class="prod-outcome">— make everyone count it the same way</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=kpi_definitions_cascade">Tell me when it's ready</a>
-      </article>
-
-    </div>
+        <h3><a href="/catalogue/hoshin_kanri_strategy_deployment.html">Hoshin Kanri / Strategy Deployment</a></h3>
+        <p class="prod-outcome">Turn priorities into action at every level.</p>
+        <p class="prod-tiers">Band 2 &middot; &pound;349</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/hoshin_kanri_strategy_deployment.html">View module</a>
+      </article></div>
   </div>
-
-  <div class="pillar-section">
-    <h2 class="section-title">Pillar 3 — Quality</h2>
-    <p class="pillar-desc">Catching a problem before the customer does, not just writing it up after.</p>
-    <div class="mod-grid">
-
-      <article class="prod-card">
+<div class="pillar-section" data-section="P1 People &amp; Capability">
+    <h2 class="section-title">P1 People &amp; Capability</h2>
+    <div class="mod-grid"><article class="prod-card" data-group="P1 People &amp; Capability" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-ready">Ready</span>
           <span class="lead-tag">Pillar lead</span>
+          <span class="showcase-strip"><span class="dot"></span>Showcase</span>
         </div>
-        <h3><a href="/interest.html?m=otif_rft_dashboard">OTIF &amp; RFT Dashboard</a></h3>
-        <p class="prod-outcome">— agree what on time actually means</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">On-time-in-full and right-first-time, defined properly before they're tracked. Both terms mean something slightly different at every site that uses them, and that's usually where the argument starts. This makes you write your own definition down first, then gives you a dashboard that actually matches it.</p>
-        <p class="prod-inside">Inside: a workbook with definitions, logs and a dashboard, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a site where "on time" means something different depending on who you ask.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=otif_rft_dashboard">Learn more</a>
+        <h3><a href="/catalogue/skills_matrix.html">Skills Matrix &amp; Cross-Training Planner</a></h3>
+        <p class="prod-outcome">Know who can do what, and where you're exposed.</p>
+        <p class="prod-tiers">Band 2 &middot; Showcase Pro &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/skills_matrix.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P1 People &amp; Capability" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=root_cause_analysis">Root Cause Analysis Toolkit</a></h3>
-        <p class="prod-outcome">— get past the first plausible answer</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=root_cause_analysis">Tell me when it's ready</a>
+        <h3><a href="/catalogue/training_competency_signoff.html">Training Plan &amp; Competency Sign-off</a></h3>
+        <p class="prod-outcome">Close skill gaps with evidence, not assumptions.</p>
+        <p class="prod-tiers">Band 1 &middot; from &pound;89</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/training_competency_signoff.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P1 People &amp; Capability" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=non_conformance_tracker">Non-Conformance Tracker &amp; Trend Pack</a></h3>
-        <p class="prod-outcome">— see the pattern before the customer does</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=non_conformance_tracker">Tell me when it's ready</a>
+        <h3><a href="/catalogue/onboarding_induction.html">Onboarding &amp; Induction Pack</a></h3>
+        <p class="prod-outcome">Get new starters safe, capable and productive.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/onboarding_induction.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P1 People &amp; Capability" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=layered_process_audit">Layered Process Audit System</a></h3>
-        <p class="prod-outcome">— check the process, not the people</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=layered_process_audit">Tell me when it's ready</a>
+        <h3><a href="/catalogue/team_leader_development.html">Team Leader Development Pathway</a></h3>
+        <p class="prod-outcome">Build confident frontline leaders.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/team_leader_development.html">View module</a>
       </article>
-
-    </div>
+<article class="prod-card" data-group="P1 People &amp; Capability" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/absenteeism_attendance_and_short_term_cover.html">Absenteeism, Attendance &amp; Short-Term Cover</a></h3>
+        <p class="prod-outcome">Manage absence without losing control of the shift.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/absenteeism_attendance_and_short_term_cover.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P1 People &amp; Capability" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/labour_planning_shift_pattern.html">Labour Planning &amp; Shift Pattern Model</a></h3>
+        <p class="prod-outcome">Match people and hours to the work.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/labour_planning_shift_pattern.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P1 People &amp; Capability" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/operator_standard_work_and_job_instruction.html">Operator Standard Work &amp; Job Instruction</a></h3>
+        <p class="prod-outcome">Make the job clear, repeatable and teachable.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/operator_standard_work_and_job_instruction.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P1 People &amp; Capability" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/recognition_and_engagement_system.html">Recognition &amp; Engagement System</a></h3>
+        <p class="prod-outcome">Reinforce the behaviours you want repeated.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/recognition_and_engagement_system.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P1 People &amp; Capability" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/ergonomics_and_workplace_design.html">Ergonomics &amp; Workplace Design</a></h3>
+        <p class="prod-outcome">Make the job safer and easier to perform.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/ergonomics_and_workplace_design.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P1 People &amp; Capability" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/coaching_skills_for_leaders.html">Coaching Skills for Leaders</a></h3>
+        <p class="prod-outcome">Improve performance without taking over.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/coaching_skills_for_leaders.html">View module</a>
+      </article></div>
   </div>
-
-  <div class="pillar-section">
-    <h2 class="section-title">Pillar 4 — Delivery &amp; Planning</h2>
-    <p class="pillar-desc">Knowing what you can promise, and why a schedule slipped.</p>
-    <div class="mod-grid">
-
-      <article class="prod-card">
+<div class="pillar-section" data-section="P2 Daily Management &amp; Performance">
+    <h2 class="section-title">P2 Daily Management &amp; Performance</h2>
+    <div class="mod-grid"><article class="prod-card" data-group="P2 Daily Management &amp; Performance" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-ready">Ready</span>
           <span class="lead-tag">Pillar lead</span>
+          
         </div>
-        <h3><a href="/interest.html?m=production_schedule_adherence">Production Schedule Adherence Tracker</a></h3>
-        <p class="prod-outcome">— stop a bad week looking fine</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">Shows three different numbers instead of one blended figure: whether you hit volume, whether you hit it without overproducing somewhere else to cover a shortfall, and whether you hit it on time. Most trackers hide the second number, which is exactly the one that lets a bad week look fine.</p>
-        <p class="prod-inside">Inside: a workbook with a three-number dashboard, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a manager whose hit-rate number looks fine while everyone on the floor knows a bad week happened anyway.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=production_schedule_adherence">Learn more</a>
+        <h3><a href="/catalogue/shift_handover.html">Shift Handover System</a></h3>
+        <p class="prod-outcome">Nothing important gets lost between shifts.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/shift_handover.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P2 Daily Management &amp; Performance" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=capacity_planning">Capacity Planning Model</a></h3>
-        <p class="prod-outcome">— know what you can promise</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=capacity_planning">Tell me when it's ready</a>
+        <h3><a href="/catalogue/tiered_meeting_structure.html">Tiered Meeting Structure</a></h3>
+        <p class="prod-outcome">Get the right problems to the right level quickly.</p>
+        <p class="prod-tiers">Band 2 &middot; &pound;349</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/tiered_meeting_structure.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P2 Daily Management &amp; Performance" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          <span class="showcase-strip"><span class="dot"></span>Showcase</span>
         </div>
-        <h3><a href="/interest.html?m=bottleneck_analysis">Bottleneck Analysis Tool</a></h3>
-        <p class="prod-outcome">— find the constraint, not the loudest problem</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=bottleneck_analysis">Tell me when it's ready</a>
+        <h3><a href="/catalogue/sqdc_performance_board.html">SQDC Performance Board Pack</a></h3>
+        <p class="prod-outcome">Make today's performance impossible to miss.</p>
+        <p class="prod-tiers">Band 2 &middot; Showcase Pro &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/sqdc_performance_board.html">View module</a>
       </article>
-
-    </div>
+<article class="prod-card" data-group="P2 Daily Management &amp; Performance" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/supervisor_standard_work.html">Supervisor Standard Work Pack</a></h3>
+        <p class="prod-outcome">Create a reliable daily leadership rhythm.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/supervisor_standard_work.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P2 Daily Management &amp; Performance" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/layered_leadership_standard_work_and_gemba_rhythm.html">Layered Leadership Standard Work &amp; Gemba Rhythm</a></h3>
+        <p class="prod-outcome">Connect every leadership layer to the floor.</p>
+        <p class="prod-tiers">Band 2 &middot; &pound;349</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/layered_leadership_standard_work_and_gemba_rhythm.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P2 Daily Management &amp; Performance" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/layered_process_audit.html">Layered Process Audit System</a></h3>
+        <p class="prod-outcome">Check that standards still work in the real process.</p>
+        <p class="prod-tiers">Band 2 &middot; &pound;349</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/layered_process_audit.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P2 Daily Management &amp; Performance" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/action_and_countermeasure_tracking_system.html">Action &amp; Countermeasure Tracking System</a></h3>
+        <p class="prod-outcome">Make sure actions actually get closed.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/action_and_countermeasure_tracking_system.html">View module</a>
+      </article></div>
   </div>
-
-  <div class="pillar-section">
-    <h2 class="section-title">Pillar 5 — Asset Care &amp; Maintenance</h2>
-    <p class="pillar-desc">Keeping equipment running without the surprises.</p>
-    <div class="mod-grid">
-
-      <article class="prod-card">
+<div class="pillar-section" data-section="P3 Quality">
+    <h2 class="section-title">P3 Quality</h2>
+    <div class="mod-grid"><article class="prod-card" data-group="P3 Quality" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-ready">Ready</span>
           <span class="lead-tag">Pillar lead</span>
+          
         </div>
-        <h3><a href="/interest.html?m=downtime_tracking_pareto">Downtime Tracking &amp; Pareto Pack</a></h3>
-        <p class="prod-outcome">— trust your own downtime figures</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">Tracks stoppages with a hard rule: a stop only counts as planned if it was on the schedule before the shift started. That single guard closes the most common way downtime numbers get quietly reclassified after the fact.</p>
-        <p class="prod-inside">Inside: a workbook with definitions, a log and a dashboard, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a site that's stopped trusting its own downtime figures.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=downtime_tracking_pareto">Learn more</a>
+        <h3><a href="/catalogue/non_conformance_tracker.html">Non-Conformance Tracker &amp; Trend Pack</a></h3>
+        <p class="prod-outcome">See what is failing, where and how often.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/non_conformance_tracker.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P3 Quality" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=pm_schedule_builder">PM Schedule Builder &amp; Compliance Tracker</a></h3>
-        <p class="prod-outcome">— do the maintenance you said you would</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=pm_schedule_builder">Tell me when it's ready</a>
+        <h3><a href="/catalogue/customer_complaint_and_feedback_system.html">Customer Complaint &amp; Feedback System</a></h3>
+        <p class="prod-outcome">Turn customer issues into controlled action.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/customer_complaint_and_feedback_system.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P3 Quality" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=maintenance_response">Maintenance Response System</a></h3>
-        <p class="prod-outcome">— stop the wait being longer than the fix</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=maintenance_response">Tell me when it's ready</a>
+        <h3><a href="/catalogue/poka_yoke_and_andon_escalation.html">Poka-Yoke &amp; Andon Escalation</a></h3>
+        <p class="prod-outcome">Prevent errors and escalate abnormalities quickly.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/poka_yoke_and_andon_escalation.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P3 Quality" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=autonomous_maintenance">Autonomous Maintenance Starter Pack</a></h3>
-        <p class="prod-outcome">— let the people on the machine look after it</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=autonomous_maintenance">Tell me when it's ready</a>
+        <h3><a href="/catalogue/spc_basics_and_fmea.html">SPC Basics &amp; FMEA</a></h3>
+        <p class="prod-outcome">Control variation before it becomes a defect.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/spc_basics_and_fmea.html">View module</a>
       </article>
-
-    </div>
+<article class="prod-card" data-group="P3 Quality" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/supplier_quality_and_incoming_control.html">Supplier Quality &amp; Incoming Control</a></h3>
+        <p class="prod-outcome">Stop supplier problems reaching production.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/supplier_quality_and_incoming_control.html">View module</a>
+      </article></div>
   </div>
-
-  <div class="pillar-section">
-    <h2 class="section-title">Pillar 6 — Advanced Visual Management</h2>
-    <p class="pillar-desc">Beyond the daily glance: standards that hold and safety that gets reported.</p>
-    <div class="mod-grid">
-
-      <article class="prod-card">
+<div class="pillar-section" data-section="P4 Delivery &amp; Planning">
+    <h2 class="section-title">P4 Delivery &amp; Planning</h2>
+    <div class="mod-grid"><article class="prod-card" data-group="P4 Delivery &amp; Planning" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-ready">Ready</span>
           <span class="lead-tag">Pillar lead</span>
+          <span class="showcase-strip"><span class="dot"></span>Showcase</span>
         </div>
-        <h3><a href="/interest.html?m=5s_audit_pack">5S Audit Pack</a></h3>
-        <p class="prod-outcome">— make 5S survive the launch photo</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">A scored, periodic 5S audit, built around a practitioner-authored form refined over years on real sites, not a generic checklist. Deliberately separate from the daily stranger-test check in Visual Management Foundations — blending the two is a documented reason 5S programmes stall. The Sustain score specifically checks whether last audit's low scores got followed up, not just whether the floor looks tidy today.</p>
-        <p class="prod-inside">Inside: a branded audit form with live scoring, a companion workbook, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a site whose 5S looked great for the launch photo and has been sliding quietly ever since.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=5s_audit_pack">Learn more</a>
+        <h3><a href="/catalogue/bottleneck_analysis.html">Bottleneck Analysis Tool</a></h3>
+        <p class="prod-outcome">Find what is really limiting output.</p>
+        <p class="prod-tiers">Band 1 &middot; Showcase Pro &pound;99</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/bottleneck_analysis.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P4 Delivery &amp; Planning" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=visual_standards_workplace">Visual Standards &amp; Workplace Organisation Guide</a></h3>
-        <p class="prod-outcome">— make the standard obvious without asking</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=visual_standards_workplace">Tell me when it's ready</a>
+        <h3><a href="/catalogue/production_schedule_adherence.html">Production Schedule Adherence Tracker</a></h3>
+        <p class="prod-outcome">See where the production plan is being lost.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/production_schedule_adherence.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P4 Delivery &amp; Planning" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=safety_observation_near_miss">Safety Observation &amp; Near-Miss System</a></h3>
-        <p class="prod-outcome">— hear about it before someone gets hurt</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=safety_observation_near_miss">Tell me when it's ready</a>
+        <h3><a href="/catalogue/capacity_planning.html">Capacity Planning Model</a></h3>
+        <p class="prod-outcome">Know what you can actually make.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/capacity_planning.html">View module</a>
       </article>
-
-    </div>
+<article class="prod-card" data-group="P4 Delivery &amp; Planning" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/inventory_and_materials_control_pack.html">Inventory &amp; Materials Control Pack</a></h3>
+        <p class="prod-outcome">Keep the right material available without hiding excess.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/inventory_and_materials_control_pack.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P4 Delivery &amp; Planning" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/otif_rft_dashboard.html">OTIF &amp; Right-First-Time Dashboard</a></h3>
+        <p class="prod-outcome">See where delivery performance is breaking down.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/otif_rft_dashboard.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P4 Delivery &amp; Planning" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/smed_changeover_reduction_toolkit.html">SMED / Changeover Reduction Toolkit</a></h3>
+        <p class="prod-outcome">Reduce changeover time without creating instability.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/smed_changeover_reduction_toolkit.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P4 Delivery &amp; Planning" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/kanban_and_pull_system_design.html">Kanban &amp; Pull System Design</a></h3>
+        <p class="prod-outcome">Replenish from real demand, not guesswork.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/kanban_and_pull_system_design.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P4 Delivery &amp; Planning" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/heijunka_and_takt_time.html">Heijunka &amp; Takt Time</a></h3>
+        <p class="prod-outcome">Level the work around real customer demand.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/heijunka_and_takt_time.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P4 Delivery &amp; Planning" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/yamazumi_line_balancing.html">Yamazumi / Line Balancing</a></h3>
+        <p class="prod-outcome">Balance work before adding people or equipment.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/yamazumi_line_balancing.html">View module</a>
+      </article></div>
   </div>
-
-  <div class="pillar-section">
-    <h2 class="section-title">Pillar 7 — Continuous Improvement</h2>
-    <p class="pillar-desc">Turning one fix into a habit, not a one-off event.</p>
-    <div class="mod-grid">
-
-      <article class="prod-card">
+<div class="pillar-section" data-section="P5 Asset Care &amp; Maintenance">
+    <h2 class="section-title">P5 Asset Care &amp; Maintenance</h2>
+    <div class="mod-grid"><article class="prod-card" data-group="P5 Asset Care &amp; Maintenance" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-ready">Ready</span>
           <span class="lead-tag">Pillar lead</span>
+          
         </div>
-        <h3><a href="/interest.html?m=a3_problem_solving">A3 Problem-Solving Templates</a></h3>
-        <p class="prod-outcome">— fix it once, properly</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">A one-page problem-solving format with a built-in stop: root cause has to be verified before a single countermeasure can be written. The most freely available format in lean, so the value here is the checkpoint, not the template.</p>
-        <p class="prod-inside">Inside: an A3 template, a register workbook tracking every A3 in flight, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For a team that jumps to a fix before anyone's checked it's fixing the right thing.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=a3_problem_solving">Learn more</a>
+        <h3><a href="/catalogue/downtime_tracking_pareto.html">Downtime Tracking &amp; Pareto Pack</a></h3>
+        <p class="prod-outcome">See what is really costing you machine availability.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/downtime_tracking_pareto.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P5 Asset Care &amp; Maintenance" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=value_stream_mapping">Value Stream Mapping Kit</a></h3>
-        <p class="prod-outcome">— see where the time actually goes</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=value_stream_mapping">Tell me when it's ready</a>
+        <h3><a href="/catalogue/pm_schedule_builder.html">PM Schedule Builder &amp; Compliance Tracker</a></h3>
+        <p class="prod-outcome">Build the plan and see what maintenance is being missed.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/pm_schedule_builder.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P5 Asset Care &amp; Maintenance" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=kaizen_event_planner">Kaizen Event Planner &amp; Charter Pack</a></h3>
-        <p class="prod-outcome">— make the week of effort stick</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=kaizen_event_planner">Tell me when it's ready</a>
+        <h3><a href="/catalogue/maintenance_response.html">Maintenance Response System</a></h3>
+        <p class="prod-outcome">Restore equipment quickly without normalising repeat failures.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/maintenance_response.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="P5 Asset Care &amp; Maintenance" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=idea_suggestion_system">Idea &amp; Suggestion System</a></h3>
-        <p class="prod-outcome">— stop good ideas dying in a box</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=idea_suggestion_system">Tell me when it's ready</a>
+        <h3><a href="/catalogue/autonomous_maintenance.html">Autonomous Maintenance Starter Pack</a></h3>
+        <p class="prod-outcome">Put basic equipment care back at the point of use.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/autonomous_maintenance.html">View module</a>
       </article>
-
-    </div>
+<article class="prod-card" data-group="P5 Asset Care &amp; Maintenance" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/oee_management_and_loss_analysis.html">OEE Management &amp; Loss Analysis</a></h3>
+        <p class="prod-outcome">Find where equipment time and output are disappearing.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/oee_management_and_loss_analysis.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P5 Asset Care &amp; Maintenance" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/full_tpm_pillars_pack.html">Full TPM Pillars Pack</a></h3>
+        <p class="prod-outcome">Build a complete system for equipment reliability.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/full_tpm_pillars_pack.html">View module</a>
+      </article></div>
   </div>
-
-  <div class="pillar-section">
-    <h2 class="section-title">Pillar 8 — Cost &amp; Resource</h2>
-    <p class="pillar-desc">Putting a number on waste, and matching people to demand.</p>
-    <div class="mod-grid">
-
-      <article class="prod-card">
+<div class="pillar-section" data-section="P6 Visual Management">
+    <h2 class="section-title">P6 Visual Management</h2>
+    <div class="mod-grid"><article class="prod-card" data-group="P6 Visual Management" data-category="Pillar">
         <div class="prod-top">
           <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-ready">Ready</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/5s_audit_pack.html">5S Audit Pack</a></h3>
+        <p class="prod-outcome">Make workplace standards visible and sustainable.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/5s_audit_pack.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P6 Visual Management" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
           <span class="lead-tag">Pillar lead</span>
+          
         </div>
-        <h3><a href="/interest.html?m=waste_cost_of_quality">Waste &amp; Cost-of-Quality Calculator</a></h3>
-        <p class="prod-outcome">— put a number on what you can feel</p>
-        <p class="prod-tiers"><span class="ops-tier-badge ops-tier-badge-essentials">Essentials</span><span class="ops-tier-badge ops-tier-badge-pro">Pro</span></p>
-        <p class="prod-desc">Puts a cost against the eight lean wastes without forcing them into cost-of-quality categories they don't naturally fit. The two frameworks only overlap in one place, so this keeps them as two logs meeting at that one point, rather than mashing them together and misrepresenting both.</p>
-        <p class="prod-inside">Inside: a workbook with two logs and a dashboard, guides for both tiers.</p>
-        <p class="prod-who"><strong>Who's this for</strong>For someone who can feel the waste on the floor but has never had to put a number on it.</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=waste_cost_of_quality">Learn more</a>
-      </article>
-
-      <article class="prod-card in-dev">
-        <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
-        </div>
-        <h3><a href="/interest.html?m=labour_planning_shift_pattern">Labour Planning &amp; Shift Pattern Model</a></h3>
-        <p class="prod-outcome">— match the pattern to the demand</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=labour_planning_shift_pattern">Tell me when it's ready</a>
-      </article>
-
-      <article class="prod-card in-dev">
-        <div class="prod-top">
-          <span class="ops-marker ops-marker-pillar">Pillar</span>
-          <span class="status-tag status-dev">In development</span>
-        </div>
-        <h3><a href="/interest.html?m=overtime_agency_spend">Overtime &amp; Agency Spend Tracker</a></h3>
-        <p class="prod-outcome">— see what the gaps are costing you</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=overtime_agency_spend">Tell me when it's ready</a>
-      </article>
-
-    </div>
+        <h3><a href="/catalogue/visual_standards_workplace.html">Visual Standards &amp; Workplace Organisation Guide</a></h3>
+        <p class="prod-outcome">Make normal and abnormal obvious.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/visual_standards_workplace.html">View module</a>
+      </article></div>
   </div>
-
-  <div class="pillar-section">
+<div class="pillar-section" data-section="P7 Continuous Improvement">
+    <h2 class="section-title">P7 Continuous Improvement</h2>
+    <div class="mod-grid"><article class="prod-card" data-group="P7 Continuous Improvement" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="lead-tag">Pillar lead</span>
+          
+        </div>
+        <h3><a href="/catalogue/value_stream_mapping.html">Value Stream Mapping Kit</a></h3>
+        <p class="prod-outcome">See how work and information really flow.</p>
+        <p class="prod-tiers">Band 2 &middot; &pound;349</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/value_stream_mapping.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P7 Continuous Improvement" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/kaizen_event_planner.html">Kaizen Event Planner &amp; Charter Pack</a></h3>
+        <p class="prod-outcome">Turn an improvement opportunity into a controlled event.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/kaizen_event_planner.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P7 Continuous Improvement" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/idea_suggestion_system.html">Idea &amp; Suggestion System</a></h3>
+        <p class="prod-outcome">Turn frontline ideas into visible action.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/idea_suggestion_system.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P7 Continuous Improvement" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/a3_problem_solving.html">A3 Problem-Solving Templates</a></h3>
+        <p class="prod-outcome">Fix it once, properly.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/a3_problem_solving.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P7 Continuous Improvement" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/root_cause_analysis.html">Root Cause Analysis Toolkit</a></h3>
+        <p class="prod-outcome">Solve the cause, not just the symptom.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/root_cause_analysis.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P7 Continuous Improvement" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/eight_wastes_timwoods.html">8 Wastes (TIMWOODS) Identification Toolkit</a></h3>
+        <p class="prod-outcome">Find where time, effort and material are being lost.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/eight_wastes_timwoods.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P7 Continuous Improvement" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/npi_launch_readiness.html">NPI / Launch Readiness Pack</a></h3>
+        <p class="prod-outcome">Expose launch risks before production finds them.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/npi_launch_readiness.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P7 Continuous Improvement" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/basic_problem_solving_5_why.html">Basic Problem Solving / 5 Why</a></h3>
+        <p class="prod-outcome">Get from symptom to cause without overcomplicating it.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/basic_problem_solving_5_why.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P7 Continuous Improvement" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/spaghetti_diagrams_motion_analysis.html">Spaghetti Diagrams / Motion Analysis</a></h3>
+        <p class="prod-outcome">See where movement is wasting time.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/spaghetti_diagrams_motion_analysis.html">View module</a>
+      </article></div>
+  </div>
+<div class="pillar-section" data-section="P8 Cost &amp; Resource">
+    <h2 class="section-title">P8 Cost &amp; Resource</h2>
+    <div class="mod-grid"><article class="prod-card" data-group="P8 Cost &amp; Resource" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          <span class="lead-tag">Pillar lead</span>
+          
+        </div>
+        <h3><a href="/catalogue/waste_cost_of_quality.html">Waste &amp; Cost-of-Quality Calculator</a></h3>
+        <p class="prod-outcome">Turn operational losses into money.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/waste_cost_of_quality.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P8 Cost &amp; Resource" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/overtime_agency_spend.html">Overtime &amp; Agency Spend Tracker</a></h3>
+        <p class="prod-outcome">See what extra labour is really costing.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/overtime_agency_spend.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P8 Cost &amp; Resource" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/understanding_the_p_and_l.html">Understanding the P&amp;L</a></h3>
+        <p class="prod-outcome">Connect operational decisions to financial results.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/understanding_the_p_and_l.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P8 Cost &amp; Resource" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/cost_deployment.html">Cost Deployment</a></h3>
+        <p class="prod-outcome">Focus improvement where the money is being lost.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/cost_deployment.html">View module</a>
+      </article>
+<article class="prod-card" data-group="P8 Cost &amp; Resource" data-category="Pillar">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Pillar</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/energy_and_environmental_waste.html">Energy &amp; Environmental Waste</a></h3>
+        <p class="prod-outcome">Find avoidable resource and energy loss.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/energy_and_environmental_waste.html">View module</a>
+      </article></div>
+  </div>
+<div class="pillar-section" data-section="Enablers">
     <h2 class="section-title">Enablers</h2>
-    <p class="pillar-desc">Belong to no single Pillar. Raise the success rate of everything else.</p>
-    <div class="mod-grid">
-
-      <article class="prod-card in-dev">
+    <div class="mod-grid"><article class="prod-card" data-group="Enablers" data-category="Enabler">
         <div class="prod-top">
-          <span class="status-tag status-dev">In development</span>
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=working_with_ai">Working with AI</a></h3>
-        <p class="prod-outcome">— use it without outsourcing your judgement</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=working_with_ai">Tell me when it's ready</a>
+        <h3><a href="/catalogue/working_with_ai.html">Working with AI</a></h3>
+        <p class="prod-outcome">Use AI productively without giving away control.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/working_with_ai.html">View module</a>
       </article>
-
-      <article class="prod-card in-dev">
+<article class="prod-card" data-group="Enablers" data-category="Enabler">
         <div class="prod-top">
-          <span class="status-tag status-dev">In development</span>
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
         </div>
-        <h3><a href="/interest.html?m=managing_change">Managing Change That Sticks</a></h3>
-        <p class="prod-outcome">— make it survive the second month</p>
-        <a class="btn btn-ghost prod-link" href="/interest.html?m=managing_change">Tell me when it's ready</a>
+        <h3><a href="/catalogue/managing_change.html">Managing Change That Sticks</a></h3>
+        <p class="prod-outcome">Turn a change into the new normal.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/managing_change.html">View module</a>
       </article>
-
-    </div>
+<article class="prod-card" data-group="Enablers" data-category="Enabler">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/going_digital.html">Going Digital</a></h3>
+        <p class="prod-outcome">Digitise the process without digitising the waste.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/going_digital.html">View module</a>
+      </article>
+<article class="prod-card" data-group="Enablers" data-category="Enabler">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/industry_4_0_and_iot_basics.html">Industry 4.0 &amp; IoT Basics</a></h3>
+        <p class="prod-outcome">Understand where connected technology genuinely helps.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/industry_4_0_and_iot_basics.html">View module</a>
+      </article>
+<article class="prod-card" data-group="Enablers" data-category="Enabler">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/data_analysis_basics.html">Data Analysis Basics</a></h3>
+        <p class="prod-outcome">Turn operational data into useful decisions.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/data_analysis_basics.html">View module</a>
+      </article>
+<article class="prod-card" data-group="Enablers" data-category="Enabler">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/business_continuity_basics.html">Business Continuity Basics</a></h3>
+        <p class="prod-outcome">Know how the operation will respond when something fails.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/business_continuity_basics.html">View module</a>
+      </article>
+<article class="prod-card" data-group="Enablers" data-category="Enabler">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/running_a_project.html">Running a Project</a></h3>
+        <p class="prod-outcome">Turn an objective into controlled execution.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/running_a_project.html">View module</a>
+      </article>
+<article class="prod-card" data-group="Enablers" data-category="Enabler">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/engaging_the_wider_business.html">Engaging the Wider Business</a></h3>
+        <p class="prod-outcome">Get the support operations needs to deliver.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/engaging_the_wider_business.html">View module</a>
+      </article>
+<article class="prod-card" data-group="Enablers" data-category="Enabler">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/hse_system.html">HSE System</a></h3>
+        <p class="prod-outcome">Put safety and environmental control into the operating system.</p>
+        <p class="prod-tiers">Band 2 &middot; &pound;349</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/hse_system.html">View module</a>
+      </article>
+<article class="prod-card" data-group="Enablers" data-category="Enabler">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/safety_observation_near_miss.html">Safety Observation &amp; Near-Miss System</a></h3>
+        <p class="prod-outcome">Act on warning signs before someone gets hurt.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/safety_observation_near_miss.html">View module</a>
+      </article>
+<article class="prod-card" data-group="Enablers" data-category="Enabler">
+        <div class="prod-top">
+          <span class="ops-marker ops-marker-pillar">Enabler</span>
+          
+          
+        </div>
+        <h3><a href="/catalogue/benchmarking.html">Benchmarking</a></h3>
+        <p class="prod-outcome">Compare performance without copying someone else's answer.</p>
+        <p class="prod-tiers">Band 1 &middot; &pound;179</p>
+        <a class="btn btn-ghost prod-link" href="/catalogue/benchmarking.html">View module</a>
+      </article></div>
   </div>
 
  </div>
@@ -615,8 +886,8 @@
   <div class="band band-navy">
     <div class="shell band-pad cta-box">
       <div>
-        <h3>Not sure which three you need?</h3>
-        <p>The Health Check reads your operation across all twelve areas and tells you which three tools to start with, in order.</p>
+        <h3>Not sure which one you need?</h3>
+        <p>The Health Check reads your operation across twelve areas and tells you which module to start with, in order.</p>
       </div>
       <a class="btn btn-on-navy btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
     </div>

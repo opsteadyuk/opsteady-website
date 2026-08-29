@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Case study: one board, four numbers, at a fictional automotive site — Opsteady</title>
+<meta name="description" content="A fictional worked example of the SQDC Performance Board Pack: how Halden Automotive Components turned four scattered systems into one board checked every shift.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Case study: one board, four numbers, at a fictional automotive site — Opsteady">
+<meta property="og:description" content="A fictional worked example of the SQDC Performance Board Pack: how Halden Automotive Components turned four scattered systems into one board checked every shift.">
+<meta property="og:image" content="https://opsteady.co.uk/og/default.png">
+<meta property="og:type" content="website">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.cs-hero{padding:2.5rem 0 1rem;max-width:46rem}
+.cs-fictional{
+  display:inline-block;background:var(--ops-surface-subtle);color:var(--ops-n60);
+  font-size:.78rem;font-weight:600;letter-spacing:var(--ops-track-label);text-transform:uppercase;
+  padding:.3rem .7rem;border-radius:var(--ops-radius-4);margin-bottom:1rem;
+}
+.cs-stage{margin:2.5rem 0}
+.cs-stage h2{color:var(--navy)}
+.cs-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+@media (max-width:700px){.cs-stat-row{grid-template-columns:1fr}}
+.cs-stat{background:var(--ops-surface);border:1px solid var(--ops-border);border-radius:var(--ops-radius-8);padding:1.1rem 1.25rem}
+.cs-stat .num{font-family:var(--ops-font-display);font-weight:700;font-size:1.6rem;color:var(--navy);display:block}
+.cs-stat .lbl{font-size:.8rem;color:var(--slate)}
+.cs-excerpt{
+  background:var(--ops-surface-sunken);border-left:3px solid var(--ops-navy);border-radius:2px;
+  padding:1.1rem 1.4rem;margin:1.25rem 0;font-family:var(--ops-font-mono);font-size:.88rem;color:var(--ops-n80);
+  overflow-x:auto;
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="var(--ops-navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="56" cy="18" r="4.2" fill="#D08F25"/>
+      </svg>
+      <span class="brand-word">Opsteady</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="nav-links" aria-label="Primary">
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+      <a class="nav-link nav-cta" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+      <a class="nav-link" href="/catalogue.html">Catalogue</a>
+      <a class="nav-link" href="/the-method.html">The Method</a>
+      <a class="nav-link" href="/pricing.html">Pricing</a>
+      <a class="nav-link" href="/who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+ <div class="shell">
+  <nav class="ops-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/catalogue/sqdc_performance_board.html">SQDC Performance Board Pack</a><span class="sep">/</span>
+    <span class="current">Case study</span>
+  </nav>
+
+<div class="cs-hero prose">
+    <span class="cs-fictional">Fictional company, illustrative data</span>
+    <h1 class="page-title">Four systems, four different Fridays, one problem discovered a week too late</h1>
+    <p class="lede">Halden Automotive Components, a tier-two automotive parts supplier, and a quality miss that took a week to reach anyone who could act on it.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>The problem</h2>
+    <p>Halden's safety, quality, delivery and cost numbers each lived in their own system, updated on their own schedule — quality on a Tuesday report, cost at month end, delivery whenever the scheduling system was checked. A first-pass yield drop showed up in the quality system on a Tuesday. Nobody with the authority to act on it saw it until the following Monday's management meeting, by which point the same fault had recurred three more times.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Starting condition</h2>
+    <p>A Health Check completed by the plant manager scored Daily Management as the weakest of the twelve areas — not because any single number was bad, but because none of them were checked on the same rhythm. The recommendation was the SQDC Performance Board Pack, explicitly building on the site's existing KPI definitions and Visual Management work rather than replacing either.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Deployment</h2>
+    <p>The plant manager picked one metric per category to start — not the full KPI tree for each — each one already defined and agreed rather than invented for the board: a lost-time-incident count for Safety, first-pass yield for Quality, schedule adherence for Delivery, overtime hours for Cost. The board went up on the shop floor itself, at the point people already walked past daily, not in an office.</p>
+    <div class="cs-excerpt">Safety: 0 incidents, target 0 &nbsp;&middot;&nbsp; Quality: 91%, target 95% &nbsp;&middot;&nbsp; Delivery: 92%, target 100% &nbsp;&middot;&nbsp; Cost: 3.5 OT hrs, target &le;2</div>
+    <p>Every miss got a gap-and-response line, filled in the same shift it happened — not a blank cell waiting for someone to notice it later.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Decisions and actions</h2>
+    <p>Three weeks in, a first-pass yield miss on the board's Quality line was traced, the same afternoon, to a torque station drifting out of calibration — the same underlying fault that, before the board existed, had taken a week to surface. The tiered meeting the board now feeds reviewed it the next morning, not the following Monday.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Operational result</h2>
+    <div class="cs-stat-row">
+      <div class="cs-stat"><span class="num">7 days &rarr; &lt;1 shift</span><span class="lbl">time from a quality miss occurring to it reaching someone who could act</span></div>
+      <div class="cs-stat"><span class="num">4</span><span class="lbl">numbers, one board, checked every shift instead of four separate schedules</span></div>
+      <div class="cs-stat"><span class="num">91% &rarr; 95%</span><span class="lbl">first-pass yield, eight weeks after the calibration fault was caught early</span></div>
+    </div>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Sustainment</h2>
+    <p>The board still shows real misses most days — Halden treats a board that's green across all four every single day as a sign it's measuring the wrong things, not a sign nothing's wrong. Every number traces back to the site's own KPI Definitions register, so what the board means has stayed a settled question, not a live argument.</p>
+  </div>
+
+  <div class="case-link-card">
+    <div>
+      <h3>SQDC Performance Board Pack</h3>
+      <p>This case study shows the shape of the guide. The working file, the full playbook and the failure modes are in the product itself.</p>
+    </div>
+    <a class="btn btn-on-navy" href="/catalogue/sqdc_performance_board.html">View the module</a>
+  </div>
+ </div>
+
+  <div class="band band-navy">
+    <div class="shell band-pad cta-box">
+      <div class="cta-copy">
+        <h3>See where your own site actually stands</h3>
+        <p>Free, twenty-four questions, about fifteen minutes.</p>
+      </div>
+      <a class="btn btn-on-navy btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <span class="brand-word">Opsteady</span>
+      <p class="footer-tagline">Run steady. Run better.</p>
+      <p>Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Site</h3>
+      <ul>
+        <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+        <li><a href="/catalogue.html">Catalogue</a></li>
+        <li><a href="/the-method.html">The Method</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/who-we-are.html">Who We Are</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>More</h3>
+      <ul>
+        <li><a href="/sitemap.html">Contents</a></li>
+        <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms of sale</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
+        <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Opsteady. Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203. Registered office: 82A James Carter Road, Mildenhall, IP28 7DE.</div>
+</footer>
+
+<script src="/site.js"></script>
+</body>
+</html>

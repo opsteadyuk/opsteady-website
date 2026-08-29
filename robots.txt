@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /interest.html
+
+Sitemap: https://opsteady.co.uk/sitemap.xml

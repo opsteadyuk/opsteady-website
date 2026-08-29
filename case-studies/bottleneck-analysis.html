@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Case study: finding the real constraint at a fictional fabrication site — Opsteady</title>
+<meta name="description" content="A fictional worked example of the Bottleneck Analysis Tool: how Riverside Fabrication found its real constraint wasn't the station everyone blamed.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Case study: finding the real constraint at a fictional fabrication site — Opsteady">
+<meta property="og:description" content="A fictional worked example of the Bottleneck Analysis Tool: how Riverside Fabrication found its real constraint wasn't the station everyone blamed.">
+<meta property="og:image" content="https://opsteady.co.uk/og/default.png">
+<meta property="og:type" content="website">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.cs-hero{padding:2.5rem 0 1rem;max-width:46rem}
+.cs-fictional{
+  display:inline-block;background:var(--ops-surface-subtle);color:var(--ops-n60);
+  font-size:.78rem;font-weight:600;letter-spacing:var(--ops-track-label);text-transform:uppercase;
+  padding:.3rem .7rem;border-radius:var(--ops-radius-4);margin-bottom:1rem;
+}
+.cs-stage{margin:2.5rem 0}
+.cs-stage h2{color:var(--navy)}
+.cs-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+@media (max-width:700px){.cs-stat-row{grid-template-columns:1fr}}
+.cs-stat{background:var(--ops-surface);border:1px solid var(--ops-border);border-radius:var(--ops-radius-8);padding:1.1rem 1.25rem}
+.cs-stat .num{font-family:var(--ops-font-display);font-weight:700;font-size:1.6rem;color:var(--navy);display:block}
+.cs-stat .lbl{font-size:.8rem;color:var(--slate)}
+.cs-excerpt{
+  background:var(--ops-surface-sunken);border-left:3px solid var(--ops-navy);border-radius:2px;
+  padding:1.1rem 1.4rem;margin:1.25rem 0;font-family:var(--ops-font-mono);font-size:.88rem;color:var(--ops-n80);
+  overflow-x:auto;
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="var(--ops-navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="56" cy="18" r="4.2" fill="#D08F25"/>
+      </svg>
+      <span class="brand-word">Opsteady</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="nav-links" aria-label="Primary">
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+      <a class="nav-link nav-cta" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+      <a class="nav-link" href="/catalogue.html">Catalogue</a>
+      <a class="nav-link" href="/the-method.html">The Method</a>
+      <a class="nav-link" href="/pricing.html">Pricing</a>
+      <a class="nav-link" href="/who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+ <div class="shell">
+  <nav class="ops-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/catalogue/bottleneck_analysis.html">Bottleneck Analysis Tool</a><span class="sep">/</span>
+    <span class="current">Case study</span>
+  </nav>
+
+<div class="cs-hero prose">
+    <span class="cs-fictional">Fictional company, illustrative data</span>
+    <h1 class="page-title">The station everyone blamed wasn't the one actually costing them the order</h1>
+    <p class="lede">Riverside Fabrication, a 60-person steel fabrication shop, and Press 3 — the station its production meetings had blamed for six months.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>The problem</h2>
+    <p>Riverside runs three presses feeding a single powder-coat and pack line. For most of the year, the Thursday production meeting opened the same way: Press 3 was behind, again, and the shift manager wanted a second press operator approved to catch it up. The operations director had queued the headcount request twice and pulled it back twice, uneasy that the same fix kept being asked for without ever quite working.</p>
+    <p>Nobody had actually measured anything. The belief that Press 3 was the constraint came from it being the newest, least familiar machine on the floor, and the one operators mentioned most often when a shipment ran late.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Starting condition</h2>
+    <p>A Health Check taken by the operations director scored Delivery &amp; Planning as the site's lowest area, and flagged Bottleneck Analysis as the recommended first move — ahead of Capacity Planning, which it explicitly said was premature without a confirmed constraint first.</p>
+    <p>No downtime tracking existed yet. The only data anyone had was a gut feeling and a schedule-adherence number that had been sliding for two quarters.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Deployment</h2>
+    <p>The shift manager ran the tool exactly as it's built: listed every step from raw steel to packed pallet, logged throughput and cycle time at each one for a full representative week, and noted where work-in-progress queued up between stations — not just at the one everyone already suspected.</p>
+    <div class="cs-excerpt">Press 1 — 310 units/week &nbsp;&middot;&nbsp; Press 2 — 295 units/week &nbsp;&middot;&nbsp; Press 3 — 240 units/week &nbsp;&middot;&nbsp; Powder-coat &amp; pack — 180 units/week</div>
+    <p>Read at a glance, the numbers looked like they confirmed the story: Press 3 was the slowest press. But the tool's own confirmation check asks for two more signals before naming a constraint — where WIP is genuinely piling up, and where the next step stands idle waiting. Neither pointed at Press 3. WIP was stacking up in front of powder-coat and pack, and pack was the station standing idle at the start of most shifts, waiting on parts that had already cleared all three presses days earlier.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>The finding, and the decisions made from it</h2>
+    <p>The real constraint was powder-coat and pack, running at 180 units a week against a combined press output well above that. Press 3 wasn't fast, but it was never the ceiling — the finish line was, and every part waiting in front of it had already been made.</p>
+    <p>The operations director did not approve the second Press 3 operator. Instead, the shift manager worked the tool's exploit-and-subordinate step against the real constraint: removing an avoidable changeover delay on the coat line, and — the harder conversation — deliberately holding the two faster presses to the coat line's actual pace, rather than letting them keep running ahead and building a queue nobody could work through.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Operational result</h2>
+    <div class="cs-stat-row">
+      <div class="cs-stat"><span class="num">180 &rarr; 224</span><span class="lbl">units/week through finishing, six weeks</span></div>
+      <div class="cs-stat"><span class="num">&pound;0</span><span class="lbl">spent on the headcount request that didn't happen</span></div>
+      <div class="cs-stat"><span class="num">2</span><span class="lbl">presses deliberately slowed, on purpose, to feed the real constraint</span></div>
+    </div>
+    <p>Schedule adherence, the number that had been sliding for two quarters, moved for the first time without anyone touching the schedule itself — because the actual limiting step, not the loudest one, was finally the one being worked.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Sustainment</h2>
+    <p>Riverside re-runs the throughput log monthly, not because the constraint is expected to move often, but because the tool's own guidance is that fixing one constraint reveals the next — and the site would rather confirm that on purpose than rediscover it six months late in another Thursday meeting.</p>
+  </div>
+
+  <div class="case-link-card">
+    <div>
+      <h3>Bottleneck Analysis Tool</h3>
+      <p>This case study shows the shape of the guide. The working file, the full playbook and the failure modes are in the product itself.</p>
+    </div>
+    <a class="btn btn-on-navy" href="/catalogue/bottleneck_analysis.html">View the module</a>
+  </div>
+ </div>
+
+  <div class="band band-navy">
+    <div class="shell band-pad cta-box">
+      <div class="cta-copy">
+        <h3>See where your own site actually stands</h3>
+        <p>Free, twenty-four questions, about fifteen minutes.</p>
+      </div>
+      <a class="btn btn-on-navy btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <span class="brand-word">Opsteady</span>
+      <p class="footer-tagline">Run steady. Run better.</p>
+      <p>Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Site</h3>
+      <ul>
+        <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+        <li><a href="/catalogue.html">Catalogue</a></li>
+        <li><a href="/the-method.html">The Method</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/who-we-are.html">Who We Are</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>More</h3>
+      <ul>
+        <li><a href="/sitemap.html">Contents</a></li>
+        <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms of sale</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
+        <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Opsteady. Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203. Registered office: 82A James Carter Road, Mildenhall, IP28 7DE.</div>
+</footer>
+
+<script src="/site.js"></script>
+</body>
+</html>

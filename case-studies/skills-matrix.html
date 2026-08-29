@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Case study: surfacing single points of failure at a fictional food site — Opsteady</title>
+<meta name="description" content="A fictional worked example of the Skills Matrix & Cross-Training Planner: how Bridgewell Foods found three single points of failure it hadn't consciously known about.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Case study: surfacing single points of failure at a fictional food site — Opsteady">
+<meta property="og:description" content="A fictional worked example of the Skills Matrix & Cross-Training Planner: how Bridgewell Foods found three single points of failure it hadn't consciously known about.">
+<meta property="og:image" content="https://opsteady.co.uk/og/default.png">
+<meta property="og:type" content="website">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.cs-hero{padding:2.5rem 0 1rem;max-width:46rem}
+.cs-fictional{
+  display:inline-block;background:var(--ops-surface-subtle);color:var(--ops-n60);
+  font-size:.78rem;font-weight:600;letter-spacing:var(--ops-track-label);text-transform:uppercase;
+  padding:.3rem .7rem;border-radius:var(--ops-radius-4);margin-bottom:1rem;
+}
+.cs-stage{margin:2.5rem 0}
+.cs-stage h2{color:var(--navy)}
+.cs-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+@media (max-width:700px){.cs-stat-row{grid-template-columns:1fr}}
+.cs-stat{background:var(--ops-surface);border:1px solid var(--ops-border);border-radius:var(--ops-radius-8);padding:1.1rem 1.25rem}
+.cs-stat .num{font-family:var(--ops-font-display);font-weight:700;font-size:1.6rem;color:var(--navy);display:block}
+.cs-stat .lbl{font-size:.8rem;color:var(--slate)}
+.cs-excerpt{
+  background:var(--ops-surface-sunken);border-left:3px solid var(--ops-navy);border-radius:2px;
+  padding:1.1rem 1.4rem;margin:1.25rem 0;font-family:var(--ops-font-mono);font-size:.88rem;color:var(--ops-n80);
+  overflow-x:auto;
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M2 18 L8 6 L14 28 L20 10 L26 24 L32 14 L38 21 L44 16 L50 19.5 L56 18 L118 18" fill="none" stroke="var(--ops-navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="56" cy="18" r="4.2" fill="#D08F25"/>
+      </svg>
+      <span class="brand-word">Opsteady</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--ops-navy)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="nav-links" aria-label="Primary">
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+      <a class="nav-link nav-cta" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+      <a class="nav-link" href="/catalogue.html">Catalogue</a>
+      <a class="nav-link" href="/the-method.html">The Method</a>
+      <a class="nav-link" href="/pricing.html">Pricing</a>
+      <a class="nav-link" href="/who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+ <div class="shell">
+  <nav class="ops-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/catalogue/skills_matrix.html">Skills Matrix & Cross-Training Planner</a><span class="sep">/</span>
+    <span class="current">Case study</span>
+  </nav>
+
+<div class="cs-hero prose">
+    <span class="cs-fictional">Fictional company, illustrative data</span>
+    <h1 class="page-title">Three single points of failure, none of them written down anywhere</h1>
+    <p class="lede">Bridgewell Foods, a mid-size chilled-food packing site, and an 18-person changeover team that ran on one supervisor's memory.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>The problem</h2>
+    <p>Bridgewell's changeover team could hit its numbers reliably — as long as three specific people were on shift. Everyone on the floor knew this informally. Nobody had ever written it down as a risk, because the team had simply never been tested by all three being off at once, so the gap had no cost attached to it yet.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Starting condition</h2>
+    <p>The site's Health Check flagged People &amp; Capability as an area worth attention, without the operations manager being able to say precisely why — the team wasn't short-staffed, and nobody had raised a complaint. The recommendation was Skills Matrix &amp; Cross-Training Planner, scoped to the one team, not the whole site.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Deployment</h2>
+    <p>The team leader scoped one matrix — 18 people, 14 critical changeover tasks — using the tool's own critical-risk test rather than listing everything the team did: does getting it wrong hurt someone, scrap product, or damage the equipment. Tasks that didn't clear that bar, and tasks a competent person could pick up from the standard in an hour, were deliberately left off.</p>
+    <div class="cs-excerpt">14 tasks scored &nbsp;&middot;&nbsp; 3 flagged as single points of failure (only one person rated Unassisted or above) &nbsp;&middot;&nbsp; 1 task with zero current Owners</div>
+    <p>Two of the three single points of failure were tasks nobody had consciously named as risks before — they'd simply never been tested, because the right person had always happened to be on shift.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Decisions and actions</h2>
+    <p>The team leader didn't try to close all three gaps at once. Following the tool's own first-week guidance, the single points of failure went onto the contingency register first — with one already covered by a costed, priced external option — and a second qualified Owner was scheduled for the highest-risk task before anything else on the matrix was touched.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Operational result</h2>
+    <div class="cs-stat-row">
+      <div class="cs-stat"><span class="num">3 &rarr; 1</span><span class="lbl">single points of failure still open after eight weeks</span></div>
+      <div class="cs-stat"><span class="num">18</span><span class="lbl">people, one team, scoped deliberately — not a site-wide rollout</span></div>
+      <div class="cs-stat"><span class="num">1</span><span class="lbl">priced contingency option, ready before it was ever needed</span></div>
+    </div>
+    <p>Six weeks in, one of the three previously single-qualified people was off sick for four days. For the first time, the team covered the changeover without a scramble — because the gap already had a named second Owner in training, not because anyone got lucky.</p>
+  </div>
+
+  <div class="cs-stage prose">
+    <h2>Sustainment</h2>
+    <p>The matrix is reviewed on trigger events — a new starter, a changed process, a shift in absence patterns — rather than left until the next audit. The Roles tab, calculated rather than hand-maintained, is what the team leader now actually checks each morning instead of relying on memory.</p>
+  </div>
+
+  <div class="case-link-card">
+    <div>
+      <h3>Skills Matrix & Cross-Training Planner</h3>
+      <p>This case study shows the shape of the guide. The working file, the full playbook and the failure modes are in the product itself.</p>
+    </div>
+    <a class="btn btn-on-navy" href="/catalogue/skills_matrix.html">View the module</a>
+  </div>
+ </div>
+
+  <div class="band band-navy">
+    <div class="shell band-pad cta-box">
+      <div class="cta-copy">
+        <h3>See where your own site actually stands</h3>
+        <p>Free, twenty-four questions, about fifteen minutes.</p>
+      </div>
+      <a class="btn btn-on-navy btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <span class="brand-word">Opsteady</span>
+      <p class="footer-tagline">Run steady. Run better.</p>
+      <p>Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Site</h3>
+      <ul>
+        <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+        <li><a href="/catalogue.html">Catalogue</a></li>
+        <li><a href="/the-method.html">The Method</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/who-we-are.html">Who We Are</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>More</h3>
+      <ul>
+        <li><a href="/sitemap.html">Contents</a></li>
+        <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms of sale</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
+        <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Opsteady. Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203. Registered office: 82A James Carter Road, Mildenhall, IP28 7DE.</div>
+</footer>
+
+<script src="/site.js"></script>
+</body>
+</html>

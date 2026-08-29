@@ -1,0 +1,4 @@
+# Legacy /interest.html?m=<slug> links are handled client-side inside
+# interest.html itself (query-string redirects aren't expressible here).
+# This file covers the plain, no-query-string case.
+/interest.html   /catalogue.html   302
