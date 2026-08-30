@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Opsteady 2.0 — Visual World Canvas (Design Proof)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     OPSTEADY 2.0 — VISUAL WORLD CANVAS
+     DESIGN PROOF / NOT APPROVED / NOT PRODUCTION
+     Not a homepage. Not V6. Not for scale-out.
+     Governed by: 00_SYSTEM/OPSTEADY-2.0-VISUAL-WORLD-AND-ART-DIRECTION.md §T/§U
+     ============================================================ */
+
+  :root {
+    /* canonical base neutral ramp — 02_brand/105_colour_system.md §5.3 */
+    --n00:#FFFFFF; --n10:#EEF0F4; --n20:#DFE3EA; --n30:#C3CAD6; --n40:#9AA4B4;
+    --n50:#6E7A8C; --n60:#4E5A6B; --n70:#33404F; --n80:#1B2E4F; --n90:#111D31;
+
+    /* canonical brand anchors — unchanged, §32 */
+    --navy:#1B2E4F; --amber:#D08F25; --amber-deep:#946719;
+
+    /* governed tonal families, promoted from V5 prototype-local declaration
+       per this document's §D — anchors unchanged, every step a lightness/
+       saturation move around the same two hues, never a hue shift */
+    --navy-ink:#0A121F; --navy-deep:#12203A; --navy-mid:#2D4A73;
+    --navy-slate:#52698D; --navy-steel:#8496B3; --navy-pale:#C9D3E3;
+    --amber-ochre:#6B4813; --amber-rich:#E0A13A; --amber-light:#EDC07A; --amber-tint:#F6DFB3;
+
+    --f-display:'Space Grotesk',sans-serif;
+    --f-text:'Source Sans 3',sans-serif;
+    --f-mono:'IBM Plex Mono',monospace;
+
+    --radius-4:4px; --radius-8:8px; --radius-12:12px;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:var(--f-text);
+    color:var(--n80);
+    background:var(--n00);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+
+  /* ---------- status strip ---------- */
+  .status-strip{
+    background:var(--n90);
+    color:var(--n30);
+    font-family:var(--f-mono);
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    text-align:center;
+    padding:8px 16px;
+  }
+  .status-strip strong{color:var(--amber-light);font-weight:600;}
+
+  /* ---------- shared layout ---------- */
+  .shell{max-width:1200px;margin:0 auto;padding:0 40px;}
+  @media (max-width:1023px){.shell{padding:0 32px;}}
+  @media (max-width:767px){.shell{padding:0 20px;}}
+
+  .fragment{padding:96px 0;}
+  .fragment.tight{padding:64px 0;}
+  @media (max-width:767px){
+    .fragment{padding:56px 0;}
+    .fragment.tight{padding:40px 0;}
+  }
+
+  .eyebrow{
+    font-family:var(--f-mono);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.10em;
+    text-transform:uppercase;
+    display:inline-block;
+  }
+
+  .frag-label{
+    font-family:var(--f-mono);
+    font-size:10.5px;
+    font-weight:500;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--n40);
+    margin:0 0 16px;
+  }
+
+  /* ---------- FRAGMENT A: hero ---------- */
+  .frag-hero{
+    background:linear-gradient(165deg, var(--navy-ink) 0%, var(--navy-deep) 55%, var(--navy) 100%);
+    color:var(--n00);
+    padding-top:0;
+    position:relative;
+  }
+  .nav-bar{
+    background:var(--navy);
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .nav-chrome{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 0;
+  }
+  .nav-chrome .logo-mark{height:34px;width:auto;}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a:not(.btn){
+    color:var(--navy-pale);
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  @media (max-width:640px){ .nav-links a.hide-mobile{display:none;} }
+
+  .hero-body{
+    padding:88px 0 96px;
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .hero-body{grid-template-columns:1fr;gap:40px;padding:56px 0 64px;}
+  }
+
+  .hero-headline{
+    font-family:var(--f-display);
+    font-weight:600;
+    font-size:clamp(40px, 6.2vw, 84px);
+    line-height:1.03;
+    letter-spacing:-0.02em;
+    margin:20px 0 22px;
+  }
+  .hero-sub{
+    font-size:18px;
+    line-height:1.556;
+    color:var(--navy-pale);
+    max-width:46ch;
+    margin:0 0 36px;
+  }
+  .hero-eyebrow{color:var(--amber-light);}
+
+  .cta-row{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    height:48px;padding:0 24px;
+    font-family:var(--f-text);font-weight:600;font-size:15px;
+    border-radius:var(--radius-8);
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+  }
+  /* canonical: Primary on navy = white fill / navy text — 113_product_ui.md §13.1 */
+  .btn-primary-on-navy{background:var(--n00);color:var(--navy);}
+  .btn-primary-on-navy:hover{background:var(--navy-pale);}
+  /* canonical: Primary = navy fill / white text, used on light grounds elsewhere in this canvas */
+  .btn-primary{background:var(--navy);color:var(--n00);}
+  .btn-primary:hover{background:var(--navy-deep);}
+  .link-on-navy{
+    color:var(--n00);font-size:15px;font-weight:600;text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.4);
+    padding-bottom:2px;
+  }
+
+  .hero-visual{position:relative;}
+  .photo-panel{
+    position:relative;
+    border-radius:var(--radius-12);
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    aspect-ratio:4/5;
+  }
+  .photo-panel img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(45%) sepia(8%) saturate(115%) brightness(0.82) contrast(1.08);
+  }
+  .photo-panel::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(200deg, rgba(10,18,31,.05) 30%, rgba(10,18,31,.55) 100%);
+  }
+  .annot-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+  .annot-label{
+    position:absolute;
+    font-family:var(--f-mono);font-size:10.5px;font-weight:500;
+    letter-spacing:.06em;text-transform:uppercase;
+    color:var(--amber-light);
+    background:rgba(10,18,31,.62);
+    padding:4px 8px;border-radius:2px;
+    border-left:2px solid var(--amber);
+  }
+  .photo-caption{
+    margin-top:12px;
+    font-family:var(--f-mono);
+    font-size:12.5px;
+    line-height:1.5;
+    color:var(--navy-steel);
+  }
+  .photo-caption b{color:var(--amber-light);font-weight:600;}
+
+  /* ---------- FRAGMENT B: typographic authority (paper ground) ---------- */
+  .frag-type{background:var(--n00);}
+  .type-grid{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start;
+  }
+  @media (max-width:900px){.type-grid{grid-template-columns:1fr;gap:40px;}}
+  .type-eyebrow{color:var(--amber-deep);}
+  .type-h1{
+    font-family:var(--f-display);font-weight:600;font-size:40px;line-height:1.2;
+    letter-spacing:-0.015em;margin:16px 0 20px;color:var(--n80);
+  }
+  .type-h2{
+    font-family:var(--f-display);font-weight:600;font-size:32px;line-height:1.25;
+    letter-spacing:-0.01em;margin:0 0 14px;color:var(--n80);
+  }
+  .type-body{font-size:18px;line-height:1.556;color:var(--n70);max-width:52ch;margin:0 0 28px;}
+  .type-annot{
+    font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--n60);
+    border-top:1px solid var(--n20);padding-top:14px;
+  }
+  .label-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+  .label-chip{
+    font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--n60);
+    border:1px solid var(--n20);border-radius:999px;
+    padding:6px 14px;
+  }
+  .metric-card{
+    border:1px solid var(--n20);border-radius:var(--radius-12);
+    padding:32px;
+    background:var(--n10);
+  }
+  .metric-eyebrow{color:var(--n50);margin-bottom:10px;}
+  .metric-figure{
+    font-family:var(--f-display);font-weight:600;font-size:52px;line-height:1;
+    letter-spacing:-0.01em;color:var(--n80);
+    font-variant-numeric:tabular-nums;
+  }
+  .metric-figure span{color:var(--amber-deep);}
+  .metric-unit{font-family:var(--f-mono);font-size:13px;color:var(--n50);margin-top:8px;}
+
+  /* ---------- FRAGMENT C: diagnosis + sequence grammar (mid navy ground) ---------- */
+  .frag-grammar{
+    background:var(--navy-mid);
+    color:var(--n00);
+  }
+  .grammar-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
+  @media (max-width:900px){.grammar-grid{grid-template-columns:1fr;gap:56px;}}
+  .grammar-eyebrow{color:var(--amber-light);}
+  .grammar-title{
+    font-family:var(--f-display);font-weight:600;font-size:24px;
+    margin:14px 0 28px;color:var(--n00);
+  }
+  .diagnosis-svg{width:100%;height:auto;display:block;}
+  .seq-row{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
+  .seq-node{
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    flex:1;
+  }
+  .seq-dot{
+    width:14px;height:14px;border-radius:50%;
+    background:var(--navy-steel);
+    border:2px solid var(--navy-pale);
+  }
+  .seq-node.current .seq-dot{background:var(--amber);border-color:var(--amber-light);}
+  .seq-connector{flex:1.4;height:2px;background:var(--navy-steel);margin:0 -2px;position:relative;top:-17px;}
+  .seq-label{
+    font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--navy-pale);
+  }
+  .seq-node.current .seq-label{color:var(--amber-light);}
+  .grammar-note{
+    font-size:14.5px;line-height:1.6;color:var(--navy-pale);max-width:44ch;margin-top:24px;
+  }
+
+  /* ---------- FRAGMENT D: result / metric language (paper ground, no card chrome) ---------- */
+  .frag-result{background:var(--n00);text-align:left;}
+  .result-eyebrow{color:var(--amber-deep);}
+  .result-figure{
+    font-family:var(--f-display);font-weight:600;
+    font-size:clamp(48px, 8vw, 108px);
+    line-height:1;letter-spacing:-0.02em;
+    color:var(--n80);
+    font-variant-numeric:tabular-nums;
+    margin:18px 0 8px;
+  }
+  .result-figure .arrow{color:var(--n40);font-weight:500;padding:0 .15em;}
+  .result-figure .after{color:var(--amber-deep);}
+  .result-unit{font-family:var(--f-mono);font-size:14px;color:var(--n50);margin-bottom:20px;}
+  .result-caption{font-size:17px;color:var(--n70);max-width:50ch;}
+  .result-caption b{color:var(--n80);}
+
+  /* ---------- FRAGMENT E: product physicality (fog ground) ---------- */
+  .frag-artefact{background:var(--n10);}
+  .artefact-wrap{
+    display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:center;
+  }
+  @media (max-width:900px){.artefact-wrap{grid-template-columns:1fr;gap:44px;}}
+  .artefact-eyebrow{color:var(--n50);}
+  .artefact-title{
+    font-family:var(--f-display);font-weight:600;font-size:32px;line-height:1.25;
+    color:var(--n80);margin:14px 0 16px;
+  }
+  .artefact-body{font-size:16px;line-height:1.556;color:var(--n70);max-width:44ch;}
+  .stack{position:relative;height:280px;}
+  .stack-card{
+    position:absolute;
+    width:78%;height:200px;
+    background:var(--n00);
+    border:1px solid var(--n20);
+    border-radius:var(--radius-8);
+    padding:20px 22px;
+  }
+  .stack-card .tab{
+    font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--n50);
+    margin-bottom:12px;
+  }
+  .stack-card .doc-title{
+    font-family:var(--f-display);font-weight:600;font-size:17px;color:var(--n80);margin-bottom:8px;
+  }
+  .stack-card .rule{height:1px;background:var(--n20);margin:6px 0;}
+  .stack-card .rule.short{width:60%;}
+  .stack-card.c1{top:0;left:0;transform:rotate(-3.5deg);z-index:1;}
+  .stack-card.c2{top:26px;left:11%;transform:rotate(2deg);z-index:2;}
+  .stack-card.c3{top:52px;left:22%;transform:rotate(-1.2deg);z-index:3;border-color:var(--amber-deep);}
+  .stack-card.c3 .tab{color:var(--amber-deep);}
+
+  /* ---------- FRAGMENT F: mobile QA note (internal only) ---------- */
+  .frag-note{background:var(--n90);color:var(--n40);padding:40px 0;}
+  .frag-note .shell{font-family:var(--f-mono);font-size:12px;line-height:1.7;}
+  .frag-note strong{color:var(--n10);}
+
+  footer.canvas-footer{
+    background:var(--navy);color:var(--navy-pale);
+    padding:32px 0;
+    font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;
+  }
+  footer.canvas-footer .shell{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  footer.canvas-footer img{height:22px;opacity:.85;}
+</style>
+</head>
+<body>
+
+<div class="status-strip">Visual World Canvas &middot; <strong>Design Proof</strong> &middot; Not Approved &middot; Not Production &middot; Not V6</div>
+
+<!-- ============================================================
+     FRAGMENT A — Hero: brand presence, display type, tonal dark
+     ground, canonical CTA, photography + information overlay
+     ============================================================ -->
+<div class="nav-bar">
+  <div class="shell">
+    <div class="nav-chrome">
+      <img class="logo-mark" src="../brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+      <nav class="nav-links">
+        <a href="#" class="hide-mobile">Method</a>
+        <a href="#" class="hide-mobile">Health Check</a>
+        <a href="#" class="btn btn-primary-on-navy" style="height:40px;padding:0 18px;font-size:14px;">Start the Health Check</a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<section class="frag-hero">
+  <div class="shell">
+    <div class="hero-body">
+      <div>
+        <span class="eyebrow hero-eyebrow">Opsteady 2.0</span>
+        <h1 class="hero-headline">Know what to&nbsp;fix first.</h1>
+        <p class="hero-sub">Opsteady diagnoses where a site stands and sequences the right response — deployed by your own team, in the right order.</p>
+        <div class="cta-row">
+          <a href="#" class="btn btn-primary-on-navy">Start the Health Check</a>
+          <a href="#" class="link-on-navy">See how a site changed course &rarr;</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="photo-panel">
+          <img src="assets/temp-steel-surface.jpg" alt="Worn steel surface, close crop, placeholder material reference">
+          <svg class="annot-svg" viewBox="0 0 400 500" preserveAspectRatio="none">
+            <line x1="90" y1="120" x2="30" y2="80" stroke="#D08F25" stroke-width="1.5"/>
+            <circle cx="90" cy="120" r="3" fill="#D08F25"/>
+            <line x1="260" y1="330" x2="330" y2="380" stroke="#D08F25" stroke-width="1.5"/>
+            <circle cx="260" cy="330" r="3" fill="#D08F25"/>
+          </svg>
+          <div class="annot-label" style="top:14%; left:6%;">Contact wear</div>
+          <div class="annot-label" style="top:73%; left:58%;">Tooling marks</div>
+        </div>
+        <p class="photo-caption"><b>Placeholder photograph — temporary.</b> CC0-licensed material reference, not final Opsteady brand photography (R.2 governed-temporary use). Final production photography stays inside the material/surface/tools-at-rest category only — no factory, no machinery in operation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FRAGMENT B — Typographic authority: H1/H2, body, technical
+     annotation, metric/data type, labels — on a paper ground
+     ============================================================ -->
+<section class="frag-type fragment">
+  <div class="shell">
+    <p class="frag-label">Fragment &middot; typographic authority</p>
+    <div class="type-grid">
+      <div>
+        <span class="eyebrow type-eyebrow">The method</span>
+        <h2 class="type-h1">Diagnose. Sequence. Deploy.</h2>
+        <h3 class="type-h2" style="font-size:26px;">Where this fits</h3>
+        <p class="type-body">Most sites already know something is not working. The harder part is knowing what to fix first — and what to deliberately leave alone.</p>
+        <p class="type-annot">Stage — Stabilise &middot; Position 2 of 4</p>
+        <div class="label-row">
+          <span class="label-chip">No sales call</span>
+          <span class="label-chip">Private by default</span>
+          <span class="label-chip">Your team deploys it</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <p class="eyebrow metric-eyebrow">Deployment cost</p>
+        <div class="metric-figure">&pound;0<span>&nbsp;extra</span></div>
+        <p class="metric-unit">headcount &middot; six-week window</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FRAGMENT C — Diagnosis grammar + sequence grammar, tonal
+     mid-navy ground, restrained amber marking the current point
+     ============================================================ -->
+<section class="frag-grammar fragment">
+  <div class="shell">
+    <p class="frag-label" style="color:var(--navy-steel);">Fragment &middot; diagnosis &amp; sequence grammar</p>
+    <div class="grammar-grid">
+      <div>
+        <span class="eyebrow grammar-eyebrow">Diagnosis</span>
+        <h3 class="grammar-title">Signal settling to a position</h3>
+        <svg class="diagnosis-svg" viewBox="0 0 420 130" fill="none">
+          <path d="M10 40 L40 90 L65 25 L90 100 L115 55 L140 70 L165 50 Q 220 62 280 62 L 380 62"
+                stroke="#8496B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="380" cy="62" r="6" fill="#D08F25"/>
+          <circle cx="380" cy="62" r="11" fill="none" stroke="#D08F25" stroke-width="1" opacity=".5"/>
+        </svg>
+        <p class="grammar-note">Noise resolves into one settled position — never a percentage, never a blended score. The marked point is the one thing that matters right now.</p>
+      </div>
+      <div>
+        <span class="eyebrow grammar-eyebrow">Sequence</span>
+        <h3 class="grammar-title">Diagnose &rarr; Prioritise &rarr; Sequence &rarr; Act</h3>
+        <div class="seq-row">
+          <div class="seq-node"><div class="seq-dot"></div><span class="seq-label">Assess</span></div>
+          <div class="seq-connector"></div>
+          <div class="seq-node"><div class="seq-dot"></div><span class="seq-label">Prioritise</span></div>
+          <div class="seq-connector"></div>
+          <div class="seq-node current"><div class="seq-dot"></div><span class="seq-label">Sequence</span></div>
+          <div class="seq-connector"></div>
+          <div class="seq-node"><div class="seq-dot"></div><span class="seq-label">Act</span></div>
+        </div>
+        <p class="grammar-note">Every recommendation states what comes before it. One current step, marked amber — never a browsable dependency graph.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FRAGMENT D — Result / metric language: large isolated
+     figure, no SaaS-KPI-card chrome
+     ============================================================ -->
+<section class="frag-result fragment">
+  <div class="shell">
+    <p class="frag-label">Fragment &middot; result language</p>
+    <span class="eyebrow result-eyebrow">Riverside Fabrication &middot; illustrative worked example</span>
+    <div class="result-figure">180<span class="arrow">&rarr;</span><span class="after">224</span></div>
+    <p class="result-unit">units / week &middot; finishing</p>
+    <p class="result-caption">Six weeks. Same site, same headcount. <b>&pound;0</b> spent on the extra operator that was never needed — the constraint was never the press.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FRAGMENT E — Product / intervention physicality: a
+     deployable package, not a PDF; no paid content exposed
+     ============================================================ -->
+<section class="frag-artefact fragment">
+  <div class="shell">
+    <p class="frag-label">Fragment &middot; intervention physicality</p>
+    <div class="artefact-wrap">
+      <div>
+        <span class="eyebrow artefact-eyebrow">What you receive</span>
+        <h3 class="artefact-title">A deployment pack, not a download.</h3>
+        <p class="artefact-body">Guides, a working sequence planner, and deployment notes — built to be used on the floor within days, not filed away.</p>
+      </div>
+      <div class="stack">
+        <div class="stack-card c1">
+          <div class="tab">Deployment notes</div>
+          <div class="rule"></div><div class="rule short"></div><div class="rule"></div>
+        </div>
+        <div class="stack-card c2">
+          <div class="tab">Sequence planner</div>
+          <div class="rule"></div><div class="rule"></div><div class="rule short"></div>
+        </div>
+        <div class="stack-card c3">
+          <div class="tab">P4.1 &middot; Bottleneck Analysis</div>
+          <div class="doc-title">Deployment pack</div>
+          <div class="rule"></div><div class="rule short"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="frag-note">
+  <div class="shell">
+    <strong>Internal note, not part of the visual proof:</strong> this canvas is a single continuous page. Resize the browser
+    to ~390px width to check the mobile fragment reduction described in the delivery report — no separate phone mockup is
+    built here, per the instruction to prove real responsive behaviour rather than illustrate it.
+  </div>
+</div>
+
+<footer class="canvas-footer">
+  <div class="shell">
+    <span>OPSTEADY 2.0 &middot; VISUAL WORLD CANVAS &middot; DESIGN PROOF / NOT APPROVED / NOT PRODUCTION</span>
+    <img src="../brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+  </div>
+</footer>
+
+</body>
+</html>
