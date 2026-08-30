@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Wireframe — B. Problems Hub</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<div class="wf-metastrip">
+  <span>WIREFRAME B — PROBLEMS HUB (/problems) — NOT VISUAL DESIGN</span>
+  <a href="index.html">← Wireframe index</a>
+</div>
+<header class="wf-nav">
+  <div class="wf-shell">
+    <a class="wf-logo" href="homepage.html">[LOGO] → Home</a>
+    <nav class="wf-navlinks">
+      <a href="health-check-landing.html">Health Check</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="problems-hub.html" class="wf-current">Problems</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wf-page-body">
+  <div class="wf-shell">
+
+    <details class="wf-structure">
+      <summary>Page structure notes — click to expand</summary>
+      <div class="wf-structure-body">
+        <table class="wf-attr-table">
+          <tr><th>Page purpose</th><td>Help a visitor recognise their own operational situation among six territories, then route them onward — a light landing page, not a primary content page.</td></tr>
+          <tr><th>Primary customer question</th><td>"Does anything here sound like my operation?"</td></tr>
+          <tr><th>Likely entry routes</th><td>Primary nav ("Problems"), homepage secondary CTA, direct — rarely organic search itself (the six family pages carry the SEO weight, this hub does not)</td></tr>
+          <tr><th>Section order</th><td>Intro + Health Check escape hatch → six situations (list, not cards) → closing reassurance</td></tr>
+          <tr><th>Primary CTA</th><td>Per-situation: "See this problem" (contextual, not global)</td></tr>
+          <tr><th>Secondary CTA</th><td>"Not sure which fits? Run the Health Check instead" (offered once, at top, not repeated per row)</td></tr>
+          <tr><th>Next logical destinations</th><td>One of the six /problems/[family] pages, or Health Check landing</td></tr>
+          <tr><th>Health Check role</th><td>Offered once, prominently, as the alternative for a visitor who can't self-diagnose even against six options — never the only route off this page</td></tr>
+          <tr><th>Intervention role</th><td>None directly — this page never links straight to an intervention page; that link lives one level down, on the individual problem page</td></tr>
+          <tr><th>Proof role</th><td>None — this is a pure orientation/recognition surface</td></tr>
+          <tr><th>Expected content density</th><td>Light — six short situation statements, no enumeration of contents</td></tr>
+          <tr><th>Required visual role (later)</th><td>Restrained — no diagram required; at most a symptom-tag treatment per row, distinct from the homepage's system diagrams</td></tr>
+          <tr><th>Public/paid IP risk</th><td>None — no method content on this page at all</td></tr>
+          <tr><th>SEO role</th><td>Low directly (this hub is thin); its six children carry the real organic-acquisition weight</td></tr>
+          <tr><th>Mobile structural considerations</th><td>Six rows stack single-column; each row's tap target (the whole row, not just a small link) should be large — this is often a one-handed, standing read</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <div class="wf-section wf-dense">
+      <span class="wf-eyebrow">Section 1 — Intro + escape hatch</span>
+      <p class="wf-purpose">Purpose: frame the page as recognition, not a menu. Offer the Health Check as an alternative immediately, for the visitor who can't map themselves to any of the six.</p>
+      <h1 class="wf-headline wf-lg">[Headline: Which of these sounds like where you are right now?]</h1>
+      <div class="wf-ctarow">
+        <span class="wf-cta wf-secondary">[Not sure? → Start the Health Check instead]</span>
+      </div>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">Section 2 — Six situations, as an editorial list, NOT an icon-card grid</span>
+      <p class="wf-purpose">Design note: each row leads with quoted customer language, not a category noun — deliberately avoids the "six SEO cards" / "blog category page" / "disguised product categories" failure modes named in the task. No icons, no product thumbnails, no uniform card grid.</p>
+
+      <div class="wf-list-row">
+        <div><b>"[Machines keep stopping and I don't really know why.]"</b><br><span style="font-size:12px;color:#888;">→ Lost output &amp; downtime</span></div>
+        <a class="wf-cta" href="problem-detail.html">[See this problem →]</a>
+      </div>
+      <div class="wf-list-row">
+        <div><b>"[We keep missing delivery dates and I can't trust the plan.]"</b><br><span style="font-size:12px;color:#888;">→ On-time delivery &amp; plan reliability</span></div>
+        <a class="wf-cta" href="problem-detail.html">[See this problem →]</a>
+      </div>
+      <div class="wf-list-row">
+        <div><b>"[One part of the line is always the problem.]"</b><br><span style="font-size:12px;color:#888;">→ Flow &amp; bottlenecks</span></div>
+        <a class="wf-cta" href="problem-detail.html">[See this problem →]</a>
+      </div>
+      <div class="wf-list-row">
+        <div><b>"[Every shift feels like firefighting.]"</b><br><span style="font-size:12px;color:#888;">→ Running the day</span></div>
+        <a class="wf-cta" href="problem-detail.html">[See this problem →]</a>
+      </div>
+      <div class="wf-list-row">
+        <div><b>"[Different people do the same job differently.]"</b><br><span style="font-size:12px;color:#888;">→ Consistent work &amp; capability</span></div>
+        <a class="wf-cta" href="problem-detail.html">[See this problem →]</a>
+      </div>
+      <div class="wf-list-row">
+        <div><b>"[The same defects keep coming back.]"</b><br><span style="font-size:12px;color:#888;">→ Recurring problems &amp; quality escapes</span></div>
+        <a class="wf-cta" href="problem-detail.html">[See this problem →]</a>
+      </div>
+    </div>
+
+    <div class="wf-section wf-tint">
+      <span class="wf-eyebrow">Section 3 — Closing reassurance</span>
+      <p class="wf-body-text">[Line: none of these quite it? The Health Check will work it out with you — no need to guess.]</p>
+      <div class="wf-ctarow"><span class="wf-cta wf-primary">[PRIMARY CTA → Start Health Check]</span></div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="wf-footer">
+  <div class="wf-shell">
+    <div class="wf-footer-links">
+      <a href="interventions-index.html">Interventions</a>
+      <a href="how-it-works.html">The Method</a>
+      <a href="worked-example.html">Case Studies</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+      <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Sitemap</a>
+      <a href="health-check-landing.html">Health Check</a>
+    </div>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#555;">Footer — identical markup across every page (§X.1)</div>
+  </div>
+</footer>
+</body>
+</html>

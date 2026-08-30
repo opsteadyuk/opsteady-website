@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Wireframe — F. Intervention Page (generic archetype)</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<div class="wf-metastrip">
+  <span>WIREFRAME F — INTERVENTION PAGE (/interventions/[slug]) — GENERIC ARCHETYPE — NOT VISUAL DESIGN</span>
+  <a href="index.html">← Wireframe index</a>
+</div>
+<header class="wf-nav">
+  <div class="wf-shell">
+    <a class="wf-logo" href="homepage.html">[LOGO] → Home</a>
+    <nav class="wf-navlinks">
+      <a href="health-check-landing.html">Health Check</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="problems-hub.html">Problems</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wf-page-body">
+  <div class="wf-shell">
+    <p style="font-size:12px;font-family:'Courier New',monospace;color:#777;">Interventions &gt; Flow &amp; Bottlenecks &gt; Bottleneck Analysis Tool (breadcrumb, this page type only)</p>
+
+    <details class="wf-structure">
+      <summary>Page structure notes — click to expand</summary>
+      <div class="wf-structure-body">
+        <table class="wf-attr-table">
+          <tr><th>Page purpose</th><td>Let a visitor decide, standing alone with no completed Health Check, whether this specific intervention is worth buying.</td></tr>
+          <tr><th>Primary customer question</th><td>"Is this for my situation, and is it worth the price?"</td></tr>
+          <tr><th>Likely entry routes</th><td>Health Check result (?ref=healthcheck&amp;reason=...), a problem page's direct link, the Interventions index, organic search, direct referral</td></tr>
+          <tr><th>Section order</th><td>1 Hero → 2 Who this is for → 3 Where it sits → 4 What it does → 5 What is in it → 6 What it takes → 7 Essentials vs Pro → 8 Sample → 9 FAQ → 10 Health Check band (unchanged 10-section archetype)</td></tr>
+          <tr><th>Primary CTA</th><td>Buy (hero, position 1) — present again, lighter weight, at position 10</td></tr>
+          <tr><th>Secondary CTA</th><td>Health Check band (position 10) — "not sure this is the right one? Run the Health Check"</td></tr>
+          <tr><th>Next logical destinations</th><td>Checkout handoff (D3, not built), a related/prerequisite intervention (position 3 links), or the Health Check</td></tr>
+          <tr><th>Health Check role</th><td>Persistent CTA band at position 10 only — visually subordinate to the buy action at position 1, never forced above it</td></tr>
+          <tr><th>Intervention role</th><td>This IS the intervention page — the archetype itself, generic across all 70 module types (see genericity note below)</td></tr>
+          <tr><th>Proof role</th><td>Position 8, "Sample" — one real page/screenshot, or (for non-tool interventions) one real extract, per Proof Without Transfer</td></tr>
+          <tr><th>Expected content density</th><td>Light, sections 1–4 (Speed to Decision — reach section 5 in well under a minute). Evidence-dense, sections 5–9 (this is where the purchase decision is actually made).</td></tr>
+          <tr><th>Required visual role (later)</th><td>Sequence-flow diagram at position 3; a real screenshot/extract at position 8 — the only page type needing real product-output evidence</td></tr>
+          <tr><th>Public/paid IP risk</th><td>Highest of any page type — position 5 ("what is in it") must never appear before position 5; position 8 ("sample") must prove real substance without enough material to reconstruct the intervention</td></tr>
+          <tr><th>SEO role</th><td>High for modules that are real search targets; some of the 70 exist for commercial completeness/Health-Check linkage rather than organic acquisition — not every page needs to rank</td></tr>
+          <tr><th>Mobile structural considerations</th><td>Single-column narrative; the Essentials/Pro comparison table compresses (never stacks) for a genuine comparison; buy area stays reachable without excessive scrolling</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <div class="wf-next" style="margin-bottom:18px;">
+      <b>Genericity note</b> — this archetype is shown with P4.1 Bottleneck Analysis Tool as content
+      evidence only. Sections 5 and 6 must flex by module type: a spreadsheet/template module lists files
+      and setup steps; a Culture or Coaching Skills module lists frameworks, discussion guides and a
+      facilitation sequence instead of downloadable files; a P&amp;L-related module lists worked
+      calculation logic (conclusions only) and a translation guide. No section is reworded away for
+      non-tool content — the same ten positions apply, only the content class inside "what is in it"
+      changes.
+    </div>
+
+    <div class="wf-section wf-dense">
+      <span class="wf-eyebrow">1 — Hero</span>
+      <p class="wf-purpose">Full disclosure — price and situation are never gated.</p>
+      <span class="wf-tag">[Stage: Flow]</span> <span class="wf-tag">[Tier: Pro]</span>
+      <h1 class="wf-headline wf-lg">[Bottleneck Analysis Tool]</h1>
+      <p class="wf-body-text">[Situation line: for when one part of the line always takes the blame, and you're not sure it's the real constraint.]</p>
+      <div class="wf-ctarow">
+        <span class="wf-cta wf-primary">[BUY — Pro £99 (Showcase)]</span>
+        <span class="wf-cta wf-secondary">[Essentials £—]</span>
+      </div>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">2 — Who this is for</span>
+      <p class="wf-body-text">[2–3 situations, reader's language: "the plant manager under pressure to add headcount at the loudest station"; "the ops lead who suspects the bottleneck moved and nobody re-checked."]</p>
+    </div>
+
+    <div class="wf-section wf-tint">
+      <span class="wf-eyebrow">3 — Where it sits</span>
+      <p class="wf-purpose">Shows sequencing conclusion, never the scoring logic behind it — the "before this, you'll usually want" device.</p>
+      <div class="wf-placeholder">[SEQUENCE-FLOW DIAGRAM: prerequisite/companion modules, this one marked current]</div>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">4 — What it does</span>
+      <p class="wf-body-text">[Outcome, not contents: know what you can actually make, and where the real constraint is today.]</p>
+    </div>
+
+    <div class="wf-section wf-dense">
+      <span class="wf-eyebrow">5 — What is in it (never earlier than this position)</span>
+      <span class="wf-tag">[Bottleneck_Analysis_Template.xlsx]</span>
+      <span class="wf-tag">[Pro Guide]</span>
+      <span class="wf-tag">[Training deck]</span>
+      <span class="wf-tag">[FAQ]</span>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">6 — What it takes</span>
+      <table class="wf-plain">
+        <tr><th>Setup time</th><td>[X hours]</td></tr>
+        <tr><th>Ongoing time</th><td>[X mins/week]</td></tr>
+        <tr><th>Who's involved</th><td>[Ops lead + one shift supervisor]</td></tr>
+      </table>
+    </div>
+
+    <div class="wf-section wf-tint">
+      <span class="wf-eyebrow">7 — Essentials vs Pro (only where tier_structure genuinely carries both)</span>
+      <table class="wf-plain">
+        <tr><th></th><th>Essentials</th><th>Pro</th></tr>
+        <tr><td>[Core template]</td><td>✓</td><td>✓</td></tr>
+        <tr><td>[Full guide + training]</td><td>—</td><td>✓</td></tr>
+      </table>
+    </div>
+
+    <div class="wf-section wf-dense">
+      <span class="wf-eyebrow">8 — Sample</span>
+      <p class="wf-purpose">Real structure/anonymised data — enough to prove it's real, not enough to reconstruct it (Proof Without Transfer).</p>
+      <div class="wf-placeholder wf-tall">[ONE REAL PAGE/SCREENSHOT EXTRACT]</div>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">9 — FAQ</span>
+      <p class="wf-body-text">[4–6 practical questions, plain text, no visual device needed]</p>
+    </div>
+
+    <div class="wf-section wf-dark">
+      <span class="wf-eyebrow">10 — Health Check band</span>
+      <div class="wf-ctarow">
+        <span class="wf-cta wf-primary">[Not sure this is right? → Health Check]</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="wf-footer">
+  <div class="wf-shell">
+    <div class="wf-footer-links">
+      <a href="interventions-index.html">Interventions</a>
+      <a href="how-it-works.html">The Method</a>
+      <a href="worked-example.html">Case Studies</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+      <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Sitemap</a>
+      <a href="health-check-landing.html">Health Check</a>
+    </div>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#555;">Footer — identical markup across every page (§X.1)</div>
+  </div>
+</footer>
+</body>
+</html>

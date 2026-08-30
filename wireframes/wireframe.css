@@ -1,0 +1,255 @@
+/* OPSTEADY 2.0 — STRUCTURAL WIREFRAMES
+   Deliberately low-fidelity. No brand colour, no photography, no gradients,
+   no production typography. Neutral greys only. This stylesheet exists to
+   make structure legible, not to look finished. */
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: #eeece7;
+  color: #222;
+  font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.wf-shell {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- meta strip: page identity + status ---------- */
+.wf-metastrip {
+  background: #1a1a1a;
+  color: #eee;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  padding: 6px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.wf-metastrip a { color: #eee; }
+
+/* ---------- nav (wireframe convention, shared across pages) ---------- */
+.wf-nav {
+  background: #d8d5cc;
+  border-bottom: 2px dashed #999;
+}
+.wf-nav .wf-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.wf-logo {
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: 1px dashed #777;
+  padding: 6px 10px;
+  background: #fff;
+  text-decoration: none;
+  color: #111;
+}
+.wf-navlinks { display: flex; gap: 4px; flex-wrap: wrap; }
+.wf-navlinks a {
+  font-size: 13px;
+  text-decoration: none;
+  color: #333;
+  background: #fff;
+  border: 1px solid #aaa;
+  padding: 6px 10px;
+}
+.wf-navlinks a.wf-current { background: #ccc; font-weight: 700; }
+.wf-navlinks a.wf-excluded { border-style: dashed; color: #888; }
+
+/* ---------- structure panel (the 15-attribute annotation block) ---------- */
+details.wf-structure {
+  background: #fff;
+  border: 1px solid #999;
+  margin: 18px 0;
+}
+details.wf-structure > summary {
+  cursor: pointer;
+  padding: 10px 14px;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #f2f0ea;
+  border-bottom: 1px solid #ccc;
+}
+details.wf-structure[open] > summary { border-bottom: 1px solid #999; }
+.wf-structure-body { padding: 4px 14px 14px; }
+.wf-attr-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.wf-attr-table th, .wf-attr-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 6px 8px;
+  border-bottom: 1px solid #e3e0d8;
+}
+.wf-attr-table th {
+  width: 220px;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #555;
+  white-space: nowrap;
+}
+
+/* ---------- section blocks (the actual wireframe content) ---------- */
+.wf-page-body { padding: 24px 0 60px; }
+
+.wf-section {
+  background: #fff;
+  border: 1px dashed #999;
+  margin-bottom: 18px;
+  padding: 20px;
+  position: relative;
+}
+.wf-section.wf-dense { border-style: solid; }
+.wf-section.wf-tint { background: #f4f2ec; }
+.wf-section.wf-dark { background: #3a3a3a; color: #eee; border-color: #666; }
+.wf-section.wf-dark .wf-eyebrow { color: #bbb; border-color: #777; }
+.wf-section.wf-dark .wf-note { color: #ccc; }
+
+.wf-eyebrow {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #666;
+  border: 1px solid #999;
+  padding: 2px 8px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+.wf-section.wf-dark .wf-eyebrow { background: #222; }
+
+.wf-purpose {
+  font-size: 12px;
+  font-style: italic;
+  color: #777;
+  margin: 0 0 14px;
+}
+
+.wf-headline {
+  font-size: 22px;
+  font-weight: 700;
+  color: #555;
+  margin: 0 0 8px;
+  font-family: Georgia, serif;
+}
+.wf-headline.wf-lg { font-size: 30px; }
+.wf-section.wf-dark .wf-headline { color: #eee; }
+
+.wf-body-text {
+  color: #666;
+  font-size: 14px;
+  margin: 0 0 10px;
+  max-width: 60ch;
+}
+.wf-section.wf-dark .wf-body-text { color: #ccc; }
+
+.wf-tag {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  border: 1px solid #999;
+  padding: 2px 7px;
+  margin: 2px 4px 2px 0;
+  background: #eee;
+  color: #444;
+}
+
+/* CTA placeholders */
+.wf-cta {
+  display: inline-block;
+  border: 2px solid #333;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 4px 8px 4px 0;
+  background: #fff;
+  color: #222;
+}
+.wf-cta.wf-primary { background: #333; color: #fff; }
+.wf-cta.wf-secondary { border-style: dashed; }
+.wf-ctarow { margin-top: 10px; }
+
+/* diagram / image placeholder — classic crossed box */
+.wf-placeholder {
+  border: 1px dashed #999;
+  background:
+    repeating-linear-gradient(45deg, #eee, #eee 10px, #e2e2e2 10px, #e2e2e2 20px);
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  padding: 12px;
+  margin: 10px 0;
+}
+.wf-placeholder.wf-tall { min-height: 220px; }
+.wf-placeholder.wf-short { min-height: 60px; }
+
+/* grid helpers */
+.wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.wf-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.wf-list-row {
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.wf-list-row .wf-list-price { font-family: "Courier New", monospace; font-size: 13px; color: #444; }
+
+table.wf-plain { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.wf-plain th, table.wf-plain td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+table.wf-plain th { background: #eee; }
+
+/* footer */
+.wf-footer {
+  background: #d8d5cc;
+  border-top: 2px dashed #999;
+  padding: 20px 0 30px;
+  margin-top: 30px;
+}
+.wf-footer .wf-shell { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; }
+.wf-footer-links { display: flex; flex-wrap: wrap; gap: 4px; }
+.wf-footer-links a { font-size: 12px; color: #444; background: #fff; border: 1px solid #bbb; padding: 4px 8px; text-decoration: none; }
+
+/* next-destinations block */
+.wf-next {
+  border: 1px solid #999;
+  background: #f7f6f2;
+  padding: 12px 16px;
+  font-size: 13px;
+}
+.wf-next b { font-family: "Courier New", monospace; font-size: 11px; text-transform: uppercase; }
+
+@media (max-width: 640px) {
+  .wf-grid-2, .wf-grid-3 { grid-template-columns: 1fr; }
+  .wf-headline.wf-lg { font-size: 24px; }
+  .wf-attr-table th { width: 140px; }
+}

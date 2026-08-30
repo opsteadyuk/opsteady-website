@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Wireframe — J. Health Check Public Landing</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<div class="wf-metastrip">
+  <span>WIREFRAME J — HEALTH CHECK PUBLIC LANDING — HANDOFF ONLY, NOT THE ASSESSMENT ITSELF</span>
+  <a href="index.html">← Wireframe index</a>
+</div>
+<header class="wf-nav">
+  <div class="wf-shell">
+    <a class="wf-logo" href="homepage.html">[LOGO] → Home</a>
+    <nav class="wf-navlinks">
+      <a href="health-check-landing.html" class="wf-current">Health Check</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="problems-hub.html">Problems</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wf-page-body">
+  <div class="wf-shell">
+
+    <details class="wf-structure">
+      <summary>Page structure notes — click to expand</summary>
+      <div class="wf-structure-body">
+        <table class="wf-attr-table">
+          <tr><th>Page purpose</th><td>Sell the ~15 minutes honestly, then hand off cleanly into the separate `healthcheck.opsteady.co.uk` deployment. The actual assessment UI is explicitly out of scope for this task.</td></tr>
+          <tr><th>Primary customer question</th><td>"Why should I spend 15 minutes on this, and what happens with my answers?"</td></tr>
+          <tr><th>Likely entry routes</th><td>Primary nav (every page), homepage primary CTA, a problem page's "not sure? Health Check" route, a product page's persistent CTA band</td></tr>
+          <tr><th>Section order</th><td>What is this / why take it → what you'll get → how long it takes → privacy &amp; no-sales-call promise → what happens after → start (external handoff)</td></tr>
+          <tr><th>Primary CTA</th><td>Start the Health Check — this is the ONE external handoff link on the whole public site into the separate deployment</td></tr>
+          <tr><th>Secondary CTA</th><td>None — a single clear action, no competing CTA on this page</td></tr>
+          <tr><th>Next logical destinations</th><td>`healthcheck.opsteady.co.uk` (separate deployment, not designed here) — or, if the visitor backs out, Problems hub / an intervention page</td></tr>
+          <tr><th>Health Check role</th><td>This IS the Health Check's public-site presence — the handoff boundary itself</td></tr>
+          <tr><th>Intervention role</th><td>None directly — interventions appear only after a result exists, inside the separate Health Check deployment</td></tr>
+          <tr><th>Proof role</th><td>Minimal — a short, honest statement of value ("a specific, sequenced result, not a generic score"), not a case study</td></tr>
+          <tr><th>Expected content density</th><td>Light-moderate — enough to earn 15 minutes of trust, not a full sales page</td></tr>
+          <tr><th>Required visual role (later)</th><td>Restrained — no diagnostic visual borrowed from the actual assessment; a simple step/time indicator at most</td></tr>
+          <tr><th>Public/paid IP risk</th><td>None — no diagnostic content, no scoring logic, nothing about how questions map to results</td></tr>
+          <tr><th>SEO role</th><td>High — "manufacturing health check," "operations diagnostic" style search terms; a genuine acquisition surface</td></tr>
+          <tr><th>Mobile structural considerations</th><td>Large touch target for start (44×44px minimum, gloved/standing/one-handed reader); the external handoff must be unambiguous on a small screen</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <div class="wf-section wf-dense">
+      <span class="wf-eyebrow">Section 1 — What is this / why take it</span>
+      <h1 class="wf-headline wf-lg">[Headline: find out what actually deserves attention]</h1>
+      <p class="wf-body-text">[A short, honest diagnostic — not a generic maturity score. About 15 minutes, specific to your operation.]</p>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">Section 2 — What you'll get</span>
+      <p class="wf-body-text">[A prioritised, sequenced result with a concrete first move — reachable within days, not a quarter.]</p>
+    </div>
+
+    <div class="wf-section wf-tint">
+      <span class="wf-eyebrow">Section 3 — How long it takes</span>
+      <div class="wf-placeholder wf-short">[~15 MINUTES — simple time/step indicator, not a diagnostic preview]</div>
+    </div>
+
+    <div class="wf-section wf-dense">
+      <span class="wf-eyebrow">Section 4 — Privacy &amp; no-sales-call promise (the radical privacy promise, stated explicitly)</span>
+      <span class="wf-tag">[No sales calls]</span>
+      <span class="wf-tag">[Your answers stay private]</span>
+      <span class="wf-tag">[No spam]</span>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">Section 5 — What happens after</span>
+      <p class="wf-body-text">[Your result links straight to the specific intervention(s) it recommends — never a generic score, never a forced sales conversation.]</p>
+    </div>
+
+    <div class="wf-section wf-dark wf-dense">
+      <span class="wf-eyebrow">Section 6 — Start (external handoff)</span>
+      <p class="wf-purpose" style="color:#ccc;">Structural note: this button is the one place the public site hands off to a genuinely separate deployment (healthcheck.opsteady.co.uk). The handoff should read as one continuous act, not a jarring drop into different chrome — but the actual assessment UI is out of scope for this task.</p>
+      <div class="wf-ctarow"><span class="wf-cta wf-primary">[START THE HEALTH CHECK → (external: healthcheck.opsteady.co.uk)]</span></div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="wf-footer">
+  <div class="wf-shell">
+    <div class="wf-footer-links">
+      <a href="interventions-index.html">Interventions</a>
+      <a href="how-it-works.html">The Method</a>
+      <a href="worked-example.html">Case Studies</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+      <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Sitemap</a>
+      <a href="health-check-landing.html" class="wf-current" style="background:#ccc;">Health Check</a>
+    </div>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#555;">Footer — identical markup across every page (§X.1)</div>
+  </div>
+</footer>
+</body>
+</html>

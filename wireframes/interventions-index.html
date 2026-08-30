@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Wireframe — E. Interventions Discovery</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<div class="wf-metastrip">
+  <span>WIREFRAME E — INTERVENTIONS DISCOVERY (/interventions) — NOT VISUAL DESIGN — NOT A CATALOGUE</span>
+  <a href="index.html">← Wireframe index</a>
+</div>
+<header class="wf-nav">
+  <div class="wf-shell">
+    <a class="wf-logo" href="homepage.html">[LOGO] → Home</a>
+    <nav class="wf-navlinks">
+      <a href="health-check-landing.html">Health Check</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="problems-hub.html">Problems</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+    </nav>
+    <span style="font-family:'Courier New',monospace;font-size:11px;color:#888;">(footer/contextual only — not primary nav, §B.2)</span>
+  </div>
+</header>
+
+<div class="wf-page-body">
+  <div class="wf-shell">
+
+    <details class="wf-structure">
+      <summary>Page structure notes — click to expand</summary>
+      <div class="wf-structure-body">
+        <table class="wf-attr-table">
+          <tr><th>Page purpose</th><td>Serve the visitor who already knows roughly what they need and wants to find it directly, and the visitor checking "how deep does this go" — never the primary discovery route.</td></tr>
+          <tr><th>Primary customer question</th><td>"If I know what I need, can I find it here?"</td></tr>
+          <tr><th>Likely entry routes</th><td>Footer nav, a problem page's "where it sits" context, an intervention page's related-items link, direct search for a specific tool name, sitemap</td></tr>
+          <tr><th>Section order</th><td>Intro + outcome search → grouped by problem-family/outcome (not F/P/E codes) → Health Check nudge (once, in intro copy only)</td></tr>
+          <tr><th>Primary CTA</th><td>Per-row: view the specific intervention</td></tr>
+          <tr><th>Secondary CTA</th><td>"Not sure where to start? Run the Health Check" — stated once in the intro, not repeated per group or per row</td></tr>
+          <tr><th>Next logical destinations</th><td>Any /interventions/[slug] page, or Health Check landing</td></tr>
+          <tr><th>Health Check role</th><td>Present in the page's own intro copy only, never pasted per group or per card</td></tr>
+          <tr><th>Intervention role</th><td>This IS the intervention-listing surface — but grouped by outcome language, never a flat 70-row/card list</td></tr>
+          <tr><th>Proof role</th><td>None on this page — proof lives on each intervention's own page</td></tr>
+          <tr><th>Expected content density</th><td>Moderate — scannable groups, not a data dump</td></tr>
+          <tr><th>Required visual role (later)</th><td>Restrained data only — group headers, a band-driven depth cue, no per-row imagery. A visual grid here would tip back into marketplace framing.</td></tr>
+          <tr><th>Public/paid IP risk</th><td>None — this page lists names and one-line outcomes only, no method content</td></tr>
+          <tr><th>SEO role</th><td>Moderate — a real indexable page, but the generation target (all 70 slugs) carries more organic weight than the index itself</td></tr>
+          <tr><th>Mobile structural considerations</th><td>Groups collapse to accordions or a simple stacked list; the outcome-search field must remain usable one-handed; no per-row imagery to cause layout thrash</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <div class="wf-section wf-dense">
+      <span class="wf-eyebrow">Section 1 — Intro + outcome search (search/filter only where genuinely useful)</span>
+      <p class="wf-purpose">Purpose: frame this as "find what you already know you need," not "browse everything." No module count anywhere on this page — see §R acceptance test.</p>
+      <h1 class="wf-headline wf-lg">[Headline: find a specific intervention]</h1>
+      <p class="wf-body-text">[Line: know what you need? Search by outcome below. Not sure? Run the Health Check instead →]</p>
+      <div class="wf-placeholder wf-short">[SEARCH BY OUTCOME — text field, not a faceted filter panel]</div>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">Section 2 — Grouped by problem-family/outcome language (NOT Foundation/Pillar/Enabler)</span>
+      <p class="wf-purpose">Purpose: prove structurally that depth is communicable without a 70-card grid — grouped, capped rows per group, "see more in this group" rather than a full flat listing.</p>
+
+      <div style="margin-bottom:18px;">
+        <span class="wf-eyebrow">Group: Flow &amp; bottlenecks</span>
+        <div class="wf-list-row"><span>[Bottleneck Analysis Tool — "know what you can actually make"]</span><span class="wf-list-price">from £99</span></div>
+        <div class="wf-list-row"><span>[SMED / Changeover Reduction — "reduce changeover without instability"]</span><span class="wf-list-price">from £89</span></div>
+        <div class="wf-list-row"><span>[+ 4 more in this group — see all →]</span><span class="wf-list-price"></span></div>
+      </div>
+
+      <div style="margin-bottom:18px;">
+        <span class="wf-eyebrow">Group: Running the day</span>
+        <div class="wf-list-row"><span>[Shift Handover System — "nothing important gets lost between shifts"]</span><span class="wf-list-price">from £89</span></div>
+        <div class="wf-list-row"><span>[SQDC Performance Boards — "make today's performance impossible to miss"]</span><span class="wf-list-price">from £179</span></div>
+        <div class="wf-list-row"><span>[+ 3 more in this group — see all →]</span><span class="wf-list-price"></span></div>
+      </div>
+
+      <p class="wf-body-text" style="font-style:italic;color:#999;">[remaining groups follow the same pattern — omitted here, wireframe only]</p>
+    </div>
+
+  </div>
+</div>
+
+<footer class="wf-footer">
+  <div class="wf-shell">
+    <div class="wf-footer-links">
+      <a href="interventions-index.html" class="wf-current" style="background:#ccc;">Interventions</a>
+      <a href="how-it-works.html">The Method</a>
+      <a href="worked-example.html">Case Studies</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+      <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Sitemap</a>
+      <a href="health-check-landing.html">Health Check</a>
+    </div>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#555;">Footer — identical markup across every page (§X.1)</div>
+  </div>
+</footer>
+</body>
+</html>

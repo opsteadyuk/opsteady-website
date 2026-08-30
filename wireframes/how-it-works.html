@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Wireframe — D. How It Works / Method</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<div class="wf-metastrip">
+  <span>WIREFRAME D — HOW IT WORKS (/the-method) — NOT VISUAL DESIGN</span>
+  <a href="index.html">← Wireframe index</a>
+</div>
+<header class="wf-nav">
+  <div class="wf-shell">
+    <a class="wf-logo" href="homepage.html">[LOGO] → Home</a>
+    <nav class="wf-navlinks">
+      <a href="health-check-landing.html">Health Check</a>
+      <a href="how-it-works.html" class="wf-current">How It Works</a>
+      <a href="problems-hub.html">Problems</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wf-page-body">
+  <div class="wf-shell">
+
+    <details class="wf-structure">
+      <summary>Page structure notes — click to expand</summary>
+      <div class="wf-structure-body">
+        <table class="wf-attr-table">
+          <tr><th>Page purpose</th><td>Make the whole Opsteady system coherent — the one page that explains how diagnosis, sequencing, deployment and the four-stage loop actually relate.</td></tr>
+          <tr><th>Primary customer question</th><td>"How does Opsteady actually think about improvement?"</td></tr>
+          <tr><th>Likely entry routes</th><td>Primary nav ("How It Works"), homepage row 4's "read more," a sceptical visitor checking method coherence before committing</td></tr>
+          <tr><th>Section order</th><td>What the system does (decision engine, linear) → How deployment actually runs (the loop, cyclic) → Where the two meet → Your team does the deploying → Next action</td></tr>
+          <tr><th>Primary CTA</th><td>Start the Health Check</td></tr>
+          <tr><th>Secondary CTA</th><td>Browse by problem</td></tr>
+          <tr><th>Next logical destinations</th><td>Health Check landing, Problems hub, one intervention page (illustrative link only, not a list)</td></tr>
+          <tr><th>Health Check role</th><td>Shown as the entry point into the decision engine — one stage of the system, not a separate concept bolted onto the page</td></tr>
+          <tr><th>Intervention role</th><td>Referenced generically ("an intervention"), at most one illustrative link — never a worked example or module count here</td></tr>
+          <tr><th>Proof role</th><td>None — this page proves coherence through structure, not through a worked example</td></tr>
+          <tr><th>Expected content density</th><td>Moderate — real depth on one coherent idea, not a Lean textbook</td></tr>
+          <tr><th>Required visual role (later)</th><td>The one page where the four-stage loop is the primary visual subject in full, alongside the linear decision-engine diagram</td></tr>
+          <tr><th>Public/paid IP risk</th><td>Low — the loop and the decision-engine stages are conceptual, not the scoring/sequencing logic itself</td></tr>
+          <tr><th>SEO role</th><td>Moderate — a credibility/depth page more than an acquisition page; supports "operator-led, not consultancy" trust signals</td></tr>
+          <tr><th>Mobile structural considerations</th><td>The two diagrams (linear + circular) stack vertically, redesigned rather than shrunk; the "where they meet" connector must remain legible at narrow width</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <div class="wf-section wf-dense">
+      <span class="wf-eyebrow">Section 1 — What the system does (linear, one pass per Health Check)</span>
+      <p class="wf-purpose">Purpose: show the decision engine as a directional sequence — this is NOT the same shape as the deployment loop below, and must not be merged with it into one invented framework.</p>
+      <div class="wf-placeholder wf-tall">[DIAGRAM: Diagnose → Prioritise → Sequence → Act — linear, left to right, terminates at "Act"]</div>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">Section 2 — How deployment actually runs (cyclic, repeats per intervention)</span>
+      <p class="wf-purpose">Purpose: the canonical loop, shown as a genuine circle, not a four-step ladder — Observe &amp; Learn is both the start and the return point.</p>
+      <div class="wf-placeholder wf-tall">[DIAGRAM: Observe &amp; Learn → Stabilise → Improve → Sustain → (arrow curves back to Observe &amp; Learn) — circular]</div>
+    </div>
+
+    <div class="wf-section wf-tint wf-dense">
+      <span class="wf-eyebrow">Section 3 — Where the two meet</span>
+      <p class="wf-purpose">Purpose: the actual coherence claim. Diagnosis reads which loop-stage an area currently sits at; "Act" from the linear engine is where you enter the loop; the loop's own progress becomes the input to the next diagnosis. This is the connective tissue the task explicitly asked for.</p>
+      <div class="wf-placeholder wf-tall">[CONNECTOR DIAGRAM: "Act" (end of linear engine) feeds into a specific point on the loop; loop progress feeds back into the NEXT Diagnose stage — shown as one combined system, not two unrelated diagrams]</div>
+      <p class="wf-body-text">[Line: your Health Check result tells you where on this loop each area of your operation actually sits today.]</p>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">Section 4 — Your team does the deploying</span>
+      <p class="wf-purpose">Purpose: state plainly that deployment guidance lives inside each intervention itself, not a separate coaching product — honesty boundary from the approved architecture.</p>
+      <p class="wf-body-text">[Line: every intervention includes what your team needs to run it — setup time, sequence, named traps. No consultant required.]</p>
+    </div>
+
+    <div class="wf-section wf-dark">
+      <span class="wf-eyebrow">Section 5 — Next action</span>
+      <div class="wf-ctarow">
+        <span class="wf-cta wf-primary">[PRIMARY CTA → Start Health Check]</span>
+        <span class="wf-cta wf-secondary">[SECONDARY → Browse by problem]</span>
+      </div>
+    </div>
+
+    <div class="wf-next">
+      <b>§7 note</b> — the linear decision engine and the cyclic deployment loop are deliberately kept as
+      two distinct diagrams with one explicit connector section, not merged into a single invented
+      five-or-six-step framework. Forcing them into one shape would misrepresent both: the engine runs once
+      per diagnosis, the loop repeats per intervention and never terminates.
+    </div>
+
+  </div>
+</div>
+
+<footer class="wf-footer">
+  <div class="wf-shell">
+    <div class="wf-footer-links">
+      <a href="interventions-index.html">Interventions</a>
+      <a href="how-it-works.html">The Method</a>
+      <a href="worked-example.html">Case Studies</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+      <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Sitemap</a>
+      <a href="health-check-landing.html">Health Check</a>
+    </div>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#555;">Footer — identical markup across every page (§X.1)</div>
+  </div>
+</footer>
+</body>
+</html>

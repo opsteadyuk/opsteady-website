@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Wireframe — Cross-Site Structural System</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<div class="wf-metastrip">
+  <span>CROSS-SITE STRUCTURAL SYSTEM — WHICH ELEMENTS ARE SHARED, WHICH VARY</span>
+  <a href="index.html">← Wireframe index</a>
+</div>
+<header class="wf-nav">
+  <div class="wf-shell">
+    <a class="wf-logo" href="homepage.html">[LOGO] → Home</a>
+    <nav class="wf-navlinks">
+      <a href="health-check-landing.html">Health Check</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="problems-hub.html">Problems</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wf-page-body">
+  <div class="wf-shell">
+
+    <div class="wf-section wf-dense">
+      <h1 class="wf-headline wf-lg">Cross-site structural system</h1>
+      <p class="wf-body-text">Coherent without templated: some elements are byte-identical everywhere (nav, footer); some are a
+      shared pattern applied with page-appropriate variation (proof, Health Check CTA, sequencing context);
+      some deliberately do not recur at all (the ten-section product archetype belongs only to intervention
+      pages). Forcing every page into the same section pattern was explicitly rejected — see the task's own
+      instruction not to force identical section patterns everywhere.</p>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">Identical everywhere (byte-for-byte pattern)</span>
+      <table class="wf-plain">
+        <tr><th>Element</th><th>Appears on</th><th>Note</th></tr>
+        <tr><td>Primary nav (Health Check · How It Works · Problems · Pricing · Who We Are)</td><td>Every page</td><td>Same 5 items, same order, current page marked</td></tr>
+        <tr><td>Footer (Interventions · The Method · Case Studies · Pricing · Who We Are · legal · Health Check)</td><td>Every page</td><td>Identical markup — see §X.1 of the approved architecture</td></tr>
+        <tr><td>Logo → Home</td><td>Every page</td><td>Never a nav item — it is the home affordance</td></tr>
+      </table>
+    </div>
+
+    <div class="wf-section wf-tint">
+      <span class="wf-eyebrow">Shared pattern, page-appropriate variation</span>
+      <table class="wf-plain">
+        <tr><th>Pattern</th><th>Homepage</th><th>Problem page</th><th>Intervention page</th><th>Case study</th></tr>
+        <tr><td>Health Check CTA</td><td>Two placements, one of several options</td><td>One of exactly two routes</td><td>Persistent band, position 10, subordinate to buy</td><td>One mention only, at the close</td></tr>
+        <tr><td>Proof / worked example</td><td>One teaser, row 6 of 7, never earlier</td><td>None — proof lives downstream</td><td>Position 8 "Sample" only — real extract, not a narrative</td><td>The entire page IS the proof</td></tr>
+        <tr><td>Sequencing / "where it sits"</td><td>One generic diagram, no named module</td><td>Implied, not shown (no method taught)</td><td>Position 3, explicit diagram, named prerequisites</td><td>Implicit only — the story shows a decision, not a graph</td></tr>
+        <tr><td>Next-move / handoff</td><td>Dual CTA, closing section</td><td>Two-route section, mid-page (this IS the page's job)</td><td>Buy (top) + Health Check (bottom)</td><td>Single clean handoff to one named intervention</td></tr>
+      </table>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">Deliberately NOT shared</span>
+      <table class="wf-plain">
+        <tr><th>Element</th><th>Belongs only to</th><th>Why it doesn't generalise</th></tr>
+        <tr><td>Ten-section product archetype</td><td>Intervention pages</td><td>No other page type needs a buy area, a tier comparison, or a "sample" section</td></tr>
+        <tr><td>Four-beat ASSUMPTION→FINDING→DECISION→RESULT</td><td>Case-study pages</td><td>Only a worked narrative needs a story arc — forcing it onto a problem page would violate the IP boundary</td></tr>
+        <tr><td>Six-situation editorial list</td><td>Problems hub</td><td>A one-off recognition device — reusing it (e.g. on the Interventions index) would reintroduce the "SEO card grid" failure mode</td></tr>
+        <tr><td>Linear + cyclic dual diagram</td><td>How It Works</td><td>The only page where explaining the system's own mechanics, in full, is the page's job</td></tr>
+      </table>
+    </div>
+
+    <div class="wf-next">
+      <b>Test</b> — a visitor moving from the homepage to a problem page to an intervention page to a case
+      study should recognise the site (same nav, same footer, same Health Check CTA logic, same proof
+      discipline) without ever seeing the same section twice in the same shape. That is the operational
+      definition of "coherent without templated" used to build every archetype in this set.
+    </div>
+
+  </div>
+</div>
+
+<footer class="wf-footer">
+  <div class="wf-shell">
+    <div class="wf-footer-links">
+      <a href="interventions-index.html">Interventions</a>
+      <a href="how-it-works.html">The Method</a>
+      <a href="worked-example.html">Case Studies</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+      <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Sitemap</a>
+      <a href="health-check-landing.html">Health Check</a>
+    </div>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#555;">Footer — identical markup across every page (§X.1)</div>
+  </div>
+</footer>
+</body>
+</html>

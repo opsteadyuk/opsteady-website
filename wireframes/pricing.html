@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Wireframe — H. Pricing</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<div class="wf-metastrip">
+  <span>WIREFRAME H — PRICING (/pricing) — NOT VISUAL DESIGN — PRICES UNCHANGED</span>
+  <a href="index.html">← Wireframe index</a>
+</div>
+<header class="wf-nav">
+  <div class="wf-shell">
+    <a class="wf-logo" href="homepage.html">[LOGO] → Home</a>
+    <nav class="wf-navlinks">
+      <a href="health-check-landing.html">Health Check</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="problems-hub.html">Problems</a>
+      <a href="pricing.html" class="wf-current">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wf-page-body">
+  <div class="wf-shell">
+
+    <details class="wf-structure">
+      <summary>Page structure notes — click to expand</summary>
+      <div class="wf-structure-body">
+        <table class="wf-attr-table">
+          <tr><th>Page purpose</th><td>Explain the commercial model plainly — philosophy first, so a visitor never needs this page before evaluating a specific intervention.</td></tr>
+          <tr><th>Primary customer question</th><td>"What's the catch, and roughly what will this cost me?"</td></tr>
+          <tr><th>Likely entry routes</th><td>Primary nav, an intervention page's "why this price" link, homepage trust section</td></tr>
+          <tr><th>Section order</th><td>Philosophy statement → Essentials vs Pro, explained once generically → Showcase pricing explained → where purchase actually happens</td></tr>
+          <tr><th>Primary CTA</th><td>None global — each explanatory block links to a representative intervention, not a generic "buy now"</td></tr>
+          <tr><th>Secondary CTA</th><td>See a representative intervention (direct link, added after Path 7 simulation — see spec §15) / Browse by problem</td></tr>
+          <tr><th>Next logical destinations</th><td>One representative intervention page directly, or Problems hub — both without this page selling directly itself</td></tr>
+          <tr><th>Health Check role</th><td>Minor — one mention only, for a visitor who arrived here without having diagnosed anything yet</td></tr>
+          <tr><th>Intervention role</th><td>Referenced only as representative examples of each band, never a live buy button on this page</td></tr>
+          <tr><th>Proof role</th><td>None — this is a clarity page, not a persuasion page</td></tr>
+          <tr><th>Expected content density</th><td>Light — clarity over completeness</td></tr>
+          <tr><th>Required visual role (later)</th><td>None beyond typographic hierarchy — diagrams here would undermine the page's own clarity purpose</td></tr>
+          <tr><th>Public/paid IP risk</th><td>None — pricing structure only, no product content</td></tr>
+          <tr><th>SEO role</th><td>Low-moderate — supports trust searches ("opsteady pricing") more than acquisition</td></tr>
+          <tr><th>Mobile structural considerations</th><td>Tables become key/value stacks, not horizontal scroll; no reliance on a 3-column layout that forces horizontal scrolling</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <div class="wf-section wf-dense">
+      <span class="wf-eyebrow">Section 1 — Philosophy</span>
+      <p class="wf-purpose">Design note: deliberately NOT three vertical pricing-tier cards side by side — that reads as a SaaS subscription page. Explained as prose/definition-list instead.</p>
+      <h1 class="wf-headline wf-lg">[Headline: how Opsteady prices its interventions]</h1>
+      <p class="wf-body-text">[No sales calls, transparent pricing, no anchor pricing, no "most popular" flag. Each intervention has its own price, set by its depth, not by a subscription tier.]</p>
+    </div>
+
+    <div class="wf-section">
+      <span class="wf-eyebrow">Section 2 — Essentials vs Pro (explained once, generically)</span>
+      <table class="wf-plain">
+        <tr><th></th><th>Essentials</th><th>Pro</th></tr>
+        <tr><td>[What changes]</td><td>[core mechanism only]</td><td>[full guide, training, deployment support]</td></tr>
+        <tr><td>[Representative price band]</td><td>[£89 / £179 depending on band]</td><td>[£179 / £349 depending on band]</td></tr>
+      </table>
+      <p class="wf-body-text" style="font-style:italic;color:#888;">[Note: not every intervention has an Essentials tier — a module with no Essentials tier is not forced into a comparison it doesn't have.]</p>
+    </div>
+
+    <div class="wf-section wf-tint">
+      <span class="wf-eyebrow">Section 3 — Showcase pricing (merchandising state, never a discount)</span>
+      <p class="wf-body-text">[We've selected three interventions as detailed worked examples at a lower first-purchase price — never a "was/now" or countdown device.]</p>
+    </div>
+
+    <div class="wf-section wf-dense">
+      <span class="wf-eyebrow">Section 4 — Where purchase happens</span>
+      <p class="wf-purpose">Fix applied after Path 7 simulation (see spec §15): the original wireframe offered
+      only "Browse by problem" here, forcing a price-curious visitor back through the Problems hub to reach
+      an actual product — an unnecessary detour for someone who already understands the commercial model
+      and just wants to see it applied. A direct link to one representative intervention is added alongside
+      it, without turning this into a sales page.</p>
+      <p class="wf-body-text">[Every intervention's own page carries its own price and buy action — this page never sells directly.]</p>
+      <div class="wf-ctarow">
+        <span class="wf-cta wf-secondary">[See a representative example → Bottleneck Analysis Tool]</span>
+        <span class="wf-cta wf-secondary">[Browse by problem →]</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="wf-footer">
+  <div class="wf-shell">
+    <div class="wf-footer-links">
+      <a href="interventions-index.html">Interventions</a>
+      <a href="how-it-works.html">The Method</a>
+      <a href="worked-example.html">Case Studies</a>
+      <a href="pricing.html" class="wf-current" style="background:#ccc;">Pricing</a>
+      <a href="who-we-are.html">Who We Are</a>
+      <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Sitemap</a>
+      <a href="health-check-landing.html">Health Check</a>
+    </div>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#555;">Footer — identical markup across every page (§X.1)</div>
+  </div>
+</footer>
+</body>
+</html>
