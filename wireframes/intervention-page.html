@@ -29,6 +29,15 @@
   <div class="wf-shell">
     <p style="font-size:12px;font-family:'Courier New',monospace;color:#777;">Interventions &gt; Flow &amp; Bottlenecks &gt; Bottleneck Analysis Tool (breadcrumb, this page type only)</p>
 
+    <div class="wf-next" style="margin-bottom:18px;">
+      <b>Correction, 2026-08-31</b> — position 3 was previously assumed to require a prerequisite/companion
+      sequence-flow diagram by default. Matt ruled this over-specifies the customer-facing requirement:
+      the customer must not feel they need to understand the wider Opsteady architecture before using one
+      intervention. Position 3 is renamed "When this is the right intervention" and now defaults to plain
+      conditional language (usually useful when / may follow / may work alongside), with a prerequisite
+      relationship shown only where one is genuinely required for that specific module.
+    </div>
+
     <details class="wf-structure">
       <summary>Page structure notes — click to expand</summary>
       <div class="wf-structure-body">
@@ -36,15 +45,15 @@
           <tr><th>Page purpose</th><td>Let a visitor decide, standing alone with no completed Health Check, whether this specific intervention is worth buying.</td></tr>
           <tr><th>Primary customer question</th><td>"Is this for my situation, and is it worth the price?"</td></tr>
           <tr><th>Likely entry routes</th><td>Health Check result (?ref=healthcheck&amp;reason=...), a problem page's direct link, the Interventions index, organic search, direct referral</td></tr>
-          <tr><th>Section order</th><td>1 Hero → 2 Who this is for → 3 Where it sits → 4 What it does → 5 What is in it → 6 What it takes → 7 Essentials vs Pro → 8 Sample → 9 FAQ → 10 Health Check band (unchanged 10-section archetype)</td></tr>
+          <tr><th>Section order</th><td>1 Hero → 2 Who this is for → 3 When this is the right intervention (corrected 2026-08-31, was "Where it sits") → 4 What it does → 5 What is in it → 6 What it takes → 7 Essentials vs Pro → 8 Sample → 9 FAQ → 10 Health Check band (ten-section archetype unchanged in count/order, position 3's requirement corrected)</td></tr>
           <tr><th>Primary CTA</th><td>Buy (hero, position 1) — present again, lighter weight, at position 10</td></tr>
           <tr><th>Secondary CTA</th><td>Health Check band (position 10) — "not sure this is the right one? Run the Health Check"</td></tr>
-          <tr><th>Next logical destinations</th><td>Checkout handoff (D3, not built), a related/prerequisite intervention (position 3 links), or the Health Check</td></tr>
+          <tr><th>Next logical destinations</th><td>Checkout handoff (D3, not built), occasionally a genuinely required prerequisite intervention (position 3, only where one exists), or the Health Check</td></tr>
           <tr><th>Health Check role</th><td>Persistent CTA band at position 10 only — visually subordinate to the buy action at position 1, never forced above it</td></tr>
           <tr><th>Intervention role</th><td>This IS the intervention page — the archetype itself, generic across all 70 module types (see genericity note below)</td></tr>
           <tr><th>Proof role</th><td>Position 8, "Sample" — one real page/screenshot, or (for non-tool interventions) one real extract, per Proof Without Transfer</td></tr>
           <tr><th>Expected content density</th><td>Light, sections 1–4 (Speed to Decision — reach section 5 in well under a minute). Evidence-dense, sections 5–9 (this is where the purchase decision is actually made).</td></tr>
-          <tr><th>Required visual role (later)</th><td>Sequence-flow diagram at position 3; a real screenshot/extract at position 8 — the only page type needing real product-output evidence</td></tr>
+          <tr><th>Required visual role (later)</th><td>Position 3 needs no diagram by default — conditional text/tags only, unless a genuine hard prerequisite exists for this specific module; a real screenshot/extract at position 8 — the only page type needing real product-output evidence</td></tr>
           <tr><th>Public/paid IP risk</th><td>Highest of any page type — position 5 ("what is in it") must never appear before position 5; position 8 ("sample") must prove real substance without enough material to reconstruct the intervention</td></tr>
           <tr><th>SEO role</th><td>High for modules that are real search targets; some of the 70 exist for commercial completeness/Health-Check linkage rather than organic acquisition — not every page needs to rank</td></tr>
           <tr><th>Mobile structural considerations</th><td>Single-column narrative; the Essentials/Pro comparison table compresses (never stacks) for a genuine comparison; buy area stays reachable without excessive scrolling</td></tr>
@@ -80,9 +89,22 @@
     </div>
 
     <div class="wf-section wf-tint">
-      <span class="wf-eyebrow">3 — Where it sits</span>
-      <p class="wf-purpose">Shows sequencing conclusion, never the scoring logic behind it — the "before this, you'll usually want" device.</p>
-      <div class="wf-placeholder">[SEQUENCE-FLOW DIAGRAM: prerequisite/companion modules, this one marked current]</div>
+      <span class="wf-eyebrow">3 — When this is the right intervention</span>
+      <p class="wf-purpose">Corrected, 2026-08-31: this section previously assumed a prerequisite/companion-module diagram
+      by default. That assumption is removed. The customer-facing requirement is now conditional language,
+      not a graph — the customer must not feel they need to understand the wider Opsteady architecture
+      before using one intervention. Prerequisite relationships are shown only where genuinely required for
+      this specific module (e.g. P5.6 Full TPM Pillars Pack, which does carry a mandatory prerequisite
+      notice) — not as a default device on every page.</p>
+      <span class="wf-tag">[usually useful when...]</span>
+      <span class="wf-tag">[may follow...]</span>
+      <span class="wf-tag">[may work alongside...]</span>
+      <p class="wf-body-text">[Plain text, not a diagram: this is usually the right starting point when a bottleneck keeps
+      recurring in the same area. It may follow a Downtime &amp; Pareto review, and may work alongside SMED if
+      changeover is also a factor. No wider system understanding is required to use it.]</p>
+      <p class="wf-body-text" style="font-style:italic;color:#888;">[Only where a genuine hard prerequisite exists — e.g. a
+      maintenance-system module that assumes basic asset care is already stable — does this section carry an
+      unmissable prerequisite notice instead of the conditional language above.]</p>
     </div>
 
     <div class="wf-section">
