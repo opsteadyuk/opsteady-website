@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Everyone can point at the bottleneck. It's rarely the right one — Opsteady</title>
+<meta name="description" content="Find the actual constraint, and see where the time in between is really going.">
+<meta name="robots" content="noindex,follow">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/v3/system.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/v3/index.html" aria-label="Opsteady, home">
+      <img src="/brand/opsteady-logo-navy-amber-on-white.svg" alt="Opsteady">
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="nav-link" href="/v3/index.html">Home</a>
+      <a class="nav-link current" href="/v3/problems/flow-and-bottlenecks.html">Problems</a>
+      <a class="nav-link" href="/v3/catalogue/bottleneck_analysis.html">Catalogue</a>
+      <a class="btn btn-sm" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="shell">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="/v3/index.html">Home</a><span class="sep">/</span>
+      <span class="current">Flow &amp; bottlenecks</span>
+    </nav>
+
+    <div style="max-width:44rem;padding-block:2rem 1rem">
+      <span class="eyebrow">A real operational problem</span>
+      <h1 style="font-size:2.1rem;line-height:1.2">Everyone can point at the bottleneck. It's rarely the right one.</h1>
+      <p class="lede prose" style="margin-top:1rem">Ask a room of experienced people where the constraint is and you'll get a confident, specific answer — usually the loudest or most recent station, rarely checked against real throughput data. The station nobody's watching, running fine but sitting in front of a two-day queue nobody's measured, is often costing more than the one everyone talks about.</p>
+    </div>
+  </div>
+
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">What you're likely seeing</span>
+        <h2>Do these sound familiar?</h2>
+      </div>
+      <ul class="checklist prose" style="max-width:52rem">
+        <li><span class="mark" aria-hidden="true"></span><p>Every production meeting names the same station as "the problem," and the fix requested is the same each time.</p></li>
+        <li><span class="mark" aria-hidden="true"></span><p>A capacity or headcount request has been raised more than once for the same station, without resolving the delay.</p></li>
+        <li><span class="mark" aria-hidden="true"></span><p>Nobody has actually logged throughput or cycle time by step — the belief comes from who's mentioned most often when a shipment runs late.</p></li>
+        <li><span class="mark" aria-hidden="true"></span><p>Work-in-progress is visibly piling up somewhere that isn't the station everyone blames.</p></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">What might actually be happening</span>
+        <h2>The loudest station and the real constraint are often two different places</h2>
+      </div>
+      <div class="diagram" role="img" aria-labelledby="wipDiagTitle">
+        <svg viewBox="0 0 760 150" xmlns="http://www.w3.org/2000/svg">
+          <title id="wipDiagTitle">The station everyone blames runs at moderate speed; the real constraint downstream has a queue piling up in front of it and stands idle waiting on nothing to arrive</title>
+          <g font-family="var(--ops-font-text)" font-size="12">
+            <rect x="0" y="20" width="150" height="46" rx="8" fill="#fff" stroke="var(--ops-amber-deep)" stroke-width="1.5"/>
+            <text x="75" y="40" text-anchor="middle" font-weight="600" fill="var(--ops-navy)">"The problem"</text>
+            <text x="75" y="56" text-anchor="middle" font-size="10.5" fill="var(--ops-n60)">Loudest station, moderate speed</text>
+
+            <line x1="150" y1="43" x2="230" y2="43" stroke="var(--ops-border-strong)" stroke-width="1.5"/>
+            <rect x="180" y="8" width="40" height="70" fill="none" stroke="var(--ops-border)" stroke-dasharray="2 3"/>
+            <text x="200" y="98" text-anchor="middle" font-size="10.5" fill="var(--ops-n60)">WIP queues here,</text>
+            <text x="200" y="112" text-anchor="middle" font-size="10.5" fill="var(--ops-n60)">unmeasured</text>
+
+            <rect x="230" y="20" width="150" height="46" rx="8" fill="#fff" stroke="var(--ops-border)"/>
+            <text x="305" y="40" text-anchor="middle" font-weight="600" fill="var(--ops-navy)">Mid-line steps</text>
+            <text x="305" y="56" text-anchor="middle" font-size="10.5" fill="var(--ops-n60)">Running fine, unwatched</text>
+
+            <line x1="380" y1="43" x2="460" y2="43" stroke="var(--ops-border-strong)" stroke-width="1.5"/>
+
+            <rect x="460" y="20" width="170" height="46" rx="8" fill="var(--ops-navy)"/>
+            <text x="545" y="40" text-anchor="middle" font-weight="600" fill="#fff">Real constraint</text>
+            <text x="545" y="56" text-anchor="middle" font-size="10.5" fill="var(--ops-text-inverse-secondary)">Idle, waiting — this sets the ceiling</text>
+
+            <text x="0" y="140" font-size="11" fill="var(--ops-n50)">Confirmed two ways: where WIP piles up, and where the next step stands idle waiting. Both have to point the same way.</text>
+          </g>
+        </svg>
+      </div>
+      <p class="prose" style="margin-top:1rem">This persists because "busy" and "the constraint" aren't the same thing. A station that runs fast but only in batches can still be the real limit, because the wait to form a batch counts. High utilisation on the wrong work looks like the answer and isn't. Free advice can explain that in general — it can't watch your specific line and tell you where yours actually sits.</p>
+    </div>
+  </div>
+
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">Before you buy anything</span>
+        <h2>Check these first</h2>
+      </div>
+      <ul class="checklist prose" style="max-width:52rem">
+        <li><span class="mark" aria-hidden="true"></span><p>Has this line ever had a real, measured constraint analysis run on it — not just an opinion? If it's been months, a fixed constraint moves on, and the old answer may already be wrong.</p></li>
+        <li><span class="mark" aria-hidden="true"></span><p>Is the suspected problem capacity, or reliability? If a station is stopping unpredictably rather than simply running slow, that's a downtime problem, not a capacity one — a different starting point.</p></li>
+        <li><span class="mark" aria-hidden="true"></span><p>Do you have at least a week of real throughput or cycle-time data by step? If not, that's the actual first move, not a capital request.</p></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">Two ways in</span>
+        <h2>Not sure this is your biggest problem, or already certain?</h2>
+      </div>
+      <div class="grid-2">
+        <div class="panel" style="border-color:var(--ops-navy)">
+          <div class="panel-head">
+            <h3>Not sure this is the priority</h3>
+            <span class="panel-ref">RECOMMENDED</span>
+          </div>
+          <div class="panel-body">
+            <p class="prose">The Health Check reads your whole operation, not just this one area, and tells you what to fix first, in the right order.</p>
+            <a class="btn btn-block" style="margin-top:1.25rem" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Certain it's this one</h3>
+            <span class="panel-ref">BOTTLENECK ANALYSIS</span>
+          </div>
+          <div class="panel-body">
+            <p class="prose">Go straight to the module built for it — what it does, what deploying it takes, and what it costs.</p>
+            <a class="btn btn-ghost btn-block" style="margin-top:1.25rem" href="/v3/catalogue/bottleneck_analysis.html">View Bottleneck Analysis Tool</a>
+          </div>
+        </div>
+      </div>
+      <p class="small text-secondary" style="margin-top:1.5rem">If the constraint turns out to be reliability rather than capacity, Downtime Tracking &amp; Pareto Pack is the right starting point instead. If it's flow across the whole value stream rather than one station, Value Stream Mapping Kit maps the wider picture.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div>
+        <img src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+        <p style="max-width:26rem">Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+          <li><a href="/v3/catalogue/bottleneck_analysis.html">Catalogue</a></li>
+          <li><a href="/the-method.html">The Method</a></li>
+          <li><a href="/pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>More</h3>
+        <ul>
+          <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+          <li><a href="/terms.html">Terms of sale</a></li>
+          <li><a href="/accessibility.html">Accessibility</a></li>
+          <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">Design-prototype gate — not the live site. &copy; 2026 Opsteady. Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203. Registered office: 82A James Carter Road, Mildenhall, IP28 7DE.</div>
+  </div>
+</footer>
+
+</body>
+</html>

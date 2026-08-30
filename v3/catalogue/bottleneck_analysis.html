@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bottleneck Analysis Tool — find what is really limiting output — Opsteady</title>
+<meta name="description" content="Find what is really limiting output. A one-week measured constraint analysis, not an opinion about where the bottleneck is. Showcase price £99.">
+<meta name="robots" content="noindex,follow">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/v3/system.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/v3/index.html" aria-label="Opsteady, home">
+      <img src="/brand/opsteady-logo-navy-amber-on-white.svg" alt="Opsteady">
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="nav-link" href="/v3/index.html">Home</a>
+      <a class="nav-link" href="/v3/problems/flow-and-bottlenecks.html">Problems</a>
+      <a class="nav-link current" href="/v3/catalogue/bottleneck_analysis.html">Catalogue</a>
+      <a class="btn btn-sm" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="shell">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="/v3/index.html">Home</a><span class="sep">/</span>
+      <a href="/v3/problems/flow-and-bottlenecks.html">Flow &amp; bottlenecks</a><span class="sep">/</span>
+      <span class="current">Bottleneck Analysis Tool</span>
+    </nav>
+
+    <!-- 1. HERO -->
+    <div class="hero" style="padding-block:2rem 3rem">
+      <div>
+        <span class="eyebrow">P4 · Delivery &amp; Planning — entry point</span>
+        <h1 style="font-size:2.1rem">Bottleneck Analysis Tool</h1>
+        <p class="lede prose" style="margin-top:.75rem">Find what is really limiting output. Every site has an opinion on what's slowing the line — usually the loudest voice or the most recent annoyance, rarely checked against data. This finds the real constraint.</p>
+        <div class="actions">
+          <a class="btn btn-lg" href="#buy">See pricing and buy</a>
+          <a class="btn btn-ghost btn-lg" href="/v3/case-studies/bottleneck-analysis.html">See it in action</a>
+        </div>
+      </div>
+      <div id="buy" class="buy">
+        <span class="tier-badge">PRO</span>
+        <span class="showcase-note" style="display:block;margin-top:1rem;margin-bottom:0">Showcase Module — one of three Opsteady selects as a detailed worked example, at a lower first-purchase price.</span>
+        <span class="price-was mono">£179</span><span class="price">£99</span>
+        <p class="price-note">One-time price. No subscription, no retainer.</p>
+        <a class="btn btn-block btn-lg" style="margin-top:1.25rem" href="#buy" aria-disabled="true" title="Checkout is not live in this prototype">Buy — £99</a>
+        <p class="small text-secondary" style="margin-top:.75rem">This prototype does not process payment. Commerce is a separate, later stage.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. WHO THIS IS FOR -->
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">Who this is for</span>
+        <h2>You need this if any of these sound familiar</h2>
+      </div>
+      <ul class="checklist prose" style="max-width:52rem">
+        <li><span class="mark" aria-hidden="true"></span><p>Production meetings keep naming the same station as the constraint, and the fix requested is the same each time.</p></li>
+        <li><span class="mark" aria-hidden="true"></span><p>A capacity or headcount request has been raised more than once for the same station without resolving the delay.</p></li>
+        <li><span class="mark" aria-hidden="true"></span><p>Nobody has actually measured throughput or cycle time by process step — the belief is a gut feeling, not data.</p></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. WHERE IT SITS -->
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">Where it sits</span>
+        <h2>The entry point for Delivery &amp; Planning</h2>
+        <p class="lede">The four Foundations come before it. Once a constraint is confirmed, this hands off to Capacity Planning Model — but only if a genuine gap remains after exploit and subordinate.</p>
+      </div>
+      <div class="diagram" role="img" aria-labelledby="sitDiagTitle">
+        <svg viewBox="0 0 700 90" xmlns="http://www.w3.org/2000/svg">
+          <title id="sitDiagTitle">Foundations, then Bottleneck Analysis as the entry point for Delivery and Planning, then on to Capacity Planning Model only if a real gap remains</title>
+          <g font-family="var(--ops-font-text)" font-size="12">
+            <rect x="0" y="15" width="150" height="46" rx="8" fill="#fff" stroke="var(--ops-border)"/>
+            <text x="75" y="35" text-anchor="middle" font-weight="600" fill="var(--ops-navy)">Foundations</text>
+            <text x="75" y="51" text-anchor="middle" font-size="10.5" fill="var(--ops-n60)">Already in place</text>
+            <line x1="150" y1="38" x2="220" y2="38" stroke="var(--ops-border-strong)" stroke-width="1.5"/>
+
+            <rect x="220" y="8" width="190" height="60" rx="8" fill="var(--ops-navy)"/>
+            <text x="315" y="32" text-anchor="middle" font-weight="600" fill="#fff">Bottleneck Analysis</text>
+            <text x="315" y="48" text-anchor="middle" font-size="10.5" fill="var(--ops-text-inverse-secondary)">You are here</text>
+            <circle cx="315" cy="8" r="6" fill="var(--ops-amber)"/>
+            <line x1="410" y1="38" x2="480" y2="38" stroke="var(--ops-border-strong)" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <text x="445" y="30" text-anchor="middle" font-size="10" fill="var(--ops-n50)">only if a</text>
+            <text x="445" y="42" text-anchor="middle" font-size="10" fill="var(--ops-n50)">real gap remains</text>
+
+            <rect x="480" y="15" width="200" height="46" rx="8" fill="#fff" stroke="var(--ops-border)"/>
+            <text x="580" y="35" text-anchor="middle" font-weight="600" fill="var(--ops-navy)">Capacity Planning</text>
+            <text x="580" y="51" text-anchor="middle" font-size="10.5" fill="var(--ops-n60)">A capex case, evidenced</text>
+          </g>
+        </svg>
+      </div>
+      <p class="small text-secondary" style="margin-top:.75rem">If the constraint turns out to be reliability, not capacity, hand off to Downtime Tracking &amp; Pareto Pack instead. If a specific changeover is the recurring loss, SMED / Changeover Reduction Toolkit goes deeper than this tool's own exploit step.</p>
+    </div>
+  </div>
+
+  <!-- 4. WHAT IT DOES -->
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">What it does</span>
+        <h2>Names the real constraint, sizes the cost, and gets the free gains first</h2>
+      </div>
+      <p class="prose">Picture a single-lane road with one slow car on it. That car sets the speed for every car behind it, no matter how fast they could go individually. Speed up any car except the slow one and nothing changes — the queue just moves somewhere else. A line works the same way: its output is set by its single slowest step, not by how busy or efficient every other step looks.</p>
+      <p class="prose" style="margin-top:1rem">The tool confirms the constraint against two signals, not one measurement alone: where work-in-progress is genuinely piling up, and where the next step stands idle waiting. Then it walks you through exploit and subordinate — getting everything the constraint can already give you — before any capital request goes anywhere.</p>
+    </div>
+  </div>
+
+  <!-- 5. WHAT IS IN IT -->
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">What is in it</span>
+        <h2>Four files</h2>
+      </div>
+      <div class="register">
+        <div class="register-row"><span class="n mono">Guide</span><div><h4>Bottleneck Analysis Tool — Pro</h4><p class="desc">The full 18-section playbook: build it, your first week, how you know it's working, the ways this dies, decision logic.</p></div><span class="count"></span></div>
+        <div class="register-row"><span class="n mono">FAQ</span><div><h4>Bottleneck Analysis Tool — FAQ</h4><p class="desc">Real edge cases: constraints that move mid-week, multi-product sites, non-shop-floor processes.</p></div><span class="count"></span></div>
+        <div class="register-row"><span class="n mono">Training</span><div><h4>Bottleneck Analysis Tool — Training</h4><p class="desc">How to run this with your team, not just read it yourself.</p></div><span class="count"></span></div>
+        <div class="register-row"><span class="n mono">Workbook</span><div><h4>Bottleneck Analysis Template</h4><p class="desc">Four sheets: step log with automatic ranking, constraint summary, exploit/subordinate checklist, a month-on-month history tab.</p></div><span class="count"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. WHAT IT TAKES -->
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">What it takes</span>
+        <h2>Before you start</h2>
+      </div>
+      <dl class="spec-rows panel" style="max-width:44rem">
+        <div class="spec-row panel-body" style="padding-bottom:0"><dt>Time</dt><dd>About 20–30 minutes a day logging throughput, roughly 2–3 hours across a representative week, plus 30–45 minutes at the end to rank the steps and size the cost.</dd></div>
+        <div class="spec-row panel-body" style="padding-top:0"><dt>People</dt><dd>One person can run it. No new systems required. Tell supervisors before you start, not after.</dd></div>
+        <div class="spec-row panel-body" style="padding-top:0;padding-bottom:1.25rem"><dt>Data</dt><dd>Output or cycle time by process step, over a representative period — a week minimum.</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- 7. TIER -->
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">Essentials vs Pro</span>
+        <h2>This module ships as Pro only</h2>
+        <p class="lede">Not every module carries both tiers. Bottleneck Analysis is scoped as a single, complete Pro edition — there's no reduced Essentials version to compare it against.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. SAMPLE -->
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">Sample</span>
+        <h2>What the Constraint Summary actually shows</h2>
+        <p class="lede">Real construction from the guide's own worked example — not a mocked-up dashboard.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Ranked throughput, one week</h3><span class="panel-ref">EXTRACT</span></div>
+        <div class="panel-body">
+          <svg viewBox="0 0 640 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sampleChartTitle">
+            <title id="sampleChartTitle">Press 3, the suspected constraint, at 180 units a week, against Packing, the next-best-performing step, at 310 units a week — roughly 130 units a week left on the table</title>
+            <g font-family="var(--ops-font-text)">
+              <text x="0" y="14" font-size="11" font-weight="600" fill="var(--ops-amber-deep)">Press 3 (suspected constraint)</text>
+              <rect x="0" y="20" width="234" height="22" fill="var(--ops-amber-deep)" rx="0"/>
+              <text x="242" y="35" font-size="11" fill="var(--ops-amber-deep)">180 units/week</text>
+
+              <text x="0" y="70" font-size="11" font-weight="600" fill="var(--ops-navy)">Packing (next-best-performing step)</text>
+              <rect x="0" y="76" width="403" height="22" fill="var(--ops-navy)" rx="0"/>
+              <text x="411" y="91" font-size="11" fill="var(--ops-navy)">310 units/week</text>
+
+              <line x1="234" y1="106" x2="234" y2="114" stroke="var(--ops-n50)"/>
+              <line x1="403" y1="106" x2="403" y2="114" stroke="var(--ops-n50)"/>
+              <line x1="234" y1="110" x2="403" y2="110" stroke="var(--ops-n50)"/>
+              <text x="318" y="126" font-size="10.5" fill="var(--ops-n50)" text-anchor="middle">~130 units/week left on the table</text>
+            </g>
+          </svg>
+          <p class="diagram-caption">Press 3 is the suspected constraint by throughput alone — but the tool's confirmation check (WIP piling up, next step idle) is what actually names it, not the bar chart on its own.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. FAQ -->
+  <div class="section tight section-rule">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions worth answering before you buy</h2>
+      </div>
+      <div style="max-width:52rem">
+        <details class="faq-item"><summary>How long do I actually need to log for?</summary><p>A week is the minimum, not a guarantee. If your output genuinely varies by day of week or shift pattern, one week can point at the wrong step — log two weeks before naming anything.</p></details>
+        <details class="faq-item"><summary>Do I have to buy new equipment once I've found my constraint?</summary><p>No — and buying too fast is one of the most common mistakes. Work through exploit and subordinate first: get everything the constraint can already give you, and pace every other station to it. Most sites find real, free gains here. Only a genuine, evidenced shortfall goes to Capacity Planning Model.</p></details>
+        <details class="faq-item"><summary>Why would I deliberately slow a station down that could run faster?</summary><p>Because running it faster doesn't get you a single extra unit out the door — the constraint still sets the pace. It usually causes real harm instead: work piles up faster than the constraint can absorb it, or a shared resource gets pulled away from the constraint to keep the faster station fed.</p></details>
+        <details class="faq-item"><summary>What if the constraint turns out to be a person, not a machine?</summary><p>The tool doesn't care what shape the constraint takes. If one person's pace sets the line's ceiling, that's a real finding, and it points toward cross-training or standard work, not blame.</p></details>
+        <details class="faq-item"><summary>What if my constraint moves during the week?</summary><p>That's a real finding on multi-product or multi-shift sites, not a measurement error. Note both candidates, run one more full week, and let the pattern settle.</p></details>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. HEALTH CHECK BAND -->
+  <div class="band-navy">
+    <div class="shell section tight">
+      <div class="grid-2-asym" style="align-items:center">
+        <div>
+          <h2 style="font-size:1.5rem">Not sure this is your biggest problem?</h2>
+          <p style="margin-top:.5rem">The Health Check reads your whole operation and tells you what to fix first, in order — not just this one area.</p>
+        </div>
+        <a class="btn btn-on-navy btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div>
+        <img src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+        <p style="max-width:26rem">Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+          <li><a href="/v3/catalogue/bottleneck_analysis.html">Catalogue</a></li>
+          <li><a href="/the-method.html">The Method</a></li>
+          <li><a href="/pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>More</h3>
+        <ul>
+          <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+          <li><a href="/terms.html">Terms of sale</a></li>
+          <li><a href="/accessibility.html">Accessibility</a></li>
+          <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">Design-prototype gate — not the live site. &copy; 2026 Opsteady. Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203. Registered office: 82A James Carter Road, Mildenhall, IP28 7DE.</div>
+  </div>
+</footer>
+
+</body>
+</html>
