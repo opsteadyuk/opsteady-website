@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The station everyone blamed wasn't the one costing them the order — Opsteady</title>
+<meta name="description" content="A fictional worked example of the Bottleneck Analysis Tool: how Riverside Fabrication found its real constraint wasn't the station everyone blamed.">
+<meta name="robots" content="noindex,follow">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/v5/system.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/v5/index.html" aria-label="Opsteady, home">
+      <img src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="nav-link" href="/v5/index.html">Home</a>
+      <a class="nav-link current" href="/v5/case-studies/bottleneck-analysis.html">See it in action</a>
+      <a class="btn btn-sm" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO: sets up the assumption, withholds the answer -->
+  <div class="hero" data-surface="navy" style="min-height:auto">
+    <div class="hero-texture" aria-hidden="true"></div>
+    <div class="shell-wide hero-inner" style="padding-block:64px 56px">
+      <div class="hero-copy" style="max-width:42rem">
+        <span class="tag-fictional">Fictional company, illustrative data</span>
+        <h1 style="font-size:2.1rem;margin-top:1rem">The station everyone blamed wasn't the one costing them the order.</h1>
+        <p class="lede">Riverside Fabrication argued about Press 3 for six months.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <nav class="small text-secondary" aria-label="Breadcrumb" style="padding-top:1.25rem;display:flex;gap:.5rem">
+      <a href="/v5/index.html" style="color:inherit;text-decoration:none">Home</a><span>/</span>
+      <span style="color:var(--n5-navy)">Bottleneck Analysis — case study</span>
+    </nav>
+  </div>
+
+  <!-- STAGE 1: THE ASSUMPTION (muted, unresolved) -->
+  <div class="section tight">
+    <div class="shell">
+      <div class="stage stage-assumption">
+        <span class="eyebrow" style="color:var(--ops-n50)">The assumption</span>
+        <h3 style="font-size:1.2rem;color:var(--ops-n70)">Press 3 was slow, newest, and the one blamed whenever a shipment ran late.</h3>
+        <p class="prose text-secondary" style="margin-top:.6rem;max-width:32rem">Twice, the operations director queued a second operator for it. Twice, she pulled the request back — uneasy it kept being asked for without working.</p>
+        <div class="branch-diagram" style="padding-block:1.5rem 0" role="img" aria-labelledby="assumeTitle">
+          <svg viewBox="0 0 520 150" xmlns="http://www.w3.org/2000/svg">
+            <title id="assumeTitle">Three presses feed a finishing line. Press 3 is assumed to be the problem; the real cause is not yet confirmed.</title>
+            <g font-family="var(--ops-font-text)" font-size="12">
+              <rect x="0" y="8" width="150" height="36" rx="6" fill="#fff" stroke="var(--ops-border)"/>
+              <text x="75" y="30" text-anchor="middle" fill="var(--ops-n60)">Press 1</text>
+              <rect x="0" y="54" width="150" height="36" rx="6" fill="#fff" stroke="var(--ops-border)"/>
+              <text x="75" y="76" text-anchor="middle" fill="var(--ops-n60)">Press 2</text>
+              <rect x="0" y="100" width="150" height="40" rx="6" fill="#fff" stroke="var(--ops-n60)" stroke-width="2" stroke-dasharray="4 3"/>
+              <text x="75" y="125" text-anchor="middle" fill="var(--ops-n70)" font-weight="700">Press 3</text>
+              <text x="230" y="150" font-size="11" fill="var(--ops-n50)">— the assumed problem</text>
+              <circle cx="200" cy="120" r="14" fill="none" stroke="var(--ops-n50)" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <text x="200" y="125" text-anchor="middle" fill="var(--ops-n50)" font-weight="700">?</text>
+              <line x1="150" y1="120" x2="184" y2="120" stroke="var(--ops-n50)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAGE 2: THE FINDING (vivid reveal) -->
+  <div class="section tight">
+    <div class="shell">
+      <div class="stage stage-finding">
+        <span class="eyebrow on-navy">What Opsteady established</span>
+        <h3 style="font-size:1.3rem">The real limit wasn't a press at all.</h3>
+        <p style="margin-top:.6rem;max-width:34rem">A Health Check flagged Delivery &amp; Planning as the weakest area, and named Bottleneck Analysis — not Capacity Planning — as the right first move. Run properly, it pointed somewhere nobody had measured.</p>
+        <div class="branch-diagram" style="padding-block:1.5rem 0" role="img" aria-labelledby="findTitle">
+          <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+            <title id="findTitle">All three presses feed a single finishing line. Finishing, not Press 3, is the real constraint — parts already made were queuing there untouched.</title>
+            <g font-family="var(--ops-font-text)" font-size="12">
+              <rect x="0" y="6" width="140" height="34" rx="6" fill="none" stroke="rgba(255,255,255,.3)"/>
+              <text x="70" y="27" text-anchor="middle" fill="var(--n5-pale)">Press 1</text>
+              <rect x="0" y="52" width="140" height="34" rx="6" fill="none" stroke="rgba(255,255,255,.3)"/>
+              <text x="70" y="73" text-anchor="middle" fill="var(--n5-pale)">Press 2</text>
+              <rect x="0" y="98" width="140" height="38" rx="6" fill="none" stroke="rgba(255,255,255,.3)"/>
+              <text x="70" y="121" text-anchor="middle" fill="var(--n5-pale)">Press 3</text>
+              <path d="M140,23 L190,23 L190,117 L230,117" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+              <path d="M140,69 L210,69 L210,117 L230,117" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+              <path d="M140,117 L230,117" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+              <rect x="230" y="82" width="170" height="80" rx="8" fill="var(--a5-amber)"/>
+              <text x="315" y="115" text-anchor="middle" fill="var(--n5-ink)" font-weight="700" font-size="14">Finishing</text>
+              <text x="315" y="135" text-anchor="middle" fill="var(--n5-ink)" font-size="11">the real constraint</text>
+              <text x="0" y="180" fill="var(--n5-steel)" font-size="11">Every part had already cleared all three presses — and was queuing untouched here.</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DECISION + RESULT -->
+  <div class="section tight">
+    <div class="shell grid-2">
+      <div>
+        <h3 style="font-size:1.05rem">The decision</h3>
+        <p class="prose" style="margin-top:.5rem">No second operator was approved. The response changed how the existing capacity was managed — not how much of it there was.</p>
+      </div>
+      <div>
+        <h3 style="font-size:1.05rem">The result</h3>
+        <div class="factstrip" style="margin-top:.5rem">
+          <div class="fact"><span class="k">Six weeks</span><span class="v">180 → 224 units/week</span></div>
+          <div class="fact"><span class="k">Headcount spend</span><span class="v">£0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="shell">
+      <p class="prose text-secondary small" style="margin-top:1.5rem;max-width:40rem">Riverside re-checks monthly — not because the constraint usually moves, but because fixing one tends to reveal the next.</p>
+    </div>
+  </div>
+
+  <!-- COMMERCIAL CURIOSITY + HANDOFF -->
+  <div class="section">
+    <div class="shell">
+      <p class="prose" style="font-size:1.15rem;font-family:var(--ops-font-display);font-weight:500;color:var(--n5-navy);max-width:38rem">Riverside's team didn't guess where to point the analysis. P4.1 is why they didn't have to.</p>
+      <div class="handoff" style="margin-top:2rem">
+        <div>
+          <h3 style="font-size:1.05rem">Bottleneck Analysis Tool</h3>
+          <p class="text-secondary small" style="margin-top:.3rem;max-width:30rem">The method used to find the real constraint — and deploy the response — is in the product itself.</p>
+        </div>
+        <div style="text-align:right">
+          <span class="price-was">£179</span><span class="price">£99</span>
+          <div style="margin-top:.75rem"><a class="btn btn-navy" href="/v3/catalogue/bottleneck_analysis.html">View the module</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band-navy" data-surface="navy">
+    <div class="shell section tight">
+      <div class="grid-2" style="align-items:center">
+        <h2 style="font-size:1.4rem">See where your own site actually stands</h2>
+        <div style="text-align:right"><a class="btn btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div>
+        <img src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+        <p style="max-width:26rem">Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+          <li><a href="/v3/catalogue/bottleneck_analysis.html">Bottleneck Analysis Tool</a></li>
+          <li><a href="/the-method.html">The Method</a></li>
+          <li><a href="/pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>More</h3>
+        <ul>
+          <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+          <li><a href="/terms.html">Terms of sale</a></li>
+          <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">V5 design proof — not the live site. &copy; 2026 Opsteady. Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203. Registered office: 82A James Carter Road, Mildenhall, IP28 7DE.</div>
+  </div>
+</footer>
+
+</body>
+</html>
