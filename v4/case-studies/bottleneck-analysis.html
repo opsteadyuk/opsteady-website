@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The station everyone blamed wasn't the one costing them the order — Opsteady</title>
+<meta name="description" content="A fictional worked example of the Bottleneck Analysis Tool: how Riverside Fabrication found its real constraint wasn't the station everyone blamed.">
+<meta name="robots" content="noindex,follow">
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/v4/system.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/v4/index.html" aria-label="Opsteady, home">
+      <img src="/brand/opsteady-logo-navy-amber-on-white.svg" alt="Opsteady">
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="nav-link" href="/v4/index.html">Home</a>
+      <a class="nav-link current" href="/v4/case-studies/bottleneck-analysis.html">See it in action</a>
+      <a class="btn btn-sm" href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO: story + purpose-built flow diagram together -->
+  <div class="hero-band" data-surface="navy">
+    <div class="shell-wide hero-grid">
+      <div>
+        <span class="tag-fictional">Fictional company, illustrative data</span>
+        <h1 style="font-size:1.9rem;margin-top:.9rem">The station everyone blamed wasn't the one costing them the order.</h1>
+        <p class="lede">Riverside Fabrication argued about Press 3 for six months. The real constraint was somewhere else entirely.</p>
+      </div>
+      <div class="hero-signal" id="flowDiagram">
+        <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="flowTitle">
+          <title id="flowTitle">Three presses feed a single finishing line. Press 3 was assumed to be the problem. Finishing was the actual constraint.</title>
+          <g font-family="var(--ops-font-text)" font-size="12.5">
+            <rect x="0" y="10" width="150" height="40" rx="6" fill="none" stroke="rgba(255,255,255,.35)"/>
+            <text x="75" y="34" text-anchor="middle" fill="var(--ops-text-inverse-secondary)">Press 1</text>
+            <rect x="0" y="62" width="150" height="40" rx="6" fill="none" stroke="rgba(255,255,255,.35)"/>
+            <text x="75" y="86" text-anchor="middle" fill="var(--ops-text-inverse-secondary)">Press 2</text>
+            <rect x="0" y="114" width="150" height="44" rx="6" fill="none" stroke="var(--ops-amber)" stroke-width="2"/>
+            <text x="75" y="140" text-anchor="middle" fill="var(--ops-amber)" font-weight="700">Press 3</text>
+            <text x="75" y="176" text-anchor="middle" font-size="10.5" fill="var(--ops-amber)">"the problem"</text>
+
+            <path d="M150,30 L200,30 L200,140 L240,140" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/>
+            <path d="M150,82 L220,82 L220,140 L240,140" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/>
+            <path d="M150,136 L240,136" fill="none" stroke="var(--ops-amber)" stroke-width="1.5"/>
+
+            <rect x="240" y="90" width="180" height="92" rx="8" fill="var(--ops-amber)"/>
+            <text x="330" y="128" text-anchor="middle" fill="var(--ops-n90)" font-weight="700" font-size="14">Finishing</text>
+            <text x="330" y="150" text-anchor="middle" fill="var(--ops-n90)" font-size="11">the real constraint</text>
+            <circle cx="420" cy="136" r="7" fill="var(--ops-n90)"/>
+
+            <text x="240" y="220" fill="var(--ops-text-inverse-muted)" font-size="11">Every part had already cleared all three presses —</text>
+            <text x="240" y="236" fill="var(--ops-text-inverse-muted)" font-size="11">and was queuing untouched here.</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <nav class="crumb small text-secondary" aria-label="Breadcrumb" style="padding-top:1.25rem;display:flex;gap:.5rem">
+      <a href="/v4/index.html" style="color:inherit;text-decoration:none">Home</a><span>/</span>
+      <span style="color:var(--ops-navy)">Bottleneck Analysis — case study</span>
+    </nav>
+  </div>
+
+  <!-- COMPACT CASE, TWO-COLUMN CARDS -->
+  <div class="section section-rule">
+    <div class="shell">
+      <div class="case-body">
+        <div class="case-card">
+          <h3>The assumption</h3>
+          <p>Press 3 was the newest, least familiar machine — and the one blamed whenever a shipment ran late. Twice, the operations director queued a second operator for it. Twice, she pulled the request back, uneasy it kept being asked for without working.</p>
+        </div>
+        <div class="case-card">
+          <h3>What Opsteady established</h3>
+          <p>A Health Check flagged Delivery &amp; Planning as the weakest area — and named Bottleneck Analysis, not Capacity Planning, as the right first move. Run properly, it showed the real limit wasn't a press at all.</p>
+        </div>
+        <div class="case-card">
+          <h3>The decision</h3>
+          <p>No second operator was approved. The response changed how the existing capacity was managed — not how much of it there was.</p>
+        </div>
+        <div class="case-card current">
+          <h3>The result</h3>
+          <div class="stat-row" style="margin-top:.5rem">
+            <div class="stat"><span class="num">180 → 224</span><span class="lbl">units/week, six weeks</span></div>
+            <div class="stat"><span class="num">£0</span><span class="lbl">spent on headcount</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="prose text-secondary small" style="margin-top:2rem;max-width:40rem">Riverside re-checks monthly — not because the constraint usually moves, but because fixing one tends to reveal the next.</p>
+    </div>
+  </div>
+
+  <!-- COMMERCIAL CURIOSITY + HANDOFF -->
+  <div class="section section-rule">
+    <div class="shell">
+      <p class="prose" style="font-size:1.1rem;font-family:var(--ops-font-display);font-weight:500;color:var(--ops-navy);max-width:38rem">Riverside's team didn't guess where to point the analysis. P4.1 is why they didn't have to.</p>
+
+      <div class="handoff" style="margin-top:2rem">
+        <div>
+          <h3 style="font-size:1.05rem">Bottleneck Analysis Tool</h3>
+          <p class="text-secondary small" style="margin-top:.3rem;max-width:30rem">The method used to find the real constraint — and deploy the response — is in the product itself.</p>
+        </div>
+        <div style="text-align:right">
+          <span class="price-was">£179</span><span class="price">£99</span>
+          <div style="margin-top:.75rem"><a class="btn" href="/v3/catalogue/bottleneck_analysis.html">View the module</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-band" data-surface="navy">
+    <div class="shell section tight">
+      <div class="grid-2" style="align-items:center">
+        <h2 style="color:#fff;font-size:1.4rem">See where your own site actually stands</h2>
+        <div style="text-align:right"><a class="btn btn-on-navy btn-lg" href="https://healthcheck.opsteady.co.uk/">Take the Health Check</a></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div>
+        <img src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+        <p style="max-width:26rem">Practical tools and know-how to run a great operation. Built so you can do it in-house.</p>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="https://healthcheck.opsteady.co.uk/">Health Check</a></li>
+          <li><a href="/v3/catalogue/bottleneck_analysis.html">Bottleneck Analysis Tool</a></li>
+          <li><a href="/the-method.html">The Method</a></li>
+          <li><a href="/pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>More</h3>
+        <ul>
+          <li><a href="https://healthcheck.opsteady.co.uk/privacy.html">Privacy</a></li>
+          <li><a href="/terms.html">Terms of sale</a></li>
+          <li><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">V4 design proof — not the live site. &copy; 2026 Opsteady. Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203. Registered office: 82A James Carter Road, Mildenhall, IP28 7DE.</div>
+  </div>
+</footer>
+
+</body>
+</html>
