@@ -139,24 +139,33 @@ function packageGrid({ compact = false } = {}) {
 
 /* =========================================================
    PHOTO HERO — shared interior-page hero. Photography-ready
-   structure (see system.css's own header comment); no real
-   asset exists for these four surfaces yet (2026-08-31 visual-
-   polish pass), so .photo-hero-slot's on-brand gradient stands
-   in. `spec` is the precise photography brief for this exact
-   slot -- written into the HTML as a developer-facing comment,
-   never shown to a visitor, so dropping in the licensed image
-   later is a one-line src swap plus deleting the comment.
+   structure: media/scrim/content layers, so a real photograph
+   is a plain <img> in the media layer -- no extra markup needed
+   once an asset exists. Where no asset is assigned (the Tools
+   index -- no image from the approved 2026-08-31 photography set
+   maps to it, and none is invented here), `.photo-hero-slot`'s
+   on-brand gradient stands in instead of a bare/broken image.
+   `image`, when given: { src, alt, width, height, objectPosition,
+   priority }. `priority: true` marks the page's LCP element
+   (eager load, fetchpriority=high, no async decoding delay) --
+   use for exactly one image per page, the hero itself.
 ========================================================= */
-function photoHero({ eyebrow, h1, sub, spec }) {
-  return `<!-- GOVERNED IMAGE SLOT (not yet sourced, 02_brand/110_photography.md §10.2a).
+function photoHero({ eyebrow, h1, sub, image, spec }) {
+  const media = image
+    ? `<img src="${image.src}" alt="${image.alt}" width="${image.width}" height="${image.height}" style="object-position:${image.objectPosition || "50% 50%"};" loading="eager" fetchpriority="${image.priority ? "high" : "auto"}" decoding="${image.priority ? "sync" : "async"}">`
+    : `<div class="photo-hero-slot"></div>`;
+  const govComment = spec
+    ? `<!-- GOVERNED IMAGE SLOT (not yet sourced, 02_brand/110_photography.md §10.2a).
        ${spec} -->
-  <section class="photo-hero">
-    <div class="photo-hero-media"><div class="photo-hero-slot"></div></div>
+  `
+    : "";
+  return `${govComment}<section class="photo-hero">
+    <div class="photo-hero-media">${media}</div>
     <div class="photo-hero-scrim"></div>
     <div class="photo-hero-content shell">
       <div class="eyebrow on-navy">${eyebrow}</div>
       <h1>${h1}</h1>
-      <p>${sub}</p>
+      ${sub ? `<p>${sub}</p>` : ""}
     </div>
   </section>`;
 }

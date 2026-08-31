@@ -79,14 +79,20 @@ w("site/pricing.html", page({
 w("site/who-we-are.html", page({
   current: "who-we-are",
   title: "Who built Opsteady",
-  description: "No name, no photograph, no team. Operator-led, not consultant-led. Judge it by the work.",
+  description: "No name, no team. Operator-led, not consultant-led. Judge it by the work.",
   path: "/who-we-are",
   main: `
   ${photoHero({
     eyebrow: "Who we are",
     h1: "No name on this site. Judge it by the work.",
     sub: "Opsteady is a small operation, run by one person, with no team, no office and no sales function. That's a deliberate choice, not a stage it's trying to grow out of. Nobody will call you.",
-    spec: "Who We Are hero. Subject: a real, non-generic manufacturing operational scene (shopfloor, process line, or equipment detail), consistent with the homepage/How-It-Works hero direction, not a posed portrait. No identifiable person -- this is operator-led, not personality-led, credibility (02_brand/100_BASE_FILE.md D-79); never founder or team photography, per the Visual Asset Matrix's explicit reservation of this page for real people/founder photography only if that changes in future, and never synthetic people. Composition: landscape, working height, subject weighted right or centre so the left/lower-left stays legible for the overlaid headline.",
+    image: {
+      src: "/site/assets/photography/hero-who-we-are.jpg",
+      alt: "A hydraulic stamping press in an industrial workshop, tooling and stacked sheet steel in the foreground, with a non-identifiable operator visible at a workbench in the background.",
+      width: 1168, height: 784,
+      objectPosition: "58% 45%",
+      priority: true,
+    },
   })}
 
   <section class="page-section">
@@ -177,13 +183,18 @@ w("site/health-check.html", page({
   description: "A short set of questions about how your site runs today. Free, no sales call.",
   path: "/health-check",
   main: `
-  <section class="page-hero">
-    <div class="shell">
-      <div class="eyebrow on-navy">The Health Check</div>
-      <h1>Know where your site actually stands.</h1>
-      <p>A short set of questions about how things run today, not how you'd like them to run.</p>
-    </div>
-  </section>
+  ${photoHero({
+    eyebrow: "The Health Check",
+    h1: "Know where your site actually stands.",
+    sub: "A short set of questions about how things run today, not how you'd like them to run.",
+    image: {
+      src: "/site/assets/photography/hero-health-check.jpg",
+      alt: "A wide view across an operating manufacturing facility, showing rows of machinery, materials on pallets, and workers along the production floor.",
+      width: 1168, height: 784,
+      objectPosition: "56% 42%",
+      priority: true,
+    },
+  })}
   <section class="page-section">
     <div class="shell-narrow">
       <!-- IMPLEMENTATION DEPENDENT: the frozen Phase 3 "what you'll get" copy (site-at-a-glance,

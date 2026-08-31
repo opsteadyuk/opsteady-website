@@ -14,7 +14,13 @@ w("site/the-method.html", page({
     eyebrow: "How it works",
     h1: "Start from your site, not a method.",
     sub: "Opsteady doesn't ask which methodology you want to try. It asks what your site actually needs, in what order, and how much of it you can take on right now. This page walks through the whole journey, step by step.",
-    spec: "How It Works hero. Subject: a real production line or cell mid-run, camera at working height, wide/landscape crop, subject weighted right-of-frame so the left third stays clear for the overlaid headline (matches the homepage hero's composition). Convey purposeful operational rhythm, not a posed or static factory shot. No identifiable faces; a non-foregrounded, non-identifiable incidental operator is acceptable per 02_brand/110_photography.md §10.2a. Avoid generic hard-hat/clipboard cliché.",
+    image: {
+      src: "/site/assets/photography/hero-how-it-works.jpg",
+      alt: "An elevated view across a manufacturing floor, showing operators working at stations along a production line with material and equipment visible throughout the operation.",
+      width: 1728, height: 1152,
+      objectPosition: "52% 32%",
+      priority: true,
+    },
   })}
 
   <section class="page-section">
@@ -103,12 +109,17 @@ w("site/problems/index.html", page({
   description: "Six common manufacturing site problems. Find yours, and see the right next step.",
   path: "/problems",
   main: `
-  <section class="page-hero">
-    <div class="shell">
-      <div class="eyebrow on-navy">Problems</div>
-      <h1>Which of these sounds like your site?</h1>
-    </div>
-  </section>
+  ${photoHero({
+    eyebrow: "Problems",
+    h1: "Which of these sounds like your site?",
+    image: {
+      src: "/site/assets/photography/hero-problems.jpg",
+      alt: "A wide view down an aisle of a manufacturing facility, CNC machinery and stacked materials on both sides, a worker visible in the distance.",
+      width: 1168, height: 784,
+      objectPosition: "66% 40%",
+      priority: true,
+    },
+  })}
   <section class="page-section">
     <div class="shell">
       <div class="problem-list">

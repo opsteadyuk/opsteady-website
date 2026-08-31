@@ -73,21 +73,62 @@ const IMPROVE_AREAS = [
 /* =========================================================
    HOMEPAGE
 ========================================================= */
-const loopSVG = `<svg class="loop-diagram" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The canonical Opsteady loop: Observe and Learn, Stabilise, Improve, Sustain, returning to Observe and Learn.">
-  <circle cx="60" cy="60" r="46" fill="none" stroke="#33404F" stroke-width="1.5" stroke-dasharray="3 6"/>
-  <path d="M76 20 A46 46 0 0 1 106 50" fill="none" stroke="#52698D" stroke-width="1.5"/>
-  <path d="M106 70 A46 46 0 0 1 76 100" fill="none" stroke="#52698D" stroke-width="1.5"/>
-  <path d="M44 100 A46 46 0 0 1 14 70" fill="none" stroke="#52698D" stroke-width="1.5"/>
-  <path d="M14 50 A46 46 0 0 1 44 20" fill="none" stroke="#D08F25" stroke-width="1.5"/>
-  <path d="M41 21 l4.5 -3 l0.5 5.5" fill="none" stroke="#D08F25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="#12203A" stroke="#8496B3" stroke-width="1.5">
-    <circle cx="60" cy="14" r="5"/><circle cx="106" cy="60" r="5"/><circle cx="60" cy="106" r="5"/><circle cx="14" cy="60" r="5"/>
-  </g>
+/* Production four-stage-loop asset, 2026-09-01. Rebuilt as clean SVG geometry
+   (arcs computed from real trigonometry, not traced) from the approved
+   opsteady-four-stage-loop-reference.jpg design reference: double ring
+   (gold outer, pale inner), four node markers, directional arrowheads,
+   dashed guide circle, crosshair, and the four stage labels built into the
+   diagram itself -- clockwise Observe & Learn -> Stabilise -> Improve ->
+   Sustain -> Observe & Learn, matching the reference exactly. Works on both
+   dark (.sec-how) and light (.page-section.tint) grounds via the .sec-how
+   descendant overrides in system.css. Superseded a first-pass single-ring
+   version that had no room for the reference's second ring or labels. */
+const loopSVG = `<svg class="loop-diagram" viewBox="0 0 500 344" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Opsteady loop: Observe and Learn, Stabilise, Improve, Sustain, returning to Observe and Learn, clockwise.">
+  <defs>
+    <linearGradient id="loopGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EDC07A"/>
+      <stop offset="50%" stop-color="#D08F25"/>
+      <stop offset="100%" stop-color="#946719"/>
+    </linearGradient>
+  </defs>
+  <circle class="loop-guide" cx="250" cy="170" r="130"/>
+  <line class="loop-cross" x1="236" y1="170" x2="264" y2="170"/>
+  <line class="loop-cross" x1="250" y1="156" x2="250" y2="184"/>
+
+  <path class="loop-ring-inner" d="M 285.87 99.61 A 79 79 0 0 1 320.39 134.13 L 313.26 137.77 A 71 71 0 0 0 282.23 106.74 Z"/>
+  <path class="loop-ring-inner" d="M 320.39 205.87 A 79 79 0 0 1 285.87 240.39 L 282.23 233.26 A 71 71 0 0 0 313.26 202.23 Z"/>
+  <path class="loop-ring-inner" d="M 214.13 240.39 A 79 79 0 0 1 179.61 205.87 L 186.74 202.23 A 71 71 0 0 0 217.77 233.26 Z"/>
+  <path class="loop-ring-inner" d="M 179.61 134.13 A 79 79 0 0 1 214.13 99.61 L 217.77 106.74 A 71 71 0 0 0 186.74 137.77 Z"/>
+
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 270.61 63.98 A 108 108 0 0 1 356.02 149.39 L 341.29 152.25 A 93 93 0 0 0 267.75 78.71 Z"/>
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 356.02 190.61 A 108 108 0 0 1 270.61 276.02 L 267.75 261.29 A 93 93 0 0 0 341.29 187.75 Z"/>
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 229.39 276.02 A 108 108 0 0 1 143.98 190.61 L 158.71 187.75 A 93 93 0 0 0 232.25 261.29 Z"/>
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 143.98 149.39 A 108 108 0 0 1 229.39 63.98 L 232.25 78.71 A 93 93 0 0 0 158.71 152.25 Z"/>
+
+  <polygon class="loop-arrow" points="334.11,130.78 347.03,145.81 357.05,164.39"/>
+  <polygon class="loop-arrow" points="289.22,254.11 274.19,267.03 255.61,277.05"/>
+  <polygon class="loop-arrow" points="165.89,209.22 152.97,194.19 142.95,175.61"/>
+  <polygon class="loop-arrow" points="210.78,85.89 225.81,72.97 244.39,62.95"/>
+
+  <g><circle class="loop-node-ring" cx="250" cy="70" r="8"/><circle class="loop-node-dot" cx="250" cy="70" r="3"/></g>
+  <g><circle class="loop-node-ring" cx="350" cy="170" r="8"/><circle class="loop-node-dot" cx="350" cy="170" r="3"/></g>
+  <g><circle class="loop-node-ring" cx="250" cy="270" r="8"/><circle class="loop-node-dot" cx="250" cy="270" r="3"/></g>
+  <g><circle class="loop-node-ring" cx="150" cy="170" r="8"/><circle class="loop-node-dot" cx="150" cy="170" r="3"/></g>
+
+  <line class="loop-tick" x1="250" y1="40" x2="250" y2="26"/>
+  <line class="loop-tick" x1="380" y1="170" x2="394" y2="170"/>
+  <line class="loop-tick" x1="250" y1="300" x2="250" y2="314"/>
+  <line class="loop-tick" x1="120" y1="170" x2="106" y2="170"/>
+
+  <text class="loop-label" x="250" y="16" text-anchor="middle">OBSERVE &amp; LEARN</text>
+  <text class="loop-label" x="402" y="175" text-anchor="start">STABILISE</text>
+  <text class="loop-label" x="250" y="335" text-anchor="middle">IMPROVE</text>
+  <text class="loop-label" x="98" y="175" text-anchor="end">SUSTAIN</text>
 </svg>`;
 
 const homeMain = `
   <section class="hero">
-    <div class="hero-media"><img src="/v6/assets/hero-manufacturing.png" alt="A stamping press die in an operating manufacturing plant, with a non-identifiable operator visible in the background at a control panel, and a restrained amber node-and-connection overlay marking one settled point on the tooling."></div>
+    <div class="hero-media"><img src="/site/assets/photography/hero-home.jpg" alt="A stamping press die in an operating manufacturing plant, with a non-identifiable operator visible in the background at a control panel, and a restrained amber node-and-connection overlay marking one settled point on the tooling." width="1536" height="1024" loading="eager" fetchpriority="high" decoding="sync"></div>
     <div class="hero-scrim"></div>
     <div class="hero-content shell">
       <div class="hero-eyebrow eyebrow on-navy">OPSTEADY</div>
@@ -129,7 +170,6 @@ const homeMain = `
       <div class="how-loop">
         ${loopSVG}
         <div class="how-loop-copy">
-          <div class="loop-caption mono">Observe &amp; Learn <span class="arrow">→</span> Stabilise <span class="arrow">→</span> Improve <span class="arrow">→</span> Sustain</div>
           <p class="how-loop-p"><strong>A practical rhythm for improvement.</strong> Observe and understand before changing things. Stabilise what needs control. Improve from a sound baseline. Sustain what works, then keep learning.</p>
         </div>
       </div>

@@ -52,10 +52,8 @@
 </script>
 <main id="main">
 
-  <!-- GOVERNED IMAGE SLOT (not yet sourced, 02_brand/110_photography.md §10.2a).
-       How It Works hero. Subject: a real production line or cell mid-run, camera at working height, wide/landscape crop, subject weighted right-of-frame so the left third stays clear for the overlaid headline (matches the homepage hero's composition). Convey purposeful operational rhythm, not a posed or static factory shot. No identifiable faces; a non-foregrounded, non-identifiable incidental operator is acceptable per 02_brand/110_photography.md §10.2a. Avoid generic hard-hat/clipboard cliché. -->
   <section class="photo-hero">
-    <div class="photo-hero-media"><div class="photo-hero-slot"></div></div>
+    <div class="photo-hero-media"><img src="/site/assets/photography/hero-how-it-works.jpg" alt="An elevated view across a manufacturing floor, showing operators working at stations along a production line with material and equipment visible throughout the operation." width="1728" height="1152" style="object-position:52% 32%;" loading="eager" fetchpriority="high" decoding="sync"></div>
     <div class="photo-hero-scrim"></div>
     <div class="photo-hero-content shell">
       <div class="eyebrow on-navy">How it works</div>
@@ -137,16 +135,47 @@
         <h2>The loop</h2>
         <p style="max-width:60ch;">Observe &amp; Learn <span class="arrow">→</span> Stabilise <span class="arrow">→</span> Improve <span class="arrow">→</span> Sustain <span class="arrow">→</span> back to Observe &amp; Learn.</p>
         <p style="max-width:60ch;">This is how Opsteady approaches deployment and ongoing improvement, and it applies inside a single Tool as much as it does across your whole site. Understand what's actually happening before you change anything. Acting on assumptions is usually how the wrong thing gets fixed well. Get the situation stable enough to control before you try to improve it; improving something that isn't yet under control just adds noise. Improve from that stable baseline. Once something is genuinely sustained (holding without constant intervention), it's the right time to look at what's next, not before.</p>
-        <svg class="loop-diagram" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The canonical Opsteady loop: Observe and Learn, Stabilise, Improve, Sustain, returning to Observe and Learn.">
-  <circle cx="60" cy="60" r="46" fill="none" stroke="#33404F" stroke-width="1.5" stroke-dasharray="3 6"/>
-  <path d="M76 20 A46 46 0 0 1 106 50" fill="none" stroke="#52698D" stroke-width="1.5"/>
-  <path d="M106 70 A46 46 0 0 1 76 100" fill="none" stroke="#52698D" stroke-width="1.5"/>
-  <path d="M44 100 A46 46 0 0 1 14 70" fill="none" stroke="#52698D" stroke-width="1.5"/>
-  <path d="M14 50 A46 46 0 0 1 44 20" fill="none" stroke="#D08F25" stroke-width="1.5"/>
-  <path d="M41 21 l4.5 -3 l0.5 5.5" fill="none" stroke="#D08F25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="#12203A" stroke="#8496B3" stroke-width="1.5">
-    <circle cx="60" cy="14" r="5"/><circle cx="106" cy="60" r="5"/><circle cx="60" cy="106" r="5"/><circle cx="14" cy="60" r="5"/>
-  </g>
+        <svg class="loop-diagram" viewBox="0 0 500 344" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Opsteady loop: Observe and Learn, Stabilise, Improve, Sustain, returning to Observe and Learn, clockwise.">
+  <defs>
+    <linearGradient id="loopGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EDC07A"/>
+      <stop offset="50%" stop-color="#D08F25"/>
+      <stop offset="100%" stop-color="#946719"/>
+    </linearGradient>
+  </defs>
+  <circle class="loop-guide" cx="250" cy="170" r="130"/>
+  <line class="loop-cross" x1="236" y1="170" x2="264" y2="170"/>
+  <line class="loop-cross" x1="250" y1="156" x2="250" y2="184"/>
+
+  <path class="loop-ring-inner" d="M 285.87 99.61 A 79 79 0 0 1 320.39 134.13 L 313.26 137.77 A 71 71 0 0 0 282.23 106.74 Z"/>
+  <path class="loop-ring-inner" d="M 320.39 205.87 A 79 79 0 0 1 285.87 240.39 L 282.23 233.26 A 71 71 0 0 0 313.26 202.23 Z"/>
+  <path class="loop-ring-inner" d="M 214.13 240.39 A 79 79 0 0 1 179.61 205.87 L 186.74 202.23 A 71 71 0 0 0 217.77 233.26 Z"/>
+  <path class="loop-ring-inner" d="M 179.61 134.13 A 79 79 0 0 1 214.13 99.61 L 217.77 106.74 A 71 71 0 0 0 186.74 137.77 Z"/>
+
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 270.61 63.98 A 108 108 0 0 1 356.02 149.39 L 341.29 152.25 A 93 93 0 0 0 267.75 78.71 Z"/>
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 356.02 190.61 A 108 108 0 0 1 270.61 276.02 L 267.75 261.29 A 93 93 0 0 0 341.29 187.75 Z"/>
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 229.39 276.02 A 108 108 0 0 1 143.98 190.61 L 158.71 187.75 A 93 93 0 0 0 232.25 261.29 Z"/>
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 143.98 149.39 A 108 108 0 0 1 229.39 63.98 L 232.25 78.71 A 93 93 0 0 0 158.71 152.25 Z"/>
+
+  <polygon class="loop-arrow" points="334.11,130.78 347.03,145.81 357.05,164.39"/>
+  <polygon class="loop-arrow" points="289.22,254.11 274.19,267.03 255.61,277.05"/>
+  <polygon class="loop-arrow" points="165.89,209.22 152.97,194.19 142.95,175.61"/>
+  <polygon class="loop-arrow" points="210.78,85.89 225.81,72.97 244.39,62.95"/>
+
+  <g><circle class="loop-node-ring" cx="250" cy="70" r="8"/><circle class="loop-node-dot" cx="250" cy="70" r="3"/></g>
+  <g><circle class="loop-node-ring" cx="350" cy="170" r="8"/><circle class="loop-node-dot" cx="350" cy="170" r="3"/></g>
+  <g><circle class="loop-node-ring" cx="250" cy="270" r="8"/><circle class="loop-node-dot" cx="250" cy="270" r="3"/></g>
+  <g><circle class="loop-node-ring" cx="150" cy="170" r="8"/><circle class="loop-node-dot" cx="150" cy="170" r="3"/></g>
+
+  <line class="loop-tick" x1="250" y1="40" x2="250" y2="26"/>
+  <line class="loop-tick" x1="380" y1="170" x2="394" y2="170"/>
+  <line class="loop-tick" x1="250" y1="300" x2="250" y2="314"/>
+  <line class="loop-tick" x1="120" y1="170" x2="106" y2="170"/>
+
+  <text class="loop-label" x="250" y="16" text-anchor="middle">OBSERVE &amp; LEARN</text>
+  <text class="loop-label" x="402" y="175" text-anchor="start">STABILISE</text>
+  <text class="loop-label" x="250" y="335" text-anchor="middle">IMPROVE</text>
+  <text class="loop-label" x="98" y="175" text-anchor="end">SUSTAIN</text>
 </svg>
       </div>
     </div>

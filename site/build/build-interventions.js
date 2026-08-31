@@ -1,6 +1,58 @@
 "use strict";
 const { w, page, HC_URL, getModuleData, getCatalogueListing, packageGrid, photoHero, customerCategory, CATEGORY_ORDER, categoryAnchor } = require("./build.js");
 
+/* ---- Tool-category photography (Level 2), 2026-09-01 ----
+   8 of the 9 real customer categories (CATEGORY_ORDER in build.js) have an
+   assigned photograph from the approved signature-manufacturing set; "Wider
+   capability" (the 11 Enablers) has none -- the register itself calls
+   Enablers cross-cutting, not tied to one area, so no single photo honestly
+   represents them, and none is invented here. Determined programmatically
+   from customerCategory(), never hand-mapped per module: every Tool in a
+   category shares that category's one image (explicitly sanctioned --
+   "if multiple Tools can share a category image, that is acceptable"). */
+const CATEGORY_IMAGES = {
+  "Output & Flow": {
+    src: "/site/assets/photography/category-output-flow.jpg",
+    alt: "A packaging line with bottles moving along a conveyor toward a rotary filling station, pallets of materials staged alongside.",
+    width: 1168, height: 784, objectPosition: "38% 58%",
+  },
+  "Delivery & Planning": {
+    src: "/site/assets/photography/category-delivery-planning.jpg",
+    alt: "A production planner at a shopfloor desk, writing at a workstation next to a printed schedule board.",
+    width: 1168, height: 784, objectPosition: "70% 42%",
+  },
+  "Running the Day": {
+    src: "/site/assets/photography/category-running-the-day.jpg",
+    alt: "A team of four gathered around a performance board on the shop floor, one operator pointing to a chart during a briefing.",
+    width: 1168, height: 784, objectPosition: "56% 38%",
+  },
+  Quality: {
+    src: "/site/assets/photography/category-quality.jpg",
+    alt: "An operator using callipers to check the dimensions of a machined part at a workbench.",
+    width: 1168, height: 784, objectPosition: "36% 48%",
+  },
+  "Equipment & Reliability": {
+    src: "/site/assets/photography/category-equipment-reliability.jpg",
+    alt: "A maintenance technician working inside an open machine cabinet, tools laid out on a cart alongside.",
+    width: 1400, height: 942, objectPosition: "46% 42%",
+  },
+  "People & Skills": {
+    src: "/site/assets/photography/category-people-skills.jpg",
+    alt: "Two colleagues working together at a bench, one guiding the other through an assembly task.",
+    width: 1168, height: 784, objectPosition: "50% 36%",
+  },
+  "Standards & Improvement": {
+    src: "/site/assets/photography/category-standards-improvement.jpg",
+    alt: "A worker in food-safety PPE following a documented reference standard while preparing product at a stainless steel bench.",
+    width: 1168, height: 784, objectPosition: "48% 38%",
+  },
+  "Performance & Decision Making": {
+    src: "/site/assets/photography/category-performance-decision-making.jpg",
+    alt: "A small team reviewing a wall-mounted performance chart together on the production floor.",
+    width: 1168, height: 784, objectPosition: "32% 38%",
+  },
+};
+
 const listing = getCatalogueListing();
 
 /* Customer categories, group order and anchor ids now come from
@@ -45,7 +97,7 @@ w("site/interventions/index.html", page({
     eyebrow: "Tools",
     h1: "Find the one you need, or see what's available.",
     sub: "Each Tool is a complete, practical way to fix one specific thing: the working file itself, clear instructions, examples and guidance for putting it to work, not just a blank template.",
-    spec: "Tools index hero. Subject: a genuine, non-generic manufacturing working environment (equipment detail, inspection, or material movement), consistent with the homepage hero and the approved signature family in 00_SYSTEM/OPSTEADY-2.0-VISUAL-ASSET-MATRIX.md. Composition: landscape, subject weighted right-of-frame, left third clear for the overlaid headline and search field. Must read as a real, specific operational scene, not generic 'industrial' signalling.",
+    spec: "Tools index hero. No image was assigned to this surface in the 2026-08-31 approved photography set (Level 1 major-page heroes: Home, Health Check, Problems hub, How It Works, Who We Are -- Tools index isn't in that list). Deliberately not filled with a repurposed asset from elsewhere in this pass, per standing instruction not to invent a mapping. If Matt wants a dedicated Tools-index hero, it needs its own commissioned/approved asset -- until then this gradient slot is the correct, honest treatment. Subject if commissioned: a genuine, non-generic manufacturing working environment, landscape, subject weighted right-of-frame, left third clear for the headline/search field.",
   })}
   <section class="page-section">
     <div class="shell">
@@ -142,17 +194,18 @@ for (const listed of listing) {
     ? `<div class="iv-related">${d.edges.map((e) => `<a class="tag" href="/site/interventions/${e.slug}.html">${e.label}: ${e.name}</a>`).join("")}</div>`
     : "";
 
+  const catImage = CATEGORY_IMAGES[cat];
+  const heroMedia = catImage
+    ? `<div class="iv-hero-media"><img src="${catImage.src}" alt="${catImage.alt}" width="${catImage.width}" height="${catImage.height}" style="object-position:${catImage.objectPosition};" loading="eager" decoding="async"></div>`
+    : `<!-- No photograph assigned to "Wider capability" (Enablers) -- the register calls Enablers
+       cross-cutting, not tied to one area, so no single category photo honestly represents them.
+       Not filled with a mismatched image; the gradient slot below is the correct treatment. -->
+  <div class="iv-hero-slot"></div>`;
+
   const main = `
   <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#${categoryAnchor(cat)}">${cat}</a> → ${d.name}</nav></div>
-  <!-- GOVERNED IMAGE SLOT (not yet sourced -- 02_brand/110_photography.md §10.2a). Recommended
-       route: one photograph per customer category (9 total, this module's is "${cat}"), not per
-       module and not one generic image reused across all 70 pages -- a single repeated shot would
-       read as generic "industrial" signalling and would compete with, rather than support, this
-       module's own real deliverable evidence (see 00_SYSTEM/OPSTEADY-2.0-VISUAL-ASSET-MATRIX.md's
-       Intervention Page finding). Subject for "${cat}": a genuine scene specific to that category
-       of work, not a stand-in for the module's own content. -->
-  <section class="iv-hero">
-    <div class="iv-hero-slot"></div>
+  <section class="iv-hero${catImage ? " iv-hero-photo" : ""}">
+    ${heroMedia}
     <div class="shell">
       ${isP41 ? `<span class="tag on-navy">${p41StageTag}</span>` : ""}
       <h1>${d.name}</h1>
