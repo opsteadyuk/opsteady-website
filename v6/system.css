@@ -1,0 +1,463 @@
+/* =========================================================
+   Opsteady 2.0 — Homepage Visual Proof (v6)
+   Built against: OPSTEADY-2.0-EXPERIENCE-AUTHORITY.md,
+   OPSTEADY-2.0-STRUCTURAL-WIREFRAME-SPECIFICATION.md,
+   OPSTEADY-2.0-VISUAL-WORLD-AND-ART-DIRECTION.md,
+   OPSTEADY-2.0-VISUAL-ASSET-MATRIX.md.
+   Imports /tokens.css (canonical, unmodified) and adds only
+   the already-authorised derived tonal ramp (§D of the Visual
+   World doc) plus this page's own composition rules.
+   Canonical rule compliance: navy primary buttons only, no
+   amber button fill, anywhere (T.3). No logo-geometry-derived
+   watermark or motif of any kind (T.4). Logo rendered at the
+   brand-specified 180/150/110px scale (§4.10), not 26px.
+========================================================= */
+
+/* ---- Derived tonal ramp — already §32-authorised, values unchanged from anchors ---- */
+:root{
+  --n6-ink:#0A121F; --n6-deep:#12203A; --n6-navy:#1B2E4F; --n6-mid:#2D4A73;
+  --n6-slate:#52698D; --n6-steel:#8496B3; --n6-pale:#C9D3E3;
+  --a6-ochre:#6B4813; --a6-deep:#946719; --a6-amber:#D08F25;
+  --a6-rich:#E0A13A; --a6-light:#EDC07A; --a6-tint:#F6DFB3;
+  --v6-warm:#FBF9F5;
+}
+
+/* ---- Base ---- */
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:auto;}
+body.v6{
+  margin:0;
+  font-family:var(--ops-font-text);
+  color:var(--ops-text-primary);
+  background:var(--ops-n00);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.v6 img{max-width:100%;display:block;}
+.v6 a{color:inherit;}
+.v6 .skip-link{position:absolute;left:-999px;top:0;background:var(--n6-ink);color:#fff;padding:12px 20px;z-index:1000;}
+.v6 .skip-link:focus{left:16px;top:16px;}
+
+/* ---- Grid / containers ---- */
+.v6 .shell{max-width:1200px;margin-inline:auto;padding-inline:16px;}
+@media (min-width:768px){.v6 .shell{padding-inline:32px;}}
+@media (min-width:1024px){.v6 .shell{padding-inline:40px;}}
+
+.v6 .shell-wide{max-width:1440px;margin-inline:auto;padding-inline:16px;}
+@media (min-width:768px){.v6 .shell-wide{padding-inline:32px;}}
+@media (min-width:1024px){.v6 .shell-wide{padding-inline:40px;}}
+
+/* ---- Type scale ---- */
+.v6 h1,.v6 h2,.v6 h3,.v6 .disp{
+  font-family:var(--ops-font-display);
+  font-weight:600;
+  color:var(--n6-navy);
+  margin:0;
+  line-height:1.05;
+}
+.v6 .eyebrow{
+  font-family:var(--ops-font-mono);
+  font-size:12px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:var(--ops-track-label);
+  color:var(--a6-deep);
+}
+.v6 .eyebrow.on-navy{color:var(--a6-light);}
+.v6 .eyebrow.muted{color:var(--ops-n50);}
+
+.v6 h1.hero-h1{
+  font-size:clamp(2.5rem,7vw,5.25rem);
+  letter-spacing:var(--ops-track-hero);
+  color:#fff;
+}
+.v6 h2.section-h2{
+  font-size:clamp(1.75rem,4vw,2.75rem);
+  letter-spacing:var(--ops-track-h2);
+}
+.v6 h2.section-h2.on-navy{color:#fff;}
+.v6 h3.section-h3{
+  font-size:clamp(1.15rem,2.4vw,1.5rem);
+  font-weight:500;
+  letter-spacing:var(--ops-track-h3);
+}
+
+.v6 p{font-family:var(--ops-font-text);line-height:1.6;color:var(--ops-text-secondary);}
+.v6 p.lede{font-size:1.15rem;color:var(--ops-text-primary);max-width:44ch;}
+.v6 .mono{font-family:var(--ops-font-mono);}
+
+/* ---- Buttons — canonical rule: navy primary, never amber fill ---- */
+.v6 .btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--ops-font-display);font-weight:600;font-size:1rem;
+  padding:15px 28px;border-radius:4px;
+  text-decoration:none;border:1.5px solid transparent;
+  min-height:48px;
+  transition:background-color var(--ops-duration-fast) var(--ops-ease-out), border-color var(--ops-duration-fast) var(--ops-ease-out);
+}
+/* Fill stays navy everywhere (canonical rule: no amber button, ever) but a
+   permanent light border keeps the button legible when it sits on a navy
+   ground whose own tone can otherwise match the fill exactly (found live
+   in the closing section's gradient during QA — same var(--n6-navy) on
+   both). Near-invisible on white/warm grounds, load-bearing on navy ones. */
+.v6 .btn-primary{
+  background:var(--n6-navy);color:#fff;
+  border-color:rgba(255,255,255,0.22);
+  box-shadow:0 2px 10px rgba(0,0,0,0.25);
+}
+.v6 .btn-primary:hover{background:var(--n6-deep);border-color:rgba(255,255,255,0.34);}
+.v6 .btn-ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,0.4);}
+.v6 .btn-ghost-light:hover{border-color:#fff;}
+.v6 .btn-text{
+  font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  min-height:44px;padding-block:10px;margin-block:-10px;
+  box-shadow:0 1.5px 0 0 var(--n6-pale);
+}
+.v6 .btn-text:hover{box-shadow:0 1.5px 0 0 var(--n6-navy);}
+.v6 .btn-text.on-navy{color:#fff;box-shadow:0 1.5px 0 0 var(--n6-slate);}
+.v6 .btn-text.on-navy:hover{box-shadow:0 1.5px 0 0 #fff;}
+.v6 .btn-text .arrow{transition:transform var(--ops-duration-fast) var(--ops-ease-out);}
+.v6 .btn-text:hover .arrow{transform:translateX(3px);}
+
+/* ---- Tags / labels ---- */
+.v6 .tag{
+  display:inline-block;font-family:var(--ops-font-mono);font-size:12px;font-weight:600;
+  text-transform:uppercase;letter-spacing:var(--ops-track-label);
+  color:var(--n6-navy);border:1px solid var(--ops-border);
+  padding:7px 14px;border-radius:999px;background:#fff;
+}
+.v6 .tag.on-navy{color:var(--n6-pale);border-color:var(--n6-slate);background:transparent;}
+.v6 .tag.amber-dot::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--a6-amber);margin-right:8px;vertical-align:middle;}
+
+/* =========================================================
+   NAV
+========================================================= */
+/* Flat solid navy, not translucent ink — the canonical reversed lockup
+   ships with its own baked-in #1B2E4F fill (not a transparent background),
+   so any nav tone that doesn't match it exactly shows as a visible box
+   edge around the logo (found live during QA). Matches the same fix this
+   workspace already used once before, on the Visual World Canvas. */
+.v6 .nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--n6-navy);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.v6 .nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-block:14px;
+}
+.v6 .nav .brand-logo{width:110px;height:auto;}
+@media (min-width:768px){.v6 .nav .brand-logo{width:150px;}}
+@media (min-width:1024px){.v6 .nav .brand-logo{width:180px;}}
+.v6 .nav-links{display:none;align-items:center;gap:28px;}
+@media (min-width:1024px){.v6 .nav-links{display:flex;}}
+.v6 .nav-links a{
+  font-family:var(--ops-font-text);font-size:0.95rem;font-weight:600;
+  color:var(--n6-pale);text-decoration:none;
+}
+.v6 .nav-links a:hover{color:#fff;}
+.v6 .nav-cta{
+  font-family:var(--ops-font-display);font-weight:600;font-size:0.9rem;
+  color:var(--n6-ink);background:#fff;padding:11px 20px;border-radius:4px;
+  text-decoration:none;
+}
+.v6 .nav-cta:hover{background:var(--n6-pale);}
+
+/* =========================================================
+   SECTION 1 — HERO
+========================================================= */
+.v6 .hero{
+  position:relative;
+  min-height:88vh;
+  display:flex;align-items:flex-end;
+  background:var(--n6-ink);
+  overflow:hidden;
+}
+.v6 .hero-media{
+  position:absolute;inset:0;
+}
+.v6 .hero-media img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:62% 45%;
+}
+.v6 .hero-scrim{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(100deg, rgba(6,10,18,0.94) 0%, rgba(6,10,18,0.78) 26%, rgba(6,10,18,0.28) 52%, rgba(6,10,18,0.08) 68%),
+    linear-gradient(0deg, rgba(6,10,18,0.55) 0%, rgba(6,10,18,0) 34%);
+}
+.v6 .hero-content{
+  position:relative;z-index:2;
+  padding-block:56px 72px;
+  width:100%;
+}
+.v6 .hero-eyebrow{margin-bottom:18px;}
+.v6 .hero-h1{margin-bottom:22px;max-width:15ch;}
+.v6 .hero-sub{
+  color:var(--n6-pale);font-size:1.15rem;line-height:1.55;
+  max-width:42ch;margin:0 0 34px;
+}
+.v6 .hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:22px;}
+
+@media (min-width:1024px){
+  .v6 .hero{min-height:92vh;}
+  .v6 .hero-content{padding-block:64px 88px;}
+}
+
+/* =========================================================
+   SECTION 2 — PROBLEM RECOGNITION (editorial recognition moment)
+========================================================= */
+.v6 .sec-recognition{padding-block:64px;background:var(--ops-n00);}
+@media (min-width:1024px){.v6 .sec-recognition{padding-block:104px;}}
+.v6 .recognition-grid{display:grid;gap:32px;margin-top:30px;}
+@media (min-width:860px){
+  .v6 .recognition-grid{grid-template-columns:1.5fr 1fr;gap:56px;align-items:end;}
+}
+.v6 .recognition-list{display:flex;flex-direction:column;}
+.v6 .recognition-line{
+  font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);
+  font-size:clamp(1.5rem,4.2vw,2.6rem);line-height:1.16;
+  letter-spacing:var(--ops-track-h2);margin:0;
+  padding-block:12px;border-top:1px solid var(--ops-border-subtle);
+}
+.v6 .recognition-line:last-child{border-bottom:1px solid var(--ops-border-subtle);}
+@media (min-width:768px){
+  .v6 .recognition-line:nth-child(1){margin-left:0;}
+  .v6 .recognition-line:nth-child(2){margin-left:7%;}
+  .v6 .recognition-line:nth-child(3){margin-left:2%;}
+  .v6 .recognition-line:nth-child(4){margin-left:11%;}
+}
+.v6 .recognition-support .lede{max-width:42ch;margin:0;padding-bottom:14px;}
+
+/* =========================================================
+   SECTION 3 — THE OPSTEADY DIFFERENCE (ingredients → outcome)
+========================================================= */
+.v6 .sec-difference{padding-block:64px;background:var(--v6-warm);}
+@media (min-width:1024px){.v6 .sec-difference{padding-block:104px;}}
+.v6 .difference-grid{display:grid;gap:8px;margin-top:32px;}
+@media (min-width:860px){
+  .v6 .difference-grid{grid-template-columns:0.85fr 1.15fr;gap:0;align-items:center;}
+}
+.v6 .ingredient-list{list-style:none;margin:0;padding:0;}
+.v6 .ingredient-list li{
+  font-family:var(--ops-font-mono);font-size:13px;font-weight:600;text-transform:uppercase;
+  letter-spacing:var(--ops-track-label);color:var(--n6-navy);
+  padding:16px 0 16px 24px;border-top:1px solid var(--ops-border-subtle);
+  position:relative;
+}
+.v6 .ingredient-list li:last-child{border-bottom:1px solid var(--ops-border-subtle);}
+.v6 .ingredient-list li::before{
+  content:"";position:absolute;left:0;top:50%;width:14px;height:2px;
+  background:var(--a6-amber);
+}
+.v6 .difference-outcome{
+  border-left:2px solid var(--a6-amber);
+  padding:6px 0 6px 32px;margin-top:24px;
+}
+@media (min-width:860px){.v6 .difference-outcome{margin-top:0;height:100%;display:flex;align-items:center;}}
+.v6 .difference-statement{
+  font-family:var(--ops-font-display);font-weight:500;
+  font-size:clamp(1.5rem,3.2vw,2.25rem);
+  color:var(--n6-navy);line-height:1.3;max-width:22ch;margin:0;
+  letter-spacing:var(--ops-track-h2);
+}
+.v6 .difference-statement em{font-style:normal;font-weight:600;color:var(--a6-deep);}
+
+/* =========================================================
+   SECTION 4 — HOW IT WORKS (evidence, dense)
+========================================================= */
+.v6 .sec-how{
+  padding-block:72px;background:var(--n6-ink);color:#fff;
+}
+@media (min-width:1024px){.v6 .sec-how{padding-block:110px;}}
+.v6 .how-grid{display:grid;gap:44px;}
+@media (min-width:900px){
+  .v6 .how-grid{grid-template-columns:1.05fr 1.4fr;align-items:center;gap:56px;}
+}
+.v6 .how-copy p{color:var(--n6-pale);max-width:38ch;}
+.v6 .how-diagram-wrap{border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:28px 20px 20px;background:rgba(255,255,255,0.02);}
+.v6 .how-diagram{width:100%;height:auto;display:block;}
+.v6 .how-caption{
+  margin-top:16px;font-family:var(--ops-font-mono);font-size:12.5px;
+  color:var(--n6-steel);letter-spacing:0.02em;
+}
+/* Secondary — the one canonical named framework. Deliberately smaller and
+   quieter than the primary diagram above (Experience Authority §10: the
+   loop is secondary on the homepage, never the primary navigation frame). */
+.v6 .loop-strip{
+  margin-top:52px;padding-top:36px;border-top:1px solid rgba(255,255,255,0.08);
+  display:flex;flex-wrap:wrap;align-items:center;gap:28px;
+}
+.v6 .loop-diagram{width:84px;height:84px;flex:none;}
+.v6 .loop-caption{display:flex;flex-direction:column;gap:8px;min-width:240px;}
+.v6 .loop-steps{
+  color:var(--n6-pale);font-size:12.5px;letter-spacing:0.03em;margin:0;
+  text-transform:uppercase;
+}
+.v6 .loop-steps .arrow{color:var(--n6-steel);margin-inline:4px;}
+
+/* =========================================================
+   SECTION 5 — DEPTH WITHOUT A CATALOGUE (Route 4, typographic)
+========================================================= */
+.v6 .sec-depth{padding-block:72px;background:#fff;}
+@media (min-width:1024px){.v6 .sec-depth{padding-block:110px;}}
+.v6 .depth-grid{display:grid;gap:40px;}
+@media (min-width:900px){.v6 .depth-grid{grid-template-columns:1fr 1fr;gap:0;}}
+.v6 .depth-statement{
+  font-family:var(--ops-font-display);font-weight:600;
+  font-size:clamp(1.6rem,3.4vw,2.4rem);
+  color:var(--n6-navy);line-height:1.28;max-width:20ch;
+  letter-spacing:var(--ops-track-h2);
+  padding-right:24px;
+}
+.v6 .depth-terrain{
+  border-left:1px solid var(--ops-border);
+  padding-left:36px;
+}
+@media (max-width:899px){.v6 .depth-terrain{border-left:none;border-top:1px solid var(--ops-border);padding-left:0;padding-top:28px;}}
+
+/* One real, controlled artefact — genuine ILUO scale and single-point-of-
+   failure terminology from Opsteady's own product content (never named on
+   page, per the Site Structure doc's row-6 rule); the specific task/name
+   labels are anonymised/illustrative, not real customer or personnel data,
+   matching the same disclosure standard as a product page's Sample section. */
+.v6 .frag-grid{
+  border-collapse:collapse;width:100%;font-family:var(--ops-font-mono);font-size:12.5px;
+  margin-bottom:16px;
+}
+.v6 .frag-grid th,.v6 .frag-grid td{
+  border:1px solid var(--ops-border);padding:9px 10px;text-align:center;
+  color:var(--ops-text-secondary);font-weight:400;
+}
+.v6 .frag-grid thead th{
+  color:var(--n6-navy);font-weight:600;background:var(--ops-n05);
+}
+.v6 .frag-grid tbody th{
+  text-align:left;font-weight:500;color:var(--n6-navy);background:var(--ops-n05);
+  font-family:var(--ops-font-text);font-size:0.85rem;white-space:nowrap;
+}
+.v6 .frag-grid td.spof{
+  color:var(--n6-navy);font-weight:700;
+  box-shadow:inset 0 0 0 2px var(--a6-amber);
+}
+.v6 .frag-legend{
+  color:var(--ops-n50);font-size:12px;margin:0 0 22px;letter-spacing:0.01em;
+}
+.v6 .frag-legend .spof-dot{
+  display:inline-block;width:9px;height:9px;border:2px solid var(--a6-amber);border-radius:50%;
+  margin:0 3px -1px 2px;
+}
+.v6 .frag-caption{font-size:0.95rem;max-width:40ch;margin:0;color:var(--ops-text-secondary);}
+
+/* =========================================================
+   SECTION 6 — PROOF & TRUST (evidence, dense — the homepage's one
+   full-bleed moment, deliberately wider than the 1200px shell used
+   everywhere else; Visual World §I.2: "let exactly one section break
+   the container")
+========================================================= */
+.v6 .sec-proof{padding-block:72px;background:var(--v6-warm);}
+@media (min-width:1024px){.v6 .sec-proof{padding-block:110px;}}
+
+.v6 .proof-block{
+  position:relative;border-radius:6px 6px 0 0;overflow:hidden;
+  min-height:300px;
+  display:flex;align-items:flex-end;
+}
+.v6 .proof-media{position:absolute;inset:0;}
+.v6 .proof-media img{
+  width:100%;height:100%;object-fit:cover;object-position:70% 45%;
+  filter:saturate(0.8) contrast(1.03);
+}
+.v6 .proof-media .proof-scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(0deg, rgba(6,10,18,0.96) 0%, rgba(6,10,18,0.86) 46%, rgba(6,10,18,0.42) 78%, rgba(6,10,18,0.18) 100%);
+}
+.v6 .proof-overlay{position:relative;z-index:2;padding:32px 28px 36px;width:100%;}
+@media (min-width:768px){.v6 .proof-overlay{padding:44px 48px 48px;}}
+
+.v6 .proof-fictional{
+  display:inline-block;font-family:var(--ops-font-mono);font-size:10.5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.08em;color:var(--n6-ink);
+  background:var(--a6-light);padding:5px 10px;border-radius:2px;margin-bottom:24px;
+}
+.v6 .proof-beats{
+  display:grid;gap:22px;margin-bottom:28px;
+  padding-top:22px;border-top:1px solid rgba(255,255,255,0.16);
+}
+@media (min-width:860px){
+  .v6 .proof-beats{grid-template-columns:repeat(4,1fr);gap:28px;}
+}
+.v6 .beat-label{
+  display:block;font-family:var(--ops-font-mono);font-size:11px;font-weight:600;
+  text-transform:uppercase;letter-spacing:var(--ops-track-label);
+  color:var(--a6-light);margin-bottom:8px;
+}
+.v6 .proof-beat p{color:#fff;font-size:0.95rem;line-height:1.5;margin:0;max-width:32ch;}
+.v6 .stamp{
+  display:inline-block;border:1.5px solid var(--a6-light);color:var(--a6-light);
+  font-family:var(--ops-font-mono);font-size:10px;text-transform:uppercase;
+  letter-spacing:0.08em;padding:3px 8px;transform:rotate(-4deg);margin-top:10px;
+}
+.v6 .proof-beat-result .proof-metric{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.v6 .proof-metric .num{
+  font-family:var(--ops-font-display);font-weight:600;font-size:clamp(2rem,4vw,2.7rem);
+  color:#fff;letter-spacing:-0.01em;font-variant-numeric:tabular-nums;
+}
+.v6 .proof-metric .num .arrow{color:var(--a6-amber);margin-inline:4px;}
+.v6 .proof-metric .unit{font-family:var(--ops-font-mono);font-size:11px;color:var(--n6-pale);text-transform:uppercase;letter-spacing:0.05em;}
+
+/* Trust stitched directly onto the bottom of the same evidence block —
+   same background family, zero gap — rather than floating as a separate
+   column (found under-integrated during QA). */
+.v6 .trust-strip-bar{
+  background:var(--n6-ink);border-radius:0 0 6px 6px;
+  padding:26px 28px;
+  display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;
+}
+@media (min-width:768px){.v6 .trust-strip-bar{padding:26px 48px;}}
+.v6 .trust-tags{display:flex;flex-wrap:wrap;gap:10px;}
+.v6 .selected-list{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;}
+.v6 .selected-list .eyebrow{margin-right:4px;}
+.v6 .trust-strip-bar .eyebrow.muted{color:var(--n6-steel);}
+.v6 .selected-list span, .v6 .selected-list a{
+  font-family:var(--ops-font-text);font-size:0.92rem;font-weight:600;color:var(--n6-pale);
+  text-decoration:none;box-shadow:0 1px 0 0 transparent;
+}
+.v6 .selected-list a{color:#fff;box-shadow:0 1px 0 0 var(--n6-slate);}
+.v6 .selected-list a:hover{box-shadow:0 1px 0 0 #fff;}
+
+/* =========================================================
+   SECTION 7 — NEXT ACTION
+========================================================= */
+/* Flat navy — not a gradient — for the same reason as the nav (§4): the
+   canonical lockup's baked-in fill must match its ground exactly or the
+   seam shows. Padding tightened from the first pass, where this section's
+   empty field was disproportionate to its content; type scale raised
+   instead, so the close reads as decisive rather than merely smaller. */
+.v6 .sec-next{
+  background:var(--n6-navy);
+  color:#fff;padding-block:56px;text-align:left;
+}
+@media (min-width:1024px){.v6 .sec-next{padding-block:88px;}}
+.v6 .next-logo{width:130px;height:auto;margin-bottom:26px;}
+@media (min-width:768px){.v6 .next-logo{width:170px;}}
+.v6 .next-h2{color:#fff;font-size:clamp(2.1rem,5.4vw,3.6rem);max-width:15ch;margin-bottom:28px;letter-spacing:var(--ops-track-h1);}
+.v6 .next-ctas{display:flex;flex-wrap:wrap;gap:22px;align-items:center;}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.v6 .footer{background:var(--n6-ink);color:var(--n6-steel);padding-block:44px;}
+.v6 .footer-links{display:flex;flex-wrap:wrap;gap:4px 12px;margin:-10px -12px 10px;}
+.v6 .footer-links a{
+  font-size:0.9rem;color:var(--n6-pale);text-decoration:none;
+  display:inline-flex;align-items:center;min-height:44px;padding:10px 12px;
+}
+.v6 .footer-links a:hover{color:#fff;}
+.v6 .footer-meta{font-family:var(--ops-font-mono);font-size:11px;color:var(--ops-n50);}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion:reduce){
+  .v6 *{transition:none !important;}
+}

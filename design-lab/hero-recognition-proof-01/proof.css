@@ -1,0 +1,112 @@
+/* =========================================================
+   Hero → Problem Recognition — visual proof (disposable)
+   Reuses /v6/system.css unmodified for nav, hero, shell, type
+   and button primitives — nothing in that file is touched or
+   redefined here. This file adds ONLY the new .rp-* Problem
+   Recognition section and the .rp-seam hero→recognition handoff.
+
+   Key-art handling (per task §7): the supplied reference image
+   is a flattened prototype asset with generated diagnostic
+   labels baked in ("LATE CHANGE DISRUPTS FLOW" etc.) that are
+   NOT approved customer-facing claims and cannot be cleanly
+   separated from the pixels — there is no layered source file.
+   It is used here as a temporary photographic GROUND only:
+   blurred and regraded enough that the baked-in words are not
+   legibly readable, with a fresh, independently-drawn SVG
+   marker layer built on top in their place. This is a stated
+   prototype limitation (§7), not a claim that the image is
+   production-ready.
+========================================================= */
+
+/* ---- Hero → Recognition seam — a small amber registration
+   tick that visually starts inside the hero's own bottom
+   padding and continues down into Recognition, at the same
+   left inset the hero eyebrow and Recognition eyebrow both
+   share (both use .shell). Hero markup/CSS is untouched — this
+   is a pseudo-element on the NEXT section only, absolutely
+   positioned to overlap upward across the section boundary. */
+.rp-seam{
+  position:absolute;top:-34px;left:0;width:1px;height:56px;
+  background:linear-gradient(180deg, rgba(208,143,37,0) 0%, var(--a6-amber) 60%, var(--a6-amber) 100%);
+  z-index:3;
+}
+@media (min-width:768px){.rp-seam{left:32px;}}
+@media (min-width:1024px){.rp-seam{left:40px;}}
+
+.recognition-proof{
+  position:relative;
+  min-height:88vh;
+  display:flex;align-items:flex-end;
+  background:var(--n6-ink);
+  overflow:hidden;
+  isolation:isolate;
+}
+@media (min-width:1024px){.recognition-proof{min-height:92vh;}}
+
+.rp-media{position:absolute;inset:0;}
+.rp-media img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:66% 38%;
+  /* Blur + reduced contrast/brightness: the mitigation described
+     above. The source carries both small diagnostic labels and a
+     large bold generated headline in the same left zone the real
+     HTML headline now occupies — a light blur left that headline
+     readable as a ghost behind the real text (found live during
+     QA), so the blur here is deliberately heavy, well past the
+     point needed for the small labels alone, specifically to
+     break the large bold letterforms into unreadable texture. */
+  filter:blur(9px) saturate(0.75) contrast(0.85) brightness(0.6);
+  transform:scale(1.08); /* hides the blur's soft edge at the frame boundary */
+}
+.rp-scrim{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(100deg, rgba(6,10,18,0.99) 0%, rgba(6,10,18,0.97) 30%, rgba(6,10,18,0.7) 50%, rgba(6,10,18,0.32) 68%, rgba(6,10,18,0.16) 100%),
+    linear-gradient(0deg, rgba(6,10,18,0.6) 0%, rgba(6,10,18,0.05) 30%);
+}
+
+.rp-markers{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;}
+.rp-ring{fill:none;stroke:var(--a6-amber);stroke-width:1.5;opacity:0.9;}
+.rp-ring-dim{stroke:var(--a6-rich);opacity:0.55;}
+.rp-dot{fill:var(--a6-amber);}
+.rp-dot-dim{fill:var(--a6-rich);opacity:0.7;}
+.rp-tag{font-family:var(--ops-font-mono);font-size:20px;fill:var(--a6-light);opacity:0.85;}
+
+.rp-content{position:relative;z-index:3;padding-block:56px 64px;width:100%;}
+@media (min-width:1024px){.rp-content{padding-block:64px 80px;}}
+
+.rp-lines{margin-top:20px;display:flex;flex-direction:column;gap:2px;}
+.rp-lines p{
+  font-family:var(--ops-font-display);font-weight:600;color:#fff;
+  font-size:clamp(1.5rem,3.6vw,2.5rem);line-height:1.14;margin:0;
+  letter-spacing:var(--ops-track-h2);
+}
+.rp-lines .rp-line-final{color:var(--a6-light);margin-top:6px;}
+
+.rp-lede{
+  margin-top:26px;color:var(--n6-pale);font-size:1.08rem;line-height:1.55;
+  max-width:42ch;
+}
+
+/* ---- Mobile — distinct crop, fewer markers, relocated type,
+   per §11: not a scaled-down desktop reflow. ---- */
+@media (max-width:640px){
+  .recognition-proof{display:block;min-height:0;}
+  .rp-media,.rp-scrim,.rp-markers{position:absolute;inset:0;height:56vh;}
+  .rp-media img{object-position:74% 30%;transform:scale(1.08);}
+  .rp-scrim{
+    background:
+      linear-gradient(180deg, rgba(6,10,18,0.4) 0%, rgba(6,10,18,0.55) 38%, rgba(6,10,18,0.96) 78%, rgba(6,10,18,0.98) 100%);
+  }
+  /* Reduce six competing markers to three — the idea (more than
+     one, none resolved) survives; a dense field would not read
+     at this size. Markers 3 and 5 sit outside the horizontal band
+     that survives the SVG's "slice" cover-crop at this aspect
+     ratio (found live during QA — keeping them here left only one
+     marker actually visible, silently defeating the point of this
+     whole proof), so the surviving trio is 1/2/6, not 1/3/5. */
+  .rp-marker-3,.rp-marker-4,.rp-marker-5{display:none;}
+  .rp-content{position:relative;padding-top:calc(56vh - 170px);padding-bottom:40px;}
+  .rp-lines p{font-size:clamp(1.35rem,7.2vw,1.9rem);}
+  .rp-lede{max-width:none;}
+}

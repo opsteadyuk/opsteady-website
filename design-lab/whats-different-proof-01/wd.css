@@ -1,0 +1,195 @@
+/* =========================================================
+   What's Different — visual proof (disposable, visual only)
+   Reuses /v6/system.css and the approved Recognition proof's
+   own stylesheet unmodified. Adds ONLY the new .wd-* section
+   and its own hero→recognition-style seam device.
+
+   COMPOSITION CORRECTION (this revision): the first pass framed
+   the Brakes & Drivers evidence as a complete floating document —
+   rejected. This version treats the same real content as
+   architecture: the material plane exceeds the viewport on three
+   sides (top, right, bottom); no row set is fully bordered; scale
+   and crop are the primary devices, not a card boundary.
+
+   Dominant anchor: real, locked Brakes & Drivers pacing logic
+   (00_SYSTEM/brakes-and-drivers-design-brief.md). The
+   change_capacity → max_concurrent_modules mapping is shown in
+   full (low→1, medium→2, high→4 — a small, low-risk output
+   mapping) at architectural scale. One row of the fuller
+   seven-row conditional table that actually determines
+   change_capacity appears as a faded fragment bleeding off the
+   plane's own top edge — real content, deliberately not enough
+   to self-assess from (Proof Without Transfer unchanged).
+
+   Subordinate: real Yamazumi rebalancing chart (P4.9), recoloured
+   to two cool slate tones (no amber) so it never competes with
+   the dominant evidence's amber — no data changed, disclosed here
+   as in the prior brief.
+========================================================= */
+
+.wd-seam{
+  position:absolute;top:-34px;left:0;width:1px;height:56px;
+  background:linear-gradient(180deg, rgba(208,143,37,0) 0%, var(--a6-amber) 60%, var(--a6-amber) 100%);
+  z-index:4;
+}
+@media (min-width:768px){.wd-seam{left:32px;}}
+@media (min-width:1024px){.wd-seam{left:40px;}}
+
+.whats-different{
+  position:relative;
+  min-height:88vh;
+  display:flex;align-items:flex-end;
+  background:var(--n6-ink);
+  overflow:hidden;
+  isolation:isolate;
+}
+@media (min-width:1024px){.whats-different{min-height:96vh;}}
+
+.wd-ground{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 90% 70% at 78% 30%, rgba(45,74,115,0.4) 0%, rgba(10,18,31,0) 62%),
+    linear-gradient(180deg, var(--n6-deep) 0%, var(--n6-ink) 60%);
+}
+
+/* =========================================================
+   THE MATERIAL PLANE
+   Enters from the right, exceeds the viewport on three edges.
+   Only the left boundary is ever seen as an edge — everything
+   else is crop, not a border. ~60% of viewport width at rest.
+========================================================= */
+.wd-material{
+  position:absolute;z-index:1;
+  top:-10%;right:-14%;bottom:-14%;
+  width:min(70vw,980px);
+  transform:rotate(2.4deg);
+  background:
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 4px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 3px),
+    linear-gradient(158deg, #F4EFE4 0%, #E7DECB 100%);
+  box-shadow:-40px 0 90px rgba(0,0,0,0.55);
+  clip-path:polygon(0% 0%, 2.2% 3%, 0.6% 9%, 2% 22%, 0% 34%, 1.6% 48%, 0.4% 61%, 2.1% 74%, 0.8% 88%, 2% 100%, 100% 100%, 100% 0%);
+}
+
+/* A faint dark substrate sliver showing beyond the material's
+   lower-right bleed, implying the sheet sits on a real dark
+   surface rather than floating on flat colour. */
+.wd-material::after{
+  content:"";position:absolute;right:-6%;bottom:-10%;width:40%;height:30%;
+  background:radial-gradient(ellipse at 70% 70%, rgba(0,0,0,0.35), transparent 70%);
+  pointer-events:none;
+}
+
+/* ---- Subordinate real evidence — Yamazumi — a second physical
+   layer, cooler and quieter, emerging from behind the dominant
+   plane's own lower-left, cropped by both the plane and the
+   viewport. Genuinely sized, not a corner decoration. ---- */
+.wd-yamazumi{
+  position:absolute;z-index:0;
+  left:-14%;bottom:6%;width:min(30vw,420px);
+  margin:0;opacity:0.55;
+  transform:rotate(4deg);
+  filter:saturate(0.5);
+}
+.wd-yamazumi svg{width:100%;height:auto;display:block;}
+.wd-yamazumi::before{
+  content:"";position:absolute;inset:-6% -10%;
+  background:linear-gradient(200deg, #DCD5C4 0%, #CFC7B2 100%);
+  z-index:-1;box-shadow:-20px 10px 50px rgba(0,0,0,0.4);
+}
+
+/* ---- Dominant real evidence — information architecture, not a
+   table in a card. Rows span the full (oversized) plane width,
+   so every rule visibly runs to and past the plane's own edge. ---- */
+/* .wd-rows matches .wd-material's own width exactly (not wider) —
+   .wd-material already bleeds off the right edge of the viewport,
+   so any full-width border-top on a row naturally runs off-screen
+   too, with no extra trick needed. Content sits at a fixed inset
+   from the LEFT edge only, where it is actually visible; nothing
+   is positioned by an auto-margin toward the (off-screen) right,
+   which was the bug in the previous pass — the dominant numbers
+   were being pushed past the viewport edge and never seen at all. */
+.wd-rows{
+  position:relative;z-index:2;
+  width:100%;
+  padding-top:1vh;
+}
+
+.wd-row{
+  display:flex;align-items:baseline;gap:22px;
+  border-top:1px solid rgba(27,46,79,0.16);
+  padding:1.4vh 0 1.4vh 11%;
+}
+
+.wd-row-context{
+  font-size:11px;color:var(--n6-slate);opacity:0.55;letter-spacing:0.04em;
+  padding:1vh 0 1vh 11%;border-top:none;gap:14px;
+  -webkit-mask-image:linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 70%);
+  mask-image:linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 70%);
+}
+.wd-row-context span{white-space:nowrap;}
+.wd-row-context .wd-cap{color:var(--a6-ochre);font-weight:600;}
+
+.wd-key{
+  font-size:clamp(1rem,1.8vw,1.3rem);font-weight:600;color:var(--n6-mid);
+  text-transform:uppercase;letter-spacing:0.03em;flex:none;
+}
+.wd-arrow{color:var(--n6-slate);font-size:1.4rem;font-weight:300;flex:none;}
+.wd-num{
+  font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);
+  line-height:1;font-variant-numeric:tabular-nums;flex:none;
+}
+.wd-num-amber{color:var(--a6-ochre);}
+
+.wd-row-medium .wd-num{font-size:clamp(2.8rem,5.6vw,4.6rem);}
+.wd-row-low .wd-num{font-size:clamp(2.2rem,4.2vw,3.4rem);opacity:0.7;}
+.wd-row-high{
+  padding-block:2.8vh;border-bottom:1px solid rgba(27,46,79,0.16);
+}
+.wd-row-high .wd-num{font-size:clamp(6rem,13vw,11rem);}
+.wd-row-high .wd-key{font-size:clamp(1.2rem,2.2vw,1.8rem);}
+
+.wd-label{
+  position:relative;z-index:2;margin:1.2vh 0 0;padding-left:11%;
+  font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--n6-mid);
+  opacity:0.85;
+}
+
+/* ---- Type — same left/lower placement as Hero and Recognition,
+   but the material's rotated left boundary now genuinely reaches
+   toward the headline at the top of the section (asymmetric
+   overlap) while receding away from the body copy lower down —
+   a property of the plane's own rotation, not a separate device. ---- */
+.wd-content{position:relative;z-index:3;padding-block:56px 64px;width:100%;}
+@media (min-width:1024px){.wd-content{padding-block:64px 80px;}}
+.wd-h2{
+  font-family:var(--ops-font-display);font-weight:600;color:#fff;
+  font-size:clamp(1.9rem,4.6vw,3.1rem);line-height:1.08;margin:18px 0 0;
+  letter-spacing:var(--ops-track-h2);max-width:14ch;
+}
+.wd-body{
+  margin-top:22px;color:var(--n6-pale);font-size:1.08rem;line-height:1.55;max-width:36ch;
+}
+
+/* ---- Mobile — the plane is recomposed, not shrunk: it becomes a
+   full-width band the headline sits above, still bleeding off two
+   edges, with the "high" row still the dominant scale element. ---- */
+@media (max-width:640px){
+  .whats-different{min-height:0;padding-block:0;align-items:stretch;display:block;}
+  .wd-ground{position:absolute;inset:0;height:50vh;}
+  .wd-material{
+    position:absolute;top:0;left:-8%;right:-8%;bottom:auto;height:50vh;width:auto;
+    transform:rotate(-2deg);
+  }
+  .wd-yamazumi{left:auto;right:-10%;bottom:-8%;width:44vw;opacity:0.5;}
+  .wd-rows{padding-top:3vh;}
+  .wd-row{padding:1.2vh 0 1.2vh 9%;gap:14px;}
+  .wd-row-high{padding-block:1.8vh;}
+  .wd-row-high .wd-num{font-size:clamp(4rem,20vw,5.5rem);}
+  .wd-row-medium .wd-num,.wd-row-low .wd-num{font-size:clamp(1.8rem,9vw,2.4rem);}
+  .wd-row-context{display:none;}
+  .wd-label{padding-left:9%;}
+  .wd-content{position:relative;padding-top:calc(50vh - 32px);padding-bottom:40px;}
+  .wd-h2{font-size:clamp(1.5rem,7.5vw,2rem);max-width:none;}
+  .wd-body{max-width:none;}
+}

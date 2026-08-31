@@ -1,0 +1,307 @@
+/* =========================================================
+   Opsteady 2.0 — Premium Visual Laboratory 01
+   Disposable design-development material. Not V6, not production.
+   Imports /tokens.css (canonical, unmodified) and the same
+   already-authorised derived tonal ramp V6 uses (Visual World §D).
+   Lab chrome (header, dividers, concept tags) is deliberately
+   neutral and NOT part of the Opsteady visual language, so it
+   never contaminates judgement of the concepts themselves.
+========================================================= */
+
+:root{
+  --n6-ink:#0A121F; --n6-deep:#12203A; --n6-navy:#1B2E4F; --n6-mid:#2D4A73;
+  --n6-slate:#52698D; --n6-steel:#8496B3; --n6-pale:#C9D3E3;
+  --a6-ochre:#6B4813; --a6-deep:#946719; --a6-amber:#D08F25;
+  --a6-rich:#E0A13A; --a6-light:#EDC07A; --a6-tint:#F6DFB3;
+  --v6-warm:#FBF9F5;
+  --lab-chrome-bg:#F1F2F4; --lab-chrome-line:#D6D9DE; --lab-chrome-ink:#3A3F47; --lab-chrome-muted:#7B818B;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+body.lab{margin:0;background:var(--lab-chrome-bg);-webkit-font-smoothing:antialiased;}
+.lab img{max-width:100%;display:block;}
+
+/* ---- Shared shell (matches V6) ---- */
+.shell{max-width:1200px;margin-inline:auto;padding-inline:16px;}
+@media (min-width:768px){.shell{padding-inline:32px;}}
+@media (min-width:1024px){.shell{padding-inline:40px;}}
+
+/* ---- Shared type primitives (reused inside every concept) ---- */
+.concept h1,.concept h2,.concept h3,.concept .disp{
+  font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);margin:0;line-height:1.05;
+}
+.concept .eyebrow{
+  font-family:var(--ops-font-mono);font-size:12px;font-weight:600;text-transform:uppercase;
+  letter-spacing:var(--ops-track-label);color:var(--a6-deep);
+}
+.concept .eyebrow.on-field{color:var(--n6-slate);}
+.concept p{font-family:var(--ops-font-text);line-height:1.6;color:var(--ops-text-secondary);margin:0;}
+.concept .lede{font-size:1.1rem;color:var(--ops-text-primary);max-width:44ch;}
+.concept .mono{font-family:var(--ops-font-mono);}
+
+/* =========================================================
+   LAB CHROME — deliberately neutral, not Opsteady brand voice
+========================================================= */
+.lab-header{background:#fff;border-bottom:1px solid var(--lab-chrome-line);padding:40px 24px 32px;}
+.lab-header-inner{max-width:820px;margin-inline:auto;}
+.lab-kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--lab-chrome-muted);margin-bottom:8px;}
+.lab-title{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:600;font-size:1.6rem;color:var(--lab-chrome-ink);margin:0 0 10px;}
+.lab-sub{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:0.92rem;color:var(--lab-chrome-muted);line-height:1.6;margin:0;}
+
+.lab-divider{background:var(--lab-chrome-bg);padding:34px 24px 10px;border-top:1px solid var(--lab-chrome-line);margin-top:6px;}
+.lab-divider.lab-end{padding-bottom:34px;}
+.lab-divider-label{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--lab-chrome-ink);font-weight:600;}
+
+.lab-concept-tag{
+  font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:12.5px;font-weight:600;
+  color:var(--lab-chrome-muted);background:var(--lab-chrome-bg);padding:10px 24px;
+  border-top:1px dashed var(--lab-chrome-line);
+}
+
+/* =========================================================
+   01A — RECOGNITION — Typography as operational noise
+========================================================= */
+.rec-a{background:#fff;padding-block:72px;}
+@media (min-width:1024px){.rec-a{padding-block:120px;}}
+.rec-a-inner{max-width:900px;}
+.rec-a-composition{margin-top:36px;display:flex;flex-direction:column;}
+
+.rec-a-line{
+  display:flex;align-items:baseline;gap:16px;
+  border-top:1px solid var(--ops-border-subtle);
+  padding-block:18px;position:relative;
+}
+.rec-a-line:last-child{border-bottom:1px solid var(--ops-border-subtle);}
+.rec-a-mark{
+  font-family:var(--ops-font-mono);font-size:14px;color:var(--n6-steel);
+  width:1.4em;flex:none;text-align:center;
+}
+.rec-a-text{font-family:var(--ops-font-display);color:var(--n6-navy);}
+.rec-a-tag{
+  margin-left:auto;font-family:var(--ops-font-mono);font-size:10.5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.08em;color:var(--n6-slate);white-space:nowrap;
+}
+
+/* Controlled collision — each line breaks the shared axis differently.
+   The tension is scale/weight/alignment, never randomness. */
+.rec-a-line-1 .rec-a-text{font-size:clamp(1.6rem,3.6vw,2.4rem);font-weight:600;}
+.rec-a-line-2{padding-left:9%;margin-top:-4px;}
+.rec-a-line-2 .rec-a-text{font-size:clamp(1.15rem,2.4vw,1.6rem);font-weight:500;color:var(--n6-slate);}
+.rec-a-line-3 .rec-a-text{font-size:clamp(1.5rem,3.2vw,2.15rem);font-weight:600;}
+.rec-a-line-3{margin-top:-2px;}
+.rec-a-line-4{padding-top:26px;flex-wrap:wrap;row-gap:12px;}
+.rec-a-line-4 .rec-a-text{font-size:clamp(1.9rem,4.4vw,2.9rem);font-weight:600;letter-spacing:var(--ops-track-h2);}
+.rec-a-line-4 .rec-a-mark{color:var(--a6-amber);}
+
+.rec-a-correction{
+  display:inline-flex;align-items:center;gap:8px;margin-left:auto;
+  font-family:var(--ops-font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;
+}
+.rec-a-struck{color:var(--ops-n40);text-decoration:line-through;text-decoration-color:var(--ops-n40);}
+.rec-a-arrow{color:var(--n6-steel);}
+.rec-a-amber-tag{color:var(--a6-deep);font-weight:700;border-bottom:1.5px solid var(--a6-amber);padding-bottom:1px;}
+
+.rec-a .rec-a-lede{margin-top:40px;padding-top:24px;border-top:1px solid var(--ops-border-subtle);}
+
+@media (max-width:640px){
+  .rec-a-line{flex-wrap:wrap;padding-block:16px;}
+  .rec-a-line-2{padding-left:0;}
+  .rec-a-tag{margin-left:0;}
+  .rec-a-line-4{padding-top:20px;}
+  .rec-a-correction{margin-left:0;}
+}
+
+/* =========================================================
+   01B — RECOGNITION — Signal, distraction, attention, priority
+========================================================= */
+.rec-b{background:var(--ops-n05);padding-block:80px;}
+@media (min-width:1024px){.rec-b{padding-block:132px;}}
+.rec-b-inner{max-width:1040px;}
+.rec-b-field{position:relative;min-height:420px;margin-top:44px;}
+@media (min-width:768px){.rec-b-field{min-height:480px;}}
+
+.rec-b-noise{position:absolute;inset:0;pointer-events:none;}
+.rec-b-noise span{
+  position:absolute;width:10px;height:1.5px;background:var(--ops-n30);
+  transform:translate(-50%,-50%) rotate(var(--r,0deg));
+}
+.rec-b-noise span:nth-child(odd){--r:22deg;}
+.rec-b-noise span:nth-child(3n){width:5px;height:5px;border-radius:50%;background:var(--ops-n30);}
+
+.rec-b-flag{
+  position:absolute;display:flex;align-items:center;gap:10px;
+  font-family:var(--ops-font-display);font-weight:500;color:var(--n6-slate);
+  font-size:clamp(0.95rem,1.6vw,1.1rem);max-width:220px;
+}
+.rec-b-stub{width:20px;height:1px;background:var(--ops-n30);flex:none;}
+.rec-b-flag-1{top:6%;left:2%;}
+.rec-b-flag-2{top:20%;right:4%;max-width:200px;text-align:right;flex-direction:row-reverse;}
+.rec-b-flag-3{bottom:10%;left:4%;}
+
+.rec-b-focus{
+  position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);
+  padding:28px 40px;text-align:center;
+}
+.rec-b-focus-text{
+  position:relative;font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);
+  font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:var(--ops-track-h2);white-space:nowrap;
+}
+.rec-b-bracket{position:absolute;width:20px;height:20px;border-color:var(--a6-amber);border-style:solid;border-width:0;}
+.rec-b-bracket.tl{top:0;left:0;border-top-width:2px;border-left-width:2px;}
+.rec-b-bracket.tr{top:0;right:0;border-top-width:2px;border-right-width:2px;}
+.rec-b-bracket.bl{bottom:0;left:0;border-bottom-width:2px;border-left-width:2px;}
+.rec-b-bracket.br{bottom:0;right:0;border-bottom-width:2px;border-right-width:2px;}
+
+.rec-b .rec-b-lede{margin-top:44px;max-width:44ch;}
+
+@media (max-width:768px){
+  .rec-b-field{min-height:0;position:static;display:flex;flex-direction:column;gap:22px;}
+  .rec-b-noise{display:none;}
+  .rec-b-flag{position:static;max-width:none;text-align:left !important;flex-direction:row !important;}
+  .rec-b-focus{position:static;transform:none;padding:24px 20px;order:-1;border:1px solid var(--a6-amber);}
+  .rec-b-bracket{display:none;}
+  .rec-b-focus-text{white-space:normal;}
+}
+
+/* =========================================================
+   02A — DIFFERENCE — Routed convergence through a gate
+========================================================= */
+.diff-a{background:var(--v6-warm);padding-block:80px;}
+@media (min-width:1024px){.diff-a{padding-block:128px;}}
+.diff-a-grid{display:grid;gap:40px;margin-top:36px;}
+@media (min-width:900px){.diff-a-grid{grid-template-columns:1.6fr 1fr;gap:56px;align-items:center;}}
+
+.diff-a-diagram{position:relative;}
+.diff-a-diagram svg{width:100%;height:auto;display:block;}
+.diff-a-label{
+  position:absolute;left:0;transform:translateY(-50%);
+  font-family:var(--ops-font-mono);font-size:12px;font-weight:600;text-transform:uppercase;
+  letter-spacing:0.05em;color:var(--n6-mid);background:var(--v6-warm);padding-right:10px;
+}
+
+.diff-a-outcome{border-left:2px solid var(--a6-amber);padding:6px 0 6px 32px;}
+.difference-statement{
+  font-family:var(--ops-font-display);font-weight:500;font-size:clamp(1.4rem,2.8vw,2rem);
+  color:var(--n6-navy);line-height:1.32;max-width:22ch;margin:0;letter-spacing:var(--ops-track-h2);
+}
+.difference-statement em{font-style:normal;font-weight:600;color:var(--a6-deep);}
+
+@media (max-width:640px){
+  .diff-a-diagram svg{transform:scale(1.0);}
+  .diff-a-label{font-size:10.5px;background:transparent;position:static;display:block;margin:6px 0;padding-left:4px;border-left:2px solid var(--n6-steel);}
+  .diff-a-diagram svg{display:none;}
+  .diff-a-outcome{margin-top:8px;}
+}
+
+/* =========================================================
+   02B — DIFFERENCE — Registration and calibration
+========================================================= */
+.diff-b{background:#fff;padding-block:80px;}
+@media (min-width:1024px){.diff-b{padding-block:128px;}}
+.diff-b-stack{position:relative;margin-top:40px;padding-inline:14px;}
+.diff-b-axis{
+  position:absolute;left:14px;top:0;bottom:0;width:1.5px;background:var(--n6-pale);
+}
+.diff-b-band{
+  position:relative;display:flex;align-items:center;justify-content:space-between;
+  padding-block:22px;border-top:1px solid var(--ops-border-subtle);
+}
+.diff-b-band:last-child{border-bottom:1px solid var(--ops-border-subtle);}
+.diff-b-tick{width:1.5px;height:18px;background:var(--a6-amber);flex:none;}
+.diff-b-tick.left{margin-right:16px;}
+.diff-b-tick.right{margin-left:16px;}
+.diff-b-label{
+  font-family:var(--ops-font-mono);font-size:13px;font-weight:600;text-transform:uppercase;
+  letter-spacing:var(--ops-track-label);color:var(--n6-navy);flex:1;
+}
+
+.diff-b-outcome{position:relative;margin-top:44px;padding:34px 36px;}
+.diff-b-bracket{position:absolute;width:22px;height:22px;border-color:var(--a6-amber);border-style:solid;border-width:0;}
+.diff-b-bracket.tl{top:0;left:0;border-top-width:2px;border-left-width:2px;}
+.diff-b-bracket.tr{top:0;right:0;border-top-width:2px;border-right-width:2px;}
+.diff-b-bracket.bl{bottom:0;left:0;border-bottom-width:2px;border-left-width:2px;}
+.diff-b-bracket.br{bottom:0;right:0;border-bottom-width:2px;border-right-width:2px;}
+.diff-b-outcome .difference-statement{max-width:none;}
+
+@media (max-width:640px){
+  .diff-b-stack{padding-inline:0;}
+  .diff-b-axis{display:none;}
+  .diff-b-tick.left{display:none;}
+  .diff-b-outcome{padding:26px 20px;}
+}
+
+/* =========================================================
+   03A — SYSTEM DEPTH — Technical-publication plate
+========================================================= */
+.depth-a{background:#fff;padding-block:80px;}
+@media (min-width:1024px){.depth-a{padding-block:128px;}}
+.depth-a-grid{display:grid;gap:44px;}
+@media (min-width:900px){.depth-a-grid{grid-template-columns:1fr 1.1fr;gap:64px;align-items:start;}}
+.concept .depth-statement{
+  font-family:var(--ops-font-display);font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);
+  color:var(--n6-navy);line-height:1.3;max-width:20ch;letter-spacing:var(--ops-track-h2);margin-top:16px;
+}
+.depth-a-plate{margin:0;}
+.depth-a-frame{
+  border:1px solid var(--n6-navy);border-right:2px dashed var(--n6-navy);padding:26px 24px 20px;background:#fff;
+}
+.frag-grid{border-collapse:collapse;width:100%;font-family:var(--ops-font-mono);font-size:12.5px;margin-bottom:16px;}
+.frag-grid th,.frag-grid td{border:1px solid var(--ops-border);padding:9px 10px;text-align:center;color:var(--ops-text-secondary);font-weight:400;}
+.frag-grid thead th{color:var(--n6-navy);font-weight:600;background:var(--ops-n05);}
+.frag-grid tbody th{text-align:left;font-weight:500;color:var(--n6-navy);background:var(--ops-n05);font-family:var(--ops-font-text);font-size:0.85rem;white-space:nowrap;}
+.frag-grid td.spof{color:var(--n6-navy);font-weight:700;box-shadow:inset 0 0 0 2px var(--a6-amber);}
+.frag-legend{color:var(--ops-n50);font-size:12px;margin:0;letter-spacing:0.01em;}
+.frag-legend .spof-dot{display:inline-block;width:9px;height:9px;border:2px solid var(--a6-amber);border-radius:50%;margin:0 3px -1px 2px;}
+.depth-a-caption{
+  margin-top:14px;font-family:var(--ops-font-mono);font-size:11.5px;color:var(--ops-n50);
+  padding-left:2px;border-left:2px solid var(--a6-amber);padding-left:10px;
+}
+
+@media (max-width:640px){
+  .depth-a-frame{border-right-style:solid;padding:20px 16px 16px;}
+  .frag-grid{font-size:11px;}
+  .frag-grid th,.frag-grid td{padding:7px 6px;}
+}
+
+/* =========================================================
+   03B — SYSTEM DEPTH — Detail and context, one source
+========================================================= */
+.depth-b{background:var(--ops-n05);padding-block:80px;}
+@media (min-width:1024px){.depth-b{padding-block:128px;}}
+.depth-b-grid{display:grid;gap:44px;}
+@media (min-width:900px){.depth-b-grid{grid-template-columns:0.8fr 1.3fr;gap:56px;align-items:center;}}
+.depth-b-relation{
+  position:relative;display:grid;grid-template-columns:0.55fr 0.1fr 0.9fr;align-items:center;gap:0;
+}
+.depth-b-context{position:relative;opacity:0.72;}
+.depth-b-context-label{
+  display:block;font-family:var(--ops-font-mono);font-size:10.5px;text-transform:uppercase;
+  letter-spacing:0.06em;color:var(--ops-n50);margin-bottom:8px;
+}
+.frag-grid-mini{font-size:9px;}
+.frag-grid-mini th,.frag-grid-mini td{padding:4px 5px;}
+.depth-b-leader{width:100%;height:60px;overflow:visible;}
+.depth-b-detail{
+  background:#fff;border:1px solid var(--n6-navy);padding:20px 22px;
+  display:flex;align-items:center;gap:18px;
+}
+.depth-b-detail-cell{
+  flex:none;width:56px;height:56px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--ops-font-display);font-weight:700;font-size:1.6rem;color:var(--n6-navy);
+  border:2px solid var(--a6-amber);border-radius:50%;
+}
+.depth-b-detail-label{font-family:var(--ops-font-text);font-size:0.92rem;color:var(--ops-text-primary);line-height:1.45;}
+.depth-b .depth-b-legend{margin-top:24px;padding-top:18px;border-top:1px solid var(--ops-border-subtle);}
+
+@media (max-width:900px){
+  .depth-b-relation{grid-template-columns:1fr;gap:18px;}
+  .depth-b-leader{display:none;}
+  .depth-b-context{opacity:1;max-width:280px;}
+}
+@media (max-width:640px){
+  .depth-b-detail{padding:16px 18px;gap:14px;}
+  .depth-b-detail-cell{width:46px;height:46px;font-size:1.3rem;}
+}
+
+/* ---- Reduced motion (no motion used, kept for parity) ---- */
+@media (prefers-reduced-motion:reduce){.lab *{transition:none !important;}}
