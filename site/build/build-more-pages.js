@@ -12,24 +12,24 @@ w("site/pricing.html", page({
     <div class="shell">
       <div class="eyebrow on-navy">Pricing</div>
       <h1>Straightforward pricing.</h1>
-      <p>Two depth levels. Essentials gets you the tool and clear instructions. Pro adds the reasoning: why the main decisions work, the full playbook, and where it usually goes wrong.</p>
+      <p>Every Tool has its own price, shown on its own page. Most are Pro today, priced by depth and reach — Essentials editions are being added over time, and only shown where they actually exist.</p>
     </div>
   </section>
   <section class="page-section">
     <div class="shell">
       <h2>What things cost</h2>
       <table class="price-table">
-        <thead><tr><th></th><th>Essentials</th><th>Pro</th></tr></thead>
+        <thead><tr><th></th><th>Essentials <span class="mono" style="font-weight:400;font-size:0.8rem;">(where available)</span></th><th>Pro</th></tr></thead>
         <tbody>
-          <tr><td>Most interventions</td><td>£89</td><td>£179</td></tr>
-          <tr><td>A smaller number of deeper, cross-cutting interventions</td><td>£179</td><td>£349</td></tr>
+          <tr><td>Most Tools</td><td>£89</td><td>£179</td></tr>
+          <tr><td>A smaller number of deeper, cross-cutting Tools</td><td>£179</td><td>£349</td></tr>
         </tbody>
       </table>
     </div>
   </section>
   <section class="page-section tint">
     <div class="shell">
-      <h2>A small number of interventions at a lower entry price</h2>
+      <h2>A small number of Tools at a lower entry price</h2>
       <p>These are available as detailed worked examples, at a lower entry Pro price. Not a discount. Not time-limited.</p>
       <div class="showcase-list">
         <div class="showcase-item"><span>Bottleneck Analysis Tool</span><span class="mono">£99</span></div>
@@ -41,10 +41,10 @@ w("site/pricing.html", page({
   <section class="page-section">
     <div class="shell">
       <h2>Where purchase happens</h2>
-      <p>Every intervention has its own price and buy action.</p>
+      <p>Every Tool has its own price and buy action, showing only the edition actually available to buy.</p>
       <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;">
         <a class="btn btn-primary" href="/site/interventions/bottleneck_analysis.html">See a representative example</a>
-        <a class="btn-text" href="/site/problems/index.html">Browse by problem <span class="arrow">→</span></a>
+        <a class="btn-text" href="/site/interventions/index.html">Browse Tools <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -61,14 +61,17 @@ w("site/who-we-are.html", page({
   <section class="page-hero">
     <div class="shell">
       <div class="eyebrow on-navy">Who we are</div>
-      <h1>Built by someone who's run a site.</h1>
-      <p>Built by someone who's stood at a shift handover and watched the same three problems get passed on again, because nobody had a way to record them.</p>
+      <h1>Built from experience running manufacturing operations.</h1>
     </div>
   </section>
   <section class="page-section">
     <div class="shell">
-      <h2>What Opsteady is not</h2>
-      <p>Not a consultancy. Nobody visits your site. Nobody sells you a programme. You get the tool, the reasoning, and your own team runs it.</p>
+      <h2>Why Opsteady exists</h2>
+      <p>Most operational advice comes from two places: a consultant's report, or generic content that doesn't know anything about your site. Neither tells you what to fix first, what can wait, or what your team can actually take on right now. Opsteady exists to answer exactly that, and then get out of the way.</p>
+      <h2 style="margin-top:36px;">How it works, commercially</h2>
+      <p>No sales call required. Clear pricing. You can see what you're buying before you buy it. Designed for your own team to deploy, not for Opsteady to deploy for you.</p>
+      <h2 style="margin-top:36px;">Where the judgement comes from</h2>
+      <p>The judgement is in the product, not on this page — in what each Tool tells you to check before you start, what it warns you about, and where it hands off to something else rather than overreaching. The Health Check's recommendations follow the same discipline: a starting point that's actually right for your site, not a generic one.</p>
       <h2 style="margin-top:36px;">Relationship to Optimere</h2>
       <p>Opsteady is built and run by Optimere Limited.</p>
       <div style="margin-top:24px;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
@@ -83,26 +86,27 @@ w("site/who-we-are.html", page({
 w("site/health-check.html", page({
   current: "health-check",
   title: "Opsteady Health Check — Know where you stand",
-  description: "24 questions about how your site runs today. About 15 minutes, free, no sales call.",
+  description: "A short set of questions about how your site runs today. Free, no sales call.",
   path: "/health-check",
   main: `
   <section class="page-hero">
     <div class="shell">
       <div class="eyebrow on-navy">The Health Check</div>
       <h1>Know where your site actually stands.</h1>
-      <p>24 questions about how things run today, not how you'd like them to run. About 15 minutes.</p>
+      <p>A short set of questions about how things run today — not how you'd like them to run.</p>
     </div>
   </section>
   <section class="page-section">
     <div class="shell" style="max-width:640px;">
+      <!-- IMPLEMENTATION DEPENDENT: the frozen Phase 3 "what you'll get" copy (site-at-a-glance,
+           several named development areas, first action, what's next, pace guidance) is the
+           approved target for this section but must not publish live until report-v2.js's output
+           actually delivers it (Gate D, V2 frontend not yet built). This is the compliant interim
+           version, accurate to current backend behaviour. -->
       <h2>What you'll get</h2>
-      <p>A clear picture of what's working, what's not, and what deserves attention first. Not a generic report, one specific next step.</p>
-      <h2 style="margin-top:32px;">How long it takes</h2>
-      <p>About 15 minutes.</p>
-      <h2 style="margin-top:32px;">Privacy</h2>
-      <p>Free. No sales call. Your answers are used to build your result, nothing else.</p>
-      <h2 style="margin-top:32px;">What happens after</h2>
-      <p>You'll see your result straight away: where you stand, and one clear recommendation for what to do next.</p>
+      <p>A clear picture of what's working, what's not, and what deserves attention first — one specific place to start, not a generic report.</p>
+      <h2 style="margin-top:32px;">Cost</h2>
+      <p>Free. No sales call required.</p>
       <div style="margin-top:32px;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
     </div>
   </section>

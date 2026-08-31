@@ -1,8 +1,10 @@
 "use strict";
 /* Shared chrome (nav/footer) + head boilerplate, identical on every page.
-   Health Check nav item routes directly external per the approved nav
-   table (OPSTEADY-2.0-SITE-STRUCTURE-AND-CUSTOMER-JOURNEY.md §B.2).
-   Interventions is deliberately NOT in primary nav (approved, unchanged). */
+   Primary nav per the Phase 2 architecture ruling (superseding the earlier
+   Site Structure doc §B.2 nav table): Health Check · Tools · How It Works ·
+   Who We Are. Problems and Pricing are deliberately NOT in primary nav.
+   Customer-facing label for /interventions/... is "Tools" — the URL path
+   and internal "intervention(s)" terminology are unchanged (no URL churn). */
 
 const HC_URL = "https://healthcheck.opsteady.co.uk/";
 
@@ -24,9 +26,8 @@ function head({ title, description, path, ogImage }) {
 function nav(current) {
   const items = [
     { label: "Health Check", href: HC_URL, key: "health-check" },
+    { label: "Tools", href: "/site/interventions/index.html", key: "interventions" },
     { label: "How It Works", href: "/site/the-method.html", key: "how-it-works" },
-    { label: "Problems", href: "/site/problems/index.html", key: "problems" },
-    { label: "Pricing", href: "/site/pricing.html", key: "pricing" },
     { label: "Who We Are", href: "/site/who-we-are.html", key: "who-we-are" },
   ];
   const links = items
@@ -49,8 +50,9 @@ function footer() {
   return `<footer class="footer">
   <div class="shell">
     <div class="footer-links">
-      <a href="/site/interventions/index.html">Interventions</a>
+      <a href="/site/interventions/index.html">Tools</a>
       <a href="/site/the-method.html">The Method</a>
+      <a href="/site/problems/index.html">Problems</a>
       <a href="/site/worked-examples/bottleneck-analysis.html">Worked Example</a>
       <a href="/site/pricing.html">Pricing</a>
       <a href="/site/who-we-are.html">Who We Are</a>

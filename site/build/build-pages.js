@@ -11,31 +11,32 @@ w("site/the-method.html", page({
   <section class="page-hero">
     <div class="shell">
       <div class="eyebrow on-navy">How it works</div>
-      <h1>Know where you stand. Know what deserves attention next.</h1>
-      <p>The Health Check finds out where your site stands, what deserves attention first, and gives you a specific place to start.</p>
+      <h1>Start from your site, not a method.</h1>
+      <p>Opsteady doesn't ask which methodology you want to try. It asks what your site actually needs, in what order, and how much of it you can take on right now.</p>
     </div>
   </section>
   <section class="page-section">
     <div class="shell">
-      <h2>From understanding to the right starting point</h2>
-      <p>Once you know what matters, you move into it. Not a list of everything you could do. One clear starting point, then the next.</p>
+      <h2>Diagnosis to starting point</h2>
+      <p>The Health Check looks at how your site runs today and works out what genuinely deserves attention. Not a list of everything you could do — one clear starting point, then the next.</p>
+      <p>Each area of your result can be described against the same four stages Opsteady uses to think about deployment — Observe &amp; Learn, Stabilise, Improve, Sustain — which gives you a sense of how established that area already is. The Health Check then looks at your wider site picture to work out where to start and what order to take things in.</p>
     </div>
   </section>
   <section class="page-section tint">
     <div class="shell" style="display:grid;gap:40px;align-items:center;grid-template-columns:1fr;">
       <div>
-        <h2>The approach</h2>
-        <p>Observe &amp; Learn, then Stabilise, then Improve, then Sustain, then back to Observe &amp; Learn.</p>
-        <p>Everything Opsteady deploys is structured around this loop. Fixing something before it's stable usually doesn't hold. That's why the order matters as much as the fix itself.</p>
+        <h2>The loop</h2>
+        <p>Observe &amp; Learn <span class="arrow">→</span> Stabilise <span class="arrow">→</span> Improve <span class="arrow">→</span> Sustain <span class="arrow">→</span> back to Observe &amp; Learn.</p>
+        <p>This is how Opsteady approaches deployment and ongoing improvement: understand before you act, get it stable before you improve it, and once something's genuinely sustained, look at what's next.</p>
         ${loopSVG}
       </div>
     </div>
   </section>
   <section class="page-section">
     <div class="shell">
-      <h2>Continued improvement</h2>
-      <p>Once one thing is stable, the loop starts again somewhere else. It doesn't stop at one fix.</p>
-      <div style="margin-top:24px;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
+      <h2>From understanding to action</h2>
+      <p>Once you know what deserves attention, you move into a Tool built for exactly that — the working file, the method, and what to do with it.</p>
+      <div style="margin-top:24px;display:flex;gap:20px;flex-wrap:wrap;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a><a class="btn-text" href="/site/interventions/index.html">Browse Tools <span class="arrow">→</span></a></div>
     </div>
   </section>
   `,
