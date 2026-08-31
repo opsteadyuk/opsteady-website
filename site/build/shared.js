@@ -82,7 +82,7 @@ function footer() {
       <a href="${HC_URL}">Health Check</a>
     </div>
     <div class="footer-legal">Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203.</div>
-    <div class="footer-meta">OPSTEADY 2.0 — PRODUCTION BUILD (site/) · PENDING PROMOTION TO ROOT · PENDING DEPLOYMENT RULING</div>
+    <div class="footer-meta">OPSTEADY 2.0 · PRODUCTION BUILD (site/) · PENDING PROMOTION TO ROOT · PENDING DEPLOYMENT RULING</div>
   </div>
 </footer>`;
 }
@@ -122,7 +122,7 @@ const PKG_ICONS = {
 const PACKAGE_ITEMS = [
   { key: "training", label: "Training", verb: "Learn it", copy: "Start with little or no prior knowledge. The training gets you ready to understand the subject and use the Tool with confidence." },
   { key: "tool", label: "Main Tool", verb: "Put it to work", copy: "The complete deployment guide: what to do, why you're doing it, how to work through it and what good looks like." },
-  { key: "faq", label: "FAQ", verb: "Get unstuck", copy: "Practical answers to the questions, complications and uncertainties that tend to appear once you start using the Tool." },
+  { key: "faq", label: "FAQ", verb: "Get unstuck", copy: "Practical answers to the questions, complications and uncertainties that could appear once you start using the Tool." },
   { key: "materials", label: "Working Materials", verb: "Make it yours", copy: "Where the Tool needs them, you get fully customisable templates and working files. Adapt them to your operation rather than changing your operation to fit our paperwork." },
 ];
 function packageGrid({ compact = false } = {}) {
@@ -137,4 +137,28 @@ function packageGrid({ compact = false } = {}) {
     </div>`;
 }
 
-module.exports = { head, nav, footer, page, HC_URL, packageGrid };
+/* =========================================================
+   PHOTO HERO — shared interior-page hero. Photography-ready
+   structure (see system.css's own header comment); no real
+   asset exists for these four surfaces yet (2026-08-31 visual-
+   polish pass), so .photo-hero-slot's on-brand gradient stands
+   in. `spec` is the precise photography brief for this exact
+   slot -- written into the HTML as a developer-facing comment,
+   never shown to a visitor, so dropping in the licensed image
+   later is a one-line src swap plus deleting the comment.
+========================================================= */
+function photoHero({ eyebrow, h1, sub, spec }) {
+  return `<!-- GOVERNED IMAGE SLOT (not yet sourced, 02_brand/110_photography.md §10.2a).
+       ${spec} -->
+  <section class="photo-hero">
+    <div class="photo-hero-media"><div class="photo-hero-slot"></div></div>
+    <div class="photo-hero-scrim"></div>
+    <div class="photo-hero-content shell">
+      <div class="eyebrow on-navy">${eyebrow}</div>
+      <h1>${h1}</h1>
+      <p>${sub}</p>
+    </div>
+  </section>`;
+}
+
+module.exports = { head, nav, footer, page, HC_URL, packageGrid, photoHero };

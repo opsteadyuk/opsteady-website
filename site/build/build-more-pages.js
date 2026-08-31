@@ -1,5 +1,5 @@
 "use strict";
-const { w, page, HC_URL } = require("./build.js");
+const { w, page, HC_URL, photoHero } = require("./build.js");
 
 /* ---- Pricing ---- */
 w("site/pricing.html", page({
@@ -12,39 +12,54 @@ w("site/pricing.html", page({
     <div class="shell">
       <div class="eyebrow on-navy">Pricing</div>
       <h1>Straightforward pricing.</h1>
-      <p>Every Tool has its own price, shown on its own page. Most are Pro today, priced by depth and reach — Essentials editions are being added over time, and only shown where they actually exist.</p>
+      <p>Every Tool has its own price, shown on its own page. Most are Pro today, priced by depth and reach: Essentials editions are being added over time, and only shown where they actually exist.</p>
     </div>
   </section>
   <section class="page-section">
     <div class="shell">
-      <h2>What things cost</h2>
-      <table class="price-table">
-        <thead><tr><th></th><th>Essentials <span class="mono" style="font-weight:400;font-size:0.8rem;">(where available)</span></th><th>Pro</th></tr></thead>
-        <tbody>
-          <tr><td>Most Tools</td><td>£89</td><td>£179</td></tr>
-          <tr><td>A smaller number of deeper, cross-cutting Tools</td><td>£179</td><td>£349</td></tr>
-        </tbody>
-      </table>
+      <div class="prose-row">
+        <div>
+          <h2>What things cost</h2>
+          <table class="price-table">
+            <thead><tr><th></th><th>Essentials <span class="mono" style="font-weight:400;font-size:0.8rem;">(where available)</span></th><th>Pro</th></tr></thead>
+            <tbody>
+              <tr><td>Most Tools</td><td>£89</td><td>£179</td></tr>
+              <tr><td>A smaller number of deeper, cross-cutting Tools</td><td>£179</td><td>£349</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose-row-num" aria-hidden="true">01</div>
+      </div>
     </div>
   </section>
   <section class="page-section tint">
     <div class="shell">
-      <h2>A small number of Tools at a lower entry price</h2>
-      <p>These are available as detailed worked examples, at a lower entry Pro price. Not a discount. Not time-limited.</p>
-      <div class="showcase-list">
-        <div class="showcase-item"><span>Bottleneck Analysis Tool</span><span class="mono">£99</span></div>
-        <div class="showcase-item"><span>Skills Matrix &amp; Cross-Training Planner</span><span class="mono">£179</span></div>
-        <div class="showcase-item"><span>SQDC Performance Board Pack</span><span class="mono">£179</span></div>
+      <div class="prose-row">
+        <div>
+          <h2>A small number of Tools at a lower entry price</h2>
+          <p>These are available as detailed worked examples, at a lower entry Pro price. Not a discount. Not time-limited.</p>
+          <div class="showcase-list">
+            <div class="showcase-item"><span>Bottleneck Analysis Tool</span><span class="mono">£99</span></div>
+            <div class="showcase-item"><span>Skills Matrix &amp; Cross-Training Planner</span><span class="mono">£179</span></div>
+            <div class="showcase-item"><span>SQDC Performance Board Pack</span><span class="mono">£179</span></div>
+          </div>
+        </div>
+        <div class="prose-row-num" aria-hidden="true">02</div>
       </div>
     </div>
   </section>
   <section class="page-section">
     <div class="shell">
-      <h2>Where purchase happens</h2>
-      <p>Every Tool has its own price and buy action, showing only the edition actually available to buy.</p>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;">
-        <a class="btn btn-primary" href="/site/interventions/bottleneck_analysis.html">See a representative example</a>
-        <a class="btn-text" href="/site/interventions/index.html">Browse Tools <span class="arrow">→</span></a>
+      <div class="prose-row">
+        <div>
+          <h2>Where purchase happens</h2>
+          <p>Every Tool has its own price and buy action, showing only the edition actually available to buy.</p>
+          <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;">
+            <a class="btn btn-primary" href="/site/interventions/bottleneck_analysis.html">See a representative example</a>
+            <a class="btn-text" href="/site/interventions/index.html">Browse Tools <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="prose-row-num" aria-hidden="true">03</div>
       </div>
     </div>
   </section>
@@ -67,58 +82,87 @@ w("site/who-we-are.html", page({
   description: "No name, no photograph, no team. Operator-led, not consultant-led. Judge it by the work.",
   path: "/who-we-are",
   main: `
-  <section class="page-hero">
-    <div class="shell">
-      <div class="eyebrow on-navy">Who we are</div>
-      <h1>No name on this site. Judge it by the work.</h1>
-      <p>Opsteady is a small operation, run by one person, with no team, no office and no sales function. That's a deliberate choice, not a stage it's trying to grow out of. Nobody will call you.</p>
-    </div>
-  </section>
+  ${photoHero({
+    eyebrow: "Who we are",
+    h1: "No name on this site. Judge it by the work.",
+    sub: "Opsteady is a small operation, run by one person, with no team, no office and no sales function. That's a deliberate choice, not a stage it's trying to grow out of. Nobody will call you.",
+    spec: "Who We Are hero. Subject: a real, non-generic manufacturing operational scene (shopfloor, process line, or equipment detail), consistent with the homepage/How-It-Works hero direction, not a posed portrait. No identifiable person -- this is operator-led, not personality-led, credibility (02_brand/100_BASE_FILE.md D-79); never founder or team photography, per the Visual Asset Matrix's explicit reservation of this page for real people/founder photography only if that changes in future, and never synthetic people. Composition: landscape, working height, subject weighted right or centre so the left/lower-left stays legible for the overlaid headline.",
+  })}
 
   <section class="page-section">
     <div class="shell">
-      <h2>Where this comes from</h2>
-      <p>Opsteady comes from real time spent running manufacturing operations, not from taking improvement theory and turning it into templates — starting on the floor, learning the job before being trusted to change anything, and finding that the standards and SOPs on paper rarely described how the place actually ran on a given shift.</p>
-      <p>That gap — between the system on paper and the practice on the floor — is one of the most useful things to look for in an operation. It's why the Health Check reads both, rather than averaging them into one comfortable score.</p>
+      <div class="prose-row">
+        <div>
+          <h2>Where this comes from</h2>
+          <p>Opsteady comes from real time spent running manufacturing operations, not from taking improvement theory and turning it into templates. It started on the floor, learning the job before being trusted to change anything, and finding that the standards and SOPs on paper rarely described how the place actually ran on a given shift.</p>
+          <p>That gap, between the system on paper and the practice on the floor, is one of the most useful things to look for in an operation. It's why the Health Check reads both, rather than averaging them into one comfortable score.</p>
+        </div>
+        <div class="prose-row-num" aria-hidden="true">01</div>
+      </div>
     </div>
   </section>
 
   <section class="page-section tint">
     <div class="shell">
-      <h2>Why deployment matters more than the method</h2>
-      <p>A properly run improvement week — disciplined, well-executed, the full standard treatment — can still fully revert within two months if nobody involved understood why they were doing it, only that they were told to. That's not a failure of effort or of the method. It's what happens when improvement is installed rather than understood.</p>
-      <p>It's why everything Opsteady builds is designed to transfer capability, not just deliver a one-off result. A tool that only works while someone stands over it isn't a tool — it's a visit.</p>
+      <div class="prose-row">
+        <div>
+          <h2>Why deployment matters more than the method</h2>
+          <p>A properly run improvement week (disciplined, well-executed, the full standard treatment) can still fully revert within two months if nobody involved understood why they were doing it, only that they were told to. That's not a failure of effort or of the method. It's what happens when improvement is installed rather than understood.</p>
+          <p>It's why everything Opsteady builds is designed to transfer capability, not just deliver a one-off result. A tool that only works while someone stands over it isn't a tool: it's a visit.</p>
+        </div>
+        <div class="prose-row-num" aria-hidden="true">02</div>
+      </div>
     </div>
   </section>
 
   <section class="page-section">
     <div class="shell">
-      <h2>Why the sequence matters</h2>
-      <p>An area can be missing its targets on every measure at once — not from a lack of effort, but because people are doing work that's always been done, without anyone able to say why. The fix usually isn't adding more. It's watching first, removing what doesn't need to be there, agreeing a short standard with the team who'll actually run it, and only then pushing for more.</p>
-      <p>Watch before changing. Stabilise before improving. Improve from a base that holds. That's the same logic behind Opsteady's Observe &amp; Learn, Stabilise, Improve, Sustain loop — learned on a real floor, not derived from a textbook.</p>
+      <div class="prose-row">
+        <div>
+          <h2>Why the sequence matters</h2>
+          <p>An area can be missing its targets on every measure at once, not from a lack of effort, but because people are doing work that's always been done, without anyone able to say why. The fix usually isn't adding more. It's watching first, removing what doesn't need to be there, agreeing a short standard with the team who'll actually run it, and only then pushing for more.</p>
+          <p>Watch before changing. Stabilise before improving. Improve from a base that holds. That's the same logic behind Opsteady's Observe &amp; Learn, Stabilise, Improve, Sustain loop, learned on a real floor, not derived from a textbook.</p>
+        </div>
+        <div class="prose-row-num" aria-hidden="true">03</div>
+      </div>
     </div>
   </section>
 
   <section class="page-section tint">
     <div class="shell">
-      <h2>Why trust isn't a soft subject</h2>
-      <p>Every tool here depends on people being willing to say what's actually happening. Where that willingness has been damaged — because raising something went badly for someone once — no system fixes it by itself, and no amount of asking for openness in a meeting outweighs what people have already seen happen. That's why Opsteady's diagnostics look at how people behave alongside what the systems say, and why nothing here pretends a template can substitute for trust.</p>
+      <div class="prose-row">
+        <div>
+          <h2>Why trust isn't a soft subject</h2>
+          <p>Every tool here depends on people being willing to say what's actually happening. Where that willingness has been damaged, because raising something went badly for someone once, no system fixes it by itself, and no amount of asking for openness in a meeting outweighs what people have already seen happen. That's why Opsteady's diagnostics look at how people behave alongside what the systems say, and why nothing here pretends a template can substitute for trust.</p>
+        </div>
+        <div class="prose-row-num" aria-hidden="true">04</div>
+      </div>
     </div>
   </section>
 
   <section class="page-section">
     <div class="shell">
-      <h2>Why not a consultant, a course, or a template shop</h2>
-      <p>Opsteady is sold as a method, not a personality, and built to work across different sites, sectors and problems. The solutions are different every time; what travels between sites is the order things need doing in — which is exactly what the Health Check exists to establish for yours.</p>
-      <p>There's no retainer, no subscription to your own improvement, and no sales call following anything you buy. Opsteady doesn't come to your site, doesn't run your projects, and won't tell you what your culture should be — that's yours to shape, and you know your people. Most of what's here builds on established operational thinking, not reinvented; what Opsteady adds is the deployment judgement — what to do first, what conflicts with what, and what to do when it stalls.</p>
+      <div class="prose-row">
+        <div>
+          <h2>Why not a consultant, a course, or a template shop</h2>
+          <p>Opsteady is sold as a method, not a personality, and built to work across different sites, sectors and problems. The solutions are different every time; what travels between sites is the order things need doing in, which is exactly what the Health Check exists to establish for yours.</p>
+          <p>There's no retainer, no subscription to your own improvement, and no sales call following anything you buy. Opsteady doesn't come to your site, doesn't run your projects, and won't tell you what your culture should be: that's yours to shape, and you know your people. Most of what's here builds on established operational thinking, not reinvented; what Opsteady adds is the deployment judgement: what to do first, what conflicts with what, and what to do when it stalls.</p>
+        </div>
+        <div class="prose-row-num" aria-hidden="true">05</div>
+      </div>
     </div>
   </section>
 
   <section class="page-section tint">
     <div class="shell">
-      <h2>Relationship to Optimere</h2>
-      <p>Opsteady is a trading name of Optimere Limited, the company that builds and runs it.</p>
-      <div style="margin-top:24px;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
+      <div class="prose-row">
+        <div>
+          <h2>Relationship to Optimere</h2>
+          <p>Opsteady is a trading name of Optimere Limited, the company that builds and runs it.</p>
+          <div style="margin-top:24px;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
+        </div>
+        <div class="prose-row-num" aria-hidden="true">06</div>
+      </div>
     </div>
   </section>
   `,
@@ -129,7 +173,7 @@ w("site/who-we-are.html", page({
    page is the fuller expectation-setting stop other CTAs route through) ---- */
 w("site/health-check.html", page({
   current: "health-check",
-  title: "Opsteady Health Check — Know where you stand",
+  title: "Opsteady Health Check | Know where you stand",
   description: "A short set of questions about how your site runs today. Free, no sales call.",
   path: "/health-check",
   main: `
@@ -137,18 +181,18 @@ w("site/health-check.html", page({
     <div class="shell">
       <div class="eyebrow on-navy">The Health Check</div>
       <h1>Know where your site actually stands.</h1>
-      <p>A short set of questions about how things run today — not how you'd like them to run.</p>
+      <p>A short set of questions about how things run today, not how you'd like them to run.</p>
     </div>
   </section>
   <section class="page-section">
-    <div class="shell" style="max-width:640px;">
+    <div class="shell-narrow">
       <!-- IMPLEMENTATION DEPENDENT: the frozen Phase 3 "what you'll get" copy (site-at-a-glance,
            several named development areas, first action, what's next, pace guidance) is the
            approved target for this section but must not publish live until report-v2.js's output
            actually delivers it (Gate D, V2 frontend not yet built). This is the compliant interim
            version, accurate to current backend behaviour. -->
       <h2>What you'll get</h2>
-      <p>A clear picture of what's working, what's not, and what deserves attention first — one specific place to start, not a generic report.</p>
+      <p>A clear picture of what's working, what's not, and what deserves attention first: one specific place to start, not a generic report.</p>
       <h2 style="margin-top:32px;">Cost</h2>
       <p>Free. No sales call required.</p>
       <div style="margin-top:32px;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
@@ -160,7 +204,7 @@ w("site/health-check.html", page({
 /* ---- Worked Example (Riverside Fabrication — explicitly fictional) ---- */
 w("site/worked-examples/bottleneck-analysis.html", page({
   current: "worked-examples",
-  title: "Riverside Fabrication — a worked example",
+  title: "Riverside Fabrication: a worked example",
   description: "See the reasoning in practice. Illustrative and explicitly fictional.",
   path: "/worked-examples/bottleneck-analysis",
   main: `
@@ -211,19 +255,19 @@ w("site/worked-examples/bottleneck-analysis.html", page({
    substantive legal text preserved, not rewritten) ---- */
 w("site/terms.html", page({
   current: "terms",
-  title: "Terms of sale — Opsteady",
+  title: "Terms of sale | Opsteady",
   description: "What you're agreeing to when you buy from Opsteady: seller details, delivery, cancellation rights, and the refund policy in full.",
   path: "/terms",
   main: `
   <section class="page-hero">
-    <div class="shell">
+    <div class="shell-narrow">
       <div class="eyebrow on-navy">Terms of sale</div>
       <h1>Terms of sale</h1>
       <p>What you're agreeing to when you buy from Opsteady. Buying is not live yet. This page is published in advance, in full, so it's ready when the store is.</p>
     </div>
   </section>
   <section class="page-section">
-    <div class="shell" style="max-width:720px;">
+    <div class="shell-narrow">
       <h2>1. Who you're buying from</h2>
       <p>Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203.</p>
       <h2>2. Address</h2>
@@ -253,7 +297,7 @@ w("site/terms.html", page({
       <h2>14. What you can and can't do with what you buy</h2>
       <p>You can use every file inside your own organisation, adapt it to fit your site, and print it. You can't resell it, redistribute it, or share it with another company as if it were theirs to pass on.</p>
       <p style="margin-top:32px;font-size:0.85rem;color:var(--ops-n50);">This page is not legal advice. It states what this site's checkout must contain; the final wording should be checked by a solicitor before selling begins.</p>
-      <p style="font-size:0.85rem;color:var(--ops-n50);">Last reviewed: 6 August 2026. Reconciled into the production build 31 August 2026 — substance unchanged.</p>
+      <p style="font-size:0.85rem;color:var(--ops-n50);">Last reviewed: 6 August 2026. Reconciled into the production build 31 August 2026; substance unchanged.</p>
     </div>
   </section>
   `,
@@ -262,18 +306,18 @@ w("site/terms.html", page({
 /* ---- Accessibility (reconciled from existing controlled root accessibility.html) ---- */
 w("site/accessibility.html", page({
   current: "accessibility",
-  title: "Accessibility statement — Opsteady",
+  title: "Accessibility statement | Opsteady",
   description: "What this site targets, what's already true, and the known gaps, stated honestly.",
   path: "/accessibility",
   main: `
   <section class="page-hero">
-    <div class="shell">
+    <div class="shell-narrow">
       <div class="eyebrow on-navy">Accessibility</div>
       <h1>Accessibility statement</h1>
     </div>
   </section>
   <section class="page-section">
-    <div class="shell" style="max-width:720px;">
+    <div class="shell-narrow">
       <h2>What we target</h2>
       <p>This site is built to meet WCAG 2.2 at Level AA, with body text held to the stricter AAA contrast ratio.</p>
       <h2>Scope</h2>
@@ -290,7 +334,7 @@ w("site/accessibility.html", page({
       <p>A full keyboard-only and screen reader pass across every page of this production build has not yet been completed and independently verified. Target: before buying opens.</p>
       <h2>Feedback</h2>
       <p>If any part of this site is hard to use with a keyboard, a screen reader, or any other assistive technology, tell us and we'll fix it. Email <a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a>.</p>
-      <p style="margin-top:24px;font-size:0.85rem;color:var(--ops-n50);">Last reviewed: 7 August 2026. Reconciled into the production build 31 August 2026 — substance unchanged, known-issues list updated to reflect this build.</p>
+      <p style="margin-top:24px;font-size:0.85rem;color:var(--ops-n50);">Last reviewed: 7 August 2026. Reconciled into the production build 31 August 2026; substance unchanged, known-issues list updated to reflect this build.</p>
     </div>
   </section>
   `,
@@ -299,7 +343,7 @@ w("site/accessibility.html", page({
 /* ---- 404 ---- */
 w("site/404.html", page({
   current: "",
-  title: "Page not found — Opsteady",
+  title: "Page not found | Opsteady",
   description: "This page doesn't exist.",
   path: "/404",
   main: `

@@ -1,5 +1,5 @@
 "use strict";
-const { w, page, HC_URL, getModuleData, getCatalogueListing, packageGrid, customerCategory, CATEGORY_ORDER, categoryAnchor } = require("./build.js");
+const { w, page, HC_URL, getModuleData, getCatalogueListing, packageGrid, photoHero, customerCategory, CATEGORY_ORDER, categoryAnchor } = require("./build.js");
 
 const listing = getCatalogueListing();
 
@@ -37,30 +37,22 @@ const idxHtml = groupOrder.map((g) => {
 
 w("site/interventions/index.html", page({
   current: "interventions",
-  title: "Tools — Opsteady",
+  title: "Tools | Opsteady",
   description: "Find the Opsteady Tool you need, grouped by what it helps you fix.",
   path: "/interventions",
   main: `
-  <!-- GOVERNED IMAGE SLOT (not yet sourced -- 02_brand/110_photography.md §10.2a):
-       subject: a genuine, non-generic manufacturing working environment (equipment
-       detail, inspection, or material movement), consistent with the homepage hero
-       and the approved 5-image signature family in
-       00_SYSTEM/OPSTEADY-2.0-VISUAL-ASSET-MATRIX.md. Not sourced in this pass --
-       per the brief's own §12 fallback, no placeholder image is used here; ship
-       the typographic hero below until a real asset is produced. -->
-  <section class="page-hero tools-hero">
+  ${photoHero({
+    eyebrow: "Tools",
+    h1: "Find the one you need, or see what's available.",
+    sub: "Each Tool is a complete, practical way to fix one specific thing: the working file itself, clear instructions, examples and guidance for putting it to work, not just a blank template.",
+    spec: "Tools index hero. Subject: a genuine, non-generic manufacturing working environment (equipment detail, inspection, or material movement), consistent with the homepage hero and the approved signature family in 00_SYSTEM/OPSTEADY-2.0-VISUAL-ASSET-MATRIX.md. Composition: landscape, subject weighted right-of-frame, left third clear for the overlaid headline and search field. Must read as a real, specific operational scene, not generic 'industrial' signalling.",
+  })}
+  <section class="page-section">
     <div class="shell">
-      <div class="eyebrow on-navy">Tools</div>
-      <h1>Find the one you need, or see what's available.</h1>
-      <p>Each Tool is a complete, practical way to fix one specific thing — the working file itself, clear instructions, examples and guidance for putting it to work, not just a blank template.</p>
       <div class="idx-search-wrap">
         <input type="search" id="idx-search" class="idx-search" placeholder="Search: &quot;skills matrix,&quot; &quot;changeover,&quot; &quot;delivery&quot;..." aria-label="Search Tools">
       </div>
-      <p>Not sure which one? <a class="btn-text on-navy" href="${HC_URL}" style="margin-left:6px;">Run the health check instead →</a></p>
-    </div>
-  </section>
-  <section class="page-section">
-    <div class="shell">
+      <p style="margin-top:14px;">Not sure which one? <a class="btn-text" href="${HC_URL}">Run the health check instead <span class="arrow">→</span></a></p>
       ${idxHtml}
     </div>
   </section>
@@ -100,7 +92,7 @@ const p41StageTag = "Observe & Learn"; /* real, from P4.1's own Framing.md — o
    rather than in the shared data layer, which other, dormant prototype
    generators also consume. */
 function whenRightFor(d, cat) {
-  if (d.category === "Foundation") return "it's usually worth putting in place early — it's a sitewide standard most other Tools in this area build on.";
+  if (d.category === "Foundation") return "it's usually worth putting in place early: it's a sitewide standard most other Tools in this area build on.";
   if (d.category === "Enabler") return "it's usually useful alongside other Tools, not tied to one stage.";
   if (d.lead) return `it's usually the starting point for ${cat}.`;
   const req = d.edges.find((e) => e.label === "Requires first") || d.edges[0];
@@ -123,19 +115,19 @@ for (const listed of listing) {
   const priceBlock = d.hasEssentials
     ? `<span class="iv-price">Essentials £${d.priceEssentials.price} · Pro £${d.pricePro.price}${d.pricePro.was ? ` <span class="showcase-note">(Showcase Pro price. Standard Pro price £${d.pricePro.was}.)</span>` : ""}</span>`
     : d.pricePro.was
-      ? `<span class="iv-price">Pro — £${d.pricePro.price} <span class="showcase-note">(Showcase price. Standard Pro price £${d.pricePro.was}.)</span></span>`
+      ? `<span class="iv-price">Pro £${d.pricePro.price} <span class="showcase-note">(Showcase price. Standard Pro price £${d.pricePro.was}.)</span></span>`
       : `<span class="iv-price">£${d.pricePro.price}</span>`;
 
   /* Paragraph 1 — what it helps you achieve (the hero above already
      states the situation/problem, so this doesn't repeat it). */
   const p1 = isP41
-    ? "Every site has an opinion on what's slowing the line — usually the loudest voice or the most recent annoyance, rarely checked against data. The Bottleneck Analysis Tool finds the real constraint: the one step that sets the pace for everything after it, measured, not guessed."
+    ? "Every site has an opinion on what's slowing the line, usually the loudest voice or the most recent annoyance, rarely checked against data. The Bottleneck Analysis Tool finds the real constraint: the one step that sets the pace for everything after it, measured, not guessed."
     : d.outcome;
 
   /* Paragraph 2 — what your team actually does with it. */
   const p2 = isP41
-    ? "One week of measurement gets you one step clearly identified as the binding constraint, a sized cost in units per week, and a first attempt at getting more from that step before anyone signs off on new capital. Worked example in the Tool: Press 3 measured at 180 units/week against Packing at 310 — roughly 130 units a week sitting on the table, and Press 3, not the station everyone blamed, was the actual constraint."
-    : `Your team works through it using the guide and working materials below — ${whenRightFor(d, cat)}`;
+    ? "One week of measurement gets you one step clearly identified as the binding constraint, a sized cost in units per week, and a first attempt at getting more from that step before anyone signs off on new capital. Worked example in the Tool: Press 3 measured at 180 units/week against Packing at 310, roughly 130 units a week sitting on the table, and Press 3, not the station everyone blamed, was the actual constraint."
+    : `Your team works through it using the guide and working materials below: ${whenRightFor(d, cat)}`;
 
   const factTags = [];
   if (d.time) factTags.push(`<div class="iv-fact"><span class="iv-fact-label mono">Time</span>${d.time}</div>`);
@@ -143,7 +135,7 @@ for (const listed of listing) {
   if (d.materials) factTags.push(`<div class="iv-fact"><span class="iv-fact-label mono">Materials</span>${d.materials}</div>`);
 
   const tierNote = d.hasEssentials
-    ? `<p class="iv-tier-note">Essentials gets your team running with the tool, instructions and the reasoning behind the main decisions. Pro adds the full playbook — failure modes, edge cases and the judgement calls the standard case doesn't cover.</p>`
+    ? `<p class="iv-tier-note">Essentials gets your team running with the tool, instructions and the reasoning behind the main decisions. Pro adds the full playbook: failure modes, edge cases and the judgement calls the standard case doesn't cover.</p>`
     : "";
 
   const relatedHtml = d.edges.length
@@ -152,7 +144,15 @@ for (const listed of listing) {
 
   const main = `
   <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#${categoryAnchor(cat)}">${cat}</a> → ${d.name}</nav></div>
+  <!-- GOVERNED IMAGE SLOT (not yet sourced -- 02_brand/110_photography.md §10.2a). Recommended
+       route: one photograph per customer category (9 total, this module's is "${cat}"), not per
+       module and not one generic image reused across all 70 pages -- a single repeated shot would
+       read as generic "industrial" signalling and would compete with, rather than support, this
+       module's own real deliverable evidence (see 00_SYSTEM/OPSTEADY-2.0-VISUAL-ASSET-MATRIX.md's
+       Intervention Page finding). Subject for "${cat}": a genuine scene specific to that category
+       of work, not a stand-in for the module's own content. -->
   <section class="iv-hero">
+    <div class="iv-hero-slot"></div>
     <div class="shell">
       ${isP41 ? `<span class="tag on-navy">${p41StageTag}</span>` : ""}
       <h1>${d.name}</h1>
@@ -164,10 +164,7 @@ for (const listed of listing) {
   <section class="iv-section" style="border-top:none;"><div class="shell">
     <p class="iv-core">${p1}</p>
     <p class="iv-core">${p2}</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">What you get</span>
+    <span class="eyebrow" style="display:block;margin-top:36px;">What you get</span>
     <h2>Everything you need to put it to work</h2>
     ${packageGrid({ compact: true })}
     ${tierNote}
@@ -185,7 +182,7 @@ for (const listed of listing) {
 
   w(`site/interventions/${d.slug}.html`, page({
     current: "interventions",
-    title: `${d.name} — Opsteady`,
+    title: `${d.name} | Opsteady`,
     description: `${d.outcome} ${d.hasEssentials ? `Essentials £${d.priceEssentials.price}, ` : ""}Pro £${d.pricePro.price}.`,
     path: `/interventions/${d.slug}`,
     main,

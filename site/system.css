@@ -31,6 +31,7 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 @media (min-width:1024px){.v6 .shell-wide{padding-inline:40px;}}
 .v6 .shell-narrow{max-width:760px;margin-inline:auto;padding-inline:16px;}
 @media (min-width:768px){.v6 .shell-narrow{padding-inline:32px;}}
+@media (min-width:1024px){.v6 .shell-narrow{padding-inline:40px;}}
 
 .v6 h1,.v6 h2,.v6 h3,.v6 .disp{font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);margin:0;line-height:1.08;}
 .v6 .eyebrow{font-family:var(--ops-font-mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:var(--ops-track-label);color:var(--a6-deep);}
@@ -254,6 +255,10 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .cred-body{margin-top:20px;max-width:60ch;font-size:1.05rem;}
 .v6 .cred-body + .cred-body{margin-top:14px;}
 .v6 .cred-cta{margin-top:26px;}
+.v6 .cred-mark{display:none;}
+@media (min-width:1024px){
+  .v6 .cred-mark{display:block;font-family:Georgia,serif;font-size:14rem;line-height:0.6;color:var(--ops-n20);text-align:right;user-select:none;}
+}
 
 /* =========================================================
    SECTION 7 — CLOSING CTA
@@ -278,6 +283,45 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .page-section h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;}
 .v6 .page-section p{max-width:60ch;margin-bottom:14px;}
 .v6 .page-section p:last-child{margin-bottom:0;}
+
+/* =========================================================
+   PHOTO HERO — interior-page hero, photography-ready structure.
+   Same DOM shape as the homepage hero (media/scrim/content layers)
+   so a real photograph is a one-line asset swap, not a rebuild.
+   Where no licensed image exists yet (2026-08-31 visual-polish pass),
+   .photo-hero-slot stands in: an on-brand gradient + hairline texture,
+   never a bare/broken image or a "coming soon" placeholder box — see
+   each page's own HTML comment for the precise photography brief.
+========================================================= */
+.v6 .photo-hero{position:relative;min-height:50vh;display:flex;align-items:flex-end;background:var(--n6-ink);overflow:hidden;}
+@media (min-width:1024px){.v6 .photo-hero{min-height:56vh;}}
+.v6 .photo-hero-media{position:absolute;inset:0;}
+.v6 .photo-hero-media img{width:100%;height:100%;object-fit:cover;}
+.v6 .photo-hero-slot{position:absolute;inset:0;background:radial-gradient(ellipse at 76% 26%, rgba(45,74,115,0.5) 0%, rgba(10,18,31,0) 55%), linear-gradient(155deg, var(--n6-deep) 0%, var(--n6-ink) 68%);}
+.v6 .photo-hero-slot::after{content:"";position:absolute;inset:0;opacity:0.07;background-image:repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 34px);}
+.v6 .photo-hero-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(6,10,18,0.92) 0%, rgba(6,10,18,0.72) 30%, rgba(6,10,18,0.3) 60%, rgba(6,10,18,0.1) 100%), linear-gradient(0deg, rgba(6,10,18,0.5) 0%, rgba(6,10,18,0) 34%);}
+.v6 .photo-hero-content{position:relative;z-index:2;padding-block:44px 40px;width:100%;}
+@media (min-width:1024px){.v6 .photo-hero-content{padding-block:64px 56px;}}
+.v6 .photo-hero h1{color:#fff;font-size:clamp(2rem,4.6vw,3.2rem);max-width:20ch;margin-top:14px;}
+.v6 .photo-hero p{color:var(--n6-pale);max-width:52ch;font-size:1.1rem;margin-top:18px;}
+
+/* =========================================================
+   PROSE ROW — two-column treatment for long-form text sections.
+   Keeps the section on the same .shell as every other section
+   (identical outer bounds/left edge, so hero-to-section and
+   section-to-section alignment is exact) while giving the text
+   a real, bounded measure instead of trailing into empty space.
+   Second column: a decorative running section numeral (ghost
+   type, no invented content) by default; individual pages may
+   put real supporting content there instead.
+========================================================= */
+.v6 .prose-row{display:grid;gap:20px;}
+@media (min-width:1024px){.v6 .prose-row{grid-template-columns:minmax(0,680px) 1fr;gap:56px;align-items:start;}}
+.v6 .prose-row-num{display:none;}
+@media (min-width:1024px){
+  .v6 .prose-row-num{display:block;font-family:var(--ops-font-display);font-weight:600;font-size:6.5rem;line-height:1;color:var(--ops-n20);text-align:right;user-select:none;padding-top:6px;}
+  .v6 .sec-how .prose-row-num{color:rgba(255,255,255,0.08);}
+}
 
 /* =========================================================
    PROBLEMS HUB + PROBLEM PAGE
@@ -310,7 +354,6 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .idx-search-wrap{margin-top:24px;max-width:420px;}
 .v6 .idx-search{width:100%;padding:12px 16px;border:1px solid var(--ops-border);border-radius:6px;font-family:inherit;font-size:0.95rem;background:#fff;}
 .v6 .showcase-note{font-family:var(--ops-font-mono);font-size:12px;color:var(--n6-steel);font-weight:400;margin-left:4px;}
-.v6 .tools-hero p{font-size:1.08rem;}
 
 /* =========================================================
    INTERVENTION (TOOL) PAGE ARCHETYPE — dramatically simplified,
@@ -318,7 +361,10 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
    package component, a short tier note, compact facts, HC band.
    No reproduced methodology, no FAQ wall, no sample frame.
 ========================================================= */
-.v6 .iv-hero{background:var(--n6-navy);color:#fff;padding-block:48px 40px;}
+.v6 .iv-hero{position:relative;background:var(--n6-navy);color:#fff;padding-block:48px 40px;overflow:hidden;}
+.v6 .iv-hero-slot{position:absolute;inset:0;background:radial-gradient(ellipse at 82% 20%, rgba(45,74,115,0.45) 0%, rgba(10,18,31,0) 50%);}
+.v6 .iv-hero-slot::after{content:"";position:absolute;inset:0;opacity:0.05;background-image:repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 34px);}
+.v6 .iv-hero .shell{position:relative;z-index:2;}
 .v6 .iv-hero .tag{margin-bottom:16px;}
 .v6 .iv-hero h1{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem);max-width:22ch;}
 .v6 .iv-situation{color:var(--n6-pale);margin-top:16px;max-width:56ch;font-size:1.05rem;}

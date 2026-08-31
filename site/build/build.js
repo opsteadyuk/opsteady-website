@@ -1,7 +1,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const { page, HC_URL, packageGrid } = require("./shared.js");
+const { page, HC_URL, packageGrid, photoHero } = require("./shared.js");
 const { getModuleData, getCatalogueListing, loadRegister } = require("../../build/lib/product-data.js");
 
 const SITE = path.resolve(__dirname, "..", ".."); // 02_main_site — write() paths are given as "site/..." throughout
@@ -109,7 +109,7 @@ const homeMain = `
       <div class="wiah-grid">
         ${IMPROVE_AREAS.map((a) => `<a class="wiah-item" href="/site/interventions/index.html#${categoryAnchor(a.name)}"><h3>${a.name}</h3><p>${a.copy}</p></a>`).join("\n        ")}
       </div>
-      <p class="wiah-foot"><strong>You don't need to tackle all of it. That's the point.</strong> The Health Check helps establish what deserves attention now — and what can wait.</p>
+      <p class="wiah-foot"><strong>You don't need to tackle all of it. That's the point.</strong> The Health Check helps establish what deserves attention now, and what can wait.</p>
     </div>
   </section>
 
@@ -118,19 +118,19 @@ const homeMain = `
       <div class="how-intro">
         <div class="eyebrow on-navy">How Opsteady works</div>
         <h2 class="how-h2">Start with your site. Not a methodology.</h2>
-        <p class="how-intro-p">Every manufacturing site is different. The constraint holding back one operation might be irrelevant in another — and trying to improve everything at once usually creates more activity than progress.</p>
+        <p class="how-intro-p">Every manufacturing site is different. The constraint holding back one operation might be irrelevant in another. Trying to improve everything at once usually creates more activity than progress.</p>
       </div>
       <div class="how-steps">
         <div class="how-step"><span class="how-step-num mono">01</span><h3>Understand where you are</h3><p>Start with the Opsteady Health Check. It looks across your operation to identify where attention is most needed, what can wait, and how much change is sensible to take on.</p></div>
         <div class="how-step"><span class="how-step-num mono">02</span><h3>Decide what to work on</h3><p>Your results point you towards the areas and Tools most relevant to your site. You decide what to take forward, with a clearer reason for starting there.</p></div>
-        <div class="how-step"><span class="how-step-num mono">03</span><h3>Put the Tool to work</h3><p>Each Tool gives your team the knowledge, guidance and working materials needed to deploy it in your own operation — without needing a consultant alongside you.</p></div>
+        <div class="how-step"><span class="how-step-num mono">03</span><h3>Put the Tool to work</h3><p>Each Tool gives your team the knowledge, guidance and working materials needed to deploy it in your own operation, without needing a consultant alongside you.</p></div>
         <div class="how-step"><span class="how-step-num mono">04</span><h3>Improve, sustain, then look again</h3><p>Work through the improvement, give it time to settle, and rerun the Health Check periodically. As your site changes, the next priority may change with it.</p></div>
       </div>
       <div class="how-loop">
         ${loopSVG}
         <div class="how-loop-copy">
           <div class="loop-caption mono">Observe &amp; Learn <span class="arrow">→</span> Stabilise <span class="arrow">→</span> Improve <span class="arrow">→</span> Sustain</div>
-          <p class="how-loop-p"><strong>A practical rhythm for improvement.</strong> Observe and understand before changing things. Stabilise what needs control. Improve from a sound baseline. Sustain what works — then keep learning.</p>
+          <p class="how-loop-p"><strong>A practical rhythm for improvement.</strong> Observe and understand before changing things. Stabilise what needs control. Improve from a sound baseline. Sustain what works, then keep learning.</p>
         </div>
       </div>
       <p class="how-cta"><a class="btn-text on-navy" href="/site/the-method.html">See exactly how Opsteady works <span class="arrow">→</span></a></p>
@@ -170,13 +170,18 @@ const homeMain = `
 
   <section class="sec-credibility">
     <div class="shell">
-      <div class="cred-head">
-        <div class="eyebrow">Built from running manufacturing operations</div>
-        <h2>Built from running manufacturing operations.</h2>
+      <div class="prose-row">
+        <div>
+          <div class="cred-head">
+            <div class="eyebrow">Built from running manufacturing operations</div>
+            <h2>Built from running manufacturing operations.</h2>
+          </div>
+          <p class="cred-body">Opsteady wasn't created by taking improvement theory and turning it into templates. It was built from experience of what happens when those methods meet a real manufacturing site: limited time, competing priorities, imperfect data, different levels of experience and people who still have a day job to do.</p>
+          <p class="cred-body">That's why the focus is practical: understand the problem before changing it, make the next step manageable, explain the thinking behind the method and leave your team with something they can actually use.</p>
+          <p class="cred-cta"><a class="btn-text" href="/site/who-we-are.html">More about who we are <span class="arrow">→</span></a></p>
+        </div>
+        <div class="cred-mark" aria-hidden="true">&rdquo;</div>
       </div>
-      <p class="cred-body">Opsteady wasn't created by taking improvement theory and turning it into templates. It was built from experience of what happens when those methods meet a real manufacturing site — limited time, competing priorities, imperfect data, different levels of experience and people who still have a day job to do.</p>
-      <p class="cred-body">That's why the focus is practical: understand the problem before changing it, make the next step manageable, explain the thinking behind the method and leave your team with something they can actually use.</p>
-      <p class="cred-cta"><a class="btn-text" href="/site/who-we-are.html">More about who we are <span class="arrow">→</span></a></p>
     </div>
   </section>
 
@@ -192,11 +197,11 @@ const homeMain = `
 
 w("site/index.html", page({
   current: "home",
-  title: "Opsteady — Know what to fix first",
+  title: "Opsteady | Know what to fix first",
   description: "Opsteady is the in-house way to improve a manufacturing site. Find out what deserves attention first, and move into Tools your own team can run.",
   path: "/",
   main: homeMain,
 }));
 
 console.log("Homepage written. Continuing with remaining pages...");
-module.exports = { write, w, written, page, HC_URL, getModuleData, getCatalogueListing, loadRegister, loopSVG, packageGrid, customerCategory, CATEGORY_ORDER, categoryAnchor };
+module.exports = { write, w, written, page, HC_URL, getModuleData, getCatalogueListing, loadRegister, loopSVG, packageGrid, photoHero, customerCategory, CATEGORY_ORDER, categoryAnchor };
