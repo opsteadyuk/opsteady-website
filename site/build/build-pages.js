@@ -1,41 +1,71 @@
 "use strict";
-const { w, page, HC_URL, loopSVG } = require("./build.js");
+const { w, page, HC_URL, loopSVG, packageGrid } = require("./build.js");
 
-/* ---- How It Works ---- */
+/* ---- How It Works — the comprehensive version of the homepage's
+   4-step "How Opsteady works" section. Same structure, expanded in
+   depth; no alternative explanation of the system invented here. ---- */
 w("site/the-method.html", page({
   current: "how-it-works",
   title: "How Opsteady works",
-  description: "How the Opsteady Health Check and the Observe & Learn, Stabilise, Improve, Sustain approach work together.",
+  description: "The full Opsteady customer journey: the Health Check, how findings become priorities, what a Tool actually gives you, and the improvement rhythm that keeps it going.",
   path: "/the-method",
   main: `
   <section class="page-hero">
     <div class="shell">
       <div class="eyebrow on-navy">How it works</div>
       <h1>Start from your site, not a method.</h1>
-      <p>Opsteady doesn't ask which methodology you want to try. It asks what your site actually needs, in what order, and how much of it you can take on right now.</p>
+      <p>Opsteady doesn't ask which methodology you want to try. It asks what your site actually needs, in what order, and how much of it you can take on right now. This page walks through the whole journey, step by step.</p>
     </div>
   </section>
+
   <section class="page-section">
     <div class="shell">
-      <h2>Diagnosis to starting point</h2>
-      <p>The Health Check looks at how your site runs today and works out what genuinely deserves attention. Not a list of everything you could do — one clear starting point, then the next.</p>
-      <p>Each area of your result can be described against the same four stages Opsteady uses to think about deployment — Observe &amp; Learn, Stabilise, Improve, Sustain — which gives you a sense of how established that area already is. The Health Check then looks at your wider site picture to work out where to start and what order to take things in.</p>
+      <div class="eyebrow">01 — Understand where you are</div>
+      <h2>The Health Check</h2>
+      <p>The Health Check is a short, structured set of questions about how your site runs today — not how you'd like it to run, and not a test of what you know about improvement methods. It looks across the areas that make up a manufacturing operation: output and flow, delivery and planning, daily control, quality, equipment and maintenance, people and skills, standards, and how decisions get made.</p>
+      <p>Completing it means answering honestly about your current situation in each of those areas, in your own words where it matters, rather than picking the answer that sounds best. The result is a picture of where things are genuinely working, where they're not, and — just as importantly — how much appetite and capacity your team actually has to take on change right now. A site mid-way through a product launch or short-staffed on a key shift can take on less at once than one with room to spare, and the Health Check treats that as real information, not an inconvenience to work around.</p>
+      <p>From that picture, the Health Check identifies which areas deserve attention first. It isn't a one-time diagnostic you run once and file away — your site changes as you improve it, so the Health Check is designed to be rerun periodically, not answered once and forgotten.</p>
     </div>
   </section>
+
+  <section class="page-section tint">
+    <div class="shell">
+      <div class="eyebrow">02 — Decide what to work on</div>
+      <h2>From findings to priorities</h2>
+      <p>Every area the Health Check looks at connects to real Opsteady Tools built for exactly that area. Where your result shows a genuine gap, the relevant Tools are the ones it points you towards — not the whole catalogue, and not a guess.</p>
+      <p>Not everything gets flagged as urgent. Part of what the Health Check does is tell you what can reasonably wait, so you're not left trying to fix everything simultaneously with a team that has a day job to do. Sequencing takes account of what's most urgent, what depends on what already being in place, and how much your team can realistically absorb at once.</p>
+      <p>This isn't a black box with total certainty about your operation. The Health Check gives you a clear, evidenced starting point and the reasoning behind it — the judgement about whether that's genuinely the right place to start for your site, today, still sits with you. That's deliberate: nobody outside your operation has the full picture, and Opsteady doesn't pretend otherwise.</p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <div class="eyebrow">03 — Put the Tool to work</div>
+      <h2>What a Tool actually gives you</h2>
+      <p>Once you know what to work on, you move into a Tool — a complete package built so your own team can deploy it, not a consultant standing next to them. You don't need to already be an expert in the subject before you start.</p>
+      ${packageGrid()}
+      <p style="margin-top:32px;">Every Tool is available as an Essentials edition where it exists, and always as Pro. Essentials is a complete, ready-to-run version for the standard case — not a cut-down teaser. Pro goes further into the thinking behind the Tool: why it works, different ways to deploy it, what tends to go wrong, and the judgement needed when your situation isn't the standard case. Choose the depth that fits what you're trying to do, not a fixed default.</p>
+      <p>There is deliberately no salesperson or consultant who calls you to explain the rest. Everything you need to decide whether a Tool is right, and then to deploy it yourself once you've bought it, is either on its page or inside the package itself.</p>
+    </div>
+  </section>
+
   <section class="page-section tint">
     <div class="shell" style="display:grid;gap:40px;align-items:center;grid-template-columns:1fr;">
       <div>
+        <div class="eyebrow">04 — Improve, sustain, then look again</div>
         <h2>The loop</h2>
         <p>Observe &amp; Learn <span class="arrow">→</span> Stabilise <span class="arrow">→</span> Improve <span class="arrow">→</span> Sustain <span class="arrow">→</span> back to Observe &amp; Learn.</p>
-        <p>This is how Opsteady approaches deployment and ongoing improvement: understand before you act, get it stable before you improve it, and once something's genuinely sustained, look at what's next.</p>
+        <p>This is how Opsteady approaches deployment and ongoing improvement, and it applies inside a single Tool as much as it does across your whole site. Understand what's actually happening before you change anything — acting on assumptions is usually how the wrong thing gets fixed well. Get the situation stable enough to control before you try to improve it; improving something that isn't yet under control just adds noise. Improve from that stable baseline. Once something is genuinely sustained — holding without constant intervention — it's the right time to look at what's next, not before.</p>
         ${loopSVG}
       </div>
     </div>
   </section>
+
   <section class="page-section">
     <div class="shell">
-      <h2>From understanding to action</h2>
-      <p>Once you know what deserves attention, you move into a Tool built for exactly that — the working file, the method, and what to do with it.</p>
+      <h2>A repeatable system, not a one-use diagnostic</h2>
+      <p>Your site doesn't stand still once you've made an improvement. A constraint that's resolved stops being the priority; a new one becomes visible once the old one's out of the way; people, demand and equipment all change over time. That's why the Health Check is built to be rerun periodically rather than answered once.</p>
+      <p>Each time you run it, it looks at how the operation has moved — whether previous weak points have genuinely strengthened, whether priorities have shifted, and what deserves attention next. Opsteady is designed as a repeatable improvement system around your site, not a single funnel that ends once you've bought one Tool.</p>
       <div style="margin-top:24px;display:flex;gap:20px;flex-wrap:wrap;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a><a class="btn-text" href="/site/interventions/index.html">Browse Tools <span class="arrow">→</span></a></div>
     </div>
   </section>

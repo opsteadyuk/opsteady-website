@@ -21,79 +21,83 @@
     <a href="/site/index.html" aria-label="Opsteady, home">
       <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
       <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a href="/site/interventions/index.html" aria-current="page">Tools</a>
       <a href="/site/the-method.html">How It Works</a>
       <a href="/site/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
     </nav>
-    <a class="nav-cta" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
 <main id="main">
 
-  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → Asset Care & Maintenance → Downtime Tracking & Pareto Pack</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#Equipment-and-Reliability">Equipment & Reliability</a> → Downtime Tracking & Pareto Pack</nav></div>
   <section class="iv-hero">
     <div class="shell">
       
       <h1>Downtime Tracking & Pareto Pack</h1>
       <p class="iv-situation">Most sites already have a downtime number, and most of those numbers are more optimistic than the floor would tell you if you asked directly.</p>
-      <div class="iv-buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
+      <div class="iv-buy" id="buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <span class="eyebrow">Situation</span>
-    <h2>Who this is for</h2>
-    <p class="iv-who">Teams working on Asset Care & Maintenance, where the goal is: see what is really costing you machine availability.</p>
+    <p class="iv-core">See what is really costing you machine availability.</p>
+    <p class="iv-core">Your team works through it using the guide and working materials below — it's usually the starting point for Equipment & Reliability.</p>
   </div></section>
 
   <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Fit</span>
-    <h2>When it's the right Tool</h2>
-    <p class="iv-stage-note">Usually the starting point for Asset Care & Maintenance.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Outcome</span>
-    <h2>What it does</h2>
-    <p class="iv-what">See what is really costing you machine availability.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Contents</span>
-    <h2>What is in it</h2>
-    <div class="iv-inside">
-      <div class="iv-inside-item"><span class="iv-inside-kind mono">Guide</span><span>Downtime Tracking Pareto Pack Pro</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">FAQ</span><span>Downtime Tracking Pareto Pack FAQ</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Training</span><span>Downtime Tracking Pareto Pack Training</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Workbook</span><span>Downtime Tracking Pareto Pack Template</span></div>
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    <div class="pkg-grid pkg-compact">
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-7-2-11-1v16c4-1 8-1 11 1 3-2 7-2 11-1V8c-4-1-8-1-11 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9v16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="1.8" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Training</span>
+        <div class="pkg-verb">Learn it</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="16" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 11h8M10 16h8M10 21h5" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="23" r="5" fill="var(--v6-warm)" stroke="var(--a6-amber)" stroke-width="1.5"/><path d="M20.8 23l1.6 1.6 3-3.2" fill="none" stroke="var(--a6-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-label mono">Main Tool</span>
+        <div class="pkg-verb">Put it to work</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5c0-2 1.6-3.5 3.5-3.5s3.5 1.3 3.5 3.2c0 2.1-2.2 2.4-3 3.6-.3.5-.4 1-.4 1.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">FAQ</span>
+        <div class="pkg-verb">Get unstuck</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Working Materials</span>
+        <div class="pkg-verb">Make it yours</div>
+        
+      </div>
     </div>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Effort</span>
-    <h2>What it takes</h2>
-    <dl class="iv-fact-table"><div class="iv-fact-row"><dt>Time</dt><dd>half a day to set your definitions and standard events register, then logging at the point each stop ends, a couple of minutes each time.</dd></div><div class="iv-fact-row"><dt>Who's involved</dt><dd>whoever's on the floor when a stop happens, operator, team leader, or you if that's the same person. At least one person who can speak to what "normal" actually looks like for your recurring events, for setting honest standards.</dd></div><div class="iv-fact-row"><dt>Materials</dt><dd>the workbook, and your planned production schedule so you know the minutes you're measuring against.</dd></div></dl>
-  </div></section>
-  
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <p>A real, anonymised sample is included with every purchase. A public preview for this specific module is pending a dedicated content pass.</p>
-  </div></section>
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Common questions</span>
-    <h2>FAQ</h2>
-    <div class="iv-faq">
-      <details><summary>What if I can't get an honest standard time for something?</summary><p>Set a first honest estimate and mark it explicitly as provisional, then revisit it once a few weeks of real data exist. A guessed standard treated as fixed from day one is worse than an honest provisional one. See the variant in section 14.</p></details>
-      <details><summary>What counts as planned if a stop matches something in my register but runs long?</summary><p>The planned minutes are capped at the standard, whatever runs beyond that is logged separately as overrun. A 30-minute changeover that takes 40 minutes is 30 minutes planned and 10 minutes lost, never 40 minutes planned just because it was scheduled. See section 2 and section 18, fork 2.</p></details>
-      <details><summary>Do I need to build my own log if my line already has sensor or MES data?</summary><p>No, extract and map that data into this same model instead of replacing it, standard events register, planned/unplanned split, sample-checking. Check specifically whether the system caps planned time at a standard or counts a scheduled event in full, the latter is the exact loophole this tool exists to close. See section 4 and section 18, fork 3.</p></details>
-      <details><summary>What if I'm auditing an existing log rather than starting from nothing?</summary><p>Check existing "planned" entries against both failure modes: not genuinely scheduled in advance, or an overrun that got folded in without being captured. Expect to find both, that's normal drift, not a scandal. See section 5 and section 18, fork 1.</p></details>
-      <details><summary>What do I do with all the small stops that don't add up to much individually?</summary><p>Set your micro-stop threshold on the Definitions tab and the workbook does the rest: any stop under it is flagged automatically and bucketed into a count and a total on the Dashboard, rather than being dropped or diluting the ranking of your named causes. Individually small, collectively significant, and dropping them hides real loss. See section 16, failure 2.</p></details>
-    </div>
+    
+    <div class="iv-facts"><div class="iv-fact"><span class="iv-fact-label mono">Time</span>half a day to set your definitions and standard events register, then logging at the point each stop ends, a couple of minutes each time.</div><div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>whoever's on the floor when a stop happens, operator, team leader, or you if that's the same person. At least one person who can speak to what "normal" actually looks like for your recurring events, for setting honest standards.</div><div class="iv-fact"><span class="iv-fact-label mono">Materials</span>the workbook, and your planned production schedule so you know the minutes you're measuring against.</div></div>
   </div></section>
 
   <section class="iv-section iv-hc-band">

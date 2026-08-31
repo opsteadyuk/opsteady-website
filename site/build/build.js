@@ -1,7 +1,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const { page, HC_URL } = require("./shared.js");
+const { page, HC_URL, packageGrid } = require("./shared.js");
 const { getModuleData, getCatalogueListing, loadRegister } = require("../../build/lib/product-data.js");
 
 const SITE = path.resolve(__dirname, "..", ".."); // 02_main_site — write() paths are given as "site/..." throughout
@@ -13,6 +13,62 @@ const write = (rel, html) => {
 };
 const written = [];
 const w = (rel, html) => { written.push(write(rel, html)); };
+
+/* =========================================================
+   CUSTOMER-RECOGNISABLE CAPABILITY AREAS
+   Shared between the homepage "What Opsteady can help you
+   improve" grid (§2) and the Tools index groupings (build-
+   interventions.js), so the two stay in lockstep and every
+   claimed area is directly traceable to real register modules
+   -- no area is asserted without at least one real Tool behind
+   it. 8 customer-facing areas + one honest "Wider capability"
+   bucket for the 11 Enablers, which the register itself calls
+   cross-cutting rather than tied to one area (same rationale
+   the prior 6-bucket version already used for Enablers).
+   Mapping verified against the full 70-module register,
+   2026-08-31 (see this session's own capability-area audit):
+     Output & Flow (5): P4.1, P4.6-P4.9 (bottleneck/SMED/pull/
+       heijunka/line-balance -- the flow subset of P4)
+     Delivery & Planning (4): P4.2-P4.5 (schedule/capacity/
+       inventory/OTIF -- the planning subset of P4)
+     Running the Day (7): all of P2
+     Quality (9): all of P3, plus P7's root-cause/problem-
+       solving tools (P7.4 A3, P7.5 RCA, P7.6 8 Wastes, P7.8 5 Why)
+     Equipment & Reliability (6): all of P5
+     People & Skills (10): all of P1
+     Standards & Improvement (10): F2, F3, F4, P6, plus P7's
+       remaining CI-infrastructure tools (VSM, Kaizen, Idea &
+       Suggestion, NPI, Spaghetti Diagrams)
+     Performance & Decision Making (8): F1, F5, P8
+     Wider capability (11): all of Enablers
+   5+4+7+9+6+10+10+8+11 = 70.
+========================================================= */
+const OUTPUT_FLOW_IDS = new Set(["P4.1", "P4.6", "P4.7", "P4.8", "P4.9"]);
+const QUALITY_P7_IDS = new Set(["P7.4", "P7.5", "P7.6", "P7.8"]);
+function customerCategory(m) {
+  if (m.group === "P4 Delivery & Planning") return OUTPUT_FLOW_IDS.has(m.id) ? "Output & Flow" : "Delivery & Planning";
+  if (m.group === "P5 Asset Care & Maintenance") return "Equipment & Reliability";
+  if (m.group === "P2 Daily Management & Performance") return "Running the Day";
+  if (m.group === "P3 Quality") return "Quality";
+  if (m.group === "P7 Continuous Improvement") return QUALITY_P7_IDS.has(m.id) ? "Quality" : "Standards & Improvement";
+  if (m.group === "P1 People & Capability") return "People & Skills";
+  if (["F2 Standards", "F3 Culture", "F4 Visual Management", "P6 Visual Management"].includes(m.group)) return "Standards & Improvement";
+  if (["F1 Performance Framework", "F5 Strategy Deployment", "P8 Cost & Resource"].includes(m.group)) return "Performance & Decision Making";
+  return "Wider capability"; // Enablers -- cross-cutting, not tied to one area
+}
+const CATEGORY_ORDER = ["Output & Flow", "Delivery & Planning", "Running the Day", "Quality", "Equipment & Reliability", "People & Skills", "Standards & Improvement", "Performance & Decision Making", "Wider capability"];
+const categoryAnchor = (cat) => cat.replace(/\s+/g, "-").replace(/&/g, "and");
+
+const IMPROVE_AREAS = [
+  { name: "Output & Flow", copy: "Bottlenecks, lost capacity, poor flow, excessive WIP." },
+  { name: "Delivery & Planning", copy: "Missed delivery dates, unstable schedules, poor plan adherence." },
+  { name: "Running the Day", copy: "Weak daily control, unclear priorities, actions that don't close." },
+  { name: "Quality", copy: "Repeat defects, rework, poor root-cause resolution, inconsistent standards." },
+  { name: "Equipment & Reliability", copy: "Recurring breakdowns, weak maintenance routines, equipment-related losses." },
+  { name: "People & Skills", copy: "Skills gaps, dependency on key people, unclear competence, weak training." },
+  { name: "Standards & Improvement", copy: "Processes drifting, improvements not sustaining, inconsistent ways of working." },
+  { name: "Performance & Decision Making", copy: "Too many KPIs, poor visibility, decisions based on opinion rather than evidence." },
+];
 
 /* =========================================================
    HOMEPAGE
@@ -34,10 +90,12 @@ const homeMain = `
     <div class="hero-media"><img src="/v6/assets/hero-manufacturing.png" alt="A stamping press die in an operating manufacturing plant, with a non-identifiable operator visible in the background at a control panel, and a restrained amber node-and-connection overlay marking one settled point on the tooling."></div>
     <div class="hero-scrim"></div>
     <div class="hero-content shell">
-      <div class="hero-eyebrow eyebrow on-navy">Opsteady — Operational Improvement System</div>
+      <div class="hero-eyebrow eyebrow on-navy">OPSTEADY</div>
       <h1 class="hero-h1">Know what to fix first.</h1>
-      <p class="hero-sub">Opsteady helps people running manufacturing sites work out where improvement is actually needed, what to tackle first, and gives their own team the practical Tools to act.</p>
-      <p class="hero-sub">Free information and general AI can hand you methods, examples and templates. They don't know what your particular site needs first, what can wait, or how much change your team can realistically take on right now. Opsteady uses information about your site to help establish that, before you pick what to do.</p>
+      <p class="hero-sub">Opsteady is the in-house way to improve a manufacturing site. Built for operations of 10 to 250 people.</p>
+      <p class="hero-line">Consultants, courses, Google, or hope. Those are usually the options.</p>
+      <p class="hero-sub">Opsteady helps you choose the right tools, and the right order to deploy them, with the thinking already built in. It starts with your Health Check to show where improvement is actually needed, what can wait, and how much change your team can realistically take on right now.</p>
+      <p class="hero-sub">Free information, template shops and generic AI will give you methods and examples. <strong class="hero-emph">They don't know your site.</strong></p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="${HC_URL}">Start the health check</a>
         <a class="btn-text on-navy" href="/site/interventions/index.html">Browse Tools <span class="arrow">→</span></a>
@@ -45,114 +103,89 @@ const homeMain = `
     </div>
   </section>
 
-  <section class="recognition-proof">
-    <span class="rp-seam" aria-hidden="true"></span>
-    <div class="rp-media"><img src="/site/assets/photography/recognition-keyart-source.png" alt="" role="presentation"></div>
-    <div class="rp-scrim"></div>
-    <svg class="rp-markers" viewBox="0 0 1000 667" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Several unresolved points across the scene, each appearing to compete for attention, none yet marked as the priority.">
-      <g class="rp-marker rp-marker-1"><circle cx="520" cy="130" r="15" class="rp-ring"/><circle cx="520" cy="130" r="4" class="rp-dot"/></g>
-      <g class="rp-marker rp-marker-2"><circle cx="700" cy="215" r="11" class="rp-ring rp-ring-dim"/><circle cx="700" cy="215" r="3" class="rp-dot rp-dot-dim"/></g>
-      <g class="rp-marker rp-marker-3"><circle cx="880" cy="330" r="13" class="rp-ring"/><circle cx="880" cy="330" r="3.5" class="rp-dot"/></g>
-      <g class="rp-marker rp-marker-4"><circle cx="620" cy="430" r="10" class="rp-ring rp-ring-dim"/><circle cx="620" cy="430" r="3" class="rp-dot rp-dot-dim"/></g>
-      <g class="rp-marker rp-marker-5"><circle cx="800" cy="500" r="14" class="rp-ring"/><circle cx="800" cy="500" r="4" class="rp-dot"/><text x="820" y="504" class="rp-tag mono">?</text></g>
-      <g class="rp-marker rp-marker-6"><circle cx="410" cy="540" r="9" class="rp-ring rp-ring-dim"/><circle cx="410" cy="540" r="2.5" class="rp-dot rp-dot-dim"/></g>
-    </svg>
-    <div class="rp-content shell">
-      <div class="eyebrow on-navy">Do you recognise this?</div>
-      <p class="rp-lede">Every site has its own version of this. One station gets blamed at every meeting and nobody's measured it. Delivery dates slip and the plan gets rebuilt every week instead of held. Shifts hand over the same three problems because nothing gets written down. The same defect comes back a month after it was "fixed."</p>
-      <p class="rp-lede">None of these get better by picking the loudest one and throwing effort at it.</p>
-    </div>
-  </section>
-
   <section class="page-section">
     <div class="shell">
       <div class="eyebrow">What Opsteady can help you improve</div>
       <div class="wiah-grid">
-        <div class="wiah-item"><h3>Output &amp; flow</h3><p>Bottlenecks, lost capacity, changeovers that eat the shift, work that won't move at a steady pace.</p></div>
-        <div class="wiah-item"><h3>Delivery &amp; planning</h3><p>Missed dates, plans nobody trusts, material that isn't there when it's needed.</p></div>
-        <div class="wiah-item"><h3>Running the day</h3><p>Firefighting, unclear priorities, meetings that don't produce action.</p></div>
-        <div class="wiah-item"><h3>Quality</h3><p>The same defect or complaint coming back no matter how many times it's "fixed."</p></div>
-        <div class="wiah-item"><h3>People &amp; standards</h3><p>The job done differently depending on who's on shift.</p></div>
+        ${IMPROVE_AREAS.map((a) => `<a class="wiah-item" href="/site/interventions/index.html#${categoryAnchor(a.name)}"><h3>${a.name}</h3><p>${a.copy}</p></a>`).join("\n        ")}
       </div>
-      <p class="wiah-foot">Every one of these connects to a specific, real Tool. None of them need you to learn a methodology first.</p>
-    </div>
-  </section>
-
-  <section class="page-section tint">
-    <div class="shell" style="max-width:760px;">
-      <h2>Start with your site</h2>
-      <p>Picking a method because it's popular is a guess. A site that starts with SMED when its real problem is unreliable equipment fixes the wrong thing well. Diagnosing first means the first thing you do is the thing your own site actually needs.</p>
-    </div>
-  </section>
-
-  <section class="sec-hc">
-    <div class="shell hc-grid">
-      <div class="hc-copy">
-        <div class="eyebrow">What happens when you use Opsteady</div>
-        <h2 class="hc-h2">The Health Check looks at how your site runs today, not how you'd like it to run.</h2>
-        <p>In return: a clear starting point, and why it's the right one for your site — then a practical way to act on it.</p>
-        <div style="margin-top:26px;"><a class="btn btn-primary on-light" href="${HC_URL}">Start the health check</a></div>
-      </div>
-      <div class="hc-facts">
-        <div class="hc-count"><span class="num">£0</span><span class="label">Cost</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec-wyag">
-    <div class="shell">
-      <div class="wyag-head">
-        <div class="eyebrow">From recommendation to something usable</div>
-        <h2>Bottleneck Analysis Tool</h2>
-      </div>
-      <div class="wyag-list">
-        <div class="wyag-item">
-          <div>
-            <p class="wyag-outcome">Find the one step actually limiting your output — not the one everyone blames. A week of logging, one ranked constraint, a sized cost, and what to do about it before anyone signs off on new equipment or headcount.</p>
-            <p class="mono wyag-price">Worked example in the Tool: Press 3 measured 180 units/week vs next-best (Packing) 310 — sized cost ~130 units/week</p>
-            <div class="wyag-price">From £99</div>
-          </div>
-          <a class="btn btn-text wyag-cta" href="/site/interventions/bottleneck_analysis.html">See the Bottleneck Analysis Tool <span class="arrow">→</span></a>
-        </div>
-      </div>
+      <p class="wiah-foot"><strong>You don't need to tackle all of it. That's the point.</strong> The Health Check helps establish what deserves attention now — and what can wait.</p>
     </div>
   </section>
 
   <section class="sec-how">
-    <div class="shell how-grid">
-      <div class="how-copy">
-        <div class="eyebrow on-navy">How improvement is deployed</div>
-        <h2 class="how-h2">Built to help improvement stick.</h2>
+    <div class="shell">
+      <div class="how-intro">
+        <div class="eyebrow on-navy">How Opsteady works</div>
+        <h2 class="how-h2">Start with your site. Not a methodology.</h2>
+        <p class="how-intro-p">Every manufacturing site is different. The constraint holding back one operation might be irrelevant in another — and trying to improve everything at once usually creates more activity than progress.</p>
       </div>
-      <div>
+      <div class="how-steps">
+        <div class="how-step"><span class="how-step-num mono">01</span><h3>Understand where you are</h3><p>Start with the Opsteady Health Check. It looks across your operation to identify where attention is most needed, what can wait, and how much change is sensible to take on.</p></div>
+        <div class="how-step"><span class="how-step-num mono">02</span><h3>Decide what to work on</h3><p>Your results point you towards the areas and Tools most relevant to your site. You decide what to take forward, with a clearer reason for starting there.</p></div>
+        <div class="how-step"><span class="how-step-num mono">03</span><h3>Put the Tool to work</h3><p>Each Tool gives your team the knowledge, guidance and working materials needed to deploy it in your own operation — without needing a consultant alongside you.</p></div>
+        <div class="how-step"><span class="how-step-num mono">04</span><h3>Improve, sustain, then look again</h3><p>Work through the improvement, give it time to settle, and rerun the Health Check periodically. As your site changes, the next priority may change with it.</p></div>
+      </div>
+      <div class="how-loop">
         ${loopSVG}
-        <div class="loop-caption mono">Observe &amp; Learn <span class="arrow">→</span> Stabilise <span class="arrow">→</span> Improve <span class="arrow">→</span> Sustain</div>
-        <p style="margin-top:14px;"><a class="btn-text on-navy" href="/site/the-method.html">How It Works <span class="arrow">→</span></a></p>
+        <div class="how-loop-copy">
+          <div class="loop-caption mono">Observe &amp; Learn <span class="arrow">→</span> Stabilise <span class="arrow">→</span> Improve <span class="arrow">→</span> Sustain</div>
+          <p class="how-loop-p"><strong>A practical rhythm for improvement.</strong> Observe and understand before changing things. Stabilise what needs control. Improve from a sound baseline. Sustain what works — then keep learning.</p>
+        </div>
       </div>
+      <p class="how-cta"><a class="btn-text on-navy" href="/site/the-method.html">See exactly how Opsteady works <span class="arrow">→</span></a></p>
     </div>
   </section>
 
-  <section class="sec-trust">
+  <section class="sec-get">
     <div class="shell">
-      <div class="eyebrow on-navy">Built for people who run sites</div>
-      <p class="trust-body">Opsteady is built from experience running manufacturing operations. No sales calls, clear pricing, and you can see what you're buying before you buy it — your own team runs it from there.</p>
-      <div class="trust-facts">
-        <span class="tag on-navy">No sales calls</span>
-        <span class="tag on-navy">Clear pricing</span>
-        <span class="tag on-navy">No fake urgency</span>
+      <div class="get-head">
+        <div class="eyebrow">What you actually get</div>
+        <h2>More than a template. Everything you need to put it to work.</h2>
+        <p>You shouldn't need to already be an expert to use an Opsteady Tool. Each one is built as a practical package that helps your team understand the subject, deploy it properly and keep moving when the real world doesn't quite follow the example.</p>
       </div>
-      <div class="trust-cta"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
+      ${packageGrid()}
     </div>
   </section>
 
-  <section class="sec-next">
+  <section class="sec-tiers">
     <div class="shell">
-      <img class="next-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
-      <h2 class="next-h2">Not sure where to start? Run the Health Check. Already know what you need? Browse Tools.</h2>
-      <div class="next-ctas">
-        <a class="btn btn-primary" href="${HC_URL}">Start the health check</a>
-        <a class="btn-text on-navy" href="/site/interventions/index.html">Browse Tools <span class="arrow">→</span></a>
+      <div class="tiers-head">
+        <div class="eyebrow">Essentials vs Pro</div>
+        <h2>Choose how deep you need to go.</h2>
       </div>
+      <div class="tiers-grid">
+        <div class="tier-card">
+          <h3>Essentials — ready to run</h3>
+          <p>A complete Tool for the standard case. Understand what you're doing, why it matters and how to put it into practice.</p>
+        </div>
+        <div class="tier-card">
+          <h3>Pro — the full playbook</h3>
+          <p>Go further into the thinking behind the Tool: why it works, different ways to deploy it, what you can adapt, what you shouldn't, what tends to go wrong and the judgement needed when the answer isn't obvious.</p>
+        </div>
+      </div>
+      <p class="tiers-foot"><strong>Essentials isn't a cut-down version designed to push you towards Pro.</strong> Choose the depth that fits what you're trying to do.</p>
+    </div>
+  </section>
+
+  <section class="sec-credibility">
+    <div class="shell">
+      <div class="cred-head">
+        <div class="eyebrow">Built from running manufacturing operations</div>
+        <h2>Built from running manufacturing operations.</h2>
+      </div>
+      <p class="cred-body">Opsteady wasn't created by taking improvement theory and turning it into templates. It was built from experience of what happens when those methods meet a real manufacturing site — limited time, competing priorities, imperfect data, different levels of experience and people who still have a day job to do.</p>
+      <p class="cred-body">That's why the focus is practical: understand the problem before changing it, make the next step manageable, explain the thinking behind the method and leave your team with something they can actually use.</p>
+      <p class="cred-cta"><a class="btn-text" href="/site/who-we-are.html">More about who we are <span class="arrow">→</span></a></p>
+    </div>
+  </section>
+
+  <section class="sec-close">
+    <div class="shell">
+      <h2 class="close-h2">Know what to fix first.</h2>
+      <p class="close-body">You don't need another list of things your site could improve.</p>
+      <p class="close-body">Start with the Health Check. Understand where attention is needed now, what can wait, and where Opsteady can help.</p>
+      <div class="close-cta"><a class="btn btn-primary" href="${HC_URL}">Start the free Health Check</a></div>
     </div>
   </section>
 `;
@@ -160,10 +193,10 @@ const homeMain = `
 w("site/index.html", page({
   current: "home",
   title: "Opsteady — Know what to fix first",
-  description: "A practical operational improvement system for manufacturing sites. Find out what deserves attention first, and move into interventions your own team can run.",
+  description: "Opsteady is the in-house way to improve a manufacturing site. Find out what deserves attention first, and move into Tools your own team can run.",
   path: "/",
   main: homeMain,
 }));
 
 console.log("Homepage written. Continuing with remaining pages...");
-module.exports = { write, w, written, page, HC_URL, getModuleData, getCatalogueListing, loadRegister, loopSVG };
+module.exports = { write, w, written, page, HC_URL, getModuleData, getCatalogueListing, loadRegister, loopSVG, packageGrid, customerCategory, CATEGORY_ORDER, categoryAnchor };

@@ -21,79 +21,83 @@
     <a href="/site/index.html" aria-label="Opsteady, home">
       <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
       <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a href="/site/interventions/index.html" aria-current="page">Tools</a>
       <a href="/site/the-method.html">How It Works</a>
       <a href="/site/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
     </nav>
-    <a class="nav-cta" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
 <main id="main">
 
-  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → Daily Management & Performance → Tiered Meeting Structure</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#Running-the-Day">Running the Day</a> → Tiered Meeting Structure</nav></div>
   <section class="iv-hero">
     <div class="shell">
       
       <h1>Tiered Meeting Structure</h1>
       <p class="iv-situation">Most sites have too many meetings and too little structure behind them. Some problems get raised in five different rooms before anyone actually decides what to do about them. Others never get raised anywhere that can act on them, and sit unresolved at the bottom for months. Both failures look different and cost the same thing: senior time spent on the wrong problems, and real problems left to fester at the level that can least afford to carry them.</p>
-      <div class="iv-buy"><span class="iv-price">£349</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
+      <div class="iv-buy" id="buy"><span class="iv-price">£349</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <span class="eyebrow">Situation</span>
-    <h2>Who this is for</h2>
-    <p class="iv-who">Teams working on Daily Management & Performance, where the goal is: get the right problems to the right level quickly.</p>
+    <p class="iv-core">Get the right problems to the right level quickly.</p>
+    <p class="iv-core">Your team works through it using the guide and working materials below — it's usually useful once SQDC Performance Board Pack is already in place.</p>
   </div></section>
 
   <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Fit</span>
-    <h2>When it's the right Tool</h2>
-    <p class="iv-stage-note">Usually useful once SQDC Performance Board Pack is already in place.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Outcome</span>
-    <h2>What it does</h2>
-    <p class="iv-what">Get the right problems to the right level quickly.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Contents</span>
-    <h2>What is in it</h2>
-    <div class="iv-inside">
-      <div class="iv-inside-item"><span class="iv-inside-kind mono">Guide</span><span>Tiered Meeting Structure Pro</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">FAQ</span><span>Tiered Meeting Structure FAQ</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Training</span><span>Tiered Meeting Structure Training</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Workbook</span><span>P2.2 Tier Structure Map and Escalation Log</span></div>
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    <div class="pkg-grid pkg-compact">
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-7-2-11-1v16c4-1 8-1 11 1 3-2 7-2 11-1V8c-4-1-8-1-11 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9v16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="1.8" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Training</span>
+        <div class="pkg-verb">Learn it</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="16" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 11h8M10 16h8M10 21h5" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="23" r="5" fill="var(--v6-warm)" stroke="var(--a6-amber)" stroke-width="1.5"/><path d="M20.8 23l1.6 1.6 3-3.2" fill="none" stroke="var(--a6-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-label mono">Main Tool</span>
+        <div class="pkg-verb">Put it to work</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5c0-2 1.6-3.5 3.5-3.5s3.5 1.3 3.5 3.2c0 2.1-2.2 2.4-3 3.6-.3.5-.4 1-.4 1.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">FAQ</span>
+        <div class="pkg-verb">Get unstuck</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Working Materials</span>
+        <div class="pkg-verb">Make it yours</div>
+        
+      </div>
     </div>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Effort</span>
-    <h2>What it takes</h2>
-    <dl class="iv-fact-table"><div class="iv-fact-row"><dt>Time</dt><dd>A day to map existing meetings and design the tier structure. Longer to actually retire the old meetings it replaces, see section 9.</dd></div><div class="iv-fact-row"><dt>Who's involved</dt><dd>Whoever chairs each proposed tier. The SQDC board owner, since the board becomes the agenda. Whoever currently owns the meetings this structure will replace, since retiring their meeting is part of this build, not a side effect of it.</dd></div><div class="iv-fact-row"><dt>Materials</dt><dd>The SQDC board in some working form, since it's this structure's own agenda. Shift Handover System in some working form too, since its log feeds directly into Tier 1's own board review, per section 5. An honest list of every recurring meeting that currently exists on this site, with who attends and how long each genuinely runs.</dd></div></dl>
-  </div></section>
-  
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <p>A real, anonymised sample is included with every purchase. A public preview for this specific module is pending a dedicated content pass.</p>
-  </div></section>
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Common questions</span>
-    <h2>FAQ</h2>
-    <div class="iv-faq">
-      <details><summary>We already have too many meetings and don't know where to start. Do we design the new structure first, or fix the old one?</summary><p>Map first. List every recurring meeting on the site, who attends and how long each genuinely runs, before designing a single tier. Most sites are surprised how many meetings turn out to be duplicating each other under different names once they're all in one place. See guide section 5.</p></details>
-      <details><summary>What happens to the meetings this replaces?</summary><p>They get cancelled, not left running alongside the new structure. A tier structure that sits on top of the old meetings, rather than actually retiring them, is one of the more common ways this fails. See guide section 5 and section 9.</p></details>
-      <details><summary>Does Tier 1 really need to be daily, even on a site that isn't fast-moving?</summary><p>Yes. Tier 1 is where problems get caught while they're still small and cheap to fix. A team that only reviews its own SQDC board every few days is finding out about Monday's problem on Thursday, which defeats the entire purpose of the board underneath it. See guide section 3.</p></details>
-      <details><summary>How many tiers does our site actually need?</summary><p>Most sites need three: team, area, site. A few genuinely need four, where a real fourth management layer exists and would actually review something distinct. Don't default to four because an org chart happens to have four boxes on it. See guide section 5's minimum decision fork.</p></details>
-      <details><summary>What if an item gets escalated but doesn't actually meet the stated criteria?</summary><p>Send it back down, and say so directly. This is uncomfortable the first few times, but letting criteria bend for anyone who's persistent enough is exactly how the whole structure quietly reverts to everything going to the top. See guide section 9 and section 17.</p></details>
-    </div>
+    
+    <div class="iv-facts"><div class="iv-fact"><span class="iv-fact-label mono">Time</span>A day to map existing meetings and design the tier structure. Longer to actually retire the old meetings it replaces, see section 9.</div><div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>Whoever chairs each proposed tier. The SQDC board owner, since the board becomes the agenda. Whoever currently owns the meetings this structure will replace, since retiring their meeting is part of this build, not a side effect of it.</div><div class="iv-fact"><span class="iv-fact-label mono">Materials</span>The SQDC board in some working form, since it's this structure's own agenda. Shift Handover System in some working form too, since its log feeds directly into Tier 1's own board review, per section 5. An honest list of every recurring meeting that currently exists on this site, with who attends and how long each genuinely runs.</div></div>
   </div></section>
 
   <section class="iv-section iv-hc-band">

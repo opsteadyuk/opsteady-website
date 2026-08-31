@@ -51,29 +51,73 @@ w("site/pricing.html", page({
   `,
 }));
 
-/* ---- Who We Are ---- */
+/* ---- Who We Are — rewritten 2026-08-31 per the customer-experience-
+   pass instruction to move closer to the stronger operational
+   credibility in the existing/live-source who-we-are.html (root of
+   02_main_site, the pre-Opsteady-2.0 baseline), condensed and
+   reframed rather than reproduced verbatim: no chronological CV, no
+   founder name or photograph (unchanged faceless/operator-led
+   constraint, 02_brand/100_BASE_FILE.md D-79), no numeric Health
+   Check claims the Phase 3 copy freeze already ruled out (question
+   count, completion time). The real operational anecdotes below are
+   condensed from that source, not invented. ---- */
 w("site/who-we-are.html", page({
   current: "who-we-are",
   title: "Who built Opsteady",
-  description: "Operator-led, not consultant-led. What Opsteady is, and isn't.",
+  description: "No name, no photograph, no team. Operator-led, not consultant-led. Judge it by the work.",
   path: "/who-we-are",
   main: `
   <section class="page-hero">
     <div class="shell">
       <div class="eyebrow on-navy">Who we are</div>
-      <h1>Built from experience running manufacturing operations.</h1>
+      <h1>No name on this site. Judge it by the work.</h1>
+      <p>Opsteady is a small operation, run by one person, with no team, no office and no sales function. That's a deliberate choice, not a stage it's trying to grow out of. Nobody will call you.</p>
     </div>
   </section>
+
   <section class="page-section">
     <div class="shell">
-      <h2>Why Opsteady exists</h2>
-      <p>Most operational advice comes from two places: a consultant's report, or generic content that doesn't know anything about your site. Neither tells you what to fix first, what can wait, or what your team can actually take on right now. Opsteady exists to answer exactly that, and then get out of the way.</p>
-      <h2 style="margin-top:36px;">How it works, commercially</h2>
-      <p>No sales call required. Clear pricing. You can see what you're buying before you buy it. Designed for your own team to deploy, not for Opsteady to deploy for you.</p>
-      <h2 style="margin-top:36px;">Where the judgement comes from</h2>
-      <p>The judgement is in the product, not on this page — in what each Tool tells you to check before you start, what it warns you about, and where it hands off to something else rather than overreaching. The Health Check's recommendations follow the same discipline: a starting point that's actually right for your site, not a generic one.</p>
-      <h2 style="margin-top:36px;">Relationship to Optimere</h2>
-      <p>Opsteady is built and run by Optimere Limited.</p>
+      <h2>Where this comes from</h2>
+      <p>Opsteady comes from real time spent running manufacturing operations, not from taking improvement theory and turning it into templates — starting on the floor, learning the job before being trusted to change anything, and finding that the standards and SOPs on paper rarely described how the place actually ran on a given shift.</p>
+      <p>That gap — between the system on paper and the practice on the floor — is one of the most useful things to look for in an operation. It's why the Health Check reads both, rather than averaging them into one comfortable score.</p>
+    </div>
+  </section>
+
+  <section class="page-section tint">
+    <div class="shell">
+      <h2>Why deployment matters more than the method</h2>
+      <p>A properly run improvement week — disciplined, well-executed, the full standard treatment — can still fully revert within two months if nobody involved understood why they were doing it, only that they were told to. That's not a failure of effort or of the method. It's what happens when improvement is installed rather than understood.</p>
+      <p>It's why everything Opsteady builds is designed to transfer capability, not just deliver a one-off result. A tool that only works while someone stands over it isn't a tool — it's a visit.</p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <h2>Why the sequence matters</h2>
+      <p>An area can be missing its targets on every measure at once — not from a lack of effort, but because people are doing work that's always been done, without anyone able to say why. The fix usually isn't adding more. It's watching first, removing what doesn't need to be there, agreeing a short standard with the team who'll actually run it, and only then pushing for more.</p>
+      <p>Watch before changing. Stabilise before improving. Improve from a base that holds. That's the same logic behind Opsteady's Observe &amp; Learn, Stabilise, Improve, Sustain loop — learned on a real floor, not derived from a textbook.</p>
+    </div>
+  </section>
+
+  <section class="page-section tint">
+    <div class="shell">
+      <h2>Why trust isn't a soft subject</h2>
+      <p>Every tool here depends on people being willing to say what's actually happening. Where that willingness has been damaged — because raising something went badly for someone once — no system fixes it by itself, and no amount of asking for openness in a meeting outweighs what people have already seen happen. That's why Opsteady's diagnostics look at how people behave alongside what the systems say, and why nothing here pretends a template can substitute for trust.</p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <h2>Why not a consultant, a course, or a template shop</h2>
+      <p>Opsteady is sold as a method, not a personality, and built to work across different sites, sectors and problems. The solutions are different every time; what travels between sites is the order things need doing in — which is exactly what the Health Check exists to establish for yours.</p>
+      <p>There's no retainer, no subscription to your own improvement, and no sales call following anything you buy. Opsteady doesn't come to your site, doesn't run your projects, and won't tell you what your culture should be — that's yours to shape, and you know your people. Most of what's here builds on established operational thinking, not reinvented; what Opsteady adds is the deployment judgement — what to do first, what conflicts with what, and what to do when it stalls.</p>
+    </div>
+  </section>
+
+  <section class="page-section tint">
+    <div class="shell">
+      <h2>Relationship to Optimere</h2>
+      <p>Opsteady is a trading name of Optimere Limited, the company that builds and runs it.</p>
       <div style="margin-top:24px;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
     </div>
   </section>

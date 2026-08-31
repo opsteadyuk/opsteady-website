@@ -1,32 +1,15 @@
 "use strict";
-const { w, page, HC_URL, getModuleData, getCatalogueListing } = require("./build.js");
+const { w, page, HC_URL, getModuleData, getCatalogueListing, packageGrid, customerCategory, CATEGORY_ORDER, categoryAnchor } = require("./build.js");
 
 const listing = getCatalogueListing();
 
-/* ---- Customer-recognisable groupings for the Tools index (Phase 4 ruling:
-   "Use the approved customer groupings ... do not recreate the internal
-   Foundations/Pillars/Enablers taxonomy as customer navigation. No F/P/E
-   codes.") Mapped from register group -> customer language, not the
-   reverse. P4's flow-vs-delivery split reuses the exact division already
-   evidenced in OPSTEADY-2.0-SITE-STRUCTURE-AND-CUSTOMER-JOURNEY.md §F's
-   problem-family table (flow-and-bottlenecks vs on-time-delivery), not
-   invented here. Enablers don't fit any of the five problem-family
-   categories (the register itself calls them cross-cutting, not tied to
-   one stage) -- given an honest sixth bucket rather than forced into a
-   bad fit. */
-const FLOW_IDS = new Set(["P4.1", "P4.6", "P4.7", "P4.8", "P4.9"]);
-function customerCategory(m) {
-  if (m.group === "P4 Delivery & Planning") return FLOW_IDS.has(m.id) ? "Output & flow" : "Delivery & planning";
-  if (m.group === "P5 Asset Care & Maintenance") return "Output & flow";
-  if (m.group === "P8 Cost & Resource") return "Delivery & planning";
-  if (m.group === "P2 Daily Management & Performance") return "Running the day";
-  if (m.group === "P3 Quality" || m.group === "P7 Continuous Improvement") return "Quality";
-  if (["P1 People & Capability", "P6 Visual Management", "F1 Performance Framework", "F2 Standards", "F3 Culture", "F4 Visual Management", "F5 Strategy Deployment"].includes(m.group)) return "People & standards";
-  return "Wider capability"; // Enablers
-}
-const CATEGORY_ORDER = ["Output & flow", "Delivery & planning", "Running the day", "Quality", "People & standards", "Wider capability"];
+/* Customer categories, group order and anchor ids now come from
+   build.js (customerCategory / CATEGORY_ORDER / categoryAnchor) so
+   the Tools index groupings and the homepage "What Opsteady can
+   help you improve" grid (§2) stay identical and cross-link
+   correctly -- one taxonomy, not two that can drift apart. */
 
-/* ---- Tools index — grouped by customer category, capped per group ---- */
+/* ---- Tools index — grouped by customer category ---- */
 const byGroup = {};
 for (const m of listing) {
   const cat = customerCategory(m);
@@ -41,7 +24,7 @@ const groupOrder = CATEGORY_ORDER.filter((c) => byGroup[c]);
    search is what keeps the full list manageable. */
 const idxHtml = groupOrder.map((g) => {
   const items = byGroup[g];
-  return `<div class="idx-group" id="${g.replace(/\s+/g,'-').replace(/&/g,'and')}">
+  return `<div class="idx-group" id="${categoryAnchor(g)}">
         <h2>${g}</h2>
         <div class="idx-rows">
           ${items.map((m) => `<a class="idx-row" data-search="${m.name.toLowerCase()} ${m.outcome.toLowerCase()}" href="/site/interventions/${m.slug}.html">
@@ -58,11 +41,18 @@ w("site/interventions/index.html", page({
   description: "Find the Opsteady Tool you need, grouped by what it helps you fix.",
   path: "/interventions",
   main: `
-  <section class="page-hero">
+  <!-- GOVERNED IMAGE SLOT (not yet sourced -- 02_brand/110_photography.md §10.2a):
+       subject: a genuine, non-generic manufacturing working environment (equipment
+       detail, inspection, or material movement), consistent with the homepage hero
+       and the approved 5-image signature family in
+       00_SYSTEM/OPSTEADY-2.0-VISUAL-ASSET-MATRIX.md. Not sourced in this pass --
+       per the brief's own §12 fallback, no placeholder image is used here; ship
+       the typographic hero below until a real asset is produced. -->
+  <section class="page-hero tools-hero">
     <div class="shell">
       <div class="eyebrow on-navy">Tools</div>
       <h1>Find the one you need, or see what's available.</h1>
-      <p>Each Tool is a complete, practical way to fix one specific thing — most include the working file itself, clear instructions, examples, and guidance for putting it to work, not just a blank template.</p>
+      <p>Each Tool is a complete, practical way to fix one specific thing — the working file itself, clear instructions, examples and guidance for putting it to work, not just a blank template.</p>
       <div class="idx-search-wrap">
         <input type="search" id="idx-search" class="idx-search" placeholder="Search: &quot;skills matrix,&quot; &quot;changeover,&quot; &quot;delivery&quot;..." aria-label="Search Tools">
       </div>
@@ -94,27 +84,32 @@ w("site/interventions/index.html", page({
   `,
 }));
 
-/* ---- One Tool page per commercially-available module ---- */
+/* ---- One Tool page per commercially-available module ----
+   Dramatically simplified vs. the prior 10-section archetype
+   (situation/fit/outcome/contents/effort/tier-table/sample/5-item-FAQ):
+   2-3 short paragraphs, the shared compact package component, a short
+   Essentials/Pro line where both exist, and compact commercial facts --
+   no reproduced methodology, no FAQ wall. Per the brief's own
+   instruction: this is a sales page, not the Tool itself. */
 let generated = 0;
 const p41StageTag = "Observe & Learn"; /* real, from P4.1's own Framing.md — only module with a verified stage tag; not extended to others without equivalent evidence */
-const groupLabel = (g) => g.replace(/^[EFP]\d+(\.\d+)?\s+/, "");
 
-/* Customer-safe "when is this useful" text — deliberately does not reuse
-   product-data.js's stageContext()/stageProse, which names "Pillar" and
-   "Foundation" (internal taxonomy) and doesn't read grammatically inside
-   the "Usually useful ..." template. Fixed at the point of use rather
-   than in the shared data layer, since that layer is also consumed by
-   other (dormant, non-production) generators not in scope here. */
-function whenRightFor(d) {
-  if (d.category === "Foundation") return "Usually useful early — a sitewide standard most other Tools in this area build on.";
-  if (d.category === "Enabler") return "Usually useful alongside other Tools, not tied to one stage.";
-  if (d.lead) return `Usually the starting point for ${groupLabel(d.group)}.`;
+/* Customer-safe "when is this useful" clause — deliberately does not
+   reuse product-data.js's stageContext()/stageProse, which names
+   "Pillar"/"Foundation" (internal taxonomy). Fixed at the point of use
+   rather than in the shared data layer, which other, dormant prototype
+   generators also consume. */
+function whenRightFor(d, cat) {
+  if (d.category === "Foundation") return "it's usually worth putting in place early — it's a sitewide standard most other Tools in this area build on.";
+  if (d.category === "Enabler") return "it's usually useful alongside other Tools, not tied to one stage.";
+  if (d.lead) return `it's usually the starting point for ${cat}.`;
   const req = d.edges.find((e) => e.label === "Requires first") || d.edges[0];
-  return req ? `Usually useful once ${req.name} is already in place.` : `Usually useful once the basics for ${groupLabel(d.group)} are in place.`;
+  return req ? `it's usually useful once ${req.name} is already in place.` : `it's usually useful once the basics for ${cat} are in place.`;
 }
 
 for (const listed of listing) {
   const d = getModuleData(listed.id);
+  const cat = customerCategory(listed);
 
   const isP41 = d.id === "P4.1";
   const situation = isP41
@@ -131,114 +126,53 @@ for (const listed of listing) {
       ? `<span class="iv-price">Pro — £${d.pricePro.price} <span class="showcase-note">(Showcase price. Standard Pro price £${d.pricePro.was}.)</span></span>`
       : `<span class="iv-price">£${d.pricePro.price}</span>`;
 
-  const whoFor = isP41
-    ? "Anyone about to sign off on new equipment, overtime, or headcount to fix a capacity problem, before knowing for certain which step it would actually fix."
-    : `Teams working on ${groupLabel(d.group)}, where the goal is: ${d.outcome.toLowerCase().replace(/\.$/, "")}.`;
-
-  const whenRight = isP41
-    ? "Run it before you spend money on capacity, not after. It works on any process with a fixed sequence of dependent steps."
-    : whenRightFor(d);
-
-  const whatItDoes = isP41
-    ? `Every site has an opinion on what's slowing the line — usually the loudest voice or the most recent annoyance, rarely checked against data. This finds the real constraint: the one step that sets the pace for everything after it.
-    <br><br>One week of measurement gets you: one step clearly identified as the binding constraint, a sized cost in units per week, and a first attempt at getting more from that step before anyone requests new capital.
-    <br><br><em>Worked example in the Tool: Press 3 measured at 180 units/week against Packing at 310 — roughly 130 units a week sitting on the table, and Press 3, not the station everyone blamed, was the actual constraint.</em>`
+  /* Paragraph 1 — what it helps you achieve (the hero above already
+     states the situation/problem, so this doesn't repeat it). */
+  const p1 = isP41
+    ? "Every site has an opinion on what's slowing the line — usually the loudest voice or the most recent annoyance, rarely checked against data. The Bottleneck Analysis Tool finds the real constraint: the one step that sets the pace for everything after it, measured, not guessed."
     : d.outcome;
 
-  const insideHtml = d.inside.length
-    ? d.inside.map((i) => `<div class="iv-inside-item"><span class="iv-inside-kind mono">${i.kind}</span><span>${i.label}</span></div>`).join("\n          ")
-    : `<p>Contents confirmed on request — full listing pending final content pass for this module.</p>`;
+  /* Paragraph 2 — what your team actually does with it. */
+  const p2 = isP41
+    ? "One week of measurement gets you one step clearly identified as the binding constraint, a sized cost in units per week, and a first attempt at getting more from that step before anyone signs off on new capital. Worked example in the Tool: Press 3 measured at 180 units/week against Packing at 310 — roughly 130 units a week sitting on the table, and Press 3, not the station everyone blamed, was the actual constraint."
+    : `Your team works through it using the guide and working materials below — ${whenRightFor(d, cat)}`;
 
-  const factRows = [];
-  if (d.time) factRows.push(`<div class="iv-fact-row"><dt>Time</dt><dd>${d.time}</dd></div>`);
-  if (d.people) factRows.push(`<div class="iv-fact-row"><dt>Who's involved</dt><dd>${d.people}</dd></div>`);
-  if (d.materials) factRows.push(`<div class="iv-fact-row"><dt>Materials</dt><dd>${d.materials}</dd></div>`);
-  if (!factRows.length) factRows.push(`<div class="iv-fact-row"><dt>Time</dt><dd>See the guide for a full effort estimate.</dd></div>`);
+  const factTags = [];
+  if (d.time) factTags.push(`<div class="iv-fact"><span class="iv-fact-label mono">Time</span>${d.time}</div>`);
+  if (d.people) factTags.push(`<div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>${d.people}</div>`);
+  if (d.materials) factTags.push(`<div class="iv-fact"><span class="iv-fact-label mono">Materials</span>${d.materials}</div>`);
 
-  const tierSection = d.hasEssentials ? `
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Essentials vs Pro</span>
-    <h2>How the tiers differ</h2>
-    <table class="iv-tier-table">
-      <thead><tr><th></th><th>Essentials</th><th>Pro</th></tr></thead>
-      <tbody>
-        <tr><td>The tool and instructions</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Reasoning for the main decisions</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Full playbook, failure modes, edge cases</td><td>–</td><td>✓</td></tr>
-      </tbody>
-    </table>
-  </div></section>` : "";
-
-  const sampleSection = d.sample ? `
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <div class="iv-sample-frame"><p class="mono" style="font-size:13px;">${d.sample}</p></div>
-  </div></section>` : `
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <p>A real, anonymised sample is included with every purchase. A public preview for this specific module is pending a dedicated content pass.</p>
-  </div></section>`;
-
-  const faqSection = d.faq.length ? `
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Common questions</span>
-    <h2>FAQ</h2>
-    <div class="iv-faq">
-      ${d.faq.slice(0, 5).map((f) => `<details><summary>${f.q}</summary><p>${f.a}</p></details>`).join("\n      ")}
-    </div>
-  </div></section>` : "";
+  const tierNote = d.hasEssentials
+    ? `<p class="iv-tier-note">Essentials gets your team running with the tool, instructions and the reasoning behind the main decisions. Pro adds the full playbook — failure modes, edge cases and the judgement calls the standard case doesn't cover.</p>`
+    : "";
 
   const relatedHtml = d.edges.length
     ? `<div class="iv-related">${d.edges.map((e) => `<a class="tag" href="/site/interventions/${e.slug}.html">${e.label}: ${e.name}</a>`).join("")}</div>`
     : "";
 
   const main = `
-  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → ${groupLabel(d.group)} → ${d.name}</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#${categoryAnchor(cat)}">${cat}</a> → ${d.name}</nav></div>
   <section class="iv-hero">
     <div class="shell">
       ${isP41 ? `<span class="tag on-navy">${p41StageTag}</span>` : ""}
       <h1>${d.name}</h1>
       <p class="iv-situation">${situation}</p>
-      <div class="iv-buy">${priceBlock}<a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
+      <div class="iv-buy" id="buy">${priceBlock}<a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <span class="eyebrow">Situation</span>
-    <h2>Who this is for</h2>
-    <p class="iv-who">${whoFor}</p>
+    <p class="iv-core">${p1}</p>
+    <p class="iv-core">${p2}</p>
   </div></section>
 
   <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Fit</span>
-    <h2>When it's the right Tool</h2>
-    <p class="iv-stage-note">${whenRight}</p>
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    ${packageGrid({ compact: true })}
+    ${tierNote}
+    ${factTags.length ? `<div class="iv-facts">${factTags.join("")}</div>` : ""}
   </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Outcome</span>
-    <h2>What it does</h2>
-    <p class="iv-what">${whatItDoes}</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Contents</span>
-    <h2>What is in it</h2>
-    <div class="iv-inside">
-      ${insideHtml}
-    </div>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Effort</span>
-    <h2>What it takes</h2>
-    <dl class="iv-fact-table">${factRows.join("")}</dl>
-  </div></section>
-  ${tierSection}
-  ${sampleSection}
-  ${faqSection}
 
   <section class="iv-section iv-hc-band">
     <div class="shell">

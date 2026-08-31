@@ -21,15 +21,35 @@
     <a href="/site/index.html" aria-label="Opsteady, home">
       <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
       <a href="https://healthcheck.opsteady.co.uk/" aria-current="page">Health Check</a>
       <a href="/site/interventions/index.html">Tools</a>
       <a href="/site/the-method.html">How It Works</a>
       <a href="/site/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
     </nav>
-    <a class="nav-cta" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
 <main id="main">
 
   <section class="page-hero">

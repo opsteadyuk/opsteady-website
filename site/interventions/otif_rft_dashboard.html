@@ -21,77 +21,83 @@
     <a href="/site/index.html" aria-label="Opsteady, home">
       <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
       <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a href="/site/interventions/index.html" aria-current="page">Tools</a>
       <a href="/site/the-method.html">How It Works</a>
       <a href="/site/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
     </nav>
-    <a class="nav-cta" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
 <main id="main">
 
-  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → Delivery & Planning → OTIF & Right-First-Time Dashboard</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#Delivery-and-Planning">Delivery & Planning</a> → OTIF & Right-First-Time Dashboard</nav></div>
   <section class="iv-hero">
     <div class="shell">
       
       <h1>OTIF & Right-First-Time Dashboard</h1>
       <p class="iv-situation">*Essentials and Pro*</p>
-      <div class="iv-buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
+      <div class="iv-buy" id="buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <span class="eyebrow">Situation</span>
-    <h2>Who this is for</h2>
-    <p class="iv-who">Teams working on Delivery & Planning, where the goal is: see where delivery performance is breaking down.</p>
+    <p class="iv-core">See where delivery performance is breaking down.</p>
+    <p class="iv-core">Your team works through it using the guide and working materials below — it's usually useful once the basics for Delivery & Planning are in place.</p>
   </div></section>
 
   <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Fit</span>
-    <h2>When it's the right Tool</h2>
-    <p class="iv-stage-note">Usually useful once the basics for Delivery & Planning are in place.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Outcome</span>
-    <h2>What it does</h2>
-    <p class="iv-what">See where delivery performance is breaking down.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Contents</span>
-    <h2>What is in it</h2>
-    <div class="iv-inside">
-      <div class="iv-inside-item"><span class="iv-inside-kind mono">Guide</span><span>OTIF RFT Guide</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">FAQ</span><span>OTIF RFT FAQ</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Training</span><span>OTIF RFT Training</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Workbook</span><span>P4.5 OTIF RFT Workbook</span></div>
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    <div class="pkg-grid pkg-compact">
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-7-2-11-1v16c4-1 8-1 11 1 3-2 7-2 11-1V8c-4-1-8-1-11 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9v16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="1.8" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Training</span>
+        <div class="pkg-verb">Learn it</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="16" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 11h8M10 16h8M10 21h5" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="23" r="5" fill="var(--v6-warm)" stroke="var(--a6-amber)" stroke-width="1.5"/><path d="M20.8 23l1.6 1.6 3-3.2" fill="none" stroke="var(--a6-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-label mono">Main Tool</span>
+        <div class="pkg-verb">Put it to work</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5c0-2 1.6-3.5 3.5-3.5s3.5 1.3 3.5 3.2c0 2.1-2.2 2.4-3 3.6-.3.5-.4 1-.4 1.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">FAQ</span>
+        <div class="pkg-verb">Get unstuck</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Working Materials</span>
+        <div class="pkg-verb">Make it yours</div>
+        
+      </div>
     </div>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Effort</span>
-    <h2>What it takes</h2>
-    <dl class="iv-fact-table"><div class="iv-fact-row"><dt>Time</dt><dd>half a day to set your definitions and get the log started, then 5 minutes a day logging as orders close.</dd></div><div class="iv-fact-row"><dt>Who's involved</dt><dd>whoever currently owns the OTIF or RFT number, if one already exists. This isn't a solo desk exercise, the definition needs to survive contact with the people who'll argue about it.</dd></div><div class="iv-fact-row"><dt>Materials</dt><dd>the workbook, and access to whatever you currently use to see promise dates and delivered quantities, an ERP export, a delivery note pile, a whiteboard. You're not replacing that system, you're logging from it.</dd></div></dl>
-  </div></section>
-  
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <p>A real, anonymised sample is included with every purchase. A public preview for this specific module is pending a dedicated content pass.</p>
-  </div></section>
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Common questions</span>
-    <h2>FAQ</h2>
-    <div class="iv-faq">
-      <details><summary>We already have an OTIF number. Do we have to throw it away and start fresh?</summary><p>No, and doing that would waste a number that might already be right. Run the audit path instead of the build-from-nothing path: same questions on the Definitions tab, but used to check what your existing number is silently assuming rather than to invent a new one. Most of the time the finding isn't that the old number was wrong, it's that nobody had ever written down what it was actually measuring. See guide section 5.</p></details>
-      <details><summary>Our RFT number is going to drop once we're honest about scope. Is that a problem?</summary><p>It's the opposite of a problem, it's the correction working. A number that goes down because the definition got more accurate isn't a regression, it's the first honest reading of where you actually stand. What matters afterwards is that the new definition stays fixed, so next month's number means the same thing as this month's. See guide section 17.</p></details>
-      <details><summary>How does this relate to Root Cause Analysis Toolkit and Non-Conformance Tracker & Trend Pack?</summary><p>Both are built, and the relationship is sequential, not parallel. This dashboard shows RFT dropping; Non-Conformance Tracker & Trend Pack (P3.1) is what answers why, with a ranked cause; Root Cause Analysis Toolkit (P7.5) is what verifies that cause, one step further downstream, not a second branch off this dashboard directly. A persistent Pareto cause surfaced here is the trigger for a logged non-conformance on P3.1's own tracker, not something this dashboard logs itself. See guide section 10.</p></details>
-    </div>
+    
+    <div class="iv-facts"><div class="iv-fact"><span class="iv-fact-label mono">Time</span>half a day to set your definitions and get the log started, then 5 minutes a day logging as orders close.</div><div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>whoever currently owns the OTIF or RFT number, if one already exists. This isn't a solo desk exercise, the definition needs to survive contact with the people who'll argue about it.</div><div class="iv-fact"><span class="iv-fact-label mono">Materials</span>the workbook, and access to whatever you currently use to see promise dates and delivered quantities, an ERP export, a delivery note pile, a whiteboard. You're not replacing that system, you're logging from it.</div></div>
   </div></section>
 
   <section class="iv-section iv-hc-band">

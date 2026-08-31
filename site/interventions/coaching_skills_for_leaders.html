@@ -21,79 +21,83 @@
     <a href="/site/index.html" aria-label="Opsteady, home">
       <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
       <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a href="/site/interventions/index.html" aria-current="page">Tools</a>
       <a href="/site/the-method.html">How It Works</a>
       <a href="/site/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
     </nav>
-    <a class="nav-cta" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
 <main id="main">
 
-  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → People & Capability → Coaching Skills for Leaders</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#People-and-Skills">People & Skills</a> → Coaching Skills for Leaders</nav></div>
   <section class="iv-hero">
     <div class="shell">
       
       <h1>Coaching Skills for Leaders</h1>
       <p class="iv-situation">Most leaders on a manufacturing floor operate in one of two modes when something needs fixing: tell the person exactly what to do, or step in and do it themselves because it's faster than explaining. Both feel efficient in the moment. Both quietly cost the site the same thing over time: skill stays concentrated in the leader, the same problem reappears because the person who hit it never worked out why, and the leader becomes the bottleneck every decision has to pass through, because nobody else has been given the chance to build the judgement to make it themselves.</p>
-      <div class="iv-buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
+      <div class="iv-buy" id="buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <span class="eyebrow">Situation</span>
-    <h2>Who this is for</h2>
-    <p class="iv-who">Teams working on People & Capability, where the goal is: improve performance without taking over.</p>
+    <p class="iv-core">Improve performance without taking over.</p>
+    <p class="iv-core">Your team works through it using the guide and working materials below — it's usually useful once Culture Guide is already in place.</p>
   </div></section>
 
   <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Fit</span>
-    <h2>When it's the right Tool</h2>
-    <p class="iv-stage-note">Usually useful once Culture Guide is already in place.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Outcome</span>
-    <h2>What it does</h2>
-    <p class="iv-what">Improve performance without taking over.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Contents</span>
-    <h2>What is in it</h2>
-    <div class="iv-inside">
-      <div class="iv-inside-item"><span class="iv-inside-kind mono">Guide</span><span>Coaching Skills for Leaders Pro</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">FAQ</span><span>Coaching Skills for Leaders FAQ</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Training</span><span>Coaching Skills for Leaders Training</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Workbook</span><span>P1.10 Coaching Prompt and Practice Log</span></div>
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    <div class="pkg-grid pkg-compact">
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-7-2-11-1v16c4-1 8-1 11 1 3-2 7-2 11-1V8c-4-1-8-1-11 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9v16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="1.8" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Training</span>
+        <div class="pkg-verb">Learn it</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="16" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 11h8M10 16h8M10 21h5" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="23" r="5" fill="var(--v6-warm)" stroke="var(--a6-amber)" stroke-width="1.5"/><path d="M20.8 23l1.6 1.6 3-3.2" fill="none" stroke="var(--a6-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-label mono">Main Tool</span>
+        <div class="pkg-verb">Put it to work</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5c0-2 1.6-3.5 3.5-3.5s3.5 1.3 3.5 3.2c0 2.1-2.2 2.4-3 3.6-.3.5-.4 1-.4 1.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">FAQ</span>
+        <div class="pkg-verb">Get unstuck</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Working Materials</span>
+        <div class="pkg-verb">Make it yours</div>
+        
+      </div>
     </div>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Effort</span>
-    <h2>What it takes</h2>
-    <dl class="iv-fact-table"><div class="iv-fact-row"><dt>Time</dt><dd>almost none extra once it's a habit, a coaching exchange typically adds a couple of minutes to a moment that was going to happen anyway. Building the habit takes a first week of deliberate practice.</dd></div><div class="iv-fact-row"><dt>Who's involved</dt><dd>leaders who already have natural coaching moments in their routine, supervisors, team leaders, anyone running standard work or a Gemba walk.</dd></div><div class="iv-fact-row"><dt>Materials</dt><dd>the coaching prompt card, and a light practice log for anyone actively building the skill.</dd></div></dl>
-  </div></section>
-  
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <p>A real, anonymised sample is included with every purchase. A public preview for this specific module is pending a dedicated content pass.</p>
-  </div></section>
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Common questions</span>
-    <h2>FAQ</h2>
-    <div class="iv-faq">
-      <details><summary>What if I already know the answer, is it dishonest to ask anyway?</summary><p>No, provided the question is genuinely open rather than a test with one acceptable answer in mind. Asking "what's slowing you down" when you suspect the cause isn't dishonest, it gives the person the chance to confirm, correct, or add something you hadn't considered. It becomes dishonest, or at least pointless, only when the question has exactly one "right" answer you're fishing for. See Pro section 15's second failure.</p></details>
-      <details><summary>What if the person just says "I don't know" when I ask?</summary><p>That's a genuine answer, not a failed question, and it's worth sitting with rather than immediately supplying your own view. A short silence, or a follow-up like "what's your best guess" or "what would you try first," often gets further than filling the gap yourself. If it genuinely stalls, section 13's sequencing variant covers offering your own expertise after their attempt, not instead of it.</p></details>
-      <details><summary>How is this different from a monthly one-to-one?</summary><p>A monthly one-to-one is better than nothing, but it's a separate, slower mechanism. This module builds coaching into moments that already happen daily or weekly, the job instruction, the board, a Gemba walk, so the skill gets used far more often and stays connected to real, current events rather than something recalled a few weeks later. See Pro section 16.</p></details>
-      <details><summary>What if a leader is naturally more directive and finds this hard?</summary><p>That's common, often among the most technically capable leaders, since they can see the answer instantly and it feels inefficient not to just say it. The fix isn't removing their expertise from the conversation, it's sequencing it: let the person attempt their own diagnosis first, then offer the leader's own view afterward. See Pro section 13.</p></details>
-      <details><summary>Do we need Culture (F3) in place before starting this?</summary><p>At least partially, yes. A genuine question only lands as coaching, rather than suspicious interrogation, when people already trust the site's response to problems is fair. If Culture isn't yet in some working use, be cautious about rolling this out broadly, and treat Culture as the more urgent priority. See section 4's minimum decision fork.</p></details>
-    </div>
+    
+    <div class="iv-facts"><div class="iv-fact"><span class="iv-fact-label mono">Time</span>almost none extra once it's a habit, a coaching exchange typically adds a couple of minutes to a moment that was going to happen anyway. Building the habit takes a first week of deliberate practice.</div><div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>leaders who already have natural coaching moments in their routine, supervisors, team leaders, anyone running standard work or a Gemba walk.</div><div class="iv-fact"><span class="iv-fact-label mono">Materials</span>the coaching prompt card, and a light practice log for anyone actively building the skill.</div></div>
   </div></section>
 
   <section class="iv-section iv-hc-band">

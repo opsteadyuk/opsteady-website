@@ -21,79 +21,83 @@
     <a href="/site/index.html" aria-label="Opsteady, home">
       <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
       <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a href="/site/interventions/index.html" aria-current="page">Tools</a>
       <a href="/site/the-method.html">How It Works</a>
       <a href="/site/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
     </nav>
-    <a class="nav-cta" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
 <main id="main">
 
-  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → Daily Management & Performance → Layered Process Audit System</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#Running-the-Day">Running the Day</a> → Layered Process Audit System</nav></div>
   <section class="iv-hero">
     <div class="shell">
       
       <h1>Layered Process Audit System</h1>
       <p class="iv-situation">**The mechanism.** Pick the process steps that matter most if they drift, the ones where a missed step doesn't show up until a customer finds it. Define a real check for each. Then split checking across three organisational layers on different rhythms: the team leader or operator checking daily, the supervisor or quality lead sampling weekly, the plant or ops manager confirming monthly, not just that the process is holding, but that the daily and weekly layers are actually running. Every finding below the standard becomes a named action, not a number filed and forgotten.</p>
-      <div class="iv-buy"><span class="iv-price">£349</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
+      <div class="iv-buy" id="buy"><span class="iv-price">£349</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <span class="eyebrow">Situation</span>
-    <h2>Who this is for</h2>
-    <p class="iv-who">Teams working on Daily Management & Performance, where the goal is: check that standards still work in the real process.</p>
+    <p class="iv-core">Check that standards still work in the real process.</p>
+    <p class="iv-core">Your team works through it using the guide and working materials below — it's usually useful once Set Standards is already in place.</p>
   </div></section>
 
   <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Fit</span>
-    <h2>When it's the right Tool</h2>
-    <p class="iv-stage-note">Usually useful once Set Standards is already in place.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Outcome</span>
-    <h2>What it does</h2>
-    <p class="iv-what">Check that standards still work in the real process.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Contents</span>
-    <h2>What is in it</h2>
-    <div class="iv-inside">
-      <div class="iv-inside-item"><span class="iv-inside-kind mono">Guide</span><span>Layered Process Audit System Pro</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">FAQ</span><span>Layered Process Audit System FAQ</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Training</span><span>Layered Process Audit System Training</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Workbook</span><span>P2.6 Layered Process Audit System Workbook</span></div>
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    <div class="pkg-grid pkg-compact">
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-7-2-11-1v16c4-1 8-1 11 1 3-2 7-2 11-1V8c-4-1-8-1-11 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9v16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="1.8" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Training</span>
+        <div class="pkg-verb">Learn it</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="16" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 11h8M10 16h8M10 21h5" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="23" r="5" fill="var(--v6-warm)" stroke="var(--a6-amber)" stroke-width="1.5"/><path d="M20.8 23l1.6 1.6 3-3.2" fill="none" stroke="var(--a6-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-label mono">Main Tool</span>
+        <div class="pkg-verb">Put it to work</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5c0-2 1.6-3.5 3.5-3.5s3.5 1.3 3.5 3.2c0 2.1-2.2 2.4-3 3.6-.3.5-.4 1-.4 1.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">FAQ</span>
+        <div class="pkg-verb">Get unstuck</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Working Materials</span>
+        <div class="pkg-verb">Make it yours</div>
+        
+      </div>
     </div>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Effort</span>
-    <h2>What it takes</h2>
-    <dl class="iv-fact-table"><div class="iv-fact-row"><dt>Time</dt><dd>Half a day to agree checkpoints and rotation, then daily checks take minutes, the weekly sample 20 to 30 minutes, the monthly confirmation about an hour.</dd></div><div class="iv-fact-row"><dt>Who's involved</dt><dd>A named person at each of the three layers, team leader or operator, supervisor or quality lead, plant or ops manager. The layers only work if each one is genuinely different from the others, not the same person wearing three hats.</dd></div><div class="iv-fact-row"><dt>Materials</dt><dd>The process standards this audits against should already exist, from Set Standards, before you define a single checkpoint. You cannot meaningfully score compliance to a standard that was never written down.</dd></div></dl>
-  </div></section>
-  
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <p>A real, anonymised sample is included with every purchase. A public preview for this specific module is pending a dedicated content pass.</p>
-  </div></section>
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Common questions</span>
-    <h2>FAQ</h2>
-    <div class="iv-faq">
-      <details><summary>How is this different from the 5S Audit Pack?</summary><p>Both use a scored audit structure, but they check different things. 5S Audit Pack scores workplace organisation, Sort, Set in Order, Shine, Standardise, Sustain, mostly by one cross-functional group. This module scores process and quality checkpoints specifically, and its defining feature is the three-layer rotation, team leader daily, supervisor weekly, manager monthly, each layer genuinely different people. Run them as two distinct tools, even when the same site uses both. See guide section 9.</p></details>
-      <details><summary>Do we need three different people, or can one person cover two layers?</summary><p>Three genuinely different people. Covering two layers with one person removes the exact visibility the structure exists to provide, a supervisor sampling across shifts sees a pattern no single team leader can, and a manager confirming both layers ran sees whether the system is holding, not just whether today looks right. See guide section 14.</p></details>
-      <details><summary>What do we need in place before we start?</summary><p>Written process standards to audit against, from Set Standards. You cannot meaningfully score compliance to a standard that was never written down. See guide section 3 and section 17.</p></details>
-      <details><summary>What happens when a checkpoint keeps scoring low no matter what we do?</summary><p>Treat it as a design question before assuming it's a discipline problem. Sometimes the checkpoint itself doesn't fit how the process actually runs, and the standard needs revisiting, not the team. See guide section 16.</p></details>
-      <details><summary>Is this the same as Layered Leadership Standard Work & Gemba Rhythm (P2.5)?</summary><p>No, though they share the rotating-level mechanic. This module applies rotation to process and quality checkpoints specifically. P2.5 applies a similar structure to leadership routine generally. See guide section 9.</p></details>
-    </div>
+    
+    <div class="iv-facts"><div class="iv-fact"><span class="iv-fact-label mono">Time</span>Half a day to agree checkpoints and rotation, then daily checks take minutes, the weekly sample 20 to 30 minutes, the monthly confirmation about an hour.</div><div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>A named person at each of the three layers, team leader or operator, supervisor or quality lead, plant or ops manager. The layers only work if each one is genuinely different from the others, not the same person wearing three hats.</div><div class="iv-fact"><span class="iv-fact-label mono">Materials</span>The process standards this audits against should already exist, from Set Standards, before you define a single checkpoint. You cannot meaningfully score compliance to a standard that was never written down.</div></div>
   </div></section>
 
   <section class="iv-section iv-hc-band">

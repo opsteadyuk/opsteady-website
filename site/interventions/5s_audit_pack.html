@@ -21,80 +21,83 @@
     <a href="/site/index.html" aria-label="Opsteady, home">
       <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
       <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a href="/site/interventions/index.html" aria-current="page">Tools</a>
       <a href="/site/the-method.html">How It Works</a>
       <a href="/site/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
     </nav>
-    <a class="nav-cta" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
 <main id="main">
 
-  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → Visual Management → 5S Audit Pack</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#Standards-and-Improvement">Standards & Improvement</a> → 5S Audit Pack</nav></div>
   <section class="iv-hero">
     <div class="shell">
       
       <h1>5S Audit Pack</h1>
       <p class="iv-situation">If you've built the Visual Management foundation, you already have a quick check, the stranger test, walked regularly, catching whether normal is visible at a glance. This is a different tool, not a bigger version of that one. It's the formal, scored, periodic audit underneath it, Sort, Set in Order, Shine, Standardise, and Sustain, each scored, each tracked over time.</p>
-      <div class="iv-buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
+      <div class="iv-buy" id="buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <span class="eyebrow">Situation</span>
-    <h2>Who this is for</h2>
-    <p class="iv-who">Teams working on Visual Management, where the goal is: make workplace standards visible and sustainable.</p>
+    <p class="iv-core">Make workplace standards visible and sustainable.</p>
+    <p class="iv-core">Your team works through it using the guide and working materials below — it's usually useful once Visual Standards & Workplace Organisation Guide is already in place.</p>
   </div></section>
 
   <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Fit</span>
-    <h2>When it's the right Tool</h2>
-    <p class="iv-stage-note">Usually useful once Visual Standards & Workplace Organisation Guide is already in place.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Outcome</span>
-    <h2>What it does</h2>
-    <p class="iv-what">Make workplace standards visible and sustainable.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Contents</span>
-    <h2>What is in it</h2>
-    <div class="iv-inside">
-      <div class="iv-inside-item"><span class="iv-inside-kind mono">Guide</span><span>5S Audit Pack Pro</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">FAQ</span><span>5S Audit Pack FAQ</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Training</span><span>5S Audit Pack Training</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Workbook</span><span>P6.1 5S Audit Workbook</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Workbook</span><span>P6.1 5S Sustain Audit Form</span></div>
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    <div class="pkg-grid pkg-compact">
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-7-2-11-1v16c4-1 8-1 11 1 3-2 7-2 11-1V8c-4-1-8-1-11 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9v16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="1.8" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Training</span>
+        <div class="pkg-verb">Learn it</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="16" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 11h8M10 16h8M10 21h5" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="23" r="5" fill="var(--v6-warm)" stroke="var(--a6-amber)" stroke-width="1.5"/><path d="M20.8 23l1.6 1.6 3-3.2" fill="none" stroke="var(--a6-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-label mono">Main Tool</span>
+        <div class="pkg-verb">Put it to work</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5c0-2 1.6-3.5 3.5-3.5s3.5 1.3 3.5 3.2c0 2.1-2.2 2.4-3 3.6-.3.5-.4 1-.4 1.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">FAQ</span>
+        <div class="pkg-verb">Get unstuck</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Working Materials</span>
+        <div class="pkg-verb">Make it yours</div>
+        
+      </div>
     </div>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Effort</span>
-    <h2>What it takes</h2>
-    <dl class="iv-fact-table"><div class="iv-fact-row"><dt>Time</dt><dd>Half a day to agree your scale and areas, then 20 to 30 minutes per area per audit.</dd></div><div class="iv-fact-row"><dt>Who's involved</dt><dd>A small cross-functional group works better than one auditor alone, different eyes catch different drift.</dd></div><div class="iv-fact-row"><dt>Materials</dt><dd>The Opsteady 5S Sustain Audit Form for scoring on the floor, this workbook for logging the subtotals afterwards, and a camera or phone for photos to back up scores.</dd></div></dl>
-  </div></section>
-  
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <p>A real, anonymised sample is included with every purchase. A public preview for this specific module is pending a dedicated content pass.</p>
-  </div></section>
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Common questions</span>
-    <h2>FAQ</h2>
-    <div class="iv-faq">
-      <details><summary>We already run the daily stranger-test check from Visual Management. Why do we need this too?</summary><p>Because they answer different questions. The daily glance catches whether today looks right. This formal, scored audit, read across several cycles, catches whether the whole system is holding or quietly eroding over time, something no single day's glance can show. Blending the two into one tool is a documented, common reason 5S programmes stall. See guide section 1.</p></details>
-      <details><summary>Why is Sustain always the lowest score?</summary><p>It's the field's most consistent finding across 5S programmes, and it's a design reason, not a discipline failure. The other four S's produce a visible artefact you can point to. Sustain is the absence of visible failure, which is much harder to notice and much easier to let slip. Low once is normal. Low cycle after cycle with no action against it is the actual problem. See guide section 11 and section 14, failure 3.</p></details>
-      <details><summary>Do we need a formal Visual Standards & Workplace Organisation Guide (P6.2) in place before we can audit?</summary><p>Yes, in spirit. This module scores adherence to a standard, and you can't meaningfully score compliance to a standard that was never defined. If you haven't formally built P6.2, at minimum agree written expectations for what "normal" looks like in each area before your first audit, since the form's questions all score against a written expectation, not a general impression. See guide section 10.</p></details>
-      <details><summary>How many questions get scored, and how?</summary><p>Twenty questions, four per S, each scored 0 to 4 against a written expectation printed next to it. Most are count-based, how many unnecessary items, how many missing from their defined location, which two auditors should score the same way independently. A handful, the Shine percentage questions and the Sustain KPI-board and understanding questions, need a shared judgement call instead. See guide section 4.</p></details>
-      <details><summary>How often should we audit?</summary><p>Weekly for the first 90 days, then stretch to monthly and eventually quarterly once scores hold steady. Frequency should track maturity, not stay fixed at whatever pace you started with. See guide section 4 and section 14, failure 5.</p></details>
-    </div>
+    
+    <div class="iv-facts"><div class="iv-fact"><span class="iv-fact-label mono">Time</span>Half a day to agree your scale and areas, then 20 to 30 minutes per area per audit.</div><div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>A small cross-functional group works better than one auditor alone, different eyes catch different drift.</div><div class="iv-fact"><span class="iv-fact-label mono">Materials</span>The Opsteady 5S Sustain Audit Form for scoring on the floor, this workbook for logging the subtotals afterwards, and a camera or phone for photos to back up scores.</div></div>
   </div></section>
 
   <section class="iv-section iv-hc-band">

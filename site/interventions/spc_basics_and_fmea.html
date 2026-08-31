@@ -21,79 +21,83 @@
     <a href="/site/index.html" aria-label="Opsteady, home">
       <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
       <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a href="/site/interventions/index.html" aria-current="page">Tools</a>
       <a href="/site/the-method.html">How It Works</a>
       <a href="/site/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
     </nav>
-    <a class="nav-cta" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
 <main id="main">
 
-  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → Quality → SPC Basics & FMEA</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#Quality">Quality</a> → SPC Basics & FMEA</nav></div>
   <section class="iv-hero">
     <div class="shell">
       
       <h1>SPC Basics & FMEA</h1>
       <p class="iv-situation">This module teaches two connected tools, kept deliberately practical. Statistical process control, SPC, is a way of plotting a critical measurement over time so that ordinary variation and a genuine problem can be told apart, before the problem produces a defect. Failure mode and effects analysis, FMEA, is a structured way of thinking through what could go wrong with a process before it runs, so the highest-risk failures get a countermeasure in advance rather than a reaction afterwards.</p>
-      <div class="iv-buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
+      <div class="iv-buy" id="buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <span class="eyebrow">Situation</span>
-    <h2>Who this is for</h2>
-    <p class="iv-who">Teams working on Quality, where the goal is: control variation before it becomes a defect.</p>
+    <p class="iv-core">Control variation before it becomes a defect.</p>
+    <p class="iv-core">Your team works through it using the guide and working materials below — it's usually useful once Non-Conformance Tracker & Trend Pack is already in place.</p>
   </div></section>
 
   <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Fit</span>
-    <h2>When it's the right Tool</h2>
-    <p class="iv-stage-note">Usually useful once Non-Conformance Tracker & Trend Pack is already in place.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Outcome</span>
-    <h2>What it does</h2>
-    <p class="iv-what">Control variation before it becomes a defect.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Contents</span>
-    <h2>What is in it</h2>
-    <div class="iv-inside">
-      <div class="iv-inside-item"><span class="iv-inside-kind mono">Guide</span><span>SPC Basics FMEA Pro</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">FAQ</span><span>SPC Basics FMEA FAQ</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Training</span><span>SPC Basics FMEA Training</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Workbook</span><span>P3.4 Control Chart and FMEA</span></div>
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    <div class="pkg-grid pkg-compact">
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-7-2-11-1v16c4-1 8-1 11 1 3-2 7-2 11-1V8c-4-1-8-1-11 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9v16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="1.8" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Training</span>
+        <div class="pkg-verb">Learn it</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="16" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 11h8M10 16h8M10 21h5" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="23" r="5" fill="var(--v6-warm)" stroke="var(--a6-amber)" stroke-width="1.5"/><path d="M20.8 23l1.6 1.6 3-3.2" fill="none" stroke="var(--a6-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-label mono">Main Tool</span>
+        <div class="pkg-verb">Put it to work</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5c0-2 1.6-3.5 3.5-3.5s3.5 1.3 3.5 3.2c0 2.1-2.2 2.4-3 3.6-.3.5-.4 1-.4 1.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">FAQ</span>
+        <div class="pkg-verb">Get unstuck</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Working Materials</span>
+        <div class="pkg-verb">Make it yours</div>
+        
+      </div>
     </div>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Effort</span>
-    <h2>What it takes</h2>
-    <dl class="iv-fact-table"><div class="iv-fact-row"><dt>Time</dt><dd>Setting a first control chart up, choosing the measure and collecting enough points to set preliminary limits, usually takes one to two weeks of the process running normally. A first-pass process FMEA for a single process typically takes a half-day to a full day of focused time with the right people in the room, not spread thinly across weeks.</dd></div><div class="iv-fact-row"><dt>Who's involved</dt><dd>For SPC, whoever already collects or can easily collect the measurement, and whoever owns the reaction when a point goes out of limits. For FMEA, the people who actually run the process, plus anyone with technical or engineering knowledge of how it can fail; a room without the operator misses failure modes only they would know about.</dd></div><div class="iv-fact-row"><dt>Materials</dt><dd>A simple chart, on paper or a basic spreadsheet, is enough to start. No specialist SPC software is required for a single critical process. A blank process FMEA template, structured by process step.</dd></div></dl>
-  </div></section>
-  
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <p>A real, anonymised sample is included with every purchase. A public preview for this specific module is pending a dedicated content pass.</p>
-  </div></section>
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Common questions</span>
-    <h2>FAQ</h2>
-    <div class="iv-faq">
-      <details><summary>Do we need a statistician or a Six Sigma black belt to run this?</summary><p>No. This module is scoped deliberately to what a supervisor or quality lead can run directly, just enough control charting and just enough FMEA to use on a real process. A full statistical curriculum, capability studies beyond the basics, and design FMEA sit outside this module's scope. See Pro section 2.</p></details>
-      <details><summary>What's the difference between a process being stable and a process being capable?</summary><p>Stable means the process is behaving consistently, the same variation, predictably, over time. Capable means the output actually fits within specification. A process can be perfectly stable and still producing out-of-spec parts, or genuinely unstable while happening to sit inside spec today. Control limits answer the first question and come from the process's own behaviour, never from the specification. See Pro section 4's training crossover and section 16's second failure.</p></details>
-      <details><summary>How do we decide whether a process needs SPC, FMEA, or both?</summary><p>An existing process with a history of instability or recurring defects starts with SPC, since a chart tells you whether it's behaving consistently before you invest further. A new or significantly changed process, without enough history to chart yet, starts with FMEA instead. If a known-unstable process is also about to change significantly, run the FMEA first, since the change would invalidate any control limits set beforehand. See Pro section 18's first fork.</p></details>
-      <details><summary>What if the chart signals a problem but nothing actually looks wrong?</summary><p>Treat it as worth a genuine, brief investigation rather than dismissing it as a false alarm. The chart is built to catch drift before it becomes a visible defect, which means by design it will sometimes signal before anything looks obviously wrong to the eye. That gap is the point, not a flaw. See Pro section 17.</p></details>
-      <details><summary>Our site has old FMEAs scored with a multiplied risk number. Do we need to redo them all?</summary><p>Not immediately, but this module uses Opsteady FMEA Priority (OFP) instead of a single multiplied number, because a multiplied score alone can rank two very different real risks identically. Prioritise re-scoring the highest-risk or most active processes first, rather than treating the whole legacy set as urgent at once. See Pro section 13 and section 17.</p></details>
-    </div>
+    
+    <div class="iv-facts"><div class="iv-fact"><span class="iv-fact-label mono">Time</span>Setting a first control chart up, choosing the measure and collecting enough points to set preliminary limits, usually takes one to two weeks of the process running normally. A first-pass process FMEA for a single process typically takes a half-day to a full day of focused time with the right people in the room, not spread thinly across weeks.</div><div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>For SPC, whoever already collects or can easily collect the measurement, and whoever owns the reaction when a point goes out of limits. For FMEA, the people who actually run the process, plus anyone with technical or engineering knowledge of how it can fail; a room without the operator misses failure modes only they would know about.</div><div class="iv-fact"><span class="iv-fact-label mono">Materials</span>A simple chart, on paper or a basic spreadsheet, is enough to start. No specialist SPC software is required for a single critical process. A blank process FMEA template, structured by process step.</div></div>
   </div></section>
 
   <section class="iv-section iv-hc-band">

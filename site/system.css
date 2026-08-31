@@ -57,17 +57,41 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 /* =========================================================
    NAV / FOOTER — global chrome, identical on every page
 ========================================================= */
+.v6 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
 .v6 .nav{position:sticky;top:0;z-index:100;background:var(--n6-navy);border-bottom:1px solid rgba(255,255,255,0.08);}
-.v6 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding-block:14px;}
+.v6 .nav-inner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px;}
 .v6 .nav .brand-logo{width:110px;height:auto;}
 @media (min-width:768px){.v6 .nav .brand-logo{width:150px;}}
 @media (min-width:1024px){.v6 .nav .brand-logo{width:180px;}}
-.v6 .nav-links{display:none;align-items:center;gap:28px;}
-@media (min-width:1024px){.v6 .nav-links{display:flex;}}
+
+/* ---- Mobile nav toggle — 390px defect fix: below 1024px there was no
+   usable nav at all once .nav-links went display:none. ---- */
+.v6 .nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-left:auto;background:transparent;border:1px solid rgba(255,255,255,0.28);border-radius:4px;cursor:pointer;padding:0;flex:none;}
+.v6 .nav-toggle-icon,.v6 .nav-toggle-icon::before,.v6 .nav-toggle-icon::after{content:"";display:block;width:18px;height:1.5px;background:#fff;transition:transform var(--ops-duration-fast) var(--ops-ease-out),opacity var(--ops-duration-fast) var(--ops-ease-out);}
+.v6 .nav-toggle-icon{position:relative;}
+.v6 .nav-toggle-icon::before{position:absolute;left:0;top:-6px;}
+.v6 .nav-toggle-icon::after{position:absolute;left:0;top:6px;}
+.v6 .nav-toggle[aria-expanded="true"] .nav-toggle-icon{background:transparent;}
+.v6 .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before{transform:translateY(6px) rotate(45deg);}
+.v6 .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after{transform:translateY(-6px) rotate(-45deg);}
+@media (min-width:1024px){.v6 .nav-toggle{display:none;}}
+
+.v6 .nav-links{display:none;}
+.v6 .nav-links.is-open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--n6-navy);padding:6px 16px 20px;border-bottom:1px solid rgba(255,255,255,0.1);box-shadow:0 12px 24px rgba(0,0,0,0.28);}
+.v6 .nav-links.is-open a{padding-block:14px;min-height:44px;display:flex;align-items:center;border-top:1px solid rgba(255,255,255,0.08);}
 .v6 .nav-links a{font-family:var(--ops-font-text);font-size:0.95rem;font-weight:600;color:var(--n6-pale);text-decoration:none;}
 .v6 .nav-links a:hover,.v6 .nav-links a[aria-current]{color:#fff;}
-.v6 .nav-cta{font-family:var(--ops-font-display);font-weight:600;font-size:0.9rem;color:var(--n6-ink);background:#fff;padding:11px 20px;border-radius:4px;text-decoration:none;}
+.v6 .nav-cta{font-family:var(--ops-font-display);font-weight:600;font-size:0.9rem;color:var(--n6-ink);background:#fff;padding:11px 20px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;}
 .v6 .nav-cta:hover{background:var(--n6-pale);}
+.v6 .nav-cta-mobile{margin-top:12px;justify-content:center;}
+.v6 .nav-cta-desktop{display:none;}
+@media (min-width:1024px){
+  .v6 .nav-links{display:flex !important;flex-direction:row;align-items:center;gap:28px;position:static;background:none;padding:0;border:0;box-shadow:none;}
+  .v6 .nav-links a{padding:0;min-height:auto;border-top:0;}
+  .v6 .nav-cta-mobile{display:none !important;}
+  .v6 .nav-cta-desktop{display:inline-flex;}
+}
 
 .v6 .footer{background:var(--n6-ink);color:var(--n6-steel);padding-block:44px;}
 .v6 .footer-links{display:flex;flex-wrap:wrap;gap:4px 12px;margin:-10px -12px 18px;}
@@ -92,11 +116,20 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .hero-eyebrow{margin-bottom:18px;}
 .v6 .hero-h1{margin-bottom:22px;max-width:15ch;font-size:clamp(2.5rem,7vw,5.25rem);letter-spacing:var(--ops-track-hero);color:#fff;}
 .v6 .hero-sub{color:var(--n6-pale);font-size:1.15rem;line-height:1.55;max-width:44ch;margin:0 0 34px;}
+.v6 .hero-sub{margin-bottom:18px;}
+.v6 .hero-sub:last-of-type{margin-bottom:34px;}
+.v6 .hero-line{font-family:var(--ops-font-display);font-weight:600;color:var(--a6-light);font-size:1.05rem;max-width:44ch;margin:0 0 18px;}
+.v6 .hero-emph{color:#fff;}
 .v6 .hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:22px;}
 @media (min-width:1024px){.v6 .hero{min-height:92vh;}.v6 .hero-content{padding-block:64px 88px;}}
 
 /* =========================================================
-   SECTION 2 — PROBLEM RECOGNITION (approved, unchanged)
+   PROBLEM RECOGNITION (rp-*) — approved v6/hero-recognition-proof-01
+   visual technique. Removed from the homepage by the 2026-08-31
+   customer-experience-pass ruling (its "Do you recognise this?"
+   section is superseded by the 8-area improve grid below). Rules kept,
+   unused on the homepage — recoverable design asset for a future
+   Problems Hub atmospheric-image treatment, not deleted.
 ========================================================= */
 .v6 .rp-seam{position:absolute;top:-34px;left:0;width:1px;height:56px;background:linear-gradient(180deg, rgba(208,143,37,0) 0%, var(--a6-amber) 60%, var(--a6-amber) 100%);z-index:4;}
 @media (min-width:768px){.v6 .rp-seam{left:32px;}}
@@ -131,67 +164,105 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 }
 
 /* =========================================================
-   SECTION 3 — HOW IT WORKS (new, production)
+   SECTION 2 — WHAT OPSTEADY CAN HELP YOU IMPROVE (8 areas)
+   Replaces the old 5-item wiah-grid + the removed "Do you
+   recognise this?" section, 2026-08-31 customer-experience pass.
+========================================================= */
+.v6 .wiah-grid{margin-top:28px;display:grid;gap:1px;background:var(--ops-border-subtle);border:1px solid var(--ops-border-subtle);}
+@media (min-width:700px){.v6 .wiah-grid{grid-template-columns:1fr 1fr;}}
+@media (min-width:1024px){.v6 .wiah-grid{grid-template-columns:repeat(4,1fr);}}
+.v6 .wiah-item{background:#fff;padding:24px;text-decoration:none;display:block;transition:background-color var(--ops-duration-fast) var(--ops-ease-out);}
+.v6 .wiah-item:hover{background:var(--ops-n05);}
+.v6 .wiah-item:hover h3{color:var(--a6-deep);}
+.v6 .wiah-item h3{font-size:1rem;color:var(--n6-navy);margin-bottom:8px;}
+.v6 .wiah-item p{font-size:0.94rem;max-width:none;margin-bottom:0;}
+.v6 .wiah-foot{margin-top:28px;font-size:1.05rem;max-width:56ch;}
+.v6 .wiah-foot strong{color:var(--n6-navy);}
+
+/* =========================================================
+   SECTION 3 — HOW OPSTEADY WORKS (homepage version, expanded)
 ========================================================= */
 .v6 .sec-how{padding-block:72px;background:var(--n6-ink);color:#fff;}
 @media (min-width:1024px){.v6 .sec-how{padding-block:110px;}}
-.v6 .how-grid{display:grid;gap:44px;}
-@media (min-width:900px){.v6 .how-grid{grid-template-columns:1fr 1fr;align-items:center;gap:56px;}}
+.v6 .how-intro{max-width:62ch;}
 .v6 .how-h2{color:#fff;margin-top:14px;font-size:clamp(1.75rem,4vw,2.75rem);}
-.v6 .how-copy p{color:var(--n6-pale);max-width:40ch;margin-top:18px;}
-.v6 .loop-diagram{width:200px;height:200px;}
-.v6 .loop-caption{margin-top:18px;color:var(--n6-steel);font-size:12.5px;text-transform:uppercase;letter-spacing:0.03em;}
+.v6 .how-intro-p{color:var(--n6-pale);max-width:56ch;margin-top:18px;font-size:1.05rem;}
+.v6 .how-steps{margin-top:48px;display:grid;gap:32px;}
+@media (min-width:700px){.v6 .how-steps{grid-template-columns:1fr 1fr;gap:36px;}}
+@media (min-width:1024px){.v6 .how-steps{grid-template-columns:repeat(4,1fr);gap:28px;}}
+.v6 .how-step-num{display:block;color:var(--a6-amber);font-size:13px;letter-spacing:0.04em;margin-bottom:10px;}
+.v6 .how-step h3{color:#fff;font-size:1.05rem;margin-bottom:8px;}
+.v6 .how-step p{color:var(--n6-pale);font-size:0.94rem;max-width:none;}
+.v6 .how-loop{margin-top:56px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.1);display:grid;gap:32px;align-items:center;}
+@media (min-width:700px){.v6 .how-loop{grid-template-columns:auto 1fr;gap:44px;}}
+.v6 .loop-diagram{width:180px;height:180px;flex:none;}
+.v6 .loop-caption{color:var(--n6-steel);font-size:12.5px;text-transform:uppercase;letter-spacing:0.03em;}
 .v6 .loop-caption .arrow{color:var(--a6-amber);margin-inline:4px;}
+.v6 .how-loop-p{color:var(--n6-pale);max-width:52ch;margin-top:14px;}
+.v6 .how-loop-p strong{color:#fff;}
+.v6 .how-cta{margin-top:40px;}
 
 /* =========================================================
-   SECTION 4 — HEALTH CHECK (homepage beat, new)
+   SECTION 4 — WHAT YOU ACTUALLY GET (package component)
+   Shared markup (shared.js packageGrid()) — homepage full version
+   and a compact variant reused on individual Tool pages, so the
+   customer learns this once and recognises it elsewhere.
 ========================================================= */
-.v6 .sec-hc{padding-block:72px;background:var(--v6-warm);}
-@media (min-width:1024px){.v6 .sec-hc{padding-block:110px;}}
-.v6 .hc-grid{display:grid;gap:32px;}
-@media (min-width:900px){.v6 .hc-grid{grid-template-columns:1.2fr 0.8fr;gap:56px;align-items:center;}}
-.v6 .hc-h2{margin-top:14px;font-size:clamp(1.75rem,4vw,2.75rem);}
-.v6 .hc-copy p{margin-top:18px;max-width:42ch;}
-.v6 .hc-facts{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;}
-.v6 .hc-count{border:1px solid var(--ops-border);border-radius:8px;padding:22px 24px;background:#fff;}
-.v6 .hc-count .num{font-family:var(--ops-font-display);font-weight:600;font-size:2.4rem;color:var(--n6-navy);display:block;}
-.v6 .hc-count .label{font-family:var(--ops-font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.04em;color:var(--n6-slate);}
+.v6 .sec-get{padding-block:72px;background:var(--v6-warm);}
+@media (min-width:1024px){.v6 .sec-get{padding-block:110px;}}
+.v6 .get-head{max-width:58ch;}
+.v6 .get-head h2{margin-top:14px;font-size:clamp(1.75rem,4vw,2.5rem);}
+.v6 .get-head p{margin-top:18px;max-width:56ch;font-size:1.05rem;}
+.v6 .pkg-grid{margin-top:44px;display:grid;gap:1px;background:var(--ops-border-subtle);border:1px solid var(--ops-border-subtle);}
+@media (min-width:700px){.v6 .pkg-grid{grid-template-columns:1fr 1fr;}}
+@media (min-width:1024px){.v6 .pkg-grid{grid-template-columns:repeat(4,1fr);}}
+.v6 .pkg-item{background:#fff;padding:26px 22px;}
+.v6 .pkg-icon-wrap{width:36px;height:36px;color:var(--n6-navy);}
+.v6 .pkg-icon-wrap svg{width:100%;height:100%;}
+.v6 .pkg-label{display:block;margin-top:16px;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--a6-deep);}
+.v6 .pkg-verb{font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);font-size:1.08rem;margin-top:6px;}
+.v6 .pkg-copy{margin-top:10px;font-size:0.92rem;max-width:none;}
+/* Compact variant — Tool pages */
+.v6 .pkg-grid.pkg-compact{background:transparent;border:0;gap:16px;}
+.v6 .pkg-grid.pkg-compact .pkg-item{border:1px solid var(--ops-border-subtle);border-radius:6px;padding:18px;}
+.v6 .pkg-grid.pkg-compact .pkg-icon-wrap{width:28px;height:28px;}
+.v6 .pkg-grid.pkg-compact .pkg-label{margin-top:12px;}
+.v6 .pkg-grid.pkg-compact .pkg-verb{font-size:0.98rem;}
 
 /* =========================================================
-   SECTION 5 — WHAT YOU ACTUALLY GET (new)
+   SECTION 5 — ESSENTIALS VS PRO (homepage depth explainer)
 ========================================================= */
-.v6 .sec-wyag{padding-block:72px;background:#fff;}
-@media (min-width:1024px){.v6 .sec-wyag{padding-block:110px;}}
-.v6 .wyag-head{max-width:46ch;}
-.v6 .wyag-head h2{margin-top:14px;font-size:clamp(1.75rem,4vw,2.6rem);}
-.v6 .wyag-list{margin-top:40px;display:grid;gap:1px;background:var(--ops-border-subtle);border:1px solid var(--ops-border-subtle);}
-.v6 .wyag-item{background:#fff;padding:28px 24px;display:grid;gap:18px;}
-@media (min-width:800px){.v6 .wyag-item{grid-template-columns:1.3fr 1fr;align-items:center;}}
-.v6 .wyag-name{font-family:var(--ops-font-display);font-weight:600;font-size:1.3rem;color:var(--n6-navy);}
-.v6 .wyag-outcome{margin-top:8px;max-width:46ch;}
-.v6 .wyag-price{font-family:var(--ops-font-mono);font-size:13px;color:var(--n6-slate);margin-top:10px;}
-.v6 .wyag-cta{justify-self:start;}
-@media (min-width:800px){.v6 .wyag-cta{justify-self:end;}}
+.v6 .sec-tiers{padding-block:72px;background:#fff;}
+@media (min-width:1024px){.v6 .sec-tiers{padding-block:100px;}}
+.v6 .tiers-head{max-width:56ch;}
+.v6 .tiers-head h2{margin-top:14px;font-size:clamp(1.75rem,4vw,2.5rem);}
+.v6 .tiers-grid{margin-top:40px;display:grid;gap:1px;background:var(--ops-border-subtle);border:1px solid var(--ops-border-subtle);}
+@media (min-width:700px){.v6 .tiers-grid{grid-template-columns:1fr 1fr;}}
+.v6 .tier-card{background:#fff;padding:30px 28px;}
+.v6 .tier-card h3{font-size:1.15rem;color:var(--n6-navy);}
+.v6 .tier-card p{margin-top:12px;max-width:none;}
+.v6 .tiers-foot{margin-top:28px;max-width:60ch;font-size:1.02rem;}
+.v6 .tiers-foot strong{color:var(--n6-navy);}
 
 /* =========================================================
-   SECTION 6 — BUILT FOR PEOPLE WHO RUN SITES (new)
+   SECTION 6 — CREDIBILITY (built from running operations)
 ========================================================= */
-.v6 .sec-trust{padding-block:64px;background:var(--n6-navy);color:#fff;}
-@media (min-width:1024px){.v6 .sec-trust{padding-block:96px;}}
-.v6 .trust-body{max-width:56ch;font-size:1.1rem;color:var(--n6-pale);margin-top:18px;}
-.v6 .trust-facts{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;}
-.v6 .trust-facts .tag{background:transparent;}
-.v6 .trust-cta{margin-top:32px;}
+.v6 .sec-credibility{padding-block:64px;background:var(--v6-warm);}
+@media (min-width:1024px){.v6 .sec-credibility{padding-block:96px;}}
+.v6 .cred-head{max-width:60ch;}
+.v6 .cred-head h2{margin-top:14px;font-size:clamp(1.6rem,3.6vw,2.3rem);}
+.v6 .cred-body{margin-top:20px;max-width:60ch;font-size:1.05rem;}
+.v6 .cred-body + .cred-body{margin-top:14px;}
+.v6 .cred-cta{margin-top:26px;}
 
 /* =========================================================
-   SECTION 7 — FINAL ACTION (new)
+   SECTION 7 — CLOSING CTA
 ========================================================= */
-.v6 .sec-next{background:var(--n6-navy);color:#fff;padding-block:56px;text-align:left;}
-@media (min-width:1024px){.v6 .sec-next{padding-block:88px;}}
-.v6 .next-logo{width:130px;height:auto;margin-bottom:26px;}
-@media (min-width:768px){.v6 .next-logo{width:170px;}}
-.v6 .next-h2{color:#fff;font-size:clamp(2.1rem,5.4vw,3.6rem);max-width:16ch;margin-bottom:28px;letter-spacing:var(--ops-track-h1);}
-.v6 .next-ctas{display:flex;flex-wrap:wrap;gap:22px;align-items:center;}
+.v6 .sec-close{background:var(--n6-navy);color:#fff;padding-block:64px;text-align:left;}
+@media (min-width:1024px){.v6 .sec-close{padding-block:100px;}}
+.v6 .close-h2{color:#fff;font-size:clamp(2.1rem,5.4vw,3.6rem);max-width:16ch;margin-bottom:22px;letter-spacing:var(--ops-track-h1);}
+.v6 .close-body{color:var(--n6-pale);max-width:52ch;font-size:1.1rem;margin-bottom:12px;}
+.v6 .close-cta{margin-top:30px;}
 
 /* =========================================================
    GENERIC INTERIOR-PAGE HEADER (Method, Pricing, Who We Are,
@@ -207,13 +278,6 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .page-section h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;}
 .v6 .page-section p{max-width:60ch;margin-bottom:14px;}
 .v6 .page-section p:last-child{margin-bottom:0;}
-.v6 .wiah-grid{margin-top:28px;display:grid;gap:1px;background:var(--ops-border-subtle);border:1px solid var(--ops-border-subtle);}
-@media (min-width:700px){.v6 .wiah-grid{grid-template-columns:1fr 1fr;}}
-@media (min-width:1024px){.v6 .wiah-grid{grid-template-columns:repeat(3,1fr);}}
-.v6 .wiah-item{background:#fff;padding:24px;}
-.v6 .wiah-item h3{font-size:1rem;color:var(--n6-navy);margin-bottom:8px;}
-.v6 .wiah-item p{font-size:0.94rem;max-width:none;margin-bottom:0;}
-.v6 .wiah-foot{margin-top:22px;color:var(--n6-slate);}
 
 /* =========================================================
    PROBLEMS HUB + PROBLEM PAGE
@@ -246,9 +310,13 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .idx-search-wrap{margin-top:24px;max-width:420px;}
 .v6 .idx-search{width:100%;padding:12px 16px;border:1px solid var(--ops-border);border-radius:6px;font-family:inherit;font-size:0.95rem;background:#fff;}
 .v6 .showcase-note{font-family:var(--ops-font-mono);font-size:12px;color:var(--n6-steel);font-weight:400;margin-left:4px;}
+.v6 .tools-hero p{font-size:1.08rem;}
 
 /* =========================================================
-   INTERVENTION PAGE ARCHETYPE (10 sections)
+   INTERVENTION (TOOL) PAGE ARCHETYPE — dramatically simplified,
+   2026-08-31: hero, 2-3 short paragraphs, the shared compact
+   package component, a short tier note, compact facts, HC band.
+   No reproduced methodology, no FAQ wall, no sample frame.
 ========================================================= */
 .v6 .iv-hero{background:var(--n6-navy);color:#fff;padding-block:48px 40px;}
 .v6 .iv-hero .tag{margin-bottom:16px;}
@@ -261,23 +329,12 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .iv-section{padding-block:44px;border-top:1px solid var(--ops-border-subtle);}
 .v6 .iv-section .eyebrow{display:block;margin-bottom:14px;}
 .v6 .iv-section h2{font-size:1.4rem;margin-bottom:16px;}
-.v6 .iv-who{max-width:60ch;}
-.v6 .iv-stage-note{background:var(--v6-warm);border-left:2px solid var(--a6-amber);padding:16px 22px;max-width:60ch;}
-.v6 .iv-what{max-width:60ch;font-size:1.05rem;}
-.v6 .iv-inside{margin-top:18px;display:grid;gap:10px;}
-.v6 .iv-inside-item{display:flex;gap:14px;align-items:baseline;border-bottom:1px solid var(--ops-border-subtle);padding-bottom:10px;}
-.v6 .iv-inside-kind{font-family:var(--ops-font-mono);font-size:10.5px;text-transform:uppercase;color:var(--a6-deep);width:90px;flex:none;}
-.v6 .iv-fact-table{display:grid;gap:12px;max-width:60ch;}
-.v6 .iv-fact-row{display:grid;grid-template-columns:140px 1fr;gap:16px;}
-.v6 .iv-fact-row dt{font-family:var(--ops-font-mono);font-size:11px;text-transform:uppercase;color:var(--n6-slate);}
-.v6 .iv-tier-table{width:100%;border-collapse:collapse;max-width:60ch;}
-.v6 .iv-tier-table th,.v6 .iv-tier-table td{border:1px solid var(--ops-border);padding:10px 14px;text-align:left;font-size:0.92rem;}
-.v6 .iv-tier-table thead th{background:var(--ops-n05);}
-.v6 .iv-sample-frame{border:1px solid var(--ops-border);border-radius:6px;padding:24px;background:var(--ops-n05);max-width:640px;}
-.v6 .iv-faq{max-width:64ch;}
-.v6 .iv-faq details{border-bottom:1px solid var(--ops-border-subtle);padding-block:14px;}
-.v6 .iv-faq summary{font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);cursor:pointer;}
-.v6 .iv-faq p{margin-top:10px;}
+.v6 .iv-core{max-width:64ch;font-size:1.05rem;margin-bottom:16px;}
+.v6 .iv-core:last-of-type{margin-bottom:0;}
+.v6 .iv-tier-note{margin-top:24px;max-width:60ch;background:var(--v6-warm);border-left:2px solid var(--a6-amber);padding:14px 20px;font-size:0.94rem;}
+.v6 .iv-facts{margin-top:24px;display:grid;gap:12px;max-width:60ch;}
+.v6 .iv-fact{font-size:0.92rem;color:var(--ops-text-secondary);padding-top:12px;border-top:1px solid var(--ops-border-subtle);}
+.v6 .iv-fact-label{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--n6-slate);margin-bottom:4px;}
 .v6 .iv-hc-band{background:var(--n6-navy);color:#fff;text-align:left;}
 .v6 .iv-hc-band .btn-text{margin-top:6px;}
 .v6 .iv-related{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;}

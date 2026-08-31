@@ -21,79 +21,83 @@
     <a href="/site/index.html" aria-label="Opsteady, home">
       <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
       <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a href="/site/interventions/index.html" aria-current="page">Tools</a>
       <a href="/site/the-method.html">How It Works</a>
       <a href="/site/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
     </nav>
-    <a class="nav-cta" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
 <main id="main">
 
-  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → Continuous Improvement → Spaghetti Diagrams / Motion Analysis</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#Standards-and-Improvement">Standards & Improvement</a> → Spaghetti Diagrams / Motion Analysis</nav></div>
   <section class="iv-hero">
     <div class="shell">
       
       <h1>Spaghetti Diagrams / Motion Analysis</h1>
       <p class="iv-situation">This module teaches a simple observation and diagramming method: watch a person, a material, or a tool move through a real process, trace its actual path onto a floor plan, and use what the tangled result shows to shorten it. It ends with at least one trialled layout or method change, a redrawn "after" path, and that improved path locked into the standard so it doesn't quietly drift back.</p>
-      <div class="iv-buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
+      <div class="iv-buy" id="buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <span class="eyebrow">Situation</span>
-    <h2>Who this is for</h2>
-    <p class="iv-who">Teams working on Continuous Improvement, where the goal is: see where movement is wasting time.</p>
+    <p class="iv-core">See where movement is wasting time.</p>
+    <p class="iv-core">Your team works through it using the guide and working materials below — it's usually useful once 8 Wastes (TIMWOODS) Identification Toolkit is already in place.</p>
   </div></section>
 
   <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Fit</span>
-    <h2>When it's the right Tool</h2>
-    <p class="iv-stage-note">Usually useful once 8 Wastes (TIMWOODS) Identification Toolkit is already in place.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Outcome</span>
-    <h2>What it does</h2>
-    <p class="iv-what">See where movement is wasting time.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Contents</span>
-    <h2>What is in it</h2>
-    <div class="iv-inside">
-      <div class="iv-inside-item"><span class="iv-inside-kind mono">Guide</span><span>Spaghetti Diagrams Motion Analysis Pro</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">FAQ</span><span>Spaghetti Diagrams Motion Analysis FAQ</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Training</span><span>Spaghetti Diagrams Motion Analysis Training</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Workbook</span><span>P7.9 Motion Observation and Change Log</span></div>
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    <div class="pkg-grid pkg-compact">
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-7-2-11-1v16c4-1 8-1 11 1 3-2 7-2 11-1V8c-4-1-8-1-11 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9v16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="1.8" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Training</span>
+        <div class="pkg-verb">Learn it</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="16" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 11h8M10 16h8M10 21h5" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="23" r="5" fill="var(--v6-warm)" stroke="var(--a6-amber)" stroke-width="1.5"/><path d="M20.8 23l1.6 1.6 3-3.2" fill="none" stroke="var(--a6-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-label mono">Main Tool</span>
+        <div class="pkg-verb">Put it to work</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5c0-2 1.6-3.5 3.5-3.5s3.5 1.3 3.5 3.2c0 2.1-2.2 2.4-3 3.6-.3.5-.4 1-.4 1.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">FAQ</span>
+        <div class="pkg-verb">Get unstuck</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Working Materials</span>
+        <div class="pkg-verb">Make it yours</div>
+        
+      </div>
     </div>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Effort</span>
-    <h2>What it takes</h2>
-    <dl class="iv-fact-table"><div class="iv-fact-row"><dt>Time</dt><dd>A representative observation period, typically one full cycle or a fixed block of time long enough to capture normal variation, not a single idealised pass. Drawing the diagram itself takes minutes once observation is done.</dd></div><div class="iv-fact-row"><dt>Who's involved</dt><dd>Whoever will observe and trace the path, and, wherever practical, the person actually doing the walking or moving, since their own reaction to seeing the diagram is often what turns a data point into a genuine trial.</dd></div><div class="iv-fact-row"><dt>Materials</dt><dd>A simple floor plan or sketch of the area, accurate enough to place fixed points correctly. A pen, or a simple digital equivalent, is enough; no specialist software or tracking equipment is required.</dd></div></dl>
-  </div></section>
-  
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <p>A real, anonymised sample is included with every purchase. A public preview for this specific module is pending a dedicated content pass.</p>
-  </div></section>
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Common questions</span>
-    <h2>FAQ</h2>
-    <div class="iv-faq">
-      <details><summary>Do we need special software or tracking equipment to do this?</summary><p>No. A simple floor plan and a pen are enough for the standard method. Digital tracking exists as a newer alternative, but the traditional pen-on-paper approach is deliberately the default here, and it's usually all a site needs. See Pro and Essentials section 4.</p></details>
-      <details><summary>Should we trace the person, the material, or both?</summary><p>Start with whichever the suspected problem actually points to: a person's path if the concern is walking distance or repeated reaching, a material's path if the concern is transport distance or a confusing route between process steps. If both genuinely need tracing, draw them as two separate diagrams over the same period rather than combining them into one. See Pro and Essentials section 5 and Pro section 18's first fork.</p></details>
-      <details><summary>How is this different from the 8 Wastes module?</summary><p>8 Wastes gives the site a shared vocabulary for spotting all eight wastes, including motion and transportation, at a broad level. This module is the deeper observation method for those two specifically, used once motion or transport has already been flagged as a genuine priority. See Pro and Essentials section 10.</p></details>
-      <details><summary>What if drawing the real path feels awkward or intrusive to the person being observed?</summary><p>That reaction is common and worth addressing directly rather than pushing past it. The honest framing: the diagram is about the path, not an evaluation of the person walking it, and the goal is shortening the walk, never judging how well anyone does their job. See Pro section 17's first awkward conversation.</p></details>
-      <details><summary>We're a highly automated line with limited people movement. Does this module still apply?</summary><p>Yes, using the material-flow variant: trace parts, components or work in progress between fixed points instead of human movement, since that's usually where the real waste has shifted to on an automated line. See Pro and Essentials section 11 and Pro section 14's first variant.</p></details>
-    </div>
+    
+    <div class="iv-facts"><div class="iv-fact"><span class="iv-fact-label mono">Time</span>A representative observation period, typically one full cycle or a fixed block of time long enough to capture normal variation, not a single idealised pass. Drawing the diagram itself takes minutes once observation is done.</div><div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>Whoever will observe and trace the path, and, wherever practical, the person actually doing the walking or moving, since their own reaction to seeing the diagram is often what turns a data point into a genuine trial.</div><div class="iv-fact"><span class="iv-fact-label mono">Materials</span>A simple floor plan or sketch of the area, accurate enough to place fixed points correctly. A pen, or a simple digital equivalent, is enough; no specialist software or tracking equipment is required.</div></div>
   </div></section>
 
   <section class="iv-section iv-hc-band">

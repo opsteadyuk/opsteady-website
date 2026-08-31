@@ -21,79 +21,83 @@
     <a href="/site/index.html" aria-label="Opsteady, home">
       <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
       <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
       <a href="/site/interventions/index.html" aria-current="page">Tools</a>
       <a href="/site/the-method.html">How It Works</a>
       <a href="/site/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
     </nav>
-    <a class="nav-cta" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
 <main id="main">
 
-  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → Asset Care & Maintenance → OEE Management & Loss Analysis</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#Equipment-and-Reliability">Equipment & Reliability</a> → OEE Management & Loss Analysis</nav></div>
   <section class="iv-hero">
     <div class="shell">
       
       <h1>OEE Management & Loss Analysis</h1>
       <p class="iv-situation">This module teaches how to calculate and interpret Overall Equipment Effectiveness, OEE, a single measure built from three separate factors, Availability, Performance, and Quality, and how to structure those losses into a ranked view so the site can see exactly where its output is actually being lost. It builds directly on downtime data the site may already be capturing, and extends it to cover losses that a simple stop log alone never shows: running slower than it should, and producing units that don't count as good output even while the machine is technically running.</p>
-      <div class="iv-buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
+      <div class="iv-buy" id="buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <span class="eyebrow">Situation</span>
-    <h2>Who this is for</h2>
-    <p class="iv-who">Teams working on Asset Care & Maintenance, where the goal is: find where equipment time and output are disappearing.</p>
+    <p class="iv-core">Find where equipment time and output are disappearing.</p>
+    <p class="iv-core">Your team works through it using the guide and working materials below — it's usually useful once Downtime Tracking & Pareto Pack is already in place.</p>
   </div></section>
 
   <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Fit</span>
-    <h2>When it's the right Tool</h2>
-    <p class="iv-stage-note">Usually useful once Downtime Tracking & Pareto Pack is already in place.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Outcome</span>
-    <h2>What it does</h2>
-    <p class="iv-what">Find where equipment time and output are disappearing.</p>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Contents</span>
-    <h2>What is in it</h2>
-    <div class="iv-inside">
-      <div class="iv-inside-item"><span class="iv-inside-kind mono">Guide</span><span>OEE Management Loss Analysis Pro</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">FAQ</span><span>OEE Management Loss Analysis FAQ</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Training</span><span>OEE Management Loss Analysis Training</span></div>
-          <div class="iv-inside-item"><span class="iv-inside-kind mono">Workbook</span><span>P5.5 OEE Loss Analysis Pack</span></div>
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    <div class="pkg-grid pkg-compact">
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-7-2-11-1v16c4-1 8-1 11 1 3-2 7-2 11-1V8c-4-1-8-1-11 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9v16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="1.8" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Training</span>
+        <div class="pkg-verb">Learn it</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="16" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 11h8M10 16h8M10 21h5" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="23" r="5" fill="var(--v6-warm)" stroke="var(--a6-amber)" stroke-width="1.5"/><path d="M20.8 23l1.6 1.6 3-3.2" fill="none" stroke="var(--a6-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-label mono">Main Tool</span>
+        <div class="pkg-verb">Put it to work</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5c0-2 1.6-3.5 3.5-3.5s3.5 1.3 3.5 3.2c0 2.1-2.2 2.4-3 3.6-.3.5-.4 1-.4 1.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">FAQ</span>
+        <div class="pkg-verb">Get unstuck</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Working Materials</span>
+        <div class="pkg-verb">Make it yours</div>
+        
+      </div>
     </div>
-  </div></section>
-
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Effort</span>
-    <h2>What it takes</h2>
-    <dl class="iv-fact-table"><div class="iv-fact-row"><dt>Time</dt><dd>Calculating a first OEE figure for one asset, once basic downtime data exists, typically takes a day or two. Capturing Performance and Quality losses properly, if they aren't already tracked, takes longer, often a couple of weeks of deliberate observation to build a reliable baseline.</dd></div><div class="iv-fact-row"><dt>Who's involved</dt><dd>Whoever owns the asset's downtime data already, usually maintenance or the area supervisor. Someone from quality who can supply or help define the Quality factor's data. Whoever will actually own acting on the top loss once it's ranked, planned maintenance, autonomous care, or a process improvement lead.</dd></div><div class="iv-fact-row"><dt>Materials</dt><dd>A simple OEE calculation sheet and loss tree, on paper or a basic spreadsheet. Existing downtime data from Downtime Tracking & Pareto Pack (P5.1) as the starting point for Availability; no new equipment or automated data collection is required to start.</dd></div></dl>
-  </div></section>
-  
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Is this real?</span>
-    <h2>Sample</h2>
-    <p>A real, anonymised sample is included with every purchase. A public preview for this specific module is pending a dedicated content pass.</p>
-  </div></section>
-  
-  <section class="iv-section"><div class="shell">
-    <span class="eyebrow">Common questions</span>
-    <h2>FAQ</h2>
-    <div class="iv-faq">
-      <details><summary>We already track downtime. Isn't that basically OEE?</summary><p>No, and this is the single most common gap this module closes. Downtime data alone answers "was the machine running or not," which only covers Availability, one of three factors. It says nothing about a machine running slower than its designed rate, or producing units that don't pass quality even while technically up. Both are entirely invisible to a stop log. See Pro section 2.</p></details>
-      <details><summary>What's the actual formula?</summary><p>OEE equals Availability multiplied by Performance multiplied by Quality. They multiply, not add, which is deliberate: a genuinely weak factor drags the whole number down regardless of how strong the other two are, rather than being averaged away and hidden. See Pro section 13.</p></details>
-      <details><summary>Why does the exact definition of "available time" matter so much?</summary><p>Because different definitions of what counts as Planned Production Time, which stops are excluded as planned, can move the resulting OEE number substantially without any real change in performance. A generous definition produces a comfortable, less honest number. This module requires that definition be explicit and documented, not assumed. See Pro section 2 and section 4.</p></details>
-      <details><summary>Our site already reports an OEE figure. Do we need to redo it?</summary><p>Audit it first rather than assuming it's wrong or right. Check the existing figure against the same three boundary questions this module uses: what counts as Planned Production Time, what's the reference cycle time, and what counts as a good unit. If the existing definition doesn't hold up, that's worth knowing, and it isn't an accusation about anyone's honesty, just a correction going forward. See Pro section 5's decision fork and section 17.</p></details>
-      <details><summary>Why might our OEE number go down once we start measuring it properly?</summary><p>Because an informal or generous existing definition often makes the number look better than real performance actually is. A lower, honestly calculated number isn't bad news about performance getting worse, it's better visibility into performance that was already this way. See Pro section 17.</p></details>
-    </div>
+    
+    <div class="iv-facts"><div class="iv-fact"><span class="iv-fact-label mono">Time</span>Calculating a first OEE figure for one asset, once basic downtime data exists, typically takes a day or two. Capturing Performance and Quality losses properly, if they aren't already tracked, takes longer, often a couple of weeks of deliberate observation to build a reliable baseline.</div><div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>Whoever owns the asset's downtime data already, usually maintenance or the area supervisor. Someone from quality who can supply or help define the Quality factor's data. Whoever will actually own acting on the top loss once it's ranked, planned maintenance, autonomous care, or a process improvement lead.</div><div class="iv-fact"><span class="iv-fact-label mono">Materials</span>A simple OEE calculation sheet and loss tree, on paper or a basic spreadsheet. Existing downtime data from Downtime Tracking & Pareto Pack (P5.1) as the starting point for Availability; no new equipment or automated data collection is required to start.</div></div>
   </div></section>
 
   <section class="iv-section iv-hc-band">
