@@ -9,57 +9,42 @@ w("site/pricing.html", page({
   path: "/pricing",
   main: `
   <section class="page-hero">
-    <div class="shell">
+    <div class="shell-narrow">
       <div class="eyebrow on-navy">Pricing</div>
       <h1>Straightforward pricing.</h1>
       <p>Every Tool has its own price, shown on its own page. Most are Pro today, priced by depth and reach: Essentials editions are being added over time, and only shown where they actually exist.</p>
     </div>
   </section>
   <section class="page-section">
-    <div class="shell">
-      <div class="prose-row">
-        <div>
-          <h2>What things cost</h2>
-          <table class="price-table">
-            <thead><tr><th></th><th>Essentials <span class="mono" style="font-weight:400;font-size:0.8rem;">(where available)</span></th><th>Pro</th></tr></thead>
-            <tbody>
-              <tr><td>Most Tools</td><td>£89</td><td>£179</td></tr>
-              <tr><td>A smaller number of deeper, cross-cutting Tools</td><td>£179</td><td>£349</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="prose-row-num" aria-hidden="true">01</div>
-      </div>
+    <div class="shell-narrow">
+      <h2>What things cost</h2>
+      <table class="price-table">
+        <thead><tr><th></th><th>Essentials <span class="mono" style="font-weight:400;font-size:0.8rem;">(where available)</span></th><th>Pro</th></tr></thead>
+        <tbody>
+          <tr><td>Most Tools</td><td>£89</td><td>£179</td></tr>
+          <tr><td>A smaller number of deeper, cross-cutting Tools</td><td>£179</td><td>£349</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
   <section class="page-section tint">
-    <div class="shell">
-      <div class="prose-row">
-        <div>
-          <h2>A small number of Tools at a lower entry price</h2>
-          <p>These are available as detailed worked examples, at a lower entry Pro price. Not a discount. Not time-limited.</p>
-          <div class="showcase-list">
-            <div class="showcase-item"><span>Bottleneck Analysis Tool</span><span class="mono">£99</span></div>
-            <div class="showcase-item"><span>Skills Matrix &amp; Cross-Training Planner</span><span class="mono">£179</span></div>
-            <div class="showcase-item"><span>SQDC Performance Board Pack</span><span class="mono">£179</span></div>
-          </div>
-        </div>
-        <div class="prose-row-num" aria-hidden="true">02</div>
+    <div class="shell-narrow">
+      <h2>A small number of Tools at a lower entry price</h2>
+      <p>These are available as detailed worked examples, at a lower entry Pro price. Not a discount. Not time-limited.</p>
+      <div class="showcase-list">
+        <div class="showcase-item"><span>Bottleneck Analysis Tool</span><span class="mono">£99</span></div>
+        <div class="showcase-item"><span>Skills Matrix &amp; Cross-Training Planner</span><span class="mono">£179</span></div>
+        <div class="showcase-item"><span>SQDC Performance Board Pack</span><span class="mono">£179</span></div>
       </div>
     </div>
   </section>
   <section class="page-section">
-    <div class="shell">
-      <div class="prose-row">
-        <div>
-          <h2>Where purchase happens</h2>
-          <p>Every Tool has its own price and buy action, showing only the edition actually available to buy.</p>
-          <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;">
-            <a class="btn btn-primary" href="/site/interventions/bottleneck_analysis.html">See a representative example</a>
-            <a class="btn-text" href="/site/interventions/index.html">Browse Tools <span class="arrow">→</span></a>
-          </div>
-        </div>
-        <div class="prose-row-num" aria-hidden="true">03</div>
+    <div class="shell-narrow">
+      <h2>Where purchase happens</h2>
+      <p>Every Tool has its own price and buy action, showing only the edition actually available to buy.</p>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;">
+        <a class="btn btn-primary" href="/site/interventions/bottleneck_analysis.html">See a representative example</a>
+        <a class="btn-text" href="/site/interventions/index.html">Browse Tools <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -97,77 +82,50 @@ w("site/who-we-are.html", page({
 
   <section class="page-section">
     <div class="shell">
-      <div class="prose-row">
-        <div>
-          <h2>Where this comes from</h2>
-          <p>Opsteady comes from real time spent running manufacturing operations, not from taking improvement theory and turning it into templates. It started on the floor, learning the job before being trusted to change anything, and finding that the standards and SOPs on paper rarely described how the place actually ran on a given shift.</p>
-          <p>That gap, between the system on paper and the practice on the floor, is one of the most useful things to look for in an operation. It's why the Health Check reads both, rather than averaging them into one comfortable score.</p>
-        </div>
-        <div class="prose-row-num" aria-hidden="true">01</div>
+      <div class="prose-wide">
+        <h2>Where this comes from</h2>
+        <p>Opsteady comes from real time spent running manufacturing operations, not from taking improvement theory and turning it into templates. It started on the floor, learning the job before being trusted to change anything, and finding that the standards and SOPs on paper rarely described how the place actually ran on a given shift.</p>
+        <p>That gap, between the system on paper and the practice on the floor, is one of the most useful things to look for in an operation. It's why the Health Check reads both, rather than averaging them into one comfortable score.</p>
       </div>
     </div>
   </section>
 
   <section class="page-section tint">
     <div class="shell">
-      <div class="prose-row">
-        <div>
-          <h2>Why deployment matters more than the method</h2>
-          <p>A properly run improvement week (disciplined, well-executed, the full standard treatment) can still fully revert within two months if nobody involved understood why they were doing it, only that they were told to. That's not a failure of effort or of the method. It's what happens when improvement is installed rather than understood.</p>
-          <p>It's why everything Opsteady builds is designed to transfer capability, not just deliver a one-off result. A tool that only works while someone stands over it isn't a tool: it's a visit.</p>
-        </div>
-        <div class="prose-row-num" aria-hidden="true">02</div>
+      <div class="prose-wide">
+        <h2>Why deployment matters more than the method</h2>
+        <p>A properly run improvement week (disciplined, well-executed, the full standard treatment) can still fully revert within two months if nobody involved understood why they were doing it, only that they were told to. That's not a failure of effort or of the method. It's what happens when improvement is installed rather than understood.</p>
+        <p>It's why everything Opsteady builds is designed to transfer capability, not just deliver a one-off result. A tool that only works while someone stands over it isn't a tool: it's a visit.</p>
       </div>
     </div>
   </section>
 
   <section class="page-section">
     <div class="shell">
-      <div class="prose-row">
-        <div>
-          <h2>Why the sequence matters</h2>
-          <p>An area can be missing its targets on every measure at once, not from a lack of effort, but because people are doing work that's always been done, without anyone able to say why. The fix usually isn't adding more. It's watching first, removing what doesn't need to be there, agreeing a short standard with the team who'll actually run it, and only then pushing for more.</p>
-          <p>Watch before changing. Stabilise before improving. Improve from a base that holds. That's the same logic behind Opsteady's Observe &amp; Learn, Stabilise, Improve, Sustain loop, learned on a real floor, not derived from a textbook.</p>
-        </div>
-        <div class="prose-row-num" aria-hidden="true">03</div>
+      <div class="prose-wide">
+        <h2>Why the sequence matters</h2>
+        <p>An area can be missing its targets on every measure at once, not from a lack of effort, but because people are doing work that's always been done, without anyone able to say why. The fix usually isn't adding more. It's watching first, removing what doesn't need to be there, agreeing a short standard with the team who'll actually run it, and only then pushing for more.</p>
+        <p>Watch before changing. Stabilise before improving. Improve from a base that holds. That's the same logic behind Opsteady's Observe &amp; Learn, Stabilise, Improve, Sustain loop, learned on a real floor, not derived from a textbook.</p>
       </div>
     </div>
   </section>
 
   <section class="page-section tint">
     <div class="shell">
-      <div class="prose-row">
-        <div>
-          <h2>Why trust isn't a soft subject</h2>
-          <p>Every tool here depends on people being willing to say what's actually happening. Where that willingness has been damaged, because raising something went badly for someone once, no system fixes it by itself, and no amount of asking for openness in a meeting outweighs what people have already seen happen. That's why Opsteady's diagnostics look at how people behave alongside what the systems say, and why nothing here pretends a template can substitute for trust.</p>
-        </div>
-        <div class="prose-row-num" aria-hidden="true">04</div>
+      <div class="prose-wide">
+        <h2>Why trust isn't a soft subject</h2>
+        <p>Every tool here depends on people being willing to say what's actually happening. Where that willingness has been damaged, because raising something went badly for someone once, no system fixes it by itself, and no amount of asking for openness in a meeting outweighs what people have already seen happen. That's why Opsteady's diagnostics look at how people behave alongside what the systems say, and why nothing here pretends a template can substitute for trust.</p>
       </div>
     </div>
   </section>
 
   <section class="page-section">
     <div class="shell">
-      <div class="prose-row">
-        <div>
-          <h2>Why not a consultant, a course, or a template shop</h2>
-          <p>Opsteady is sold as a method, not a personality, and built to work across different sites, sectors and problems. The solutions are different every time; what travels between sites is the order things need doing in, which is exactly what the Health Check exists to establish for yours.</p>
-          <p>There's no retainer, no subscription to your own improvement, and no sales call following anything you buy. Opsteady doesn't come to your site, doesn't run your projects, and won't tell you what your culture should be: that's yours to shape, and you know your people. Most of what's here builds on established operational thinking, not reinvented; what Opsteady adds is the deployment judgement: what to do first, what conflicts with what, and what to do when it stalls.</p>
-        </div>
-        <div class="prose-row-num" aria-hidden="true">05</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="page-section tint">
-    <div class="shell">
-      <div class="prose-row">
-        <div>
-          <h2>Relationship to Optimere</h2>
-          <p>Opsteady is a trading name of Optimere Limited, the company that builds and runs it.</p>
-          <div style="margin-top:24px;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
-        </div>
-        <div class="prose-row-num" aria-hidden="true">06</div>
+      <div class="prose-wide">
+        <h2>Why not a consultant, a course, or a template shop</h2>
+        <p>Opsteady is sold as a method, not a personality, and built to work across different sites, sectors and problems. The solutions are different every time; what travels between sites is the order things need doing in, which is exactly what the Health Check exists to establish for yours.</p>
+        <p>There's no retainer, no subscription to your own improvement, and no sales call following anything you buy. Opsteady doesn't come to your site, doesn't run your projects, and won't tell you what your culture should be: that's yours to shape, and you know your people. Most of what's here builds on established operational thinking, not reinvented; what Opsteady adds is the deployment judgement: what to do first, what conflicts with what, and what to do when it stalls.</p>
+        <div style="margin-top:28px;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
       </div>
     </div>
   </section>

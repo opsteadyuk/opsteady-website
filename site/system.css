@@ -199,15 +199,15 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 /* Four-stage loop diagram (production SVG, build.js's loopSVG) -- works on
    both dark (.sec-how) and light (.page-section.tint) grounds: default
    values below are tuned for a light ground, .sec-how overrides for dark. */
-.v6 .loop-diagram{width:300px;height:auto;flex:none;max-width:100%;}
-.v6 .loop-guide{fill:none;stroke:var(--n6-slate);stroke-width:1;stroke-dasharray:3 6;opacity:0.5;}
-.v6 .loop-cross{stroke:var(--n6-slate);stroke-width:1;opacity:0.5;}
+.v6 .loop-diagram{width:340px;height:auto;flex:none;max-width:100%;}
+.v6 .loop-guide{fill:none;stroke:var(--n6-slate);stroke-width:1;stroke-dasharray:3 7;opacity:0.45;}
+.v6 .loop-cross{stroke:var(--n6-slate);stroke-width:1;opacity:0.45;}
 .v6 .loop-ring-inner{fill:var(--a6-tint);opacity:0.7;}
 .v6 .loop-arrow{fill:var(--a6-rich);}
-.v6 .loop-node-ring{fill:var(--v6-warm);stroke:var(--a6-deep);stroke-width:2.5;}
+.v6 .loop-node-ring{fill:var(--v6-warm);stroke:var(--a6-deep);stroke-width:3;}
 .v6 .loop-node-dot{fill:var(--a6-amber);}
 .v6 .loop-tick{stroke:var(--n6-slate);stroke-width:1;opacity:0.6;}
-.v6 .loop-label{font-family:var(--ops-font-mono);font-size:15px;font-weight:600;letter-spacing:0.05em;fill:var(--n6-navy);}
+.v6 .loop-label{font-family:var(--ops-font-mono);font-size:17px;font-weight:700;letter-spacing:0.06em;fill:var(--n6-navy);}
 .v6 .sec-how .loop-ring-inner{fill:#EDE3D3;opacity:0.85;}
 .v6 .sec-how .loop-node-ring{fill:var(--n6-ink);stroke:var(--a6-light);}
 .v6 .sec-how .loop-label{fill:#fff;}
@@ -268,10 +268,6 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .cred-body{margin-top:20px;max-width:60ch;font-size:1.05rem;}
 .v6 .cred-body + .cred-body{margin-top:14px;}
 .v6 .cred-cta{margin-top:26px;}
-.v6 .cred-mark{display:none;}
-@media (min-width:1024px){
-  .v6 .cred-mark{display:block;font-family:Georgia,serif;font-size:14rem;line-height:0.6;color:var(--ops-n20);text-align:right;user-select:none;}
-}
 
 /* =========================================================
    SECTION 7 — CLOSING CTA
@@ -320,22 +316,43 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .photo-hero p{color:var(--n6-pale);max-width:52ch;font-size:1.1rem;margin-top:18px;}
 
 /* =========================================================
-   PROSE ROW — two-column treatment for long-form text sections.
-   Keeps the section on the same .shell as every other section
-   (identical outer bounds/left edge, so hero-to-section and
-   section-to-section alignment is exact) while giving the text
-   a real, bounded measure instead of trailing into empty space.
-   Second column: a decorative running section numeral (ghost
-   type, no invented content) by default; individual pages may
-   put real supporting content there instead.
+   EDITORIAL ROW + INFO PANEL — 2026-09-02 replacement for the
+   prior pass's decorative numerals/quote-mark (both explicitly
+   rejected: "no giant quotation marks... no running numerals").
+   .editorial-row is the same two-column grid mechanism as before
+   (same .shell as every other section, so outer bounds and
+   hero-to-section alignment stay exact) but the second column now
+   only ever holds genuine, real content via .info-panel -- a
+   small labelled fact list, styled consistently with the Tool-page
+   "At a Glance" panel so the same visual language recurs sitewide.
+   Never used to manufacture a right-hand column where no real
+   content exists -- pages without a natural pairing (Who We Are,
+   Pricing) were widened to a single generous column instead; see
+   their own CSS below.
 ========================================================= */
-.v6 .prose-row{display:grid;gap:20px;}
-@media (min-width:1024px){.v6 .prose-row{grid-template-columns:minmax(0,680px) 1fr;gap:56px;align-items:start;}}
-.v6 .prose-row-num{display:none;}
-@media (min-width:1024px){
-  .v6 .prose-row-num{display:block;font-family:var(--ops-font-display);font-weight:600;font-size:6.5rem;line-height:1;color:var(--ops-n20);text-align:right;user-select:none;padding-top:6px;}
-  .v6 .sec-how .prose-row-num{color:rgba(255,255,255,0.08);}
-}
+.v6 .editorial-row{display:grid;gap:28px;}
+@media (min-width:1024px){.v6 .editorial-row{grid-template-columns:minmax(0,680px) 1fr;gap:56px;align-items:start;}}
+.v6 .info-panel{border:1px solid var(--ops-border-subtle);border-radius:8px;padding:24px 26px;background:#fff;}
+.v6 .sec-how .info-panel{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.14);}
+.v6 .info-panel-label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--a6-deep);margin-bottom:14px;}
+.v6 .sec-how .info-panel-label{color:var(--a6-light);}
+.v6 .info-panel-list{display:grid;gap:12px;}
+.v6 .info-panel-list > div{padding-top:12px;border-top:1px solid var(--ops-border-subtle);}
+.v6 .info-panel-list > div:first-child{padding-top:0;border-top:0;}
+.v6 .sec-how .info-panel-list > div{border-color:rgba(255,255,255,0.12);}
+.v6 .info-panel-list dt{font-family:var(--ops-font-display);font-weight:600;font-size:0.98rem;color:var(--n6-navy);margin:0;}
+.v6 .sec-how .info-panel-list dt{color:#fff;}
+.v6 .info-panel-list dd{margin:6px 0 0;font-size:0.92rem;color:var(--ops-text-secondary);}
+.v6 .sec-how .info-panel-list dd{color:var(--n6-pale);}
+
+/* PROSE WIDE — for narrative pages with no natural structured-content
+   pairing (Who We Are). A wider single reading column, generous
+   typography and the section's own alternating tint rhythm carry the
+   composition instead of a forced right-hand panel or any decoration.
+   Still the same .shell as every other section (outer bounds/left edge
+   unchanged), just a wider measure than the general 60ch default. */
+.v6 .prose-wide{max-width:74ch;}
+.v6 .prose-wide p{max-width:none;font-size:1.05rem;}
 
 /* =========================================================
    PROBLEMS HUB + PROBLEM PAGE
@@ -370,42 +387,55 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .showcase-note{font-family:var(--ops-font-mono);font-size:12px;color:var(--n6-steel);font-weight:400;margin-left:4px;}
 
 /* =========================================================
-   INTERVENTION (TOOL) PAGE ARCHETYPE — dramatically simplified,
-   2026-08-31: hero, 2-3 short paragraphs, the shared compact
-   package component, a short tier note, compact facts, HC band.
-   No reproduced methodology, no FAQ wall, no sample frame.
+   CANONICAL TOOL-PAGE SYSTEM, 2026-09-02.
+   One template for all 70 Tools: hero (title/proposition/price+
+   CTA only) -> Overview + At a Glance (fixed 2-col grid) ->
+   optional contextual callout -> What You Get -> Health Check +
+   Related Tools closing. Same geometry regardless of category,
+   tier, showcase state or content length -- content length changes
+   section HEIGHT, never which sections exist or their order.
+   Superseded the 2026-08-31 archetype (stage badges in the hero,
+   a merged core-copy/package section, a gradient fallback for
+   Wider Capability) -- every one of those is gone in this version.
 ========================================================= */
-.v6 .iv-hero{position:relative;background:var(--n6-navy);color:#fff;padding-block:48px 40px;overflow:hidden;}
-.v6 .iv-hero-slot{position:absolute;inset:0;background:radial-gradient(ellipse at 82% 20%, rgba(45,74,115,0.45) 0%, rgba(10,18,31,0) 50%);}
-.v6 .iv-hero-slot::after{content:"";position:absolute;inset:0;opacity:0.05;background-image:repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 34px);}
-/* Real category photography (Level 2) -- 8 of the 9 customer categories have
-   an assigned image; "Wider capability" (Enablers, cross-cutting by design)
-   has none, so those pages keep the gradient slot above instead. */
+
+/* ---- Hero: fixed geometry, real category photography on all 70 ---- */
+.v6 .iv-hero{position:relative;background:var(--n6-navy);color:#fff;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;padding-block:40px 40px;}
+@media (min-width:1024px){.v6 .iv-hero{min-height:420px;}}
 .v6 .iv-hero-media{position:absolute;inset:0;}
 .v6 .iv-hero-media img{width:100%;height:100%;object-fit:cover;}
-.v6 .iv-hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg, rgba(10,18,31,0.88) 0%, rgba(10,18,31,0.62) 38%, rgba(10,18,31,0.28) 68%, rgba(10,18,31,0.12) 100%);}
-.v6 .iv-hero.iv-hero-photo{min-height:300px;display:flex;align-items:flex-end;}
-@media (min-width:1024px){.v6 .iv-hero.iv-hero-photo{min-height:340px;}}
+.v6 .iv-hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg, rgba(10,18,31,0.9) 0%, rgba(10,18,31,0.66) 38%, rgba(10,18,31,0.32) 68%, rgba(10,18,31,0.14) 100%);}
 .v6 .iv-hero .shell{position:relative;z-index:2;}
-.v6 .iv-hero .tag{margin-bottom:16px;}
-.v6 .iv-hero h1{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem);max-width:22ch;}
-.v6 .iv-situation{color:var(--n6-pale);margin-top:16px;max-width:56ch;font-size:1.05rem;}
-.v6 .iv-buy{margin-top:28px;display:flex;flex-wrap:wrap;align-items:baseline;gap:20px;}
-.v6 .iv-price{font-family:var(--ops-font-display);font-weight:600;font-size:1.6rem;color:#fff;}
+.v6 .iv-hero h1{color:#fff;font-size:clamp(1.7rem,3.6vw,2.4rem);max-width:23ch;line-height:1.12;}
+.v6 .iv-situation{color:var(--n6-pale);margin-top:16px;max-width:58ch;font-size:1.05rem;line-height:1.55;}
+.v6 .iv-buy{margin-top:26px;display:flex;flex-wrap:wrap;align-items:baseline;gap:20px;}
+.v6 .iv-price{font-family:var(--ops-font-display);font-weight:600;font-size:1.5rem;color:#fff;}
 .v6 .iv-price .showcase-note{color:var(--n6-pale);}
 
 .v6 .iv-section{padding-block:44px;border-top:1px solid var(--ops-border-subtle);}
 .v6 .iv-section .eyebrow{display:block;margin-bottom:14px;}
 .v6 .iv-section h2{font-size:1.4rem;margin-bottom:16px;}
-.v6 .iv-core{max-width:64ch;font-size:1.05rem;margin-bottom:16px;}
-.v6 .iv-core:last-of-type{margin-bottom:0;}
-.v6 .iv-tier-note{margin-top:24px;max-width:60ch;background:var(--v6-warm);border-left:2px solid var(--a6-amber);padding:14px 20px;font-size:0.94rem;}
-.v6 .iv-facts{margin-top:24px;display:grid;gap:12px;max-width:60ch;}
-.v6 .iv-fact{font-size:0.92rem;color:var(--ops-text-secondary);padding-top:12px;border-top:1px solid var(--ops-border-subtle);}
-.v6 .iv-fact-label{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--n6-slate);margin-bottom:4px;}
+
+/* ---- Overview + At a Glance: fixed two-column grid, same row,
+   never reflows underneath What You Get regardless of copy length ---- */
+.v6 .iv-overview-grid{display:grid;gap:28px;align-items:start;}
+@media (min-width:900px){.v6 .iv-overview-grid{grid-template-columns:1fr 300px;gap:48px;}}
+.v6 .iv-core{max-width:66ch;font-size:1.05rem;}
+.v6 .at-a-glance .info-panel-label{margin-bottom:16px;}
+
+/* ---- Optional contextual callout — ONE component, three labels ---- */
+.v6 .iv-callout{background:var(--v6-warm);}
+.v6 .iv-callout p,.v6 .iv-callout ul{max-width:64ch;}
+.v6 .iv-callout p{margin-bottom:10px;}
+.v6 .callout-list{margin:10px 0 0;padding-left:20px;}
+.v6 .callout-list li{margin-bottom:6px;}
+.v6 .callout-list a{color:var(--n6-navy);text-decoration:underline;text-decoration-color:var(--ops-border);}
+.v6 .callout-figures{font-size:0.85rem;color:var(--n6-slate);margin-top:12px;}
+
 .v6 .iv-hc-band{background:var(--n6-navy);color:#fff;text-align:left;}
 .v6 .iv-hc-band .btn-text{margin-top:6px;}
-.v6 .iv-related{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;}
+.v6 .iv-related-label{margin-top:28px;margin-bottom:12px;}
+.v6 .iv-related{display:flex;flex-wrap:wrap;gap:10px;}
 
 /* =========================================================
    PRICING

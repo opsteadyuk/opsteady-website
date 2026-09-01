@@ -25,7 +25,7 @@ w("site/the-method.html", page({
 
   <section class="page-section">
     <div class="shell">
-      <div class="prose-row">
+      <div class="editorial-row">
         <div>
           <div class="eyebrow">Step 1</div>
           <h2>The Health Check</h2>
@@ -33,14 +33,26 @@ w("site/the-method.html", page({
           <p>Completing it means answering honestly about your current situation in each of those areas, in your own words where it matters, rather than picking the answer that sounds best. The result is a picture of where things are genuinely working, where they're not, and, just as importantly, how much appetite and capacity your team actually has to take on change right now. A site mid-way through a product launch or short-staffed on a key shift can take on less at once than one with room to spare, and the Health Check treats that as real information, not an inconvenience to work around.</p>
           <p>From that picture, the Health Check identifies which areas deserve attention first. It isn't a one-time diagnostic you run once and file away. Your site changes as you improve it, so the Health Check is designed to be rerun periodically, not answered once and forgotten.</p>
         </div>
-        <div class="prose-row-num" aria-hidden="true">01</div>
+        <div class="info-panel">
+          <div class="info-panel-label mono">What it looks at</div>
+          <dl class="info-panel-list">
+            <div><dt>Output &amp; flow</dt></div>
+            <div><dt>Delivery &amp; planning</dt></div>
+            <div><dt>Daily control</dt></div>
+            <div><dt>Quality</dt></div>
+            <div><dt>Equipment &amp; maintenance</dt></div>
+            <div><dt>People &amp; skills</dt></div>
+            <div><dt>Standards</dt></div>
+            <div><dt>How decisions get made</dt></div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="page-section tint">
     <div class="shell">
-      <div class="prose-row">
+      <div class="editorial-row">
         <div>
           <div class="eyebrow">Step 2</div>
           <h2>From findings to priorities</h2>
@@ -48,7 +60,14 @@ w("site/the-method.html", page({
           <p>Not everything gets flagged as urgent. Part of what the Health Check does is tell you what can reasonably wait, so you're not left trying to fix everything simultaneously with a team that has a day job to do. Sequencing takes account of what's most urgent, what depends on what already being in place, and how much your team can realistically absorb at once.</p>
           <p>This isn't a black box with total certainty about your operation. The Health Check gives you a clear, evidenced starting point and the reasoning behind it: the judgement about whether that's genuinely the right place to start for your site, today, still sits with you. That's deliberate. Nobody outside your operation has the full picture, and Opsteady doesn't pretend otherwise.</p>
         </div>
-        <div class="prose-row-num" aria-hidden="true">02</div>
+        <div class="info-panel">
+          <div class="info-panel-label mono">What determines priority</div>
+          <dl class="info-panel-list">
+            <div><dt>What's most urgent</dt></div>
+            <div><dt>What already needs to be in place first</dt></div>
+            <div><dt>How much your team can realistically absorb</dt></div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
@@ -78,7 +97,7 @@ w("site/the-method.html", page({
 
   <section class="page-section">
     <div class="shell">
-      <div class="prose-row">
+      <div class="editorial-row">
         <div>
           <div class="eyebrow">Ongoing</div>
           <h2>A repeatable system, not a one-use diagnostic</h2>
@@ -86,7 +105,14 @@ w("site/the-method.html", page({
           <p>Each time you run it, it looks at how the operation has moved: whether previous weak points have genuinely strengthened, whether priorities have shifted, and what deserves attention next. Opsteady is designed as a repeatable improvement system around your site, not a single funnel that ends once you've bought one Tool.</p>
           <div style="margin-top:24px;display:flex;gap:20px;flex-wrap:wrap;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a><a class="btn-text" href="/site/interventions/index.html">Browse Tools <span class="arrow">→</span></a></div>
         </div>
-        <div class="prose-row-num" aria-hidden="true">05</div>
+        <div class="info-panel">
+          <div class="info-panel-label mono">What changes over time</div>
+          <dl class="info-panel-list">
+            <div><dt>A resolved constraint stops being the priority</dt></div>
+            <div><dt>A new one becomes visible once the old one's out of the way</dt></div>
+            <div><dt>People, demand and equipment all change</dt></div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>

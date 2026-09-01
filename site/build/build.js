@@ -73,57 +73,63 @@ const IMPROVE_AREAS = [
 /* =========================================================
    HOMEPAGE
 ========================================================= */
-/* Production four-stage-loop asset, 2026-09-01. Rebuilt as clean SVG geometry
-   (arcs computed from real trigonometry, not traced) from the approved
-   opsteady-four-stage-loop-reference.jpg design reference: double ring
-   (gold outer, pale inner), four node markers, directional arrowheads,
-   dashed guide circle, crosshair, and the four stage labels built into the
-   diagram itself -- clockwise Observe & Learn -> Stabilise -> Improve ->
-   Sustain -> Observe & Learn, matching the reference exactly. Works on both
-   dark (.sec-how) and light (.page-section.tint) grounds via the .sec-how
-   descendant overrides in system.css. Superseded a first-pass single-ring
-   version that had no room for the reference's second ring or labels. */
-const loopSVG = `<svg class="loop-diagram" viewBox="0 0 500 344" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Opsteady loop: Observe and Learn, Stabilise, Improve, Sustain, returning to Observe and Learn, clockwise.">
+/* Production four-stage-loop asset, 2026-09-02 -- rebuilt a second time
+   after Matt visually rejected the 2026-09-01 version as "technically
+   correct but visually poor" (arrows too subtle, ring too thin, not
+   enough negative space). Same underlying method as before (arcs/nodes/
+   arrowheads computed from real trigonometry, verified in a standalone
+   test page before wiring in, never traced from the reference JPEG), but
+   with the gold ring roughly doubled in band thickness, arrowheads
+   roughly doubled in size and made unmistakably prominent, the inner
+   pale ring pulled further in for genuinely generous central negative
+   space, and bolder label typography -- reproducing the reference's
+   deliberate visual weight, not just its geometry. Clockwise Observe &
+   Learn -> Stabilise -> Improve -> Sustain -> Observe & Learn, unchanged
+   sequence. Works on both dark (.sec-how) and light (.page-section.tint)
+   grounds via the .sec-how descendant overrides in system.css. */
+const loopSVG = `<svg class="loop-diagram" viewBox="-20 0 560 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Opsteady loop: Observe and Learn, Stabilise, Improve, Sustain, returning to Observe and Learn, clockwise.">
   <defs>
     <linearGradient id="loopGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EDC07A"/>
-      <stop offset="50%" stop-color="#D08F25"/>
-      <stop offset="100%" stop-color="#946719"/>
+      <stop offset="0%" stop-color="#F0C875"/>
+      <stop offset="45%" stop-color="#D08F25"/>
+      <stop offset="100%" stop-color="#8A5A14"/>
     </linearGradient>
   </defs>
-  <circle class="loop-guide" cx="250" cy="170" r="130"/>
-  <line class="loop-cross" x1="236" y1="170" x2="264" y2="170"/>
-  <line class="loop-cross" x1="250" y1="156" x2="250" y2="184"/>
+  <g transform="translate(0,34)">
+  <circle class="loop-guide" cx="250" cy="170" r="152"/>
+  <line class="loop-cross" x1="234" y1="170" x2="266" y2="170"/>
+  <line class="loop-cross" x1="250" y1="154" x2="250" y2="186"/>
 
-  <path class="loop-ring-inner" d="M 285.87 99.61 A 79 79 0 0 1 320.39 134.13 L 313.26 137.77 A 71 71 0 0 0 282.23 106.74 Z"/>
-  <path class="loop-ring-inner" d="M 320.39 205.87 A 79 79 0 0 1 285.87 240.39 L 282.23 233.26 A 71 71 0 0 0 313.26 202.23 Z"/>
-  <path class="loop-ring-inner" d="M 214.13 240.39 A 79 79 0 0 1 179.61 205.87 L 186.74 202.23 A 71 71 0 0 0 217.77 233.26 Z"/>
-  <path class="loop-ring-inner" d="M 179.61 134.13 A 79 79 0 0 1 214.13 99.61 L 217.77 106.74 A 71 71 0 0 0 186.74 137.77 Z"/>
+  <path class="loop-ring-inner" d="M 288 104.18 A 76 76 0 0 1 315.82 132 L 308.89 136 A 68 68 0 0 0 284 111.11 Z"/>
+  <path class="loop-ring-inner" d="M 315.82 208 A 76 76 0 0 1 288 235.82 L 284 228.89 A 68 68 0 0 0 308.89 204 Z"/>
+  <path class="loop-ring-inner" d="M 212 235.82 A 76 76 0 0 1 184.18 208 L 191.11 204 A 68 68 0 0 0 216 228.89 Z"/>
+  <path class="loop-ring-inner" d="M 184.18 132 A 76 76 0 0 1 212 104.18 L 216 111.11 A 68 68 0 0 0 191.11 136 Z"/>
 
-  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 270.61 63.98 A 108 108 0 0 1 356.02 149.39 L 341.29 152.25 A 93 93 0 0 0 267.75 78.71 Z"/>
-  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 356.02 190.61 A 108 108 0 0 1 270.61 276.02 L 267.75 261.29 A 93 93 0 0 0 341.29 187.75 Z"/>
-  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 229.39 276.02 A 108 108 0 0 1 143.98 190.61 L 158.71 187.75 A 93 93 0 0 0 232.25 261.29 Z"/>
-  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 143.98 149.39 A 108 108 0 0 1 229.39 63.98 L 232.25 78.71 A 93 93 0 0 0 158.71 152.25 Z"/>
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 279.69 41.38 A 132 132 0 0 1 378.62 140.31 L 347.44 147.5 A 100 100 0 0 0 272.5 72.56 Z"/>
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 378.62 199.69 A 132 132 0 0 1 279.69 298.62 L 272.5 267.44 A 100 100 0 0 0 347.44 192.5 Z"/>
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 220.31 298.62 A 132 132 0 0 1 121.38 199.69 L 152.56 192.5 A 100 100 0 0 0 227.5 267.44 Z"/>
+  <path class="loop-ring" fill="url(#loopGoldGrad)" d="M 121.38 140.31 A 132 132 0 0 1 220.31 41.38 L 227.5 72.56 A 100 100 0 0 0 152.56 147.5 Z"/>
 
-  <polygon class="loop-arrow" points="334.11,130.78 347.03,145.81 357.05,164.39"/>
-  <polygon class="loop-arrow" points="289.22,254.11 274.19,267.03 255.61,277.05"/>
-  <polygon class="loop-arrow" points="165.89,209.22 152.97,194.19 142.95,175.61"/>
-  <polygon class="loop-arrow" points="210.78,85.89 225.81,72.97 244.39,62.95"/>
+  <polygon class="loop-arrow" points="333.77,115.6 360.93,136.08 382.1,167.69"/>
+  <polygon class="loop-arrow" points="304.4,253.77 283.92,280.93 252.31,302.1"/>
+  <polygon class="loop-arrow" points="166.23,224.4 139.07,203.92 117.9,172.31"/>
+  <polygon class="loop-arrow" points="195.6,86.23 216.08,59.07 247.69,37.9"/>
 
-  <g><circle class="loop-node-ring" cx="250" cy="70" r="8"/><circle class="loop-node-dot" cx="250" cy="70" r="3"/></g>
-  <g><circle class="loop-node-ring" cx="350" cy="170" r="8"/><circle class="loop-node-dot" cx="350" cy="170" r="3"/></g>
-  <g><circle class="loop-node-ring" cx="250" cy="270" r="8"/><circle class="loop-node-dot" cx="250" cy="270" r="3"/></g>
-  <g><circle class="loop-node-ring" cx="150" cy="170" r="8"/><circle class="loop-node-dot" cx="150" cy="170" r="3"/></g>
+  <g><circle class="loop-node-ring" cx="250" cy="54" r="9"/><circle class="loop-node-dot" cx="250" cy="54" r="3.5"/></g>
+  <g><circle class="loop-node-ring" cx="366" cy="170" r="9"/><circle class="loop-node-dot" cx="366" cy="170" r="3.5"/></g>
+  <g><circle class="loop-node-ring" cx="250" cy="286" r="9"/><circle class="loop-node-dot" cx="250" cy="286" r="3.5"/></g>
+  <g><circle class="loop-node-ring" cx="134" cy="170" r="9"/><circle class="loop-node-dot" cx="134" cy="170" r="3.5"/></g>
 
-  <line class="loop-tick" x1="250" y1="40" x2="250" y2="26"/>
-  <line class="loop-tick" x1="380" y1="170" x2="394" y2="170"/>
-  <line class="loop-tick" x1="250" y1="300" x2="250" y2="314"/>
-  <line class="loop-tick" x1="120" y1="170" x2="106" y2="170"/>
+  <line class="loop-tick" x1="250" y1="18" x2="250" y2="2"/>
+  <line class="loop-tick" x1="402" y1="170" x2="418" y2="170"/>
+  <line class="loop-tick" x1="250" y1="322" x2="250" y2="338"/>
+  <line class="loop-tick" x1="98" y1="170" x2="82" y2="170"/>
 
-  <text class="loop-label" x="250" y="16" text-anchor="middle">OBSERVE &amp; LEARN</text>
-  <text class="loop-label" x="402" y="175" text-anchor="start">STABILISE</text>
-  <text class="loop-label" x="250" y="335" text-anchor="middle">IMPROVE</text>
-  <text class="loop-label" x="98" y="175" text-anchor="end">SUSTAIN</text>
+  <text class="loop-label" x="250" y="-10" text-anchor="middle">OBSERVE &amp; LEARN</text>
+  <text class="loop-label" x="430" y="175" text-anchor="start">STABILISE</text>
+  <text class="loop-label" x="250" y="350" text-anchor="middle">IMPROVE</text>
+  <text class="loop-label" x="70" y="175" text-anchor="end">SUSTAIN</text>
+  </g>
 </svg>`;
 
 const homeMain = `
@@ -210,7 +216,7 @@ const homeMain = `
 
   <section class="sec-credibility">
     <div class="shell">
-      <div class="prose-row">
+      <div class="editorial-row">
         <div>
           <div class="cred-head">
             <div class="eyebrow">Built from running manufacturing operations</div>
@@ -220,7 +226,14 @@ const homeMain = `
           <p class="cred-body">That's why the focus is practical: understand the problem before changing it, make the next step manageable, explain the thinking behind the method and leave your team with something they can actually use.</p>
           <p class="cred-cta"><a class="btn-text" href="/site/who-we-are.html">More about who we are <span class="arrow">→</span></a></p>
         </div>
-        <div class="cred-mark" aria-hidden="true">&rdquo;</div>
+        <div class="info-panel">
+          <div class="info-panel-label mono">Why sites choose this</div>
+          <dl class="info-panel-list">
+            <div><dt>No sales calls</dt></div>
+            <div><dt>Clear pricing, shown before you buy</dt></div>
+            <div><dt>Built by people who've run manufacturing operations, not consultants</dt></div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>

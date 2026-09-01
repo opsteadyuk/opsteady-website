@@ -34,21 +34,42 @@ function resolvePaths(m) {
   return { guidePath: principal ? abs(principal.filename) : null, faqPath: faq ? abs(faq.filename) : null };
 }
 
+/* Markdown is authored, never rendered here (this layer outputs plain
+   strings for HTML templates to drop straight into text nodes) -- strip
+   bold/italic markers rather than leave "**text**" visible literally.
+   2026-09-02 audit found 8 modules with unstripped ** surviving into
+   customer-facing copy; fixed at the source, not per-module. */
+function stripMarkdownEmphasis(s) {
+  return s.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/(^|\s)\*([^*\n]+)\*(?=\s|$)/g, "$1$2");
+}
+/* A tier-annotation line ("*Essentials and Pro*", "*Pro only*", etc.) sometimes
+   sits directly under the "What this is" heading, before the real paragraph.
+   2026-09-02 audit found 2 modules (P4.5, P8.1) where this line was captured
+   AS the first paragraph because the old skip pattern only matched an
+   italic *(...)* form with parentheses. Broadened to match any single-line
+   italic annotation, and independently guard against one slipping through. */
+function isTierBadgeArtifact(s) {
+  return /^(essentials|pro|showcase)([\s,&]+(essentials|pro|showcase))*$/i.test(s.trim());
+}
+
 function extractGuide(text) {
   const out = {};
-  let m = text.match(/##\s*\d*\.?\s*What this is,? and what it fixes\s*\n+(?:\*\([^)]*\)\*\s*\n+)?([^\n#]+(?:\n(?!\n)[^\n#]+)*)/i);
-  if (m) out.firstPara = m[1].trim().replace(/\s+/g, " ");
+  let m = text.match(/##\s*\d*\.?\s*What this is,? and what it fixes\s*\n+(?:\*[^*\n]*\*\s*\n+)?([^\n#]+(?:\n(?!\n)[^\n#]+)*)/i);
+  if (m) {
+    const candidate = stripMarkdownEmphasis(m[1].trim().replace(/\s+/g, " "));
+    if (!isTierBadgeArtifact(candidate)) out.firstPara = candidate;
+  }
   m = text.match(/\*\*Time[.:]?\*\*\s*([^\n]+)/i);
-  if (m) out.time = m[1].trim();
+  if (m) out.time = stripMarkdownEmphasis(m[1].trim());
   m = text.match(/\*\*People[.:]?\*\*\s*([^\n]+)/i);
-  if (m) out.people = m[1].trim();
+  if (m) out.people = stripMarkdownEmphasis(m[1].trim());
   m = text.match(/\*\*Materials?[.:]?\*\*\s*([^\n]+)/i);
-  if (m) out.materials = m[1].trim();
+  if (m) out.materials = stripMarkdownEmphasis(m[1].trim());
   m = text.match(/##\s*\d*\.?\s*What good looks like\s*\n+([\s\S]{0,600}?)(?=\n##|\n---)/i);
   if (m) {
     const block = m[1].replace(/<svg[\s\S]*?<\/svg>/gi, "").trim();
     const para = block.split(/\n\n+/).find((p) => p.length > 60 && !p.startsWith("|"));
-    if (para) out.sample = para.trim().replace(/\s+/g, " ").slice(0, 480);
+    if (para) out.sample = stripMarkdownEmphasis(para.trim().replace(/\s+/g, " ").slice(0, 480));
   }
   return out;
 }
@@ -97,15 +118,46 @@ function hasEssentials(m) {
   return m.tier.tier_structure === "pro_plus_essentials";
 }
 
+/* Deliverable-kind detection. 2026-09-02 audit found two real, compounding
+   bugs: (1) P1.2 (Training Plan & Competency Sign-off) had every file
+   misclassified as "Training" because a bare substring test matched the
+   module's own name, not just its filename suffix; (2) fixing that with
+   /pro|essentials|guide/i introduced a second bug -- "pro" as a loose
+   substring matches inside ordinary words like "Process" or "Improve"
+   (e.g. Layered_Process_Audit_System_Training.md was reclassified as
+   "Guide" because it contains "Pro" inside "Process"). Fixed properly by
+   reading only the filename's own last "_"-delimited segment (its actual
+   naming-convention suffix -- _Pro/_Essentials/_Guide/_FAQ/_Training),
+   never the module-name words earlier in the filename. role is checked
+   first since it's already-structured register data, more reliable than
+   any filename guessing. */
 function insideItems(m) {
   return (m.implementation.files_present || [])
     .filter((f) => f.role !== "internal_metadata")
     .map((f) => {
       let kind = "Guide";
-      if (/faq/i.test(f.filename)) kind = "FAQ";
-      else if (/training/i.test(f.filename)) kind = "Training";
-      else if (f.role === "working_artefact") kind = /\.xlsx$/i.test(f.filename) ? "Workbook" : "Template";
+      if (f.role === "working_artefact") kind = /\.xlsx$/i.test(f.filename) ? "Workbook" : "Template";
       else if (f.role === "supporting_asset") kind = "Reference";
+      else {
+        const base = f.filename.replace(/\.[a-z0-9]+$/i, "");
+        if (base.includes("_")) {
+          // Dominant catalogue convention: the kind is the file's own last
+          // "_"-delimited segment (…_Pro.md, …_Training.md, etc).
+          const suffix = base.slice(base.lastIndexOf("_") + 1).toLowerCase();
+          if (suffix === "faq") kind = "FAQ";
+          else if (suffix === "training") kind = "Training";
+          else if (suffix === "pro" || suffix === "essentials" || suffix === "guide") kind = "Guide";
+        } else {
+          // One module (E5) uses a different, space/hyphen-separated
+          // convention with the kind word not always last ("... - training
+          // document.md"). Whole-word match instead -- scoped to only
+          // non-underscore filenames so this looser check never re-touches
+          // the 69 modules the precise rule above already handles correctly.
+          const words = base.toLowerCase().split(/[\s-]+/);
+          if (words.includes("faq")) kind = "FAQ";
+          else if (words.includes("training")) kind = "Training";
+        }
+      }
       return { kind, label: f.filename.replace(/\.[a-z0-9]+$/i, "").replace(/_/g, " ") };
     });
 }

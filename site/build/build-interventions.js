@@ -1,15 +1,17 @@
 "use strict";
 const { w, page, HC_URL, getModuleData, getCatalogueListing, packageGrid, photoHero, customerCategory, CATEGORY_ORDER, categoryAnchor } = require("./build.js");
 
-/* ---- Tool-category photography (Level 2), 2026-09-01 ----
-   8 of the 9 real customer categories (CATEGORY_ORDER in build.js) have an
-   assigned photograph from the approved signature-manufacturing set; "Wider
-   capability" (the 11 Enablers) has none -- the register itself calls
-   Enablers cross-cutting, not tied to one area, so no single photo honestly
-   represents them, and none is invented here. Determined programmatically
-   from customerCategory(), never hand-mapped per module: every Tool in a
-   category shares that category's one image (explicitly sanctioned --
-   "if multiple Tools can share a category image, that is acceptable"). */
+/* ---- Tool-category photography (Level 2), 2026-09-02 ----
+   Every one of the 9 real customer categories (CATEGORY_ORDER in build.js)
+   now has an assigned photograph from the approved signature-manufacturing
+   set -- "Wider capability" (the 11 Enablers) previously had none and used
+   a gradient fallback; that exception ended with the arrival of
+   opsteady-tool-family-wider-capability.jpg. There is now no category-
+   specific gradient fallback anywhere in the Tool-page system. Determined
+   programmatically from customerCategory(), never hand-mapped per module:
+   every Tool in a category shares that category's one image (explicitly
+   sanctioned -- "if multiple Tools can share a category image, that is
+   acceptable"). */
 const CATEGORY_IMAGES = {
   "Output & Flow": {
     src: "/site/assets/photography/category-output-flow.jpg",
@@ -51,6 +53,11 @@ const CATEGORY_IMAGES = {
     alt: "A small team reviewing a wall-mounted performance chart together on the production floor.",
     width: 1168, height: 784, objectPosition: "32% 38%",
   },
+  "Wider capability": {
+    src: "/site/assets/photography/category-wider-capability.jpg",
+    alt: "Four colleagues gathered around a workbench, examining a piece of tooling together as part of a cross-functional discussion.",
+    width: 1168, height: 784, objectPosition: "42% 40%",
+  },
 };
 
 const listing = getCatalogueListing();
@@ -87,6 +94,9 @@ const idxHtml = groupOrder.map((g) => {
       </div>`;
 }).join("\n      ");
 
+/* ---- Tools index hero — 2026-09-02: the gradient placeholder is
+   retired now that a dedicated asset (opsteady-tools-index-hero.jpg)
+   exists for this exact surface. Approved copy unchanged. ---- */
 w("site/interventions/index.html", page({
   current: "interventions",
   title: "Tools | Opsteady",
@@ -97,14 +107,20 @@ w("site/interventions/index.html", page({
     eyebrow: "Tools",
     h1: "Find the one you need, or see what's available.",
     sub: "Each Tool is a complete, practical way to fix one specific thing: the working file itself, clear instructions, examples and guidance for putting it to work, not just a blank template.",
-    spec: "Tools index hero. No image was assigned to this surface in the 2026-08-31 approved photography set (Level 1 major-page heroes: Home, Health Check, Problems hub, How It Works, Who We Are -- Tools index isn't in that list). Deliberately not filled with a repurposed asset from elsewhere in this pass, per standing instruction not to invent a mapping. If Matt wants a dedicated Tools-index hero, it needs its own commissioned/approved asset -- until then this gradient slot is the correct, honest treatment. Subject if commissioned: a genuine, non-generic manufacturing working environment, landscape, subject weighted right-of-frame, left third clear for the headline/search field.",
+    image: {
+      src: "/site/assets/photography/hero-tools-index.jpg",
+      alt: "A wide view down a manufacturing workshop aisle, machinery and staged materials on both sides, operators working at stations along the line.",
+      width: 1168, height: 784,
+      objectPosition: "58% 40%",
+      priority: true,
+    },
   })}
   <section class="page-section">
     <div class="shell">
       <div class="idx-search-wrap">
         <input type="search" id="idx-search" class="idx-search" placeholder="Search: &quot;skills matrix,&quot; &quot;changeover,&quot; &quot;delivery&quot;..." aria-label="Search Tools">
       </div>
-      <p style="margin-top:14px;">Not sure which one? <a class="btn-text" href="${HC_URL}">Run the health check instead <span class="arrow">→</span></a></p>
+      <p style="margin-top:14px;">Not sure which one? <a class="btn-text" href="${HC_URL}">Run the Health Check instead <span class="arrow">→</span></a></p>
       ${idxHtml}
     </div>
   </section>
@@ -128,107 +144,191 @@ w("site/interventions/index.html", page({
   `,
 }));
 
-/* ---- One Tool page per commercially-available module ----
-   Dramatically simplified vs. the prior 10-section archetype
-   (situation/fit/outcome/contents/effort/tier-table/sample/5-item-FAQ):
-   2-3 short paragraphs, the shared compact package component, a short
-   Essentials/Pro line where both exist, and compact commercial facts --
-   no reproduced methodology, no FAQ wall. Per the brief's own
-   instruction: this is a sales page, not the Tool itself. */
-let generated = 0;
-const p41StageTag = "Observe & Learn"; /* real, from P4.1's own Framing.md — only module with a verified stage tag; not extended to others without equivalent evidence */
+/* =========================================================
+   CANONICAL TOOL-PAGE SYSTEM, 2026-09-02
+   One template, one component sequence, for all 70 Tools:
+     hero (title / proposition / price+tier / CTA -- nothing else)
+     -> Overview + At a Glance (fixed two-column grid)
+     -> optional contextual callout (BEFORE YOU START / WORKED
+        EXAMPLE / IMPORTANT TO KNOW -- most Tools have none)
+     -> What You Get (unchanged four-card component)
+     -> Health Check + Related Tools closing
+   Content length changes page HEIGHT; it must never change which
+   of these sections exists, their order, or their geometry.
+========================================================= */
 
-/* Customer-safe "when is this useful" clause — deliberately does not
-   reuse product-data.js's stageContext()/stageProse, which names
-   "Pillar"/"Foundation" (internal taxonomy). Fixed at the point of use
-   rather than in the shared data layer, which other, dormant prototype
-   generators also consume. */
-function whenRightFor(d, cat) {
-  if (d.category === "Foundation") return "it's usually worth putting in place early: it's a sitewide standard most other Tools in this area build on.";
-  if (d.category === "Enabler") return "it's usually useful alongside other Tools, not tied to one stage.";
-  if (d.lead) return `it's usually the starting point for ${cat}.`;
-  const req = d.edges.find((e) => e.label === "Requires first") || d.edges[0];
-  return req ? `it's usually useful once ${req.name} is already in place.` : `it's usually useful once the basics for ${cat} are in place.`;
+function wordCount(s) { return (s || "").trim().split(/\s+/).filter(Boolean).length; }
+/* 2026-09-02: found via visual QA that a naive split on every "." breaks
+   mid-module-ID whenever source prose references another module inline
+   ("...(P5.5)." -> a false sentence boundary right after "P5", producing
+   a garbage hero fragment like "5)."). Module IDs (P5.1, F2.3, E9.1) are
+   protected before splitting and restored after, so a real prerequisite
+   citation in the prose no longer corrupts the hero proposition. */
+function splitSentences(text) {
+  if (!text) return [];
+  const protectedText = text.replace(/\b([A-Z]{1,2}\d+)\.(\d+)\b/g, "$1 $2");
+  const sentences = protectedText.match(/[^.!?]+[.!?]+(\s+|$)/g) || [protectedText.trim()];
+  return sentences.map((s) => s.trim().replace(/ /g, "."));
 }
+
+/* Hero proposition (<=~45 words, per spec §11) and Overview body are
+   built from the same two source fields (outcome, situation) so they
+   never repeat each other verbatim: the hero consumes outcome plus as
+   many leading situation sentences as fit inside the word budget: the
+   Overview gets whatever's left. If situation is fully consumed by the
+   hero (only true for the shortest-content modules -- genuinely minimal
+   source, not a bug), Overview falls back to outcome alone; the same
+   sentence appearing in both is an honest reflection of minimal source
+   depth in that case, reported rather than padded with invented text. */
+function buildToolContent(d) {
+  const outcome = (d.outcome || "").trim();
+  const outcomeWords = wordCount(outcome);
+  const sameAsOutcome = !d.situation || d.situation.trim() === outcome;
+  const sentences = sameAsOutcome ? [] : splitSentences(d.situation);
+  let hero = outcome;
+  let words = outcomeWords;
+  let consumed = 0;
+  if (outcomeWords < 45) {
+    for (const s of sentences) {
+      const sw = wordCount(s);
+      if (words + sw > 45) break;
+      hero += (hero ? " " : "") + s;
+      words += sw;
+      consumed++;
+    }
+  }
+  const remainder = sentences.slice(consumed).join(" ").trim();
+  return { hero, overview: remainder || outcome, overviewIsDegenerate: !remainder };
+}
+
+/* At a Glance — Time / Who's involved / What you'll need (Materials
+   mapped to this label per spec §12), only the rows that genuinely
+   exist. Per spec: never fabricate a row, never show an empty labelled
+   row, but the panel itself stays in the same right-column position
+   even when a Tool has none of the three fields -- only F3.1 Culture
+   Guide, per the 2026-09-02 audit, whose panel renders the heading with
+   no rows beneath it rather than being silently dropped. Flagged
+   explicitly in this session's report. */
+function atAGlancePanel(d) {
+  const rows = [];
+  if (d.time) rows.push(["Time", d.time]);
+  if (d.people) rows.push(["Who's involved", d.people]);
+  if (d.materials) rows.push(["What you'll need", d.materials]);
+  // A module with none of the three fields (source-data gap, e.g. Culture/F3.1
+  // -- flagged in the 2026-09-02 report, not invented) keeps the grid column
+  // occupied but drops the "At a glance" label rather than showing a heading
+  // over empty space.
+  return { html: `<div class="at-a-glance">
+        ${rows.length ? `<div class="info-panel-label mono">At a glance</div>
+        <dl class="info-panel-list">
+          ${rows.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("\n          ")}
+        </dl>` : ""}
+      </div>`, rowCount: rows.length };
+}
+
+/* Optional contextual callout -- the ONE controlled slot (spec §13),
+   strictly one of BEFORE YOU START / WORKED EXAMPLE / IMPORTANT TO
+   KNOW, same geometry, only label/icon/content differ. Determined
+   programmatically: any module with a real "Requires first" edge gets
+   BEFORE YOU START (22 of 70, per the 2026-09-02 audit) listing those
+   real prerequisite Tools; P4.1 keeps its existing governed WORKED
+   EXAMPLE with the exact approved numbers, unchanged. No module uses
+   IMPORTANT TO KNOW in this pass -- no reliable programmatic signal
+   for it exists in the current register, and inventing one risks
+   exactly the bespoke-page-per-Tool outcome this system exists to end. */
+function contextualCallout(d) {
+  if (d.id === "P4.1") {
+    return calloutShell("Worked example", `<p>One week of measurement gets you one step clearly identified as the binding constraint, a sized cost in units per week, and a first attempt at getting more from that step before anyone signs off on new capital.</p>
+      <p class="mono callout-figures">Press 3: 180 units/week &nbsp;·&nbsp; Packing: 310 units/week &nbsp;·&nbsp; Gap: approximately 130 units/week &nbsp;·&nbsp; Press 3 is the identified constraint.</p>`);
+  }
+  const prereqs = d.edges.filter((e) => e.label === "Requires first");
+  if (prereqs.length) {
+    return calloutShell("Before you start", `<p>${prereqs.length > 1 ? "This works best once these are already in place:" : "This works best once this is already in place:"}</p>
+      <ul class="callout-list">${prereqs.map((p) => `<li><a href="/site/interventions/${p.slug}.html">${p.name}</a></li>`).join("")}</ul>`);
+  }
+  return "";
+}
+function calloutShell(label, bodyHtml) {
+  return `<section class="iv-section iv-callout"><div class="shell">
+    <span class="info-panel-label mono">${label}</span>
+    ${bodyHtml}
+  </div></section>`;
+}
+
+/* Related Tools — ranked by real relationship type (a hard prerequisite
+   is more decision-relevant to a buyer than a loose overlap note), one
+   deterministic display cap across all 70 pages. Labels are kept, not
+   flattened to a generic "Related" -- the 2026-09-02 audit found 6
+   genuinely distinct relationship types in the register data and no
+   basis for judging the distinction unimportant. */
+const EDGE_PRIORITY = ["Requires first", "Works well with", "Helps if you already have", "Related", "Shares evidence with", "Overlaps with"];
+const RELATED_MAX = 4;
+function rankedRelated(edges) {
+  return [...edges]
+    .sort((a, b) => EDGE_PRIORITY.indexOf(a.label) - EDGE_PRIORITY.indexOf(b.label))
+    .slice(0, RELATED_MAX);
+}
+
+let generated = 0;
 
 for (const listed of listing) {
   const d = getModuleData(listed.id);
   const cat = customerCategory(listed);
-
+  const catImage = CATEGORY_IMAGES[cat];
   const isP41 = d.id === "P4.1";
-  const situation = isP41
-    ? "For a site where lead times keep creeping up, every station looks busy, and nobody can say for certain which one is actually setting the pace."
-    : (d.situation || d.outcome);
+
+  const { hero: proposition, overview } = buildToolContent(d);
 
   /* Showcase pricing shown as an explicit showcase price against the
      standard price -- never as a struck-through "was" discount device
      (Experience Authority §15 / Phase 4 ruling §11: "do not invent
-     scarcity," no was/now framing). */
+     scarcity," no was/now framing). One purchase-row component,
+     unchanged geometry regardless of tier/showcase state (spec §11). */
   const priceBlock = d.hasEssentials
     ? `<span class="iv-price">Essentials £${d.priceEssentials.price} · Pro £${d.pricePro.price}${d.pricePro.was ? ` <span class="showcase-note">(Showcase Pro price. Standard Pro price £${d.pricePro.was}.)</span>` : ""}</span>`
     : d.pricePro.was
       ? `<span class="iv-price">Pro £${d.pricePro.price} <span class="showcase-note">(Showcase price. Standard Pro price £${d.pricePro.was}.)</span></span>`
       : `<span class="iv-price">£${d.pricePro.price}</span>`;
 
-  /* Paragraph 1 — what it helps you achieve (the hero above already
-     states the situation/problem, so this doesn't repeat it). */
-  const p1 = isP41
-    ? "Every site has an opinion on what's slowing the line, usually the loudest voice or the most recent annoyance, rarely checked against data. The Bottleneck Analysis Tool finds the real constraint: the one step that sets the pace for everything after it, measured, not guessed."
-    : d.outcome;
-
-  /* Paragraph 2 — what your team actually does with it. */
-  const p2 = isP41
-    ? "One week of measurement gets you one step clearly identified as the binding constraint, a sized cost in units per week, and a first attempt at getting more from that step before anyone signs off on new capital. Worked example in the Tool: Press 3 measured at 180 units/week against Packing at 310, roughly 130 units a week sitting on the table, and Press 3, not the station everyone blamed, was the actual constraint."
-    : `Your team works through it using the guide and working materials below: ${whenRightFor(d, cat)}`;
-
-  const factTags = [];
-  if (d.time) factTags.push(`<div class="iv-fact"><span class="iv-fact-label mono">Time</span>${d.time}</div>`);
-  if (d.people) factTags.push(`<div class="iv-fact"><span class="iv-fact-label mono">Who's involved</span>${d.people}</div>`);
-  if (d.materials) factTags.push(`<div class="iv-fact"><span class="iv-fact-label mono">Materials</span>${d.materials}</div>`);
-
-  const tierNote = d.hasEssentials
-    ? `<p class="iv-tier-note">Essentials gets your team running with the tool, instructions and the reasoning behind the main decisions. Pro adds the full playbook: failure modes, edge cases and the judgement calls the standard case doesn't cover.</p>`
+  const glance = atAGlancePanel(d).html;
+  const callout = contextualCallout(d);
+  const related = rankedRelated(d.edges);
+  const relatedHtml = related.length
+    ? `<div class="iv-related">${related.map((e) => `<a class="tag" href="/site/interventions/${e.slug}.html">${e.label}: ${e.name}</a>`).join("")}</div>`
     : "";
-
-  const relatedHtml = d.edges.length
-    ? `<div class="iv-related">${d.edges.map((e) => `<a class="tag" href="/site/interventions/${e.slug}.html">${e.label}: ${e.name}</a>`).join("")}</div>`
-    : "";
-
-  const catImage = CATEGORY_IMAGES[cat];
-  const heroMedia = catImage
-    ? `<div class="iv-hero-media"><img src="${catImage.src}" alt="${catImage.alt}" width="${catImage.width}" height="${catImage.height}" style="object-position:${catImage.objectPosition};" loading="eager" decoding="async"></div>`
-    : `<!-- No photograph assigned to "Wider capability" (Enablers) -- the register calls Enablers
-       cross-cutting, not tied to one area, so no single category photo honestly represents them.
-       Not filled with a mismatched image; the gradient slot below is the correct treatment. -->
-  <div class="iv-hero-slot"></div>`;
 
   const main = `
   <div class="shell"><nav class="breadcrumb"><a href="/site/interventions/index.html">Tools</a> → <a href="/site/interventions/index.html#${categoryAnchor(cat)}">${cat}</a> → ${d.name}</nav></div>
-  <section class="iv-hero${catImage ? " iv-hero-photo" : ""}">
-    ${heroMedia}
+  <section class="iv-hero iv-hero-photo">
+    <div class="iv-hero-media"><img src="${catImage.src}" alt="${catImage.alt}" width="${catImage.width}" height="${catImage.height}" style="object-position:${catImage.objectPosition};" loading="eager" decoding="async"></div>
     <div class="shell">
-      ${isP41 ? `<span class="tag on-navy">${p41StageTag}</span>` : ""}
       <h1>${d.name}</h1>
-      <p class="iv-situation">${situation}</p>
+      <p class="iv-situation">${isP41 ? "Every site has an opinion on what's slowing the line, usually the loudest voice or the most recent annoyance, rarely checked against data. The Bottleneck Analysis Tool finds the real constraint: the one step that sets the pace for everything after it, measured, not guessed." : proposition}</p>
       <div class="iv-buy" id="buy">${priceBlock}<a class="btn btn-primary on-light" href="#buy">Buy now</a></div>
     </div>
   </section>
 
   <section class="iv-section" style="border-top:none;"><div class="shell">
-    <p class="iv-core">${p1}</p>
-    <p class="iv-core">${p2}</p>
-    <span class="eyebrow" style="display:block;margin-top:36px;">What you get</span>
+    <div class="iv-overview-grid">
+      <div class="iv-overview">
+        <span class="eyebrow">Overview</span>
+        <p class="iv-core">${isP41 ? "For a site where lead times keep creeping up, every station looks busy, and nobody can say for certain which one is actually setting the pace." : overview}</p>
+      </div>
+      ${glance}
+    </div>
+  </div></section>
+  ${callout}
+  <section class="iv-section"><div class="shell">
+    <span class="eyebrow">What you get</span>
     <h2>Everything you need to put it to work</h2>
     ${packageGrid({ compact: true })}
-    ${tierNote}
-    ${factTags.length ? `<div class="iv-facts">${factTags.join("")}</div>` : ""}
   </div></section>
 
   <section class="iv-section iv-hc-band">
     <div class="shell">
       <h2 style="color:#fff;">Not sure this is the right starting point?</h2>
-      <a class="btn-text on-navy" href="${HC_URL}">Run the health check <span class="arrow">→</span></a>
-      ${relatedHtml}
+      <a class="btn-text on-navy" href="${HC_URL}">Run the Health Check <span class="arrow">→</span></a>
+      ${relatedHtml ? `<div class="eyebrow on-navy iv-related-label">Related Tools</div>${relatedHtml}` : ""}
     </div>
   </section>
   `;
