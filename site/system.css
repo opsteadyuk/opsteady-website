@@ -295,12 +295,15 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 
 /* =========================================================
    PHOTO HERO — interior-page hero. Same DOM shape as the homepage
-   hero (media/scrim/content layers). Real photography wired in
-   2026-08-31 (Health Check, Problems hub, How It Works, Who We Are)
-   from the approved signature-manufacturing set. The Tools index has
-   no assigned asset in that set and none is invented here, so
-   `.photo-hero-slot` (an on-brand gradient + hairline texture, never
-   a bare/broken image) still stands in for it — see that page's own
+   hero (media/scrim/content layers). Real photography wired in from
+   the approved signature-manufacturing set for Health Check and
+   Problems Hub. How It Works and Who We Are deliberately carry no
+   photography — the approved Visual Asset Matrix (§C) rules out a
+   physical-world image for How It Works entirely, and reserves
+   Who We Are for future real founder photography only, never a
+   generic/synthetic substitute — so both fall back to
+   `.photo-hero-slot` (an on-brand gradient + hairline texture,
+   never a bare/broken image). See each page's own governed-slot
    HTML comment.
 ========================================================= */
 .v6 .photo-hero{position:relative;min-height:50vh;display:flex;align-items:flex-end;background:var(--n6-ink);overflow:hidden;}

@@ -71,13 +71,7 @@ w("site/who-we-are.html", page({
     eyebrow: "Who we are",
     h1: "No name on this site. Judge it by the work.",
     sub: "Opsteady is a small operation, run by one person, with no team, no office and no sales function. That's a deliberate choice, not a stage it's trying to grow out of. Nobody will call you.",
-    image: {
-      src: "/site/assets/photography/hero-who-we-are.jpg",
-      alt: "A hydraulic stamping press in an industrial workshop, tooling and stacked sheet steel in the foreground, with a non-identifiable operator visible at a workbench in the background.",
-      width: 1168, height: 784,
-      objectPosition: "58% 45%",
-      priority: true,
-    },
+    spec: "Who We Are is reserved for future REAL founder/people photography, never synthetic or generic placeholder — OPSTEADY-2.0-VISUAL-ASSET-MATRIX.md §C. Left genuinely empty (on-brand gradient slot) until real photography exists. Do not substitute manufacturing/stock/generated imagery here.",
   })}
 
   <section class="page-section">

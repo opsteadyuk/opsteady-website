@@ -14,13 +14,7 @@ w("site/the-method.html", page({
     eyebrow: "How it works",
     h1: "Start from your site, not a method.",
     sub: "Opsteady doesn't ask which methodology you want to try. It asks what your site actually needs, in what order, and how much of it you can take on right now. This page walks through the whole journey, step by step.",
-    image: {
-      src: "/site/assets/photography/hero-how-it-works.jpg",
-      alt: "An elevated view across a manufacturing floor, showing operators working at stations along a production line with material and equipment visible throughout the operation.",
-      width: 1728, height: 1152,
-      objectPosition: "52% 32%",
-      priority: true,
-    },
+    spec: "How It Works carries no photography by design — OPSTEADY-2.0-VISUAL-ASSET-MATRIX.md §C: 'a physical-world visual has no genuine explanatory role here, accurate system design remains stronger.' The loop diagram below (§4 row 3) is this page's one and only visual. Do not re-add a hero photo here.",
   })}
 
   <section class="page-section">
