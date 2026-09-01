@@ -52,6 +52,101 @@ function isTierBadgeArtifact(s) {
   return /^(essentials|pro|showcase)([\s,&]+(essentials|pro|showcase))*$/i.test(s.trim());
 }
 
+/* =========================================================
+   WEB_COPY.MD — approved per-module customer copy, additive
+   alongside the guide-scrape path above (extractGuide), never
+   replacing it. 70/70 files validated 2026-09 as structurally
+   identical: same frontmatter (module_id/tool_slug/status), same
+   nine `##` sections in the same order. Only six are customer-
+   facing (Hero proposition, Overview, Time, Who's involved, What
+   you'll need, Before you start) -- Sources and "Rejected alternate"
+   are internal citation/audit trail and must never reach the page.
+========================================================= */
+
+/* Every inline citation across all 70 files is either a bracketed
+   span ([Pro §2], [Flag: ...], [FAQ, "..."]) -- confirmed 100% of
+   842 bracket instances in the corpus are citations, none are
+   customer content -- or a parenthetical span that either contains
+   "§" or opens with Pro/Guide/FAQ/Training/Framing, optionally
+   wrapped in italics ("*(Pro guide, §4 ...)*"). Ordinary parentheses
+   without those markers (character names, figures, quoted asides)
+   are real content and must survive untouched -- verified against
+   989 non-citation parenthetical spans in the corpus before this
+   pattern was finalised. Markdown emphasis and backtick code-spans
+   are also normalised here since the guide-scrape path already
+   strips emphasis and Web_Copy content was never rendered before. */
+function stripWebCopyCitations(text) {
+  if (!text) return text;
+  let out = text.replace(/\[[^\]]*\]/g, "");
+  out = out.replace(/\*?\(([^)]*)\)\*?/g, (m, inner) => {
+    if (/§/.test(inner) || /^\s*(pro|guide|faq|training|framing)\b/i.test(inner)) return "";
+    return m;
+  });
+  out = stripMarkdownEmphasis(out);
+  out = out.replace(/`([^`]+)`/g, "<code>$1</code>");
+  out = out.split(/\n\s*\n/).map((para) =>
+    para.replace(/[ \t]+/g, " ").replace(/ +([.,;:!?])/g, "$1").trim()
+  ).filter(Boolean).join("\n\n");
+  return out;
+}
+
+/* Frontmatter + section split by heading index, not a lookahead
+   regex -- an earlier version used `(?=\n##\s|\n*$)` and silently
+   truncated every multi-paragraph section at its first blank line,
+   because `$` matches end-of-LINE under the /m flag needed for
+   `^##`, not end-of-string. Caught via a full 70-file validation
+   pass (E9.1's 4-paragraph Overview came back as 1 paragraph)
+   before this ever reached the build. Index-based slicing has no
+   such ambiguity. */
+function parseWebCopyMd(raw) {
+  const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+  const frontmatter = {};
+  if (fmMatch) {
+    fmMatch[1].split(/\r?\n/).forEach((line) => {
+      const m = line.match(/^(\w+):\s*(.+)$/);
+      if (m) frontmatter[m[1]] = m[2].trim();
+    });
+  }
+  const body = fmMatch ? raw.slice(fmMatch[0].length) : raw;
+  const headingRe = /^##\s+(.+?)\s*$/gm;
+  const heads = [];
+  let hm;
+  while ((hm = headingRe.exec(body))) {
+    heads.push({ title: hm[1].trim(), lineStart: hm.index, contentStart: hm.index + hm[0].length });
+  }
+  const sections = {};
+  for (let i = 0; i < heads.length; i++) {
+    const end = i + 1 < heads.length ? heads[i + 1].lineStart : body.length;
+    sections[heads[i].title] = body.slice(heads[i].contentStart, end).trim();
+  }
+  return { frontmatter, sections };
+}
+
+const WEB_COPY_CUSTOMER_FIELDS = {
+  heroProposition: "Hero proposition",
+  overview: "Overview",
+  time: "Time",
+  people: "Who's involved",
+  materials: "What you'll need",
+  beforeYouStart: "Before you start",
+};
+
+/** Approved Web_Copy.md content for one module, or null if absent/not
+ *  approved/incomplete -- callers fall back to the guide-scrape fields
+ *  in that case, so a module without approved copy yet never breaks. */
+function getWebCopy(moduleId, folderPath) {
+  const file = path.join(ROOT, folderPath, `${moduleId}_Web_Copy.md`);
+  if (!fs.existsSync(file)) return null;
+  const { frontmatter, sections } = parseWebCopyMd(fs.readFileSync(file, "utf8"));
+  if (frontmatter.status !== "approved") return null;
+  const out = {};
+  for (const [key, heading] of Object.entries(WEB_COPY_CUSTOMER_FIELDS)) {
+    if (!sections[heading]) return null; // incomplete -- fall back rather than render a partial page
+    out[key] = stripWebCopyCitations(sections[heading]);
+  }
+  return out;
+}
+
 function extractGuide(text) {
   const out = {};
   let m = text.match(/##\s*\d*\.?\s*What this is,? and what it fixes\s*\n+(?:\*[^*\n]*\*\s*\n+)?([^\n#]+(?:\n(?!\n)[^\n#]+)*)/i);
@@ -207,6 +302,7 @@ function getModuleData(moduleId) {
     materials: extra.materials || null,
     sample: extra.sample || null,
     faq: extra.faq || [],
+    webCopy: getWebCopy(m.module_id, m.implementation.folder_path),
   };
 }
 

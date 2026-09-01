@@ -157,6 +157,20 @@ w("site/interventions/index.html", page({
    of these sections exists, their order, or their geometry.
 ========================================================= */
 
+/* Web_Copy.md content can be multiple paragraphs (blank-line separated
+   in source) where the register/guide-scrape fallback is always one --
+   confirmed across all 70 files before this was wired in: Overview is
+   3-4 paragraphs for every module, Who's-involved and Before-you-start
+   are 2 paragraphs for roughly half. A single string dropped into one
+   <p> would run them together with no break. This renders one <p> per
+   paragraph (falling back text with no blank line just yields one <p>,
+   identical to the previous single-paragraph behaviour). */
+function renderParas(text, cls) {
+  if (!text) return "";
+  const classAttr = cls ? ` class="${cls}"` : "";
+  return text.split(/\n\s*\n/).filter(Boolean).map((p) => `<p${classAttr}>${p.trim()}</p>`).join("\n      ");
+}
+
 function wordCount(s) { return (s || "").trim().split(/\s+/).filter(Boolean).length; }
 /* 2026-09-02: found via visual QA that a naive split on every "." breaks
    mid-module-ID whenever source prose references another module inline
@@ -181,6 +195,12 @@ function splitSentences(text) {
    sentence appearing in both is an honest reflection of minimal source
    depth in that case, reported rather than padded with invented text. */
 function buildToolContent(d) {
+  /* Approved Web_Copy.md, when present, replaces this whole algorithmic
+     split -- it already ships a purpose-written Hero proposition and a
+     separate Overview, so there's nothing to derive. Falls through to
+     the existing outcome/situation split for any module without one. */
+  if (d.webCopy) return { hero: d.webCopy.heroProposition, overview: d.webCopy.overview };
+
   const outcome = (d.outcome || "").trim();
   const outcomeWords = wordCount(outcome);
   const sameAsOutcome = !d.situation || d.situation.trim() === outcome;
@@ -210,20 +230,34 @@ function buildToolContent(d) {
    no rows beneath it rather than being silently dropped. Flagged
    explicitly in this session's report. */
 function atAGlancePanel(d) {
+  // Web_Copy.md fields win when present; otherwise the register/guide-scrape
+  // one-liners (e.g. F3.1 Culture Guide had none of the three there -- that
+  // gap is exactly what approved Web_Copy content fills).
+  const time = (d.webCopy && d.webCopy.time) || d.time;
+  const people = (d.webCopy && d.webCopy.people) || d.people;
+  const materials = (d.webCopy && d.webCopy.materials) || d.materials;
   const rows = [];
-  if (d.time) rows.push(["Time", d.time]);
-  if (d.people) rows.push(["Who's involved", d.people]);
-  if (d.materials) rows.push(["What you'll need", d.materials]);
-  // A module with none of the three fields (source-data gap, e.g. Culture/F3.1
-  // -- flagged in the 2026-09-02 report, not invented) keeps the grid column
-  // occupied but drops the "At a glance" label rather than showing a heading
-  // over empty space.
+  if (time) rows.push(["Time", time]);
+  if (people) rows.push(["Who's involved", people]);
+  if (materials) rows.push(["What you'll need", materials]);
+  // A module with none of the three fields keeps the grid column occupied
+  // but drops the "At a glance" label rather than showing a heading over
+  // empty space.
   return { html: `<div class="at-a-glance">
         ${rows.length ? `<div class="info-panel-label mono">At a glance</div>
         <dl class="info-panel-list">
-          ${rows.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("\n          ")}
+          ${rows.map(([label, value]) => `<div><dt>${label}</dt><dd>${renderParas(value)}</dd></div>`).join("\n          ")}
         </dl>` : ""}
       </div>`, rowCount: rows.length };
+}
+
+/* The real, register-derived "Requires first" link block -- shared by
+   both the Web_Copy-present and Web_Copy-absent paths below so the two
+   never drift apart. */
+function prereqLinksHtml(prereqs) {
+  if (!prereqs.length) return "";
+  return `<p>${prereqs.length > 1 ? "This works best once these are already in place:" : "This works best once this is already in place:"}</p>
+      <ul class="callout-list">${prereqs.map((p) => `<li><a href="/site/interventions/${p.slug}.html">${p.name}</a></li>`).join("")}</ul>`;
 }
 
 /* Optional contextual callout -- the ONE controlled slot (spec §13),
@@ -242,9 +276,18 @@ function contextualCallout(d) {
       <p class="mono callout-figures">Press 3: 180 units/week &nbsp;·&nbsp; Packing: 310 units/week &nbsp;·&nbsp; Gap: approximately 130 units/week &nbsp;·&nbsp; Press 3 is the identified constraint.</p>`);
   }
   const prereqs = d.edges.filter((e) => e.label === "Requires first");
+  /* Approved Web_Copy.md always wins this slot with "Before you start"
+     text -- decision made explicitly: Web_Copy's own "Worked example"
+     section is never rendered here, even where the source has a genuine
+     one; it stays in the source file for reference only. But the real,
+     register-derived prerequisite link is additive, not replaced by it
+     -- appended beneath Web_Copy's prose where a real "Requires first"
+     edge exists, so that navigational link is never lost. */
+  if (d.webCopy && d.webCopy.beforeYouStart) {
+    return calloutShell("Before you start", renderParas(d.webCopy.beforeYouStart) + prereqLinksHtml(prereqs));
+  }
   if (prereqs.length) {
-    return calloutShell("Before you start", `<p>${prereqs.length > 1 ? "This works best once these are already in place:" : "This works best once this is already in place:"}</p>
-      <ul class="callout-list">${prereqs.map((p) => `<li><a href="/site/interventions/${p.slug}.html">${p.name}</a></li>`).join("")}</ul>`);
+    return calloutShell("Before you start", prereqLinksHtml(prereqs));
   }
   return "";
 }
@@ -312,7 +355,7 @@ for (const listed of listing) {
     <div class="iv-overview-grid">
       <div class="iv-overview">
         <span class="eyebrow">Overview</span>
-        <p class="iv-core">${isP41 ? "For a site where lead times keep creeping up, every station looks busy, and nobody can say for certain which one is actually setting the pace." : overview}</p>
+        ${isP41 ? `<p class="iv-core">For a site where lead times keep creeping up, every station looks busy, and nobody can say for certain which one is actually setting the pace.</p>` : renderParas(overview, "iv-core")}
       </div>
       ${glance}
     </div>

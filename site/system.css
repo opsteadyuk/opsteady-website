@@ -347,6 +347,12 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .sec-how .info-panel-list dt{color:#fff;}
 .v6 .info-panel-list dd{margin:6px 0 0;font-size:0.92rem;color:var(--ops-text-secondary);}
 .v6 .sec-how .info-panel-list dd{color:var(--n6-pale);}
+/* Approved Web_Copy.md content can put more than one paragraph in a
+   single dd (Who's-involved/What-you'll-need run 2 paragraphs for
+   roughly half of the 70 modules) -- the guide-scrape fallback is
+   always one line, so this only ever engages for Web_Copy content. */
+.v6 .info-panel-list dd p{margin:0 0 8px;}
+.v6 .info-panel-list dd p:last-child{margin-bottom:0;}
 
 /* PROSE WIDE — for narrative pages with no natural structured-content
    pairing (Who We Are). A wider single reading column, generous
@@ -424,6 +430,10 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .iv-overview-grid{display:grid;gap:28px;align-items:start;}
 @media (min-width:900px){.v6 .iv-overview-grid{grid-template-columns:1fr 300px;gap:48px;}}
 .v6 .iv-core{max-width:66ch;font-size:1.05rem;}
+/* Approved Web_Copy.md Overview content is 3-4 paragraphs for every
+   module (register/guide-scrape fallback is always one, so this rule
+   is a no-op there). */
+.v6 .iv-core + .iv-core{margin-top:14px;}
 .v6 .at-a-glance .info-panel-label{margin-bottom:16px;}
 
 /* ---- Optional contextual callout — ONE component, three labels ---- */
