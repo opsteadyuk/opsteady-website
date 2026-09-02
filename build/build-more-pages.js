@@ -25,6 +25,7 @@ w("pricing.html", page({
           <tr><td>A smaller number of deeper, cross-cutting Tools</td><td>£179</td><td>£349</td></tr>
         </tbody>
       </table>
+      <p style="color:var(--ops-n60);font-size:0.9rem;margin-top:10px;">The price shown is the total price you pay &mdash; no tax is added on top at checkout. Purchases are processed by Lemon Squeezy, our merchant of record, who calculates and remits any tax that applies. See <a href="/terms.html">Terms of sale</a> for full detail.</p>
     </div>
   </section>
   <section class="page-section tint">
@@ -195,11 +196,11 @@ w("terms.html", page({
       <h2>3. Contact</h2>
       <p><a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a>. Typical response time: within two working days.</p>
       <h2>4. VAT</h2>
-      <p>VAT registration status and number (if applicable): to be confirmed before buying opens.</p>
+      <p>Optimere Limited is not VAT-registered. Purchases on this site are sold through Lemon Squeezy, which acts as merchant of record for every sale &mdash; Lemon Squeezy is the legal seller and is responsible for calculating, collecting and remitting any VAT or sales tax that applies to your purchase, wherever you're buying from.</p>
       <h2>5. What you're buying</h2>
       <p>Each intervention is a digital download: an Excel spreadsheet or workbook, plus a written guide, delivered as a PDF. Intervention pages state what's included and the difference between the Essentials and Pro tiers where both exist. Nothing physical is shipped.</p>
       <h2>6. Price</h2>
-      <p>All prices shown at checkout are inclusive of VAT where VAT applies. Any payment-processing fee is shown separately before you pay. Nothing is added afterward.</p>
+      <p>The price shown on each Tool's page is the total price you pay &mdash; no tax is added on top at checkout. Purchases are processed by Lemon Squeezy, our merchant of record, who calculates and remits any tax that applies to your purchase; it doesn't change the price you see. Lemon Squeezy's own service fee is paid by us, not added to your total.</p>
       <h2>7. Delivery</h2>
       <p>Digital delivery only, immediately after payment is confirmed. Your download link is shown on the confirmation page and also sent to the email address you paid with.</p>
       <h2>8. What you need to use it</h2>
