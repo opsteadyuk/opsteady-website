@@ -8,7 +8,7 @@ const BASE = "https://opsteady.co.uk";
 
 const staticRoutes = [
   "/", "/the-method", "/interventions", "/pricing", "/who-we-are",
-  "/health-check", "/worked-examples/bottleneck-analysis", "/terms", "/accessibility", "/privacy",
+  "/health-check", "/terms", "/accessibility", "/privacy",
 ];
 
 const listing = getCatalogueListing();
@@ -28,9 +28,14 @@ const redirects = `# /catalogue -> /interventions (301, permanent)
 # verified against all 36 legacy slugs in 01_website/worker/src/v2.js;
 # destination path renamed only, per the approved architecture)
 /interest.html          /interventions/index.html   301
-# /case-studies -> /worked-examples (this task's rename, §A/§K)
-/case-studies           /worked-examples/bottleneck-analysis.html  301
-/case-studies/:slug     /worked-examples/:slug.html 301
+# /case-studies -> the Worked Example page was removed 2026-09-02 (see
+# PROJECT_STATE.md); repointed at the real Tool page instead of a
+# 301 chain into a 404.
+/case-studies           /interventions/bottleneck_analysis.html  301
+/case-studies/:slug     /interventions/bottleneck_analysis.html 301
+# /worked-examples -> same reasoning, in case anything external still
+# links to the removed page directly.
+/worked-examples/*      /interventions/bottleneck_analysis.html 301
 `;
 fs.writeFileSync(path.join(SITE, "redirects.txt"), redirects, "utf8");
 

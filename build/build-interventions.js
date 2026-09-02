@@ -318,7 +318,6 @@ for (const listed of listing) {
   const d = getModuleData(listed.id);
   const cat = customerCategory(listed);
   const catImage = CATEGORY_IMAGES[cat];
-  const isP41 = d.id === "P4.1";
 
   const { hero: proposition, overview } = buildToolContent(d);
 
@@ -346,7 +345,7 @@ for (const listed of listing) {
     <div class="iv-hero-media"><img src="${catImage.src}" alt="${catImage.alt}" width="${catImage.width}" height="${catImage.height}" style="object-position:${catImage.objectPosition};" loading="eager" decoding="async"></div>
     <div class="shell">
       <h1>${d.name}</h1>
-      <p class="iv-situation">${isP41 ? "Every site has an opinion on what's slowing the line, usually the loudest voice or the most recent annoyance, rarely checked against data. The Bottleneck Analysis Tool finds the real constraint: the one step that sets the pace for everything after it, measured, not guessed." : proposition}</p>
+      <p class="iv-situation">${proposition}</p>
       <div class="iv-buy" id="buy">${priceBlock}<a class="btn btn-primary on-light" href="/404.html">Buy now</a></div>
     </div>
   </section>
@@ -355,7 +354,7 @@ for (const listed of listing) {
     <div class="iv-overview-grid">
       <div class="iv-overview">
         <span class="eyebrow">Overview</span>
-        ${isP41 ? `<p class="iv-core">For a site where lead times keep creeping up, every station looks busy, and nobody can say for certain which one is actually setting the pace.</p>` : renderParas(overview, "iv-core")}
+        ${renderParas(overview, "iv-core")}
       </div>
       ${glance}
     </div>

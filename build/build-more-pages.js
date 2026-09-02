@@ -171,56 +171,6 @@ w("health-check.html", page({
   `,
 }));
 
-/* ---- Worked Example (Riverside Fabrication — explicitly fictional) ---- */
-w("worked-examples/bottleneck-analysis.html", page({
-  current: "worked-examples",
-  title: "Riverside Fabrication: a worked example",
-  description: "See the reasoning in practice. Illustrative and explicitly fictional.",
-  path: "/worked-examples/bottleneck-analysis",
-  main: `
-  <section class="page-hero">
-    <div class="shell">
-      <div class="eyebrow on-navy">Worked example</div>
-      <h1>Riverside Fabrication</h1>
-      <div class="we-disclosure" style="margin-top:20px;color:var(--n6-navy);">Illustrative, fictional worked example. Riverside Fabrication is not a real company.</div>
-    </div>
-  </section>
-  <section class="we-beat muted">
-    <div class="shell">
-      <span class="beat-label">Assumption</span>
-      <p style="max-width:56ch;font-size:1.1rem;color:var(--n6-navy);">Press 3 was assumed to be the constraint. It was the loudest, most visibly busy station on the line, and everyone already had a theory about it.</p>
-    </div>
-  </section>
-  <section class="we-beat vivid">
-    <div class="shell">
-      <span class="beat-label">Finding</span>
-      <p style="max-width:56ch;font-size:1.15rem;">It wasn't. The real constraint sat two stations upstream, measured, not guessed, once a week of honest logging was in.</p>
-    </div>
-  </section>
-  <section class="we-beat muted">
-    <div class="shell">
-      <span class="beat-label">Decision</span>
-      <p style="max-width:56ch;font-size:1.1rem;color:var(--n6-navy);">The planned fix on Press 3 was cancelled before it made things worse.</p>
-      <span class="we-stamp">Fix cancelled</span>
-    </div>
-  </section>
-  <section class="we-beat" style="background:#fff;">
-    <div class="shell">
-      <span class="beat-label" style="color:var(--a6-deep);">Result</span>
-      <div class="we-metric">180<span class="arrow">→</span>224</div>
-      <p style="margin-top:8px;">Units per week.</p>
-    </div>
-  </section>
-  <section class="we-beat we-handoff">
-    <div class="shell">
-      <h2>The tool that established this</h2>
-      <p style="color:var(--n6-pale);max-width:52ch;margin-top:12px;">Bottleneck Analysis Tool. From £99.</p>
-      <div style="margin-top:20px;"><a class="btn btn-primary on-light" href="/interventions/bottleneck_analysis.html">See the Bottleneck Analysis Tool</a></div>
-    </div>
-  </section>
-  `,
-}));
-
 /* ---- Terms (reconciled from existing controlled root terms.html,
    substantive legal text preserved, not rewritten) ---- */
 w("terms.html", page({
@@ -230,14 +180,14 @@ w("terms.html", page({
   path: "/terms",
   main: `
   <section class="page-hero">
-    <div class="shell-narrow">
+    <div class="shell">
       <div class="eyebrow on-navy">Terms of sale</div>
       <h1>Terms of sale</h1>
       <p>What you're agreeing to when you buy from Opsteady. Buying is not live yet. This page is published in advance, in full, so it's ready when the store is.</p>
     </div>
   </section>
-  <section class="page-section">
-    <div class="shell-narrow">
+  <section class="page-section full-copy">
+    <div class="shell">
       <h2>1. Who you're buying from</h2>
       <p>Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203.</p>
       <h2>2. Address</h2>
@@ -406,4 +356,4 @@ w("404.html", page({
   `,
 }));
 
-console.log("Pricing, Who We Are, Health Check landing, Worked Example, Terms, Accessibility, 404 written.");
+console.log("Pricing, Who We Are, Health Check landing, Privacy, Terms, Accessibility, 404 written. Worked Example removed 2026-09-02, see PROJECT_STATE.md.");

@@ -72,7 +72,6 @@ function footer() {
     <div class="footer-links">
       <a href="/interventions/index.html">Tools</a>
       <a href="/the-method.html">The Method</a>
-      <a href="/worked-examples/bottleneck-analysis.html">Worked Example</a>
       <a href="/pricing.html">Pricing</a>
       <a href="/who-we-are.html">Who We Are</a>
       <a href="/accessibility.html">Accessibility</a>
@@ -81,7 +80,6 @@ function footer() {
       <a href="${HC_URL}">Health Check</a>
     </div>
     <div class="footer-legal">Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203.</div>
-    <div class="footer-meta">OPSTEADY 2.0 · PROMOTED TO REPO ROOT · PENDING DEPLOYMENT RULING</div>
   </div>
 </footer>`;
 }

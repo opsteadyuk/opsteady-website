@@ -1,5 +1,9 @@
 .git
+.gitignore
 .wrangler
 wrangler.toml
 .assetsignore
 build/
+node_modules/
+_archive/
+wireframes/

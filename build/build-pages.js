@@ -73,26 +73,26 @@ w("the-method.html", page({
     </div>
   </section>
 
-  <section class="page-section">
+  <section class="page-section full-copy">
     <div class="shell">
       <div class="eyebrow">Step 3</div>
       <h2>What a Tool actually gives you</h2>
-      <p style="max-width:60ch;margin-bottom:14px;">Once you know what to work on, you move into a Tool: a complete package built so your own team can deploy it, not a consultant standing next to them. You don't need to already be an expert in the subject before you start.</p>
+      <p style="margin-bottom:14px;">Once you know what to work on, you move into a Tool: a complete package built so your own team can deploy it, not a consultant standing next to them. You don't need to already be an expert in the subject before you start.</p>
       ${packageGrid()}
-      <p style="max-width:60ch;margin-top:32px;margin-bottom:14px;">Every Tool is available as an Essentials edition where it exists, and always as Pro. Essentials is a complete, ready-to-run version for the standard case, not a cut-down teaser. Pro goes further into the thinking behind the Tool: why it works, different ways to deploy it, what tends to go wrong, and the judgement needed when your situation isn't the standard case. Choose the depth that fits what you're trying to do, not a fixed default.</p>
-      <p style="max-width:60ch;">There is deliberately no salesperson or consultant who calls you to explain the rest. Everything you need to decide whether a Tool is right, and then to deploy it yourself once you've bought it, is either on its page or inside the package itself.</p>
+      <p style="margin-top:32px;margin-bottom:14px;">Every Tool is available as an Essentials edition where it exists, and always as Pro. Essentials is a complete, ready-to-run version for the standard case, not a cut-down teaser. Pro goes further into the thinking behind the Tool: why it works, different ways to deploy it, what tends to go wrong, and the judgement needed when your situation isn't the standard case. Choose the depth that fits what you're trying to do, not a fixed default.</p>
+      <p>There is deliberately no salesperson or consultant who calls you to explain the rest. Everything you need to decide whether a Tool is right, and then to deploy it yourself once you've bought it, is either on its page or inside the package itself.</p>
     </div>
   </section>
 
   <section class="page-section tint">
-    <div class="shell" style="display:grid;gap:40px;align-items:center;grid-template-columns:1fr;">
+    <div class="shell editorial-row">
       <div>
         <div class="eyebrow">Step 4</div>
         <h2>The loop</h2>
         <p style="max-width:60ch;">Observe &amp; Learn <span class="arrow">→</span> Stabilise <span class="arrow">→</span> Improve <span class="arrow">→</span> Sustain <span class="arrow">→</span> back to Observe &amp; Learn.</p>
         <p style="max-width:60ch;">This is how Opsteady approaches deployment and ongoing improvement, and it applies inside a single Tool as much as it does across your whole site. Understand what's actually happening before you change anything. Acting on assumptions is usually how the wrong thing gets fixed well. Get the situation stable enough to control before you try to improve it; improving something that isn't yet under control just adds noise. Improve from that stable baseline. Once something is genuinely sustained (holding without constant intervention), it's the right time to look at what's next, not before.</p>
-        ${loopSVGLight}
       </div>
+      <div>${loopSVGLight}</div>
     </div>
   </section>
 
