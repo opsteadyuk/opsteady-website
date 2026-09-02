@@ -1,0 +1,10 @@
+# /catalogue -> /interventions (301, permanent)
+/catalogue              /interventions/index.html   301
+/catalogue/:slug        /interventions/:slug.html   301
+# /interest legacy ?m= redirect map re-pointed at /interventions (already
+# verified against all 36 legacy slugs in 01_website/worker/src/v2.js;
+# destination path renamed only, per the approved architecture)
+/interest.html          /interventions/index.html   301
+# /case-studies -> /worked-examples (this task's rename, §A/§K)
+/case-studies           /worked-examples/bottleneck-analysis.html  301
+/case-studies/:slug     /worked-examples/:slug.html 301

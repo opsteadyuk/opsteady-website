@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opsteady Health Check | Know where you stand</title>
+<meta name="description" content="A short set of questions about how your site runs today. Free, no sales call.">
+<link rel="canonical" href="https://opsteady.co.uk/health-check">
+<meta property="og:title" content="Opsteady Health Check | Know where you stand">
+<meta property="og:description" content="A short set of questions about how your site runs today. Free, no sales call.">
+<meta property="og:type" content="website">
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/system.css">
+</head>
+<body class="v6">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="shell nav-inner">
+    <a href="/index.html" aria-label="Opsteady, home">
+      <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+    </a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
+      <a href="https://healthcheck.opsteady.co.uk/" aria-current="page">Health Check</a>
+      <a href="/interventions/index.html">Tools</a>
+      <a href="/the-method.html">How It Works</a>
+      <a href="/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    </nav>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+  </div>
+</header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
+<main id="main">
+
+  <section class="photo-hero">
+    <div class="photo-hero-media"><img src="/assets/photography/hero-health-check.jpg" alt="A wide view across an operating manufacturing facility, showing rows of machinery, materials on pallets, and workers along the production floor." width="1168" height="784" style="object-position:56% 42%;" loading="eager" fetchpriority="high" decoding="sync"></div>
+    <div class="photo-hero-scrim"></div>
+    <div class="photo-hero-content shell">
+      <div class="eyebrow on-navy">The Health Check</div>
+      <h1>Know where your site actually stands.</h1>
+      <p>A short set of questions about how things run today, not how you'd like them to run.</p>
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="shell-narrow">
+      <!-- IMPLEMENTATION DEPENDENT: the frozen Phase 3 "what you'll get" copy (site-at-a-glance,
+           several named development areas, first action, what's next, pace guidance) is the
+           approved target for this section but must not publish live until report-v2.js's output
+           actually delivers it (Gate D, V2 frontend not yet built). This is the compliant interim
+           version, accurate to current backend behaviour. -->
+      <h2>What you'll get</h2>
+      <p>A clear picture of what's working, what's not, and what deserves attention first: one specific place to start, not a generic report.</p>
+      <h2 style="margin-top:32px;">Cost</h2>
+      <p>Free. No sales call required.</p>
+      <div style="margin-top:32px;"><a class="btn btn-primary" href="https://healthcheck.opsteady.co.uk/">Start the health check</a></div>
+    </div>
+  </section>
+  
+</main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-links">
+      <a href="/interventions/index.html">Tools</a>
+      <a href="/the-method.html">The Method</a>
+      <a href="/worked-examples/bottleneck-analysis.html">Worked Example</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/who-we-are.html">Who We Are</a>
+      <a href="/accessibility.html">Accessibility</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+    </div>
+    <div class="footer-legal">Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203.</div>
+    <div class="footer-meta">OPSTEADY 2.0 · PROMOTED TO REPO ROOT · PENDING DEPLOYMENT RULING</div>
+  </div>
+</footer>
+</body>
+</html>

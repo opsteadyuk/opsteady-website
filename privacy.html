@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Notice | Opsteady</title>
+<meta name="description" content="How Opsteady handles your data. The short version: you can take the Health Check without giving us anything at all.">
+<link rel="canonical" href="https://opsteady.co.uk/privacy">
+<meta property="og:title" content="Privacy Notice | Opsteady">
+<meta property="og:description" content="How Opsteady handles your data. The short version: you can take the Health Check without giving us anything at all.">
+<meta property="og:type" content="website">
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/system.css">
+</head>
+<body class="v6">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="shell nav-inner">
+    <a href="/index.html" aria-label="Opsteady, home">
+      <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+    </a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
+      <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+      <a href="/interventions/index.html">Tools</a>
+      <a href="/the-method.html">How It Works</a>
+      <a href="/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    </nav>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+  </div>
+</header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
+<main id="main">
+
+  <section class="page-hero">
+    <div class="shell">
+      <div class="eyebrow on-navy">Privacy Notice</div>
+      <h1>How we handle your data</h1>
+      <p>Last updated: 2 September 2026</p>
+    </div>
+  </section>
+  <section class="page-section full-copy">
+    <div class="shell">
+      <h2>Who we are</h2>
+      <p>Opsteady is operated by Optimere Limited, registered in England and Wales, trading as Opsteady. Optimere Limited is the data controller for everything described on this page. Registered/service address: Optimere Limited, 82A James Carter Road, Mildenhall, IP28 7DE. ICO registration number: 00015347950. If you want to talk to us about anything on this page, email <a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a> and a person will answer.</p>
+      <h2>The short version</h2>
+      <p>You can take the Health Check without giving us anything at all. Your answers stay on your device while you work through it.</p>
+      <p>If you ask for your report, your answers and your email address come to us so we can build it and send it. We use them for your report and nothing else, unless you ask us to. We look at overall patterns across everyone who takes the check, because that tells us what to build next. That's patterns, not people.</p>
+      <p>If that's all you needed, you can stop reading here. The rest is the detail.</p>
+      <h2>What we collect, and when</h2>
+      <p><strong>While you take the check: nothing.</strong> The questions and the scoring run inside your browser. Nothing is sent to us, and we cannot see your answers.</p>
+      <p><strong>When you request your report,</strong> we receive your answers to the 24 questions and the three context questions, your email address, and the date and time.</p>
+      <p><strong>When you visit the site,</strong> we collect basic, anonymous traffic counts through Cloudflare Web Analytics: how many people arrived, roughly where from, and which pages they saw. It does not use cookies and does not build a profile of you.</p>
+      <p>We do not ask for your name, your employer, your site's location, or anything else. We have deliberately kept the list this short.</p>
+      <h2>Why we use it, and our lawful basis</h2>
+      <table class="price-table">
+        <thead><tr><th>What for</th><th>Lawful basis</th></tr></thead>
+        <tbody>
+          <tr><td>Building and sending the report you asked for</td><td>Legitimate interests: you asked us for it, and we cannot send it without it</td></tr>
+          <tr><td>Letting you re-run the check and compare against last time</td><td>Legitimate interests: it is the point of the tool, and it is your own data returned to you</td></tr>
+          <tr><td>Understanding which areas score weakest across everyone, so we know what to build</td><td>Legitimate interests: aggregated, and no individual is identified in it</td></tr>
+          <tr><td>Understanding whether people who receive a report go on to buy, by matching email addresses against our sales records</td><td>Legitimate interests: it is how we know whether any of this works. Told to you plainly here rather than done quietly</td></tr>
+          <tr><td>Anything else, including sending you things you did not ask for</td><td>Consent, which we would have to ask for first</td></tr>
+        </tbody>
+      </table>
+      <h2>Who else sees it</h2>
+      <p>We use a small number of suppliers to run the service. They process data on our instructions and cannot use it for their own purposes.</p>
+      <ul>
+        <li><strong>Cloudflare</strong> hosts the site, stores the records, and provides anonymous traffic counts</li>
+        <li><strong>Resend</strong> sends your report email</li>
+        <li><strong>Gumroad</strong> handles any purchase you choose to make, and holds your details as part of that</li>
+      </ul>
+      <p>Some of these suppliers operate outside the UK. Where data moves abroad it is protected by the safeguards UK data protection law requires.</p>
+      <p>We do not sell your data. We do not share it with anyone for marketing. There is no advertising on this site and there never will be.</p>
+      <h2>How long we keep it</h2>
+      <ul>
+        <li>Health Check records: three years, so re-runs still work and long-term patterns are visible. Then deleted.</li>
+        <li>Your email address, if you have not asked for anything else: three years alongside your record.</li>
+        <li>Anonymous traffic counts: as retained by Cloudflare, and they identify nobody.</li>
+      </ul>
+      <p>If you ask us to delete you, we do it, and we do not keep a copy.</p>
+      <h2>Your rights</h2>
+      <p>You can ask us to show you what we hold, correct it, delete it, restrict what we do with it, or send it to you in a portable format. You can object to us relying on legitimate interests. Email <a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a> and we will deal with it within one month. It costs you nothing.</p>
+      <p>If you think we have handled your data badly, tell us first and we will try to fix it. You also have the right to complain to the Information Commissioner's Office at <a href="https://ico.org.uk" rel="noopener">ico.org.uk</a>.</p>
+      <h2>Cookies</h2>
+      <p>We do not use tracking cookies or advertising cookies. The site stores your progress on your own device so you do not lose your answers halfway through, and that never leaves your device.</p>
+      <h2>Changes</h2>
+      <p>If we change how any of this works, we will change this page and update the date at the top. If the change is significant and we hold your email address, we will tell you.</p>
+    </div>
+  </section>
+  
+</main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-links">
+      <a href="/interventions/index.html">Tools</a>
+      <a href="/the-method.html">The Method</a>
+      <a href="/worked-examples/bottleneck-analysis.html">Worked Example</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/who-we-are.html">Who We Are</a>
+      <a href="/accessibility.html">Accessibility</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+    </div>
+    <div class="footer-legal">Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203.</div>
+    <div class="footer-meta">OPSTEADY 2.0 · PROMOTED TO REPO ROOT · PENDING DEPLOYMENT RULING</div>
+  </div>
+</footer>
+</body>
+</html>

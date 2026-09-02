@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility statement | Opsteady</title>
+<meta name="description" content="What this site targets, what's already true, and the known gaps, stated honestly.">
+<link rel="canonical" href="https://opsteady.co.uk/accessibility">
+<meta property="og:title" content="Accessibility statement | Opsteady">
+<meta property="og:description" content="What this site targets, what's already true, and the known gaps, stated honestly.">
+<meta property="og:type" content="website">
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/system.css">
+</head>
+<body class="v6">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="shell nav-inner">
+    <a href="/index.html" aria-label="Opsteady, home">
+      <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+    </a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
+      <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+      <a href="/interventions/index.html">Tools</a>
+      <a href="/the-method.html">How It Works</a>
+      <a href="/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    </nav>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+  </div>
+</header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
+<main id="main">
+
+  <section class="page-hero">
+    <div class="shell-narrow">
+      <div class="eyebrow on-navy">Accessibility</div>
+      <h1>Accessibility statement</h1>
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="shell-narrow">
+      <h2>What we target</h2>
+      <p>This site is built to meet WCAG 2.2 at Level AA, with body text held to the stricter AAA contrast ratio.</p>
+      <h2>Scope</h2>
+      <p>This statement covers the main Opsteady website only. The Health Check tool lives on its own subdomain, healthcheck.opsteady.co.uk, with its own codebase, and is not covered by this statement.</p>
+      <h2>What's already true</h2>
+      <ul>
+        <li>A skip link is the first focusable element on every page.</li>
+        <li>Every page has a single H1 and proper landmark regions.</li>
+        <li>Focus is always visible.</li>
+        <li>Motion is disabled site-wide for anyone with <code>prefers-reduced-motion</code> set.</li>
+        <li>Language is correctly set to British English.</li>
+      </ul>
+      <h2>Known issues</h2>
+      <p>A full keyboard-only and screen reader pass across every page of this production build has not yet been completed and independently verified. Target: before buying opens.</p>
+      <h2>Feedback</h2>
+      <p>If any part of this site is hard to use with a keyboard, a screen reader, or any other assistive technology, tell us and we'll fix it. Email <a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a>.</p>
+      <p style="margin-top:24px;font-size:0.85rem;color:var(--ops-n50);">Last reviewed: 7 August 2026. Reconciled into the production build 31 August 2026; substance unchanged, known-issues list updated to reflect this build.</p>
+    </div>
+  </section>
+  
+</main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-links">
+      <a href="/interventions/index.html">Tools</a>
+      <a href="/the-method.html">The Method</a>
+      <a href="/worked-examples/bottleneck-analysis.html">Worked Example</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/who-we-are.html">Who We Are</a>
+      <a href="/accessibility.html">Accessibility</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+    </div>
+    <div class="footer-legal">Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203.</div>
+    <div class="footer-meta">OPSTEADY 2.0 · PROMOTED TO REPO ROOT · PENDING DEPLOYMENT RULING</div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1720 1160" width="1720" height="1160" font-family="Helvetica Neue, Arial, sans-serif">
+<defs>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f0c274"/><stop offset="45%" stop-color="#c8912f"/>
+<stop offset="70%" stop-color="#e8b465"/><stop offset="100%" stop-color="#a9741f"/>
+</linearGradient>
+<linearGradient id="silver" x1="0" y1="0" x2="0.4" y2="1">
+<stop offset="0%" stop-color="#1B2E4F"/><stop offset="50%" stop-color="#d8d8d4"/><stop offset="100%" stop-color="#b9b9b4"/>
+</linearGradient>
+<radialGradient id="node"><stop offset="0%" stop-color="#f3d59a"/><stop offset="55%" stop-color="#b7842a"/><stop offset="100%" stop-color="#e5be76"/></radialGradient>
+</defs>
+<circle cx="860" cy="580" r="346" fill="none" stroke="#1B2E4F" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="10 12"/>
+<path d="M 893.48 368.63 A 214 214 0 0 1 1071.37 546.52" fill="none" stroke="url(#silver)" stroke-width="26" stroke-linecap="butt"/>
+<path d="M 1071.37 613.48 A 214 214 0 0 1 893.48 791.37" fill="none" stroke="url(#silver)" stroke-width="26" stroke-linecap="butt"/>
+<path d="M 826.52 791.37 A 214 214 0 0 1 648.63 613.48" fill="none" stroke="url(#silver)" stroke-width="26" stroke-linecap="butt"/>
+<path d="M 648.63 546.52 A 214 214 0 0 1 826.52 368.63" fill="none" stroke="url(#silver)" stroke-width="26" stroke-linecap="butt"/>
+<path d="M 874.55 302.38 A 278 278 0 0 1 1137.96 575.15" fill="none" stroke="url(#gold)" stroke-width="22" stroke-linecap="butt"/>
+<path d="M 1137.62 594.55 A 278 278 0 0 1 864.85 857.96" fill="none" stroke="url(#gold)" stroke-width="22" stroke-linecap="butt"/>
+<path d="M 845.45 857.62 A 278 278 0 0 1 582.04 584.85" fill="none" stroke="url(#gold)" stroke-width="22" stroke-linecap="butt"/>
+<path d="M 582.38 565.45 A 278 278 0 0 1 855.15 302.04" fill="none" stroke="url(#gold)" stroke-width="22" stroke-linecap="butt"/>
+<g transform="translate(922.54,309.13) rotate(13)"><path d="M -24 -30 L 26 0 L -24 30 L -14 0 Z" fill="url(#gold)"/></g>
+<g transform="translate(1130.87,642.54) rotate(103)"><path d="M -24 -30 L 26 0 L -24 30 L -14 0 Z" fill="url(#gold)"/></g>
+<g transform="translate(797.46,850.87) rotate(193)"><path d="M -24 -30 L 26 0 L -24 30 L -14 0 Z" fill="url(#gold)"/></g>
+<g transform="translate(589.13,517.46) rotate(283)"><path d="M -24 -30 L 26 0 L -24 30 L -14 0 Z" fill="url(#gold)"/></g>
+<line x1="927.03" y1="329.83" x2="924.96" y2="337.55" stroke="#c9962f" stroke-width="3"/>
+<line x1="989.50" y1="355.70" x2="985.50" y2="362.63" stroke="#c9962f" stroke-width="3"/>
+<line x1="1043.14" y1="396.86" x2="1037.48" y2="402.52" stroke="#c9962f" stroke-width="3"/>
+<line x1="1084.30" y1="450.50" x2="1077.37" y2="454.50" stroke="#c9962f" stroke-width="3"/>
+<line x1="1110.17" y1="512.97" x2="1102.45" y2="515.04" stroke="#c9962f" stroke-width="3"/>
+<line x1="1110.17" y1="647.03" x2="1102.45" y2="644.96" stroke="#c9962f" stroke-width="3"/>
+<line x1="1084.30" y1="709.50" x2="1077.37" y2="705.50" stroke="#c9962f" stroke-width="3"/>
+<line x1="1043.14" y1="763.14" x2="1037.48" y2="757.48" stroke="#c9962f" stroke-width="3"/>
+<line x1="989.50" y1="804.30" x2="985.50" y2="797.37" stroke="#c9962f" stroke-width="3"/>
+<line x1="927.03" y1="830.17" x2="924.96" y2="822.45" stroke="#c9962f" stroke-width="3"/>
+<line x1="792.97" y1="830.17" x2="795.04" y2="822.45" stroke="#c9962f" stroke-width="3"/>
+<line x1="730.50" y1="804.30" x2="734.50" y2="797.37" stroke="#c9962f" stroke-width="3"/>
+<line x1="676.86" y1="763.14" x2="682.52" y2="757.48" stroke="#c9962f" stroke-width="3"/>
+<line x1="635.70" y1="709.50" x2="642.63" y2="705.50" stroke="#c9962f" stroke-width="3"/>
+<line x1="609.83" y1="647.03" x2="617.55" y2="644.96" stroke="#c9962f" stroke-width="3"/>
+<line x1="609.83" y1="512.97" x2="617.55" y2="515.04" stroke="#c9962f" stroke-width="3"/>
+<line x1="635.70" y1="450.50" x2="642.63" y2="454.50" stroke="#c9962f" stroke-width="3"/>
+<line x1="676.86" y1="396.86" x2="682.52" y2="402.52" stroke="#c9962f" stroke-width="3"/>
+<line x1="730.50" y1="355.70" x2="734.50" y2="362.63" stroke="#c9962f" stroke-width="3"/>
+<line x1="792.97" y1="329.83" x2="795.04" y2="337.55" stroke="#c9962f" stroke-width="3"/>
+<circle cx="860.00" cy="302.00" r="15" fill="url(#node)"/><circle cx="860.00" cy="302.00" r="6.5" fill="#0b1b39"/>
+<circle cx="1138.00" cy="580.00" r="15" fill="url(#node)"/><circle cx="1138.00" cy="580.00" r="6.5" fill="#0b1b39"/>
+<circle cx="860.00" cy="858.00" r="15" fill="url(#node)"/><circle cx="860.00" cy="858.00" r="6.5" fill="#0b1b39"/>
+<circle cx="582.00" cy="580.00" r="15" fill="url(#node)"/><circle cx="582.00" cy="580.00" r="6.5" fill="#0b1b39"/>
+<g stroke="#1B2E4F" stroke-width="2" stroke-opacity="0.85"><line x1="800" y1="580" x2="920" y2="580"/><line x1="860" y1="520" x2="860" y2="640"/></g>
+<g stroke="#1B2E4F" stroke-width="2"><line x1="860" y1="287" x2="860" y2="162"/><line x1="860" y1="873" x2="860" y2="998"/><line x1="567" y1="580" x2="432" y2="580"/><line x1="1153" y1="580" x2="1288" y2="580"/></g>
+<text x="860" y="142" text-anchor="middle" fill="#1B2E4F" font-size="34" font-weight="700" letter-spacing="2.5">OBSERVE &amp; LEARN</text>
+<text x="860" y="1050" text-anchor="middle" fill="#1B2E4F" font-size="34" font-weight="700" letter-spacing="2.5">IMPROVE</text>
+<text x="412" y="592" text-anchor="end" fill="#1B2E4F" font-size="34" font-weight="700" letter-spacing="2.5">SUSTAIN</text>
+<text x="1308" y="592" text-anchor="start" fill="#1B2E4F" font-size="34" font-weight="700" letter-spacing="2.5">STABILISE</text>
+</svg>

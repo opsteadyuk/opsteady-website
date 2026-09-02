@@ -1,0 +1,490 @@
+/* =========================================================
+   Opsteady 2.0 — Production site system
+   Imports /tokens.css (canonical, unmodified). Hero and
+   Problem Recognition rules are carried forward unchanged
+   from the approved v6/hero-recognition-proof-01 direction —
+   not redesigned here. Everything from "How It Works" onward
+   is new production CSS, built to the same grammar: navy/amber,
+   shell, eyebrow, mono labels, restrained technical marks.
+========================================================= */
+
+:root{
+  --n6-ink:#0A121F; --n6-deep:#12203A; --n6-navy:#1B2E4F; --n6-mid:#2D4A73;
+  --n6-slate:#52698D; --n6-steel:#8496B3; --n6-pale:#C9D3E3;
+  --a6-ochre:#6B4813; --a6-deep:#946719; --a6-amber:#D08F25;
+  --a6-rich:#E0A13A; --a6-light:#EDC07A; --a6-tint:#F6DFB3;
+  --v6-warm:#FBF9F5;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);background:var(--ops-n00);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.v6 img{max-width:100%;display:block;}
+.v6 a{color:inherit;}
+.v6 .skip-link{position:absolute;left:-999px;top:0;background:var(--n6-ink);color:#fff;padding:12px 20px;z-index:1000;}
+.v6 .skip-link:focus{left:16px;top:16px;}
+
+.v6 .shell{max-width:1200px;margin-inline:auto;padding-inline:16px;}
+@media (min-width:768px){.v6 .shell{padding-inline:32px;}}
+@media (min-width:1024px){.v6 .shell{padding-inline:40px;}}
+.v6 .shell-wide{max-width:1440px;margin-inline:auto;padding-inline:16px;}
+@media (min-width:768px){.v6 .shell-wide{padding-inline:32px;}}
+@media (min-width:1024px){.v6 .shell-wide{padding-inline:40px;}}
+.v6 .shell-narrow{max-width:760px;margin-inline:auto;padding-inline:16px;}
+@media (min-width:768px){.v6 .shell-narrow{padding-inline:32px;}}
+@media (min-width:1024px){.v6 .shell-narrow{padding-inline:40px;}}
+
+.v6 h1,.v6 h2,.v6 h3,.v6 .disp{font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);margin:0;line-height:1.08;}
+.v6 .eyebrow{font-family:var(--ops-font-mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:var(--ops-track-label);color:var(--a6-deep);}
+.v6 .eyebrow.on-navy{color:var(--a6-light);}
+.v6 .eyebrow.muted{color:var(--ops-n50);}
+.v6 p{font-family:var(--ops-font-text);line-height:1.6;color:var(--ops-text-secondary);margin:0;}
+.v6 p.lede{font-size:1.1rem;color:var(--ops-text-primary);max-width:44ch;}
+.v6 .mono{font-family:var(--ops-font-mono);}
+
+/* ---- Buttons — navy primary only, never amber fill ---- */
+.v6 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--ops-font-display);font-weight:600;font-size:1rem;padding:15px 28px;border-radius:4px;text-decoration:none;border:1.5px solid transparent;min-height:48px;transition:background-color var(--ops-duration-fast) var(--ops-ease-out), border-color var(--ops-duration-fast) var(--ops-ease-out);}
+.v6 .btn-primary{background:var(--n6-navy);color:#fff;border-color:rgba(255,255,255,0.22);box-shadow:0 2px 10px rgba(0,0,0,0.25);}
+.v6 .btn-primary:hover{background:var(--n6-deep);border-color:rgba(255,255,255,0.34);}
+.v6 .btn-primary.on-light{box-shadow:0 2px 8px rgba(27,46,79,0.15);}
+.v6 .btn-text{font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding-block:10px;margin-block:-10px;box-shadow:0 1.5px 0 0 var(--n6-pale);}
+.v6 .btn-text:hover{box-shadow:0 1.5px 0 0 var(--n6-navy);}
+.v6 .btn-text.on-navy{color:#fff;box-shadow:0 1.5px 0 0 var(--n6-slate);}
+.v6 .btn-text.on-navy:hover{box-shadow:0 1.5px 0 0 #fff;}
+.v6 .btn-text .arrow{transition:transform var(--ops-duration-fast) var(--ops-ease-out);}
+.v6 .btn-text:hover .arrow{transform:translateX(3px);}
+.v6 .tag{display:inline-block;font-family:var(--ops-font-mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:var(--ops-track-label);color:var(--n6-navy);border:1px solid var(--ops-border);padding:7px 14px;border-radius:999px;background:#fff;}
+.v6 .tag.on-navy{color:var(--n6-pale);border-color:var(--n6-slate);background:transparent;}
+
+/* =========================================================
+   NAV / FOOTER — global chrome, identical on every page
+========================================================= */
+.v6 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+.v6 .nav{position:sticky;top:0;z-index:100;background:var(--n6-navy);border-bottom:1px solid rgba(255,255,255,0.08);}
+.v6 .nav-inner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px;}
+.v6 .nav .brand-logo{width:110px;height:auto;}
+@media (min-width:768px){.v6 .nav .brand-logo{width:150px;}}
+@media (min-width:1024px){.v6 .nav .brand-logo{width:180px;}}
+
+/* ---- Mobile nav toggle — 390px defect fix: below 1024px there was no
+   usable nav at all once .nav-links went display:none. ---- */
+.v6 .nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-left:auto;background:transparent;border:1px solid rgba(255,255,255,0.28);border-radius:4px;cursor:pointer;padding:0;flex:none;}
+.v6 .nav-toggle-icon,.v6 .nav-toggle-icon::before,.v6 .nav-toggle-icon::after{content:"";display:block;width:18px;height:1.5px;background:#fff;transition:transform var(--ops-duration-fast) var(--ops-ease-out),opacity var(--ops-duration-fast) var(--ops-ease-out);}
+.v6 .nav-toggle-icon{position:relative;}
+.v6 .nav-toggle-icon::before{position:absolute;left:0;top:-6px;}
+.v6 .nav-toggle-icon::after{position:absolute;left:0;top:6px;}
+.v6 .nav-toggle[aria-expanded="true"] .nav-toggle-icon{background:transparent;}
+.v6 .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before{transform:translateY(6px) rotate(45deg);}
+.v6 .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after{transform:translateY(-6px) rotate(-45deg);}
+@media (min-width:1024px){.v6 .nav-toggle{display:none;}}
+
+.v6 .nav-links{display:none;}
+.v6 .nav-links.is-open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--n6-navy);padding:6px 16px 20px;border-bottom:1px solid rgba(255,255,255,0.1);box-shadow:0 12px 24px rgba(0,0,0,0.28);}
+.v6 .nav-links.is-open a{padding-block:14px;min-height:44px;display:flex;align-items:center;border-top:1px solid rgba(255,255,255,0.08);}
+.v6 .nav-links a{font-family:var(--ops-font-text);font-size:0.95rem;font-weight:600;color:var(--n6-pale);text-decoration:none;}
+.v6 .nav-links a:hover,.v6 .nav-links a[aria-current]{color:#fff;}
+.v6 .nav-cta{font-family:var(--ops-font-display);font-weight:600;font-size:0.9rem;color:var(--n6-ink);background:#fff;padding:11px 20px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;}
+.v6 .nav-cta:hover{background:var(--n6-pale);}
+.v6 .nav-cta-mobile{margin-top:12px;justify-content:center;}
+.v6 .nav-cta-desktop{display:none;}
+@media (min-width:1024px){
+  .v6 .nav-links{display:flex !important;flex-direction:row;align-items:center;gap:28px;position:static;background:none;padding:0;border:0;box-shadow:none;}
+  .v6 .nav-links a{padding:0;min-height:auto;border-top:0;}
+  .v6 .nav-cta-mobile{display:none !important;}
+  .v6 .nav-cta-desktop{display:inline-flex;}
+}
+
+.v6 .footer{background:var(--n6-ink);color:var(--n6-steel);padding-block:44px;}
+.v6 .footer-links{display:flex;flex-wrap:wrap;gap:4px 12px;margin:-10px -12px 18px;}
+.v6 .footer-links a{font-size:0.9rem;color:var(--n6-pale);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;padding:10px 12px;}
+.v6 .footer-links a:hover{color:#fff;}
+.v6 .footer-meta{font-family:var(--ops-font-mono);font-size:11px;color:var(--ops-n50);}
+.v6 .footer-legal{font-size:12px;color:var(--ops-n50);margin-top:6px;}
+
+/* Breadcrumb — intervention pages only */
+.v6 .breadcrumb{font-family:var(--ops-font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--n6-slate);padding-block:18px 0;}
+.v6 .breadcrumb a{color:var(--n6-slate);text-decoration:none;}
+.v6 .breadcrumb a:hover{color:var(--n6-navy);}
+
+/* =========================================================
+   SECTION 1 — HERO (approved, unchanged from v6/hero-recognition-proof-01)
+========================================================= */
+.v6 .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;background:var(--n6-ink);overflow:hidden;}
+.v6 .hero-media{position:absolute;inset:0;}
+.v6 .hero-media img{width:100%;height:100%;object-fit:cover;object-position:62% 45%;}
+.v6 .hero-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(6,10,18,0.94) 0%, rgba(6,10,18,0.78) 26%, rgba(6,10,18,0.28) 52%, rgba(6,10,18,0.08) 68%), linear-gradient(0deg, rgba(6,10,18,0.55) 0%, rgba(6,10,18,0) 34%);}
+.v6 .hero-content{position:relative;z-index:2;padding-block:56px 72px;width:100%;}
+.v6 .hero-eyebrow{margin-bottom:18px;}
+.v6 .hero-h1{margin-bottom:22px;max-width:15ch;font-size:clamp(2.5rem,7vw,5.25rem);letter-spacing:var(--ops-track-hero);color:#fff;}
+.v6 .hero-sub{color:var(--n6-pale);font-size:1.15rem;line-height:1.55;max-width:44ch;margin:0 0 34px;}
+.v6 .hero-sub{margin-bottom:18px;}
+.v6 .hero-sub:last-of-type{margin-bottom:34px;}
+.v6 .hero-line{font-family:var(--ops-font-display);font-weight:600;color:var(--a6-light);font-size:1.05rem;max-width:44ch;margin:0 0 18px;}
+.v6 .hero-emph{color:#fff;}
+.v6 .hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:22px;}
+@media (min-width:1024px){.v6 .hero{min-height:92vh;}.v6 .hero-content{padding-block:64px 88px;}}
+
+/* =========================================================
+   PROBLEM RECOGNITION (rp-*) — approved v6/hero-recognition-proof-01
+   visual technique. Removed from the homepage by the 2026-08-31
+   customer-experience-pass ruling (its "Do you recognise this?"
+   section is superseded by the 8-area improve grid below). Rules kept,
+   unused on the homepage — recoverable design asset for a future
+   Problems Hub atmospheric-image treatment, not deleted.
+========================================================= */
+.v6 .rp-seam{position:absolute;top:-34px;left:0;width:1px;height:56px;background:linear-gradient(180deg, rgba(208,143,37,0) 0%, var(--a6-amber) 60%, var(--a6-amber) 100%);z-index:4;}
+@media (min-width:768px){.v6 .rp-seam{left:32px;}}
+@media (min-width:1024px){.v6 .rp-seam{left:40px;}}
+.v6 .recognition-proof{position:relative;min-height:88vh;display:flex;align-items:flex-end;background:var(--n6-ink);overflow:hidden;isolation:isolate;}
+@media (min-width:1024px){.v6 .recognition-proof{min-height:92vh;}}
+.v6 .rp-media{position:absolute;inset:0;}
+.v6 .rp-media img{width:100%;height:100%;object-fit:cover;object-position:66% 38%;filter:blur(9px) saturate(0.75) contrast(0.85) brightness(0.6);transform:scale(1.08);}
+.v6 .rp-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg, rgba(6,10,18,0.99) 0%, rgba(6,10,18,0.97) 30%, rgba(6,10,18,0.7) 50%, rgba(6,10,18,0.32) 68%, rgba(6,10,18,0.16) 100%), linear-gradient(0deg, rgba(6,10,18,0.6) 0%, rgba(6,10,18,0.05) 30%);}
+.v6 .rp-markers{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;}
+.v6 .rp-ring{fill:none;stroke:var(--a6-amber);stroke-width:1.5;opacity:0.9;}
+.v6 .rp-ring-dim{stroke:var(--a6-rich);opacity:0.55;}
+.v6 .rp-dot{fill:var(--a6-amber);}
+.v6 .rp-dot-dim{fill:var(--a6-rich);opacity:0.7;}
+.v6 .rp-tag{font-family:var(--ops-font-mono);font-size:20px;fill:var(--a6-light);opacity:0.85;}
+.v6 .rp-content{position:relative;z-index:3;padding-block:56px 64px;width:100%;}
+@media (min-width:1024px){.v6 .rp-content{padding-block:64px 80px;}}
+.v6 .rp-lines{margin-top:20px;display:flex;flex-direction:column;gap:2px;}
+.v6 .rp-lines p{font-family:var(--ops-font-display);font-weight:600;color:#fff;font-size:clamp(1.5rem,3.6vw,2.5rem);line-height:1.14;margin:0;letter-spacing:var(--ops-track-h2);}
+.v6 .rp-lines .rp-line-final{color:var(--a6-light);margin-top:6px;}
+.v6 .rp-lede{margin-top:26px;color:var(--n6-pale);font-size:1.08rem;line-height:1.55;max-width:42ch;}
+@media (max-width:640px){
+  .v6 .recognition-proof{min-height:0;padding-block:0;align-items:stretch;flex-direction:column;}
+  .v6 .rp-media img{object-position:74% 30%;transform:scale(1.08);}
+  .v6 .rp-scrim{background:linear-gradient(180deg, rgba(6,10,18,0.4) 0%, rgba(6,10,18,0.55) 38%, rgba(6,10,18,0.96) 78%, rgba(6,10,18,0.98) 100%);}
+  .v6 .rp-marker-2,.v6 .rp-marker-4,.v6 .rp-marker-6{display:none;}
+  .v6 .recognition-proof{display:block;}
+  .v6 .rp-media,.v6 .rp-scrim,.v6 .rp-markers{position:absolute;inset:0;height:56vh;}
+  .v6 .rp-content{position:relative;padding-top:calc(56vh - 170px);padding-bottom:40px;}
+  .v6 .rp-lines p{font-size:clamp(1.35rem,7.2vw,1.9rem);}
+  .v6 .rp-lede{max-width:none;}
+}
+
+/* =========================================================
+   SECTION 2 — WHAT OPSTEADY CAN HELP YOU IMPROVE (8 areas)
+   Replaces the old 5-item wiah-grid + the removed "Do you
+   recognise this?" section, 2026-08-31 customer-experience pass.
+========================================================= */
+.v6 .wiah-grid{margin-top:28px;display:grid;gap:1px;background:var(--ops-border-subtle);border:1px solid var(--ops-border-subtle);}
+@media (min-width:700px){.v6 .wiah-grid{grid-template-columns:1fr 1fr;}}
+@media (min-width:1024px){.v6 .wiah-grid{grid-template-columns:repeat(4,1fr);}}
+.v6 .wiah-item{background:#fff;padding:24px;text-decoration:none;display:block;transition:background-color var(--ops-duration-fast) var(--ops-ease-out);}
+.v6 .wiah-item:hover{background:var(--ops-n05);}
+.v6 .wiah-item:hover h3{color:var(--a6-deep);}
+.v6 .wiah-item h3{font-size:1rem;color:var(--n6-navy);margin-bottom:8px;}
+.v6 .wiah-item p{font-size:0.94rem;max-width:none;margin-bottom:0;}
+.v6 .wiah-foot{margin-top:28px;font-size:1.05rem;max-width:56ch;}
+.v6 .wiah-foot strong{color:var(--n6-navy);}
+
+/* =========================================================
+   SECTION 3 — HOW OPSTEADY WORKS (homepage version, expanded)
+========================================================= */
+.v6 .sec-how{padding-block:72px;background:var(--n6-ink);color:#fff;}
+@media (min-width:1024px){.v6 .sec-how{padding-block:110px;}}
+.v6 .how-intro{max-width:62ch;}
+.v6 .how-h2{color:#fff;margin-top:14px;font-size:clamp(1.75rem,4vw,2.75rem);}
+.v6 .how-intro-p{color:var(--n6-pale);max-width:56ch;margin-top:18px;font-size:1.05rem;}
+.v6 .how-steps{margin-top:48px;display:grid;gap:32px;}
+@media (min-width:700px){.v6 .how-steps{grid-template-columns:1fr 1fr;gap:36px;}}
+@media (min-width:1024px){.v6 .how-steps{grid-template-columns:repeat(4,1fr);gap:28px;}}
+.v6 .how-step-num{display:block;color:var(--a6-amber);font-size:13px;letter-spacing:0.04em;margin-bottom:10px;}
+.v6 .how-step h3{color:#fff;font-size:1.05rem;margin-bottom:8px;}
+.v6 .how-step p{color:var(--n6-pale);font-size:0.94rem;max-width:none;}
+.v6 .how-loop{margin-top:56px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.1);display:grid;gap:32px;align-items:center;}
+@media (min-width:700px){.v6 .how-loop{grid-template-columns:auto 1fr;gap:44px;}}
+/* Four-stage loop diagram (production SVG, build.js's loopSVG) -- works on
+   both dark (.sec-how) and light (.page-section.tint) grounds: default
+   values below are tuned for a light ground, .sec-how overrides for dark. */
+.v6 .loop-diagram{width:340px;height:auto;flex:none;max-width:100%;}
+.v6 .loop-guide{fill:none;stroke:var(--n6-slate);stroke-width:1;stroke-dasharray:3 7;opacity:0.45;}
+.v6 .loop-cross{stroke:var(--n6-slate);stroke-width:1;opacity:0.45;}
+.v6 .loop-ring-inner{fill:var(--a6-tint);opacity:0.7;}
+.v6 .loop-arrow{fill:var(--a6-rich);}
+.v6 .loop-node-ring{fill:var(--v6-warm);stroke:var(--a6-deep);stroke-width:3;}
+.v6 .loop-node-dot{fill:var(--a6-amber);}
+.v6 .loop-tick{stroke:var(--n6-slate);stroke-width:1;opacity:0.6;}
+.v6 .loop-label{font-family:var(--ops-font-mono);font-size:17px;font-weight:700;letter-spacing:0.06em;fill:var(--n6-navy);}
+.v6 .sec-how .loop-ring-inner{fill:#EDE3D3;opacity:0.85;}
+.v6 .sec-how .loop-node-ring{fill:var(--n6-ink);stroke:var(--a6-light);}
+.v6 .sec-how .loop-label{fill:#fff;}
+.v6 .sec-how .loop-guide,.v6 .sec-how .loop-cross,.v6 .sec-how .loop-tick{stroke:var(--n6-steel);}
+.v6 .how-loop-p{color:var(--n6-pale);max-width:52ch;margin-top:14px;}
+.v6 .how-loop-p strong{color:#fff;}
+.v6 .how-cta{margin-top:40px;}
+
+/* =========================================================
+   SECTION 4 — WHAT YOU ACTUALLY GET (package component)
+   Shared markup (shared.js packageGrid()) — homepage full version
+   and a compact variant reused on individual Tool pages, so the
+   customer learns this once and recognises it elsewhere.
+========================================================= */
+.v6 .sec-get{padding-block:72px;background:var(--v6-warm);}
+@media (min-width:1024px){.v6 .sec-get{padding-block:110px;}}
+.v6 .get-head{max-width:58ch;}
+.v6 .get-head h2{margin-top:14px;font-size:clamp(1.75rem,4vw,2.5rem);}
+.v6 .get-head p{margin-top:18px;max-width:56ch;font-size:1.05rem;}
+.v6 .pkg-grid{margin-top:44px;display:grid;gap:1px;background:var(--ops-border-subtle);border:1px solid var(--ops-border-subtle);}
+@media (min-width:700px){.v6 .pkg-grid{grid-template-columns:1fr 1fr;}}
+@media (min-width:1024px){.v6 .pkg-grid{grid-template-columns:repeat(4,1fr);}}
+.v6 .pkg-item{background:#fff;padding:26px 22px;}
+.v6 .pkg-icon-wrap{width:36px;height:36px;color:var(--n6-navy);}
+.v6 .pkg-icon-wrap svg{width:100%;height:100%;}
+.v6 .pkg-label{display:block;margin-top:16px;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--a6-deep);}
+.v6 .pkg-verb{font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);font-size:1.08rem;margin-top:6px;}
+.v6 .pkg-copy{margin-top:10px;font-size:0.92rem;max-width:none;}
+/* Compact variant — Tool pages */
+.v6 .pkg-grid.pkg-compact{background:transparent;border:0;gap:16px;}
+.v6 .pkg-grid.pkg-compact .pkg-item{border:1px solid var(--ops-border-subtle);border-radius:6px;padding:18px;}
+.v6 .pkg-grid.pkg-compact .pkg-icon-wrap{width:28px;height:28px;}
+.v6 .pkg-grid.pkg-compact .pkg-label{margin-top:12px;}
+.v6 .pkg-grid.pkg-compact .pkg-verb{font-size:0.98rem;}
+
+/* =========================================================
+   SECTION 5 — ESSENTIALS VS PRO (homepage depth explainer)
+========================================================= */
+.v6 .sec-tiers{padding-block:72px;background:#fff;}
+@media (min-width:1024px){.v6 .sec-tiers{padding-block:100px;}}
+.v6 .tiers-head{max-width:56ch;}
+.v6 .tiers-head h2{margin-top:14px;font-size:clamp(1.75rem,4vw,2.5rem);}
+.v6 .tiers-grid{margin-top:40px;display:grid;gap:1px;background:var(--ops-border-subtle);border:1px solid var(--ops-border-subtle);}
+@media (min-width:700px){.v6 .tiers-grid{grid-template-columns:1fr 1fr;}}
+.v6 .tier-card{background:#fff;padding:30px 28px;}
+.v6 .tier-card h3{font-size:1.15rem;color:var(--n6-navy);}
+.v6 .tier-card p{margin-top:12px;max-width:none;}
+.v6 .tiers-foot{margin-top:28px;max-width:60ch;font-size:1.02rem;}
+.v6 .tiers-foot strong{color:var(--n6-navy);}
+
+/* =========================================================
+   SECTION 6 — CREDIBILITY (built from running operations)
+========================================================= */
+.v6 .sec-credibility{padding-block:64px;background:var(--v6-warm);}
+@media (min-width:1024px){.v6 .sec-credibility{padding-block:96px;}}
+.v6 .cred-head{max-width:60ch;}
+.v6 .cred-head h2{margin-top:14px;font-size:clamp(1.6rem,3.6vw,2.3rem);}
+.v6 .cred-body{margin-top:20px;max-width:60ch;font-size:1.05rem;}
+.v6 .cred-body + .cred-body{margin-top:14px;}
+.v6 .cred-cta{margin-top:26px;}
+
+/* =========================================================
+   SECTION 7 — CLOSING CTA
+========================================================= */
+.v6 .sec-close{background:var(--n6-navy);color:#fff;padding-block:64px;text-align:left;}
+@media (min-width:1024px){.v6 .sec-close{padding-block:100px;}}
+.v6 .close-h2{color:#fff;font-size:clamp(2.1rem,5.4vw,3.6rem);max-width:16ch;margin-bottom:22px;letter-spacing:var(--ops-track-h1);}
+.v6 .close-body{color:var(--n6-pale);max-width:52ch;font-size:1.1rem;margin-bottom:12px;}
+.v6 .close-cta{margin-top:30px;}
+
+/* =========================================================
+   GENERIC INTERIOR-PAGE HEADER (Method, Pricing, Who We Are,
+   Health Check landing, Worked Example, legal pages)
+========================================================= */
+.v6 .page-hero{background:var(--n6-navy);color:#fff;padding-block:64px 56px;}
+@media (min-width:1024px){.v6 .page-hero{padding-block:88px 72px;}}
+.v6 .page-hero h1{color:#fff;font-size:clamp(2rem,4.6vw,3.2rem);max-width:18ch;margin-top:14px;}
+.v6 .page-hero p{color:var(--n6-pale);max-width:52ch;font-size:1.1rem;margin-top:18px;}
+.v6 .page-section{padding-block:56px;}
+@media (min-width:1024px){.v6 .page-section{padding-block:88px;}}
+.v6 .page-section.tint{background:var(--v6-warm);}
+.v6 .page-section h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;}
+.v6 .page-section p{max-width:60ch;margin-bottom:14px;}
+.v6 .page-section p:last-child{margin-bottom:0;}
+/* ---- Full-width copy variant, 2026-09-02 -- privacy.html specifically:
+   removes the 60ch paragraph cap and the price-table's 640px cap so
+   content fills the full .shell width, matching the rest of the site,
+   rather than reading as a narrow column. Scoped to .full-copy, not the
+   base .page-section rule, so terms.html/accessibility.html (still
+   .shell-narrow, deliberately unchanged) are unaffected. ---- */
+.v6 .page-section.full-copy p{max-width:none;}
+.v6 .page-section.full-copy .price-table{max-width:none;}
+
+/* =========================================================
+   PHOTO HERO — interior-page hero. Same DOM shape as the homepage
+   hero (media/scrim/content layers). Real photography wired in from
+   the approved signature-manufacturing set for Health Check and
+   Problems Hub. How It Works and Who We Are deliberately carry no
+   photography — the approved Visual Asset Matrix (§C) rules out a
+   physical-world image for How It Works entirely, and reserves
+   Who We Are for future real founder photography only, never a
+   generic/synthetic substitute — so both fall back to
+   `.photo-hero-slot` (an on-brand gradient + hairline texture,
+   never a bare/broken image). See each page's own governed-slot
+   HTML comment.
+========================================================= */
+.v6 .photo-hero{position:relative;min-height:50vh;display:flex;align-items:flex-end;background:var(--n6-ink);overflow:hidden;}
+@media (min-width:1024px){.v6 .photo-hero{min-height:56vh;}}
+.v6 .photo-hero-media{position:absolute;inset:0;}
+.v6 .photo-hero-media img{width:100%;height:100%;object-fit:cover;}
+.v6 .photo-hero-slot{position:absolute;inset:0;background:radial-gradient(ellipse at 76% 26%, rgba(45,74,115,0.5) 0%, rgba(10,18,31,0) 55%), linear-gradient(155deg, var(--n6-deep) 0%, var(--n6-ink) 68%);}
+.v6 .photo-hero-slot::after{content:"";position:absolute;inset:0;opacity:0.07;background-image:repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 34px);}
+.v6 .photo-hero-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(6,10,18,0.92) 0%, rgba(6,10,18,0.72) 30%, rgba(6,10,18,0.3) 60%, rgba(6,10,18,0.1) 100%), linear-gradient(0deg, rgba(6,10,18,0.5) 0%, rgba(6,10,18,0) 34%);}
+.v6 .photo-hero-content{position:relative;z-index:2;padding-block:44px 40px;width:100%;}
+@media (min-width:1024px){.v6 .photo-hero-content{padding-block:64px 56px;}}
+.v6 .photo-hero h1{color:#fff;font-size:clamp(2rem,4.6vw,3.2rem);max-width:20ch;margin-top:14px;}
+.v6 .photo-hero p{color:var(--n6-pale);max-width:52ch;font-size:1.1rem;margin-top:18px;}
+
+/* =========================================================
+   EDITORIAL ROW + INFO PANEL — 2026-09-02 replacement for the
+   prior pass's decorative numerals/quote-mark (both explicitly
+   rejected: "no giant quotation marks... no running numerals").
+   .editorial-row is the same two-column grid mechanism as before
+   (same .shell as every other section, so outer bounds and
+   hero-to-section alignment stay exact) but the second column now
+   only ever holds genuine, real content via .info-panel -- a
+   small labelled fact list, styled consistently with the Tool-page
+   "At a Glance" panel so the same visual language recurs sitewide.
+   Never used to manufacture a right-hand column where no real
+   content exists -- pages without a natural pairing (Who We Are,
+   Pricing) were widened to a single generous column instead; see
+   their own CSS below.
+========================================================= */
+.v6 .editorial-row{display:grid;gap:28px;}
+@media (min-width:1024px){.v6 .editorial-row{grid-template-columns:minmax(0,680px) 1fr;gap:56px;align-items:start;}}
+.v6 .info-panel{border:1px solid var(--ops-border-subtle);border-radius:8px;padding:24px 26px;background:#fff;}
+.v6 .sec-how .info-panel{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.14);}
+.v6 .info-panel-label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--a6-deep);margin-bottom:14px;}
+.v6 .sec-how .info-panel-label{color:var(--a6-light);}
+.v6 .info-panel-list{display:grid;gap:12px;}
+.v6 .info-panel-list > div{padding-top:12px;border-top:1px solid var(--ops-border-subtle);}
+.v6 .info-panel-list > div:first-child{padding-top:0;border-top:0;}
+.v6 .sec-how .info-panel-list > div{border-color:rgba(255,255,255,0.12);}
+.v6 .info-panel-list dt{font-family:var(--ops-font-display);font-weight:600;font-size:0.98rem;color:var(--n6-navy);margin:0;}
+.v6 .sec-how .info-panel-list dt{color:#fff;}
+.v6 .info-panel-list dd{margin:6px 0 0;font-size:0.92rem;color:var(--ops-text-secondary);}
+.v6 .sec-how .info-panel-list dd{color:var(--n6-pale);}
+/* Approved Web_Copy.md content can put more than one paragraph in a
+   single dd (Who's-involved/What-you'll-need run 2 paragraphs for
+   roughly half of the 70 modules) -- the guide-scrape fallback is
+   always one line, so this only ever engages for Web_Copy content. */
+.v6 .info-panel-list dd p{margin:0 0 8px;}
+.v6 .info-panel-list dd p:last-child{margin-bottom:0;}
+
+/* PROSE WIDE — for narrative pages with no natural structured-content
+   pairing (Who We Are). A wider single reading column, generous
+   typography and the section's own alternating tint rhythm carry the
+   composition instead of a forced right-hand panel or any decoration.
+   Still the same .shell as every other section (outer bounds/left edge
+   unchanged), just a wider measure than the general 60ch default. */
+.v6 .prose-wide{max-width:74ch;}
+.v6 .prose-wide p{max-width:none;font-size:1.05rem;}
+
+/* =========================================================
+   PROBLEMS HUB + PROBLEM PAGE
+========================================================= */
+.v6 .problem-list{margin-top:32px;display:grid;gap:1px;background:var(--ops-border-subtle);border:1px solid var(--ops-border-subtle);}
+.v6 .problem-row{background:#fff;padding:24px;text-decoration:none;display:block;}
+.v6 .problem-row:hover{background:var(--ops-n05);}
+.v6 .problem-row .q{font-family:var(--ops-font-display);font-weight:600;font-size:1.2rem;color:var(--n6-navy);}
+.v6 .problem-row .territory{font-family:var(--ops-font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.04em;color:var(--n6-slate);margin-top:8px;display:block;}
+.v6 .problem-escape{margin-top:28px;}
+
+.v6 .pp-situation{font-size:1.3rem;line-height:1.5;color:var(--n6-navy);font-family:var(--ops-font-display);font-weight:500;max-width:32ch;}
+.v6 .pp-routes{margin-top:40px;display:grid;gap:16px;}
+@media (min-width:700px){.v6 .pp-routes{grid-template-columns:1fr 1fr;}}
+.v6 .pp-route{border:1px solid var(--ops-border);border-radius:8px;padding:26px;}
+.v6 .pp-route .route-label{font-family:var(--ops-font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.04em;color:var(--n6-slate);}
+.v6 .pp-route .route-cta{margin-top:14px;}
+
+/* =========================================================
+   INTERVENTIONS INDEX
+========================================================= */
+.v6 .idx-group{margin-top:48px;}
+.v6 .idx-group h2{font-size:1.2rem;color:var(--n6-navy);border-bottom:1px solid var(--ops-border);padding-bottom:12px;}
+.v6 .idx-rows{margin-top:4px;}
+.v6 .idx-row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--ops-border-subtle);text-decoration:none;color:inherit;}
+.v6 .idx-row:hover .idx-name{color:var(--a6-deep);}
+.v6 .idx-name{font-family:var(--ops-font-display);font-weight:600;color:var(--n6-navy);}
+.v6 .idx-outcome{color:var(--ops-n50);font-size:0.9rem;}
+.v6 .idx-price{font-family:var(--ops-font-mono);font-size:12.5px;color:var(--n6-slate);white-space:nowrap;}
+.v6 .idx-search-wrap{margin-top:24px;max-width:420px;}
+.v6 .idx-search{width:100%;padding:12px 16px;border:1px solid var(--ops-border);border-radius:6px;font-family:inherit;font-size:0.95rem;background:#fff;}
+.v6 .showcase-note{font-family:var(--ops-font-mono);font-size:12px;color:var(--n6-steel);font-weight:400;margin-left:4px;}
+
+/* =========================================================
+   CANONICAL TOOL-PAGE SYSTEM, 2026-09-02.
+   One template for all 70 Tools: hero (title/proposition/price+
+   CTA only) -> Overview + At a Glance (fixed 2-col grid) ->
+   optional contextual callout -> What You Get -> Health Check +
+   Related Tools closing. Same geometry regardless of category,
+   tier, showcase state or content length -- content length changes
+   section HEIGHT, never which sections exist or their order.
+   Superseded the 2026-08-31 archetype (stage badges in the hero,
+   a merged core-copy/package section, a gradient fallback for
+   Wider Capability) -- every one of those is gone in this version.
+========================================================= */
+
+/* ---- Hero: fixed geometry, real category photography on all 70 ---- */
+.v6 .iv-hero{position:relative;background:var(--n6-navy);color:#fff;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;padding-block:40px 40px;}
+@media (min-width:1024px){.v6 .iv-hero{min-height:420px;}}
+.v6 .iv-hero-media{position:absolute;inset:0;}
+.v6 .iv-hero-media img{width:100%;height:100%;object-fit:cover;}
+.v6 .iv-hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg, rgba(10,18,31,0.9) 0%, rgba(10,18,31,0.66) 38%, rgba(10,18,31,0.32) 68%, rgba(10,18,31,0.14) 100%);}
+.v6 .iv-hero .shell{position:relative;z-index:2;}
+.v6 .iv-hero h1{color:#fff;font-size:clamp(1.7rem,3.6vw,2.4rem);max-width:23ch;line-height:1.12;}
+.v6 .iv-situation{color:var(--n6-pale);margin-top:16px;max-width:58ch;font-size:1.05rem;line-height:1.55;}
+.v6 .iv-buy{margin-top:26px;display:flex;flex-wrap:wrap;align-items:baseline;gap:20px;}
+.v6 .iv-price{font-family:var(--ops-font-display);font-weight:600;font-size:1.5rem;color:#fff;}
+.v6 .iv-price .showcase-note{color:var(--n6-pale);}
+
+.v6 .iv-section{padding-block:44px;border-top:1px solid var(--ops-border-subtle);}
+.v6 .iv-section .eyebrow{display:block;margin-bottom:14px;}
+.v6 .iv-section h2{font-size:1.4rem;margin-bottom:16px;}
+
+/* ---- Overview + At a Glance: single stacked column, 2026-09-02
+   (was a fixed two-column grid at >=900px) -- Overview first, then
+   At a Glance beneath it, same DOM order as before, all 70 pages. ---- */
+.v6 .iv-overview-grid{display:grid;gap:28px;align-items:start;}
+.v6 .iv-core{max-width:none;font-size:1.05rem;}
+/* Approved Web_Copy.md Overview content is 3-4 paragraphs for every
+   module (register/guide-scrape fallback is always one, so this rule
+   is a no-op there). */
+.v6 .iv-core + .iv-core{margin-top:14px;}
+.v6 .at-a-glance .info-panel-label{margin-bottom:16px;}
+
+/* ---- Optional contextual callout — ONE component, three labels ---- */
+.v6 .iv-callout{background:var(--v6-warm);}
+.v6 .iv-callout p,.v6 .iv-callout ul{max-width:none;}
+.v6 .iv-callout p{margin-bottom:10px;}
+.v6 .callout-list{margin:10px 0 0;padding-left:20px;}
+.v6 .callout-list li{margin-bottom:6px;}
+.v6 .callout-list a{color:var(--n6-navy);text-decoration:underline;text-decoration-color:var(--ops-border);}
+.v6 .callout-figures{font-size:0.85rem;color:var(--n6-slate);margin-top:12px;}
+
+.v6 .iv-hc-band{background:var(--n6-navy);color:#fff;text-align:left;}
+.v6 .iv-hc-band .btn-text{margin-top:6px;}
+.v6 .iv-related-label{margin-top:28px;margin-bottom:12px;}
+.v6 .iv-related{display:flex;flex-wrap:wrap;gap:10px;}
+
+/* =========================================================
+   PRICING
+========================================================= */
+.v6 .price-table{width:100%;border-collapse:collapse;max-width:640px;margin-top:20px;}
+.v6 .price-table th,.v6 .price-table td{border:1px solid var(--ops-border);padding:14px 18px;text-align:left;}
+.v6 .price-table thead th{background:var(--ops-n05);font-family:var(--ops-font-mono);font-size:11px;text-transform:uppercase;}
+.v6 .showcase-list{margin-top:18px;display:grid;gap:10px;max-width:64ch;}
+.v6 .showcase-item{display:flex;justify-content:space-between;border-bottom:1px solid var(--ops-border-subtle);padding-bottom:10px;}
+
+/* =========================================================
+   WORKED EXAMPLE (four-beat, single continuous narrative)
+========================================================= */
+.v6 .we-disclosure{background:var(--a6-tint);border-left:2px solid var(--a6-amber);padding:14px 20px;font-family:var(--ops-font-mono);font-size:12.5px;max-width:64ch;}
+.v6 .we-beat{padding-block:48px;}
+.v6 .we-beat.muted{background:var(--ops-n05);}
+.v6 .we-beat.vivid{background:var(--n6-ink);color:#fff;}
+.v6 .we-beat.vivid .beat-label{color:var(--a6-light);}
+.v6 .we-beat.vivid p{color:var(--n6-pale);}
+.v6 .beat-label{display:block;font-family:var(--ops-font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.04em;color:var(--a6-deep);margin-bottom:10px;}
+.v6 .we-stamp{display:inline-block;border:1.5px solid var(--a6-deep);color:var(--a6-deep);font-family:var(--ops-font-mono);font-size:11px;text-transform:uppercase;padding:4px 10px;transform:rotate(-3deg);margin-top:14px;}
+.v6 .we-metric{font-family:var(--ops-font-display);font-weight:600;font-size:clamp(2.4rem,6vw,4rem);color:var(--n6-navy);margin-top:8px;}
+.v6 .we-metric .arrow{color:var(--a6-amber);margin-inline:6px;}
+.v6 .we-handoff{background:var(--n6-navy);color:#fff;}
+.v6 .we-handoff h2{color:#fff;}
+
+/* ---- 404 ---- */
+.v6 .err-404{padding-block:120px;text-align:left;}
+.v6 .err-404 h1{font-size:clamp(2rem,5vw,3rem);}
+
+@media (prefers-reduced-motion:reduce){.v6 *{transition:none !important;}}

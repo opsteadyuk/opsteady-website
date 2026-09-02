@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Continuity Basics | Opsteady</title>
+<meta name="description" content="Know how the operation will respond when something fails. Pro £179.">
+<link rel="canonical" href="https://opsteady.co.uk/interventions/business_continuity_basics">
+<meta property="og:title" content="Business Continuity Basics | Opsteady">
+<meta property="og:description" content="Know how the operation will respond when something fails. Pro £179.">
+<meta property="og:type" content="website">
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/system.css">
+</head>
+<body class="v6">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="shell nav-inner">
+    <a href="/index.html" aria-label="Opsteady, home">
+      <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+    </a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
+      <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+      <a href="/interventions/index.html" aria-current="page">Tools</a>
+      <a href="/the-method.html">How It Works</a>
+      <a href="/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    </nav>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+  </div>
+</header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
+<main id="main">
+
+  <div class="shell"><nav class="breadcrumb"><a href="/interventions/index.html">Tools</a> → <a href="/interventions/index.html#Wider-capability">Wider capability</a> → Business Continuity Basics</nav></div>
+  <section class="iv-hero iv-hero-photo">
+    <div class="iv-hero-media"><img src="/assets/photography/category-wider-capability.jpg" alt="Four colleagues gathered around a workbench, examining a piece of tooling together as part of a cross-functional discussion." width="1168" height="784" style="object-position:42% 40%;" loading="eager" decoding="async"></div>
+    <div class="shell">
+      <h1>Business Continuity Basics</h1>
+      <p class="iv-situation">Knowing what could stop your site cold, and having a real plan for it, before something outside normal firefighting actually does.</p>
+      <div class="iv-buy" id="buy"><span class="iv-price">£179</span><a class="btn btn-primary on-light" href="/404.html">Buy now</a></div>
+    </div>
+  </section>
+
+  <section class="iv-section" style="border-top:none;"><div class="shell">
+    <div class="iv-overview-grid">
+      <div class="iv-overview">
+        <span class="eyebrow">Overview</span>
+        <p class="iv-core">Continuity risk usually only gets discussed after an actual disruption — a supplier's already failed, a system's already down, or the one person who knew how to run something is already gone. A site that's never been tested by a real disruption is often the one with the least honest picture of what would actually happen if it were, since nothing has forced the gaps into view yet.</p>
+      <p class="iv-core">This module builds a scored risk register — what could genuinely stop the site, scored honestly on likelihood and impact, with a full response plan written for the top handful, not everything that made the initial list, and a named owner for each response who'd genuinely be the one acting. It deliberately sits next to, not inside, HSE System (E9.1): HSE owns statutory safety and environmental compliance, this owns operational resilience, and the two stay as genuinely separate registers even on a site running both. Single points of failure in people, the exact gap behind a "key person suddenly gone" risk, pull directly from the Skills Matrix where one exists, rather than being rebuilt from scratch.</p>
+      <p class="iv-core">Done properly, the top three risks each carry a named owner and a written response, not just a score on a register, reviewed twice a year or after any near-miss, whichever comes first — a near-miss that doesn't trigger a review is named as a missed chance to test the plan before it's needed for real.</p>
+      </div>
+      <div class="at-a-glance">
+        <div class="info-panel-label mono">At a glance</div>
+        <dl class="info-panel-list">
+          <div><dt>Time</dt><dd><p>Half a day to build the first version of the register, longer if key people need to be pulled in to think through what genuinely keeps the site running.</p></dd></div>
+          <div><dt>Who's involved</dt><dd><p>Whoever leads the site, plus named owners for whichever functions the top risks actually touch — procurement, IT, HR, operations. For your own site, decide: what actually keeps this site running, honestly, not the official version; which risks are genuinely likely, high impact, or both, rather than theoretical worries; and who's the real owner for each top risk, someone who'd actually be the one acting if it happened.</p></dd></div>
+          <div><dt>What you'll need</dt><dd><p>A realistic list of what actually keeps the site running, not a generic template. The Skills Matrix, where one exists, since single points of failure in people are one of the most common continuity risks a site carries without realising it. The working file, <code>E6_Risk_Register_and_Response_Plans.xlsx</code>, two tabs: a Risk register (multiplying and ranking likelihood and impact, marking the top three as needing a full response plan, and reporting a top-three risk with no plan against it until one exists) and Response plans (one row per top risk — what happens, who does what, how long the site can run before this becomes critical, the named owner and what kind of role they hold, and when the plan was last reviewed or tested).</p></dd></div>
+        </dl>
+      </div>
+    </div>
+  </div></section>
+  <section class="iv-section iv-callout"><div class="shell">
+    <span class="info-panel-label mono">Before you start</span>
+    <p>Check first whether this site has had a real disruption before, or has never actually been tested — an untested site often has the least honest picture of its own risk, since nothing has forced the gaps into view yet, so build the register with that in mind rather than assuming untested means low-risk. Build the full register once, then focus real response planning on the top handful of risks, not every risk that made the initial list, and tell named owners before the register's finished, since a response plan with no genuine buy-in from whoever has to run it isn't a real plan yet.</p>
+  </div></section>
+  <section class="iv-section"><div class="shell">
+    <span class="eyebrow">What you get</span>
+    <h2>Everything you need to put it to work</h2>
+    <div class="pkg-grid pkg-compact">
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-7-2-11-1v16c4-1 8-1 11 1 3-2 7-2 11-1V8c-4-1-8-1-11 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9v16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="1.8" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Training</span>
+        <div class="pkg-verb">Learn it</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="16" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 11h8M10 16h8M10 21h5" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="23" r="5" fill="var(--v6-warm)" stroke="var(--a6-amber)" stroke-width="1.5"/><path d="M20.8 23l1.6 1.6 3-3.2" fill="none" stroke="var(--a6-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-label mono">Main Tool</span>
+        <div class="pkg-verb">Put it to work</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5c0-2 1.6-3.5 3.5-3.5s3.5 1.3 3.5 3.2c0 2.1-2.2 2.4-3 3.6-.3.5-.4 1-.4 1.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="var(--a6-amber)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">FAQ</span>
+        <div class="pkg-verb">Get unstuck</div>
+        
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon-wrap"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg></div>
+        <span class="pkg-label mono">Working Materials</span>
+        <div class="pkg-verb">Make it yours</div>
+        
+      </div>
+    </div>
+  </div></section>
+
+  <section class="iv-section iv-hc-band">
+    <div class="shell">
+      <h2 style="color:#fff;">Not sure this is the right starting point?</h2>
+      <a class="btn-text on-navy" href="https://healthcheck.opsteady.co.uk/">Run the Health Check <span class="arrow">→</span></a>
+      <div class="eyebrow on-navy iv-related-label">Related Tools</div><div class="iv-related"><a class="tag" href="/interventions/skills_matrix.html">Works well with: Skills Matrix & Cross-Training Planner</a><a class="tag" href="/interventions/labour_planning_shift_pattern.html">Works well with: Labour Planning & Shift Pattern Model</a><a class="tag" href="/interventions/overtime_agency_spend.html">Works well with: Overtime & Agency Spend Tracker</a></div>
+    </div>
+  </section>
+  
+</main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-links">
+      <a href="/interventions/index.html">Tools</a>
+      <a href="/the-method.html">The Method</a>
+      <a href="/worked-examples/bottleneck-analysis.html">Worked Example</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/who-we-are.html">Who We Are</a>
+      <a href="/accessibility.html">Accessibility</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+    </div>
+    <div class="footer-legal">Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203.</div>
+    <div class="footer-meta">OPSTEADY 2.0 · PROMOTED TO REPO ROOT · PENDING DEPLOYMENT RULING</div>
+  </div>
+</footer>
+</body>
+</html>
