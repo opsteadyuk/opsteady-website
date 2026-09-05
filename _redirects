@@ -1,0 +1,43 @@
+# Opsteady redirects.
+#
+# THIS FILE IS A PROBE. It exists to answer one question with evidence rather
+# than documentation: does THIS deployment serve _redirects at all?
+#
+# Why the question is open. wrangler.toml declares only [assets] with a
+# directory and not_found_handling; there is no redirect configuration. The repo
+# has carried a `redirects.txt` for weeks, which nothing reads, and the redirects
+# it documents have therefore never worked. Verified by direct fetch 2026-09-05:
+#   https://opsteady.co.uk/catalogue          -> 404
+#   https://opsteady.co.uk/interest.html      -> 404
+#   https://opsteady.co.uk/site/pricing.html  -> 404
+# That `_redirects` is the filename Cloudflare Workers Static Assets reads is an
+# assertion from documentation, not evidence from this deployment.
+#
+# WHAT THIS FILE DELIBERATELY DOES NOT DO. It carries no rule that depends on the
+# /interventions/ -> /modules/ rename. Every target below resolves in the
+# structure that is live TODAY, so a visitor sees no change except that eight
+# paths which currently 404 begin working. If _redirects turns out not to be read
+# here, nothing has moved and nothing is lost.
+#
+# The rename's own rules follow in a second, separate publication, once this one
+# has been proved.
+
+# --- /catalogue: the first rename, whose redirects never fired --------------
+/catalogue              /interventions/index.html                 301
+/catalogue/:slug        /interventions/:slug.html                 301
+
+# --- legacy interest page ---------------------------------------------------
+/interest.html          /interventions/index.html                 301
+/interest               /interventions/index.html                 301
+
+# --- worked-example pages removed 2026-09-02 (see PROJECT_STATE.md) --------
+# Repointed at the real page rather than a 301 chain into a 404.
+/case-studies           /interventions/bottleneck_analysis.html   301
+/case-studies/:slug     /interventions/bottleneck_analysis.html   301
+/worked-examples/*      /interventions/bottleneck_analysis.html   301
+
+# --- /site/*: dead since site/ was promoted to the repo root (86acb52) -----
+# The Health Check's cross-links all point here and have been 404 ever since.
+# /site/pricing.html -> /pricing.html, /site/interventions/index.html ->
+# /interventions/index.html. Both exist today.
+/site/*                 /:splat                                   301
