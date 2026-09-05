@@ -2,19 +2,18 @@
 # read redirects.txt, which is retired as of 2026-09-05.
 
 # --- 2026-09-05 rename: /interventions/ -> /modules/ ------------------------
-# TIDINESS, NOT CORRECTNESS. Cloudflare canonicalises .html to the extensionless
-# form with its own 307, PROVED by the probe publication: a control touching no
-# rule of ours still took a hop. So without the line below, an indexed
-# /interventions/foo.html lands via 301 then 307 - two hops, which harms neither
-# users nor indexing. The line removes an asymmetry in the table rather than a
-# defect on the site.
+# An "/interventions/:slug.html -> /modules/:slug" line was added here and then
+# REMOVED, because it could never fire: Cloudflare placeholders match a WHOLE
+# PATH SEGMENT, so ":slug.html" does not parse as "capture the part before
+# .html". Measured on the live site: /interventions/hse_system.html returned
+# 301 -> /modules/hse_system.html, with the extension PRESERVED, which is the
+# splat's behaviour and not the placeholder's. A rule that looks like it does
+# something is worse than no rule, so it is gone rather than left inert.
 #
-# UNVERIFIED WHEN WRITTEN, AND IT FAILS SAFE. Cloudflare placeholders match a
-# whole path segment, so ":slug.html" may not parse as "capture the part before
-# .html". If it does not match, the splat below catches it and the behaviour is
-# exactly what it would have been anyway. Verify which of the two actually fired
-# rather than reporting the splat's result as this rule's.
-/interventions/:slug.html  /modules/:slug               301
+# The two hops that line was meant to save are Cloudflare's own .html-to-
+# extensionless 307, not ours. A control touching no rule of ours takes that hop
+# too. It harms neither users nor indexing.
+#
 # The splat preserves whatever form was indexed, with or without .html, so the
 # 70 module pages and the index that have been live since 2 September all land.
 /interventions/*        /modules/:splat                 301
@@ -24,12 +23,19 @@
 # The Health Check nav linked at /site/interventions/index.html and has been
 # returning 404 since that promotion. Verified 404 live 2026-09-05.
 #
-# ORDER IS LOAD-BEARING HERE. The two specific /site/interventions rules sit
-# ABOVE the general /site/* rule so they win: first match wins, and _redirects
-# rules are applied once per request rather than chained. Without them,
-# /site/interventions/index.html would match /site/* -> /interventions/index.html
-# and then need a SECOND request to reach /modules/index.html. Two hops where one
-# will do, on a path that is already broken.
+# THE ORDERING CLAIM THAT USED TO SIT HERE WAS WRONG, AND IS CORRECTED RATHER
+# THAN QUIETLY DROPPED. It said the two specific /site/interventions rules sit
+# above /site/* "so they win". THEY DO NOT WIN. Measured on the live site:
+#   /site/interventions/index.html  ->  /interventions/index.html   (301)
+#                                   ->  /modules/index.html         (301)
+#                                   ->  /modules/                   (307)
+# three hops, so /site/* matched FIRST despite being written below them.
+#
+# THE BEHAVIOUR IS LEFT EXACTLY AS IT IS. It lands correctly at 200, three hops
+# on a path that has been dead for days is nobody's problem, and the two specific
+# rules are harmless. What is corrected is the CLAIM: do not read this block as
+# evidence that ordering here works the way the comment used to assert, and do
+# not build anything on top of that assumption.
 /site/interventions/*   /modules/:splat                 301
 /site/interventions     /modules/                       301
 #
