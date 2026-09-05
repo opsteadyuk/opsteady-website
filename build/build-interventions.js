@@ -1,16 +1,16 @@
 "use strict";
 const { w, page, HC_URL, getModuleData, getCatalogueListing, packageGrid, photoHero, customerCategory, CATEGORY_ORDER, categoryAnchor } = require("./build.js");
 
-/* ---- Tool-category photography (Level 2), 2026-09-02 ----
+/* ---- Module-category photography (Level 2), 2026-09-02 ----
    Every one of the 9 real customer categories (CATEGORY_ORDER in build.js)
    now has an assigned photograph from the approved signature-manufacturing
    set -- "Wider capability" (the 11 Enablers) previously had none and used
    a gradient fallback; that exception ended with the arrival of
    opsteady-tool-family-wider-capability.jpg. There is now no category-
-   specific gradient fallback anywhere in the Tool-page system. Determined
+   specific gradient fallback anywhere in the module-page system. Determined
    programmatically from customerCategory(), never hand-mapped per module:
-   every Tool in a category shares that category's one image (explicitly
-   sanctioned -- "if multiple Tools can share a category image, that is
+   every module in a category shares that category's one image (explicitly
+   sanctioned -- "if multiple modules can share a category image, that is
    acceptable"). */
 const CATEGORY_IMAGES = {
   "Output & Flow": {
@@ -64,18 +64,18 @@ const listing = getCatalogueListing();
 
 /* Customer categories, group order and anchor ids now come from
    build.js (customerCategory / CATEGORY_ORDER / categoryAnchor) so
-   the Tools index groupings and the homepage "What Opsteady can
+   the Modules index groupings and the homepage "What Opsteady can
    help you improve" grid (§2) stay identical and cross-link
    correctly -- one taxonomy, not two that can drift apart. */
 
-/* ---- Tools index — grouped by customer category ---- */
+/* ---- Modules index — grouped by customer category ---- */
 const byGroup = {};
 for (const m of listing) {
   const cat = customerCategory(m);
   (byGroup[cat] = byGroup[cat] || []).push({ ...m, id: m.id });
 }
 const groupOrder = CATEGORY_ORDER.filter((c) => byGroup[c]);
-/* No per-group cap: search must be able to find every Tool, and a
+/* No per-group cap: search must be able to find every module, and a
    truncated list defeats that (a capped-then-"see more" pattern was
    tried and found to break search on regeneration -- items beyond the
    cap were invisible to the search box while a static "N more" link
@@ -86,7 +86,7 @@ const idxHtml = groupOrder.map((g) => {
   return `<div class="idx-group" id="${categoryAnchor(g)}">
         <h2>${g}</h2>
         <div class="idx-rows">
-          ${items.map((m) => `<a class="idx-row" data-search="${m.name.toLowerCase()} ${m.outcome.toLowerCase()}" href="/interventions/${m.slug}.html">
+          ${items.map((m) => `<a class="idx-row" data-search="${m.name.toLowerCase()} ${m.outcome.toLowerCase()}" href="/modules/${m.slug}.html">
             <span><span class="idx-name">${m.name}</span><br><span class="idx-outcome">${m.outcome}</span></span>
             <span class="idx-price mono">${m.showcase ? `From £${m.pricePro}` : (m.priceEssentials ? `£${m.priceEssentials}–£${m.pricePro}` : `£${m.pricePro}`)}</span>
           </a>`).join("\n          ")}
@@ -94,19 +94,19 @@ const idxHtml = groupOrder.map((g) => {
       </div>`;
 }).join("\n      ");
 
-/* ---- Tools index hero — 2026-09-02: the gradient placeholder is
+/* ---- Modules index hero — 2026-09-02: the gradient placeholder is
    retired now that a dedicated asset (opsteady-tools-index-hero.jpg)
    exists for this exact surface. Approved copy unchanged. ---- */
-w("interventions/index.html", page({
-  current: "interventions",
-  title: "Tools | Opsteady",
-  description: "Find the Opsteady Tool you need, grouped by what it helps you fix.",
-  path: "/interventions",
+w("modules/index.html", page({
+  current: "modules",
+  title: "Modules | Opsteady",
+  description: "Find the Opsteady module you need, grouped by what it helps you fix.",
+  path: "/modules",
   main: `
   ${photoHero({
-    eyebrow: "Tools",
+    eyebrow: "Modules",
     h1: "Find the one you need, or see what's available.",
-    sub: "Each Tool is a complete, practical way to fix one specific thing: the working file itself, clear instructions, examples and guidance for putting it to work, not just a blank template.",
+    sub: "Each module is a complete, practical way to fix one specific thing: the working file itself, clear instructions, examples and guidance for putting it to work, not just a blank template.",
     image: {
       src: "/assets/photography/hero-tools-index.jpg",
       alt: "A wide view down a manufacturing workshop aisle, machinery and staged materials on both sides, operators working at stations along the line.",
@@ -118,7 +118,7 @@ w("interventions/index.html", page({
   <section class="page-section">
     <div class="shell">
       <div class="idx-search-wrap">
-        <input type="search" id="idx-search" class="idx-search" placeholder="Search: &quot;skills matrix,&quot; &quot;changeover,&quot; &quot;delivery&quot;..." aria-label="Search Tools">
+        <input type="search" id="idx-search" class="idx-search" placeholder="Search: &quot;skills matrix,&quot; &quot;changeover,&quot; &quot;delivery&quot;..." aria-label="Search modules">
       </div>
       <p style="margin-top:14px;">Not sure which one? <a class="btn-text" href="${HC_URL}">Run the Health Check instead <span class="arrow">→</span></a></p>
       ${idxHtml}
@@ -146,13 +146,13 @@ w("interventions/index.html", page({
 
 /* =========================================================
    CANONICAL TOOL-PAGE SYSTEM, 2026-09-02
-   One template, one component sequence, for all 70 Tools:
+   One template, one component sequence, for all 70 modules:
      hero (title / proposition / price+tier / CTA -- nothing else)
      -> Overview + At a Glance (fixed two-column grid)
      -> optional contextual callout (BEFORE YOU START / WORKED
-        EXAMPLE / IMPORTANT TO KNOW -- most Tools have none)
+        EXAMPLE / IMPORTANT TO KNOW -- most modules have none)
      -> What You Get (unchanged four-card component)
-     -> Health Check + Related Tools closing
+     -> Health Check + Related modules closing
    Content length changes page HEIGHT; it must never change which
    of these sections exists, their order, or their geometry.
 ========================================================= */
@@ -225,7 +225,7 @@ function buildToolContent(d) {
    mapped to this label per spec §12), only the rows that genuinely
    exist. Per spec: never fabricate a row, never show an empty labelled
    row, but the panel itself stays in the same right-column position
-   even when a Tool has none of the three fields -- only F3.1 Culture
+   even when a module has none of the three fields -- only F3.1 Culture
    Guide, per the 2026-09-02 audit, whose panel renders the heading with
    no rows beneath it rather than being silently dropped. Flagged
    explicitly in this session's report. */
@@ -257,7 +257,7 @@ function atAGlancePanel(d) {
 function prereqLinksHtml(prereqs) {
   if (!prereqs.length) return "";
   return `<p>${prereqs.length > 1 ? "This works best once these are already in place:" : "This works best once this is already in place:"}</p>
-      <ul class="callout-list">${prereqs.map((p) => `<li><a href="/interventions/${p.slug}.html">${p.name}</a></li>`).join("")}</ul>`;
+      <ul class="callout-list">${prereqs.map((p) => `<li><a href="/modules/${p.slug}.html">${p.name}</a></li>`).join("")}</ul>`;
 }
 
 /* Optional contextual callout -- the ONE controlled slot (spec §13),
@@ -265,11 +265,11 @@ function prereqLinksHtml(prereqs) {
    KNOW, same geometry, only label/icon/content differ. Determined
    programmatically: any module with a real "Requires first" edge gets
    BEFORE YOU START (22 of 70, per the 2026-09-02 audit) listing those
-   real prerequisite Tools; P4.1 keeps its existing governed WORKED
+   real prerequisite modules; P4.1 keeps its existing governed WORKED
    EXAMPLE with the exact approved numbers, unchanged. No module uses
    IMPORTANT TO KNOW in this pass -- no reliable programmatic signal
    for it exists in the current register, and inventing one risks
-   exactly the bespoke-page-per-Tool outcome this system exists to end. */
+   exactly the bespoke-page-per-module outcome this system exists to end. */
 function contextualCallout(d) {
   if (d.id === "P4.1") {
     return calloutShell("Worked example", `<p>One week of measurement gets you one step clearly identified as the binding constraint, a sized cost in units per week, and a first attempt at getting more from that step before anyone signs off on new capital.</p>
@@ -298,7 +298,7 @@ function calloutShell(label, bodyHtml) {
   </div></section>`;
 }
 
-/* Related Tools — ranked by real relationship type (a hard prerequisite
+/* Related modules — ranked by real relationship type (a hard prerequisite
    is more decision-relevant to a buyer than a loose overlap note), one
    deterministic display cap across all 70 pages. Labels are kept, not
    flattened to a generic "Related" -- the 2026-09-02 audit found 6
@@ -336,11 +336,11 @@ for (const listed of listing) {
   const callout = contextualCallout(d);
   const related = rankedRelated(d.edges);
   const relatedHtml = related.length
-    ? `<div class="iv-related">${related.map((e) => `<a class="tag" href="/interventions/${e.slug}.html">${e.label}: ${e.name}</a>`).join("")}</div>`
+    ? `<div class="iv-related">${related.map((e) => `<a class="tag" href="/modules/${e.slug}.html">${e.label}: ${e.name}</a>`).join("")}</div>`
     : "";
 
   const main = `
-  <div class="shell"><nav class="breadcrumb"><a href="/interventions/index.html">Tools</a> → <a href="/interventions/index.html#${categoryAnchor(cat)}">${cat}</a> → ${d.name}</nav></div>
+  <div class="shell"><nav class="breadcrumb"><a href="/modules/index.html">Modules</a> → <a href="/modules/index.html#${categoryAnchor(cat)}">${cat}</a> → ${d.name}</nav></div>
   <section class="iv-hero iv-hero-photo">
     <div class="iv-hero-media"><img src="${catImage.src}" alt="${catImage.alt}" width="${catImage.width}" height="${catImage.height}" style="object-position:${catImage.objectPosition};" loading="eager" decoding="async"></div>
     <div class="shell">
@@ -370,19 +370,19 @@ for (const listed of listing) {
     <div class="shell">
       <h2 style="color:#fff;">Not sure this is the right starting point?</h2>
       <a class="btn-text on-navy" href="${HC_URL}">Run the Health Check <span class="arrow">→</span></a>
-      ${relatedHtml ? `<div class="eyebrow on-navy iv-related-label">Related Tools</div>${relatedHtml}` : ""}
+      ${relatedHtml ? `<div class="eyebrow on-navy iv-related-label">Related modules</div>${relatedHtml}` : ""}
     </div>
   </section>
   `;
 
-  w(`interventions/${d.slug}.html`, page({
-    current: "interventions",
+  w(`modules/${d.slug}.html`, page({
+    current: "modules",
     title: `${d.name} | Opsteady`,
     description: `${d.outcome} ${d.hasEssentials ? `Essentials £${d.priceEssentials.price}, ` : ""}Pro £${d.pricePro.price}.`,
-    path: `/interventions/${d.slug}`,
+    path: `/modules/${d.slug}`,
     main,
   }));
   generated++;
 }
 
-console.log(`Interventions index + ${generated} intervention pages written.`);
+console.log(`Modules index + ${generated} module pages written.`);

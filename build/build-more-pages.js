@@ -12,7 +12,7 @@ w("pricing.html", page({
     <div class="shell-narrow">
       <div class="eyebrow on-navy">Pricing</div>
       <h1>Straightforward pricing.</h1>
-      <p>Every Tool has its own price, shown on its own page. Most are Pro today, priced by depth and reach: Essentials editions are being added over time, and only shown where they actually exist.</p>
+      <p>Every module has its own price, shown on its own page. Most are Pro today, priced by depth and reach: Essentials editions are being added over time, and only shown where they actually exist.</p>
     </div>
   </section>
   <section class="page-section">
@@ -21,8 +21,8 @@ w("pricing.html", page({
       <table class="price-table">
         <thead><tr><th></th><th>Essentials <span class="mono" style="font-weight:400;font-size:0.8rem;">(where available)</span></th><th>Pro</th></tr></thead>
         <tbody>
-          <tr><td>Most Tools</td><td>£89</td><td>£179</td></tr>
-          <tr><td>A smaller number of deeper, cross-cutting Tools</td><td>£179</td><td>£349</td></tr>
+          <tr><td>Most modules</td><td>£89</td><td>£179</td></tr>
+          <tr><td>A smaller number of deeper, cross-cutting modules</td><td>£179</td><td>£349</td></tr>
         </tbody>
       </table>
       <p style="color:var(--ops-n60);font-size:0.9rem;margin-top:10px;">The price shown is the total price you pay &mdash; no tax is added on top at checkout. Purchases are processed by Lemon Squeezy, our merchant of record, who calculates and remits any tax that applies. See <a href="/terms.html">Terms of sale</a> for full detail.</p>
@@ -30,7 +30,7 @@ w("pricing.html", page({
   </section>
   <section class="page-section tint">
     <div class="shell-narrow">
-      <h2>A small number of Tools at a lower entry price</h2>
+      <h2>A small number of modules at a lower entry price</h2>
       <p>These are available as detailed worked examples, at a lower entry Pro price. Not a discount. Not time-limited.</p>
       <div class="showcase-list">
         <div class="showcase-item"><span>Bottleneck Analysis Tool</span><span class="mono">£99</span></div>
@@ -42,10 +42,10 @@ w("pricing.html", page({
   <section class="page-section">
     <div class="shell-narrow">
       <h2>Where purchase happens</h2>
-      <p>Every Tool has its own price and buy action, showing only the edition actually available to buy.</p>
+      <p>Every module has its own price and buy action, showing only the edition actually available to buy.</p>
       <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;">
-        <a class="btn btn-primary" href="/interventions/bottleneck_analysis.html">See a representative example</a>
-        <a class="btn-text" href="/interventions/index.html">Browse Tools <span class="arrow">→</span></a>
+        <a class="btn btn-primary" href="/modules/bottleneck_analysis.html">See a representative example</a>
+        <a class="btn-text" href="/modules/index.html">Browse modules <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -116,7 +116,7 @@ w("who-we-are.html", page({
     <div class="shell">
       <div class="prose-wide">
         <h2>Why trust isn't a soft subject</h2>
-        <p>Every tool here depends on people being willing to say what's actually happening. Where that willingness has been damaged, because raising something went badly for someone once, no system fixes it by itself, and no amount of asking for openness in a meeting outweighs what people have already seen happen. That's why Opsteady's diagnostics look at how people behave alongside what the systems say, and why nothing here pretends a template can substitute for trust.</p>
+        <p>Every module here depends on people being willing to say what's actually happening. Where that willingness has been damaged, because raising something went badly for someone once, no system fixes it by itself, and no amount of asking for openness in a meeting outweighs what people have already seen happen. That's why Opsteady's diagnostics look at how people behave alongside what the systems say, and why nothing here pretends a template can substitute for trust.</p>
       </div>
     </div>
   </section>
@@ -198,9 +198,9 @@ w("terms.html", page({
       <h2>4. VAT</h2>
       <p>Optimere Limited is not VAT-registered. Purchases on this site are sold through Lemon Squeezy, which acts as merchant of record for every sale &mdash; Lemon Squeezy is the legal seller and is responsible for calculating, collecting and remitting any VAT or sales tax that applies to your purchase, wherever you're buying from.</p>
       <h2>5. What you're buying</h2>
-      <p>Each intervention is a digital download: an Excel spreadsheet or workbook, plus a written guide, delivered as a PDF. Intervention pages state what's included and the difference between the Essentials and Pro tiers where both exist. Nothing physical is shipped.</p>
+      <p>Each module is a digital download: an Excel spreadsheet or workbook, plus a written guide, delivered as a PDF. Module pages state what's included and the difference between the Essentials and Pro tiers where both exist. Nothing physical is shipped.</p>
       <h2>6. Price</h2>
-      <p>The price shown on each Tool's page is the total price you pay &mdash; no tax is added on top at checkout. Purchases are processed by Lemon Squeezy, our merchant of record, who calculates and remits any tax that applies to your purchase; it doesn't change the price you see. Lemon Squeezy's own service fee is paid by us, not added to your total.</p>
+      <p>The price shown on each module's page is the total price you pay &mdash; no tax is added on top at checkout. Purchases are processed by Lemon Squeezy, our merchant of record, who calculates and remits any tax that applies to your purchase; it doesn't change the price you see. Lemon Squeezy's own service fee is paid by us, not added to your total.</p>
       <h2>7. Delivery</h2>
       <p>Digital delivery only, immediately after payment is confirmed. Your download link is shown on the confirmation page and also sent to the email address you paid with.</p>
       <h2>8. What you need to use it</h2>

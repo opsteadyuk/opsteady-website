@@ -17,10 +17,10 @@ const w = (rel, html) => { written.push(write(rel, html)); };
 /* =========================================================
    CUSTOMER-RECOGNISABLE CAPABILITY AREAS
    Shared between the homepage "What Opsteady can help you
-   improve" grid (§2) and the Tools index groupings (build-
+   improve" grid (§2) and the Modules index groupings (build-
    interventions.js), so the two stay in lockstep and every
    claimed area is directly traceable to real register modules
-   -- no area is asserted without at least one real Tool behind
+   -- no area is asserted without at least one real module behind
    it. 8 customer-facing areas + one honest "Wider capability"
    bucket for the 11 Enablers, which the register itself calls
    cross-cutting rather than tied to one area (same rationale
@@ -116,7 +116,7 @@ const homeMain = `
       <p class="hero-sub">Free information, template shops and generic AI will give you methods and examples. <strong class="hero-emph">They don't know your site.</strong></p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="${HC_URL}">Start the health check</a>
-        <a class="btn-text on-navy" href="/interventions/index.html">Browse Tools <span class="arrow">→</span></a>
+        <a class="btn-text on-navy" href="/modules/index.html">Browse modules <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -125,7 +125,7 @@ const homeMain = `
     <div class="shell">
       <div class="eyebrow">What Opsteady can help you improve</div>
       <div class="wiah-grid">
-        ${IMPROVE_AREAS.map((a) => `<a class="wiah-item" href="/interventions/index.html#${categoryAnchor(a.name)}"><h3>${a.name}</h3><p>${a.copy}</p></a>`).join("\n        ")}
+        ${IMPROVE_AREAS.map((a) => `<a class="wiah-item" href="/modules/index.html#${categoryAnchor(a.name)}"><h3>${a.name}</h3><p>${a.copy}</p></a>`).join("\n        ")}
       </div>
       <p class="wiah-foot"><strong>You don't need to tackle all of it. That's the point.</strong> The Health Check helps establish what deserves attention now, and what can wait.</p>
     </div>
@@ -140,8 +140,8 @@ const homeMain = `
       </div>
       <div class="how-steps">
         <div class="how-step"><span class="how-step-num mono">01</span><h3>Understand where you are</h3><p>Start with the Opsteady Health Check. It looks across your operation to identify where attention is most needed, what can wait, and how much change is sensible to take on.</p></div>
-        <div class="how-step"><span class="how-step-num mono">02</span><h3>Decide what to work on</h3><p>Your results point you towards the areas and Tools most relevant to your site. You decide what to take forward, with a clearer reason for starting there.</p></div>
-        <div class="how-step"><span class="how-step-num mono">03</span><h3>Put the Tool to work</h3><p>Each Tool gives your team the knowledge, guidance and working materials needed to deploy it in your own operation, without needing a consultant alongside you.</p></div>
+        <div class="how-step"><span class="how-step-num mono">02</span><h3>Decide what to work on</h3><p>Your results point you towards the areas and modules most relevant to your site. You decide what to take forward, with a clearer reason for starting there.</p></div>
+        <div class="how-step"><span class="how-step-num mono">03</span><h3>Put the module to work</h3><p>Each module gives your team the knowledge, guidance and working materials needed to deploy it in your own operation, without needing a consultant alongside you.</p></div>
         <div class="how-step"><span class="how-step-num mono">04</span><h3>Improve, sustain, then look again</h3><p>Work through the improvement, give it time to settle, and rerun the Health Check periodically. As your site changes, the next priority may change with it.</p></div>
       </div>
       <div class="how-loop">
@@ -159,7 +159,7 @@ const homeMain = `
       <div class="get-head">
         <div class="eyebrow">What you actually get</div>
         <h2>More than a template. Everything you need to put it to work.</h2>
-        <p>You shouldn't need to already be an expert to use an Opsteady Tool. Each one is built as a practical package that helps your team understand the subject, deploy it properly and keep moving when the real world doesn't quite follow the example.</p>
+        <p>You shouldn't need to already be an expert to use an Opsteady module. Each one is built as a practical package that helps your team understand the subject, deploy it properly and keep moving when the real world doesn't quite follow the example.</p>
       </div>
       ${packageGrid()}
     </div>
@@ -174,11 +174,11 @@ const homeMain = `
       <div class="tiers-grid">
         <div class="tier-card">
           <h3>Essentials — ready to run</h3>
-          <p>A complete Tool for the standard case. Understand what you're doing, why it matters and how to put it into practice.</p>
+          <p>A complete module for the standard case. Understand what you're doing, why it matters and how to put it into practice.</p>
         </div>
         <div class="tier-card">
           <h3>Pro — the full playbook</h3>
-          <p>Go further into the thinking behind the Tool: why it works, different ways to deploy it, what you can adapt, what you shouldn't, what tends to go wrong and the judgement needed when the answer isn't obvious.</p>
+          <p>Go further into the thinking behind the module: why it works, different ways to deploy it, what you can adapt, what you shouldn't, what tends to go wrong and the judgement needed when the answer isn't obvious.</p>
         </div>
       </div>
       <p class="tiers-foot"><strong>Essentials isn't a cut-down version designed to push you towards Pro.</strong> Choose the depth that fits what you're trying to do.</p>
@@ -222,7 +222,7 @@ const homeMain = `
 w("index.html", page({
   current: "home",
   title: "Opsteady | Know what to fix first",
-  description: "Opsteady is the in-house way to improve a manufacturing site. Find out what deserves attention first, and move into Tools your own team can run.",
+  description: "Opsteady is the in-house way to improve a manufacturing site. Find out what deserves attention first, and move into modules your own team can run.",
   path: "/",
   main: homeMain,
 }));

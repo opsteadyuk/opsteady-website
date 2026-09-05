@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modules | Opsteady</title>
+<meta name="description" content="Find the Opsteady module you need, grouped by what it helps you fix.">
+<link rel="canonical" href="https://opsteady.co.uk/modules">
+<meta property="og:title" content="Modules | Opsteady">
+<meta property="og:description" content="Find the Opsteady module you need, grouped by what it helps you fix.">
+<meta property="og:type" content="website">
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/system.css">
+</head>
+<body class="v6">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="shell nav-inner">
+    <a href="/index.html" aria-label="Opsteady, home">
+      <img class="brand-logo" src="/brand/opsteady-logo-on-navy.svg" alt="Opsteady">
+    </a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="nav-links" id="nav-panel" aria-label="Primary">
+      <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+      <a href="/modules/index.html" aria-current="page">Modules</a>
+      <a href="/the-method.html">How It Works</a>
+      <a href="/who-we-are.html">Who We Are</a>
+      <a class="nav-cta nav-cta-mobile" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+    </nav>
+    <a class="nav-cta nav-cta-desktop" href="https://healthcheck.opsteady.co.uk/">Start Health Check</a>
+  </div>
+</header>
+<script>
+(function(){
+  var btn = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  if (!btn || !panel) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    panel.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+  btn.addEventListener("click", function(){ setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function(e){ if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") setOpen(false); });
+})();
+</script>
+<main id="main">
+
+  <section class="photo-hero">
+    <div class="photo-hero-media"><img src="/assets/photography/hero-tools-index.jpg" alt="A wide view down a manufacturing workshop aisle, machinery and staged materials on both sides, operators working at stations along the line." width="1168" height="784" style="object-position:58% 40%;" loading="eager" fetchpriority="high" decoding="sync"></div>
+    <div class="photo-hero-scrim"></div>
+    <div class="photo-hero-content shell">
+      <div class="eyebrow on-navy">Modules</div>
+      <h1>Find the one you need, or see what's available.</h1>
+      <p>Each module is a complete, practical way to fix one specific thing: the working file itself, clear instructions, examples and guidance for putting it to work, not just a blank template.</p>
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="shell">
+      <div class="idx-search-wrap">
+        <input type="search" id="idx-search" class="idx-search" placeholder="Search: &quot;skills matrix,&quot; &quot;changeover,&quot; &quot;delivery&quot;..." aria-label="Search modules">
+      </div>
+      <p style="margin-top:14px;">Not sure which one? <a class="btn-text" href="https://healthcheck.opsteady.co.uk/">Run the Health Check instead <span class="arrow">→</span></a></p>
+      <div class="idx-group" id="Output-and-Flow">
+        <h2>Output & Flow</h2>
+        <div class="idx-rows">
+          <a class="idx-row" data-search="bottleneck analysis tool find what is really limiting output." href="/modules/bottleneck_analysis.html">
+            <span><span class="idx-name">Bottleneck Analysis Tool</span><br><span class="idx-outcome">Find what is really limiting output.</span></span>
+            <span class="idx-price mono">From £99</span>
+          </a>
+          <a class="idx-row" data-search="smed / changeover reduction toolkit reduce changeover time without creating instability." href="/modules/smed_changeover_reduction_toolkit.html">
+            <span><span class="idx-name">SMED / Changeover Reduction Toolkit</span><br><span class="idx-outcome">Reduce changeover time without creating instability.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="kanban & pull system design replenish from real demand, not guesswork." href="/modules/kanban_and_pull_system_design.html">
+            <span><span class="idx-name">Kanban & Pull System Design</span><br><span class="idx-outcome">Replenish from real demand, not guesswork.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="heijunka & takt time level the work around real customer demand." href="/modules/heijunka_and_takt_time.html">
+            <span><span class="idx-name">Heijunka & Takt Time</span><br><span class="idx-outcome">Level the work around real customer demand.</span></span>
+            <span class="idx-price mono">£179–£349</span>
+          </a>
+          <a class="idx-row" data-search="yamazumi / line balancing balance work before adding people or equipment." href="/modules/yamazumi_line_balancing.html">
+            <span><span class="idx-name">Yamazumi / Line Balancing</span><br><span class="idx-outcome">Balance work before adding people or equipment.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+        </div>
+      </div>
+      <div class="idx-group" id="Delivery-and-Planning">
+        <h2>Delivery & Planning</h2>
+        <div class="idx-rows">
+          <a class="idx-row" data-search="production schedule adherence tracker see where the production plan is being lost." href="/modules/production_schedule_adherence.html">
+            <span><span class="idx-name">Production Schedule Adherence Tracker</span><br><span class="idx-outcome">See where the production plan is being lost.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="capacity planning model know what you can actually make." href="/modules/capacity_planning.html">
+            <span><span class="idx-name">Capacity Planning Model</span><br><span class="idx-outcome">Know what you can actually make.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="inventory & materials control pack keep the right material available without hiding excess." href="/modules/inventory_and_materials_control_pack.html">
+            <span><span class="idx-name">Inventory & Materials Control Pack</span><br><span class="idx-outcome">Keep the right material available without hiding excess.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="otif & right-first-time dashboard see where delivery performance is breaking down." href="/modules/otif_rft_dashboard.html">
+            <span><span class="idx-name">OTIF & Right-First-Time Dashboard</span><br><span class="idx-outcome">See where delivery performance is breaking down.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+        </div>
+      </div>
+      <div class="idx-group" id="Running-the-Day">
+        <h2>Running the Day</h2>
+        <div class="idx-rows">
+          <a class="idx-row" data-search="shift handover system nothing important gets lost between shifts." href="/modules/shift_handover.html">
+            <span><span class="idx-name">Shift Handover System</span><br><span class="idx-outcome">Nothing important gets lost between shifts.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="tiered meeting structure get the right problems to the right level quickly." href="/modules/tiered_meeting_structure.html">
+            <span><span class="idx-name">Tiered Meeting Structure</span><br><span class="idx-outcome">Get the right problems to the right level quickly.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="sqdc performance board pack make today's performance impossible to miss." href="/modules/sqdc_performance_board.html">
+            <span><span class="idx-name">SQDC Performance Board Pack</span><br><span class="idx-outcome">Make today's performance impossible to miss.</span></span>
+            <span class="idx-price mono">From £179</span>
+          </a>
+          <a class="idx-row" data-search="supervisor standard work pack create a reliable daily leadership rhythm." href="/modules/supervisor_standard_work.html">
+            <span><span class="idx-name">Supervisor Standard Work Pack</span><br><span class="idx-outcome">Create a reliable daily leadership rhythm.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="layered leadership standard work & gemba rhythm connect every leadership layer to the floor." href="/modules/layered_leadership_standard_work_and_gemba_rhythm.html">
+            <span><span class="idx-name">Layered Leadership Standard Work & Gemba Rhythm</span><br><span class="idx-outcome">Connect every leadership layer to the floor.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="layered process audit system check that standards still work in the real process." href="/modules/layered_process_audit.html">
+            <span><span class="idx-name">Layered Process Audit System</span><br><span class="idx-outcome">Check that standards still work in the real process.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="action & countermeasure tracking system make sure actions actually get closed." href="/modules/action_and_countermeasure_tracking_system.html">
+            <span><span class="idx-name">Action & Countermeasure Tracking System</span><br><span class="idx-outcome">Make sure actions actually get closed.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+        </div>
+      </div>
+      <div class="idx-group" id="Quality">
+        <h2>Quality</h2>
+        <div class="idx-rows">
+          <a class="idx-row" data-search="non-conformance tracker & trend pack see what is failing, where and how often." href="/modules/non_conformance_tracker.html">
+            <span><span class="idx-name">Non-Conformance Tracker & Trend Pack</span><br><span class="idx-outcome">See what is failing, where and how often.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="customer complaint & feedback system turn customer issues into controlled action." href="/modules/customer_complaint_and_feedback_system.html">
+            <span><span class="idx-name">Customer Complaint & Feedback System</span><br><span class="idx-outcome">Turn customer issues into controlled action.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="poka-yoke & andon escalation prevent errors and escalate abnormalities quickly." href="/modules/poka_yoke_and_andon_escalation.html">
+            <span><span class="idx-name">Poka-Yoke & Andon Escalation</span><br><span class="idx-outcome">Prevent errors and escalate abnormalities quickly.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="spc basics & fmea control variation before it becomes a defect." href="/modules/spc_basics_and_fmea.html">
+            <span><span class="idx-name">SPC Basics & FMEA</span><br><span class="idx-outcome">Control variation before it becomes a defect.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="supplier quality & incoming control stop supplier problems reaching production." href="/modules/supplier_quality_and_incoming_control.html">
+            <span><span class="idx-name">Supplier Quality & Incoming Control</span><br><span class="idx-outcome">Stop supplier problems reaching production.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="a3 problem-solving templates fix it once, properly." href="/modules/a3_problem_solving.html">
+            <span><span class="idx-name">A3 Problem-Solving Templates</span><br><span class="idx-outcome">Fix it once, properly.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="root cause analysis toolkit solve the cause, not just the symptom." href="/modules/root_cause_analysis.html">
+            <span><span class="idx-name">Root Cause Analysis Toolkit</span><br><span class="idx-outcome">Solve the cause, not just the symptom.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="8 wastes (timwoods) identification toolkit find where time, effort and material are being lost." href="/modules/eight_wastes_timwoods.html">
+            <span><span class="idx-name">8 Wastes (TIMWOODS) Identification Toolkit</span><br><span class="idx-outcome">Find where time, effort and material are being lost.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="basic problem solving / 5 why get from symptom to cause without overcomplicating it." href="/modules/basic_problem_solving_5_why.html">
+            <span><span class="idx-name">Basic Problem Solving / 5 Why</span><br><span class="idx-outcome">Get from symptom to cause without overcomplicating it.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+        </div>
+      </div>
+      <div class="idx-group" id="Equipment-and-Reliability">
+        <h2>Equipment & Reliability</h2>
+        <div class="idx-rows">
+          <a class="idx-row" data-search="downtime tracking & pareto pack see what is really costing you machine availability." href="/modules/downtime_tracking_pareto.html">
+            <span><span class="idx-name">Downtime Tracking & Pareto Pack</span><br><span class="idx-outcome">See what is really costing you machine availability.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="pm schedule builder & compliance tracker build the plan and see what maintenance is being missed." href="/modules/pm_schedule_builder.html">
+            <span><span class="idx-name">PM Schedule Builder & Compliance Tracker</span><br><span class="idx-outcome">Build the plan and see what maintenance is being missed.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="maintenance response system restore equipment quickly without normalising repeat failures." href="/modules/maintenance_response.html">
+            <span><span class="idx-name">Maintenance Response System</span><br><span class="idx-outcome">Restore equipment quickly without normalising repeat failures.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="autonomous maintenance starter pack put basic equipment care back at the point of use." href="/modules/autonomous_maintenance.html">
+            <span><span class="idx-name">Autonomous Maintenance Starter Pack</span><br><span class="idx-outcome">Put basic equipment care back at the point of use.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="oee management & loss analysis find where equipment time and output are disappearing." href="/modules/oee_management_and_loss_analysis.html">
+            <span><span class="idx-name">OEE Management & Loss Analysis</span><br><span class="idx-outcome">Find where equipment time and output are disappearing.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="full tpm pillars pack build a complete system for equipment reliability." href="/modules/full_tpm_pillars_pack.html">
+            <span><span class="idx-name">Full TPM Pillars Pack</span><br><span class="idx-outcome">Build a complete system for equipment reliability.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+        </div>
+      </div>
+      <div class="idx-group" id="People-and-Skills">
+        <h2>People & Skills</h2>
+        <div class="idx-rows">
+          <a class="idx-row" data-search="skills matrix & cross-training planner know who can do what, and where you're exposed." href="/modules/skills_matrix.html">
+            <span><span class="idx-name">Skills Matrix & Cross-Training Planner</span><br><span class="idx-outcome">Know who can do what, and where you're exposed.</span></span>
+            <span class="idx-price mono">From £179</span>
+          </a>
+          <a class="idx-row" data-search="training plan & competency sign-off close skill gaps with evidence, not assumptions." href="/modules/training_competency_signoff.html">
+            <span><span class="idx-name">Training Plan & Competency Sign-off</span><br><span class="idx-outcome">Close skill gaps with evidence, not assumptions.</span></span>
+            <span class="idx-price mono">£89–£179</span>
+          </a>
+          <a class="idx-row" data-search="onboarding & induction pack get new starters safe, capable and productive." href="/modules/onboarding_induction.html">
+            <span><span class="idx-name">Onboarding & Induction Pack</span><br><span class="idx-outcome">Get new starters safe, capable and productive.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="team leader development pathway build confident frontline leaders." href="/modules/team_leader_development.html">
+            <span><span class="idx-name">Team Leader Development Pathway</span><br><span class="idx-outcome">Build confident frontline leaders.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="absenteeism, attendance & short-term cover manage absence without losing control of the shift." href="/modules/absenteeism_attendance_and_short_term_cover.html">
+            <span><span class="idx-name">Absenteeism, Attendance & Short-Term Cover</span><br><span class="idx-outcome">Manage absence without losing control of the shift.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="labour planning & shift pattern model match people and hours to the work." href="/modules/labour_planning_shift_pattern.html">
+            <span><span class="idx-name">Labour Planning & Shift Pattern Model</span><br><span class="idx-outcome">Match people and hours to the work.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="operator standard work & job instruction make the job clear, repeatable and teachable." href="/modules/operator_standard_work_and_job_instruction.html">
+            <span><span class="idx-name">Operator Standard Work & Job Instruction</span><br><span class="idx-outcome">Make the job clear, repeatable and teachable.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="recognition & engagement system reinforce the behaviours you want repeated." href="/modules/recognition_and_engagement_system.html">
+            <span><span class="idx-name">Recognition & Engagement System</span><br><span class="idx-outcome">Reinforce the behaviours you want repeated.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="ergonomics & workplace design make the job safer and easier to perform." href="/modules/ergonomics_and_workplace_design.html">
+            <span><span class="idx-name">Ergonomics & Workplace Design</span><br><span class="idx-outcome">Make the job safer and easier to perform.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="coaching skills for leaders improve performance without taking over." href="/modules/coaching_skills_for_leaders.html">
+            <span><span class="idx-name">Coaching Skills for Leaders</span><br><span class="idx-outcome">Improve performance without taking over.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+        </div>
+      </div>
+      <div class="idx-group" id="Standards-and-Improvement">
+        <h2>Standards & Improvement</h2>
+        <div class="idx-rows">
+          <a class="idx-row" data-search="set standards make the right way the easy way." href="/modules/set_standards.html">
+            <span><span class="idx-name">Set Standards</span><br><span class="idx-outcome">Make the right way the easy way.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="culture guide build a team that says what happened, and improves." href="/modules/culture.html">
+            <span><span class="idx-name">Culture Guide</span><br><span class="idx-outcome">Build a team that says what happened, and improves.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="visual management foundations see the state of the operation at a glance." href="/modules/visual_management_foundations.html">
+            <span><span class="idx-name">Visual Management Foundations</span><br><span class="idx-outcome">See the state of the operation at a glance.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="5s audit pack make workplace standards visible and sustainable." href="/modules/5s_audit_pack.html">
+            <span><span class="idx-name">5S Audit Pack</span><br><span class="idx-outcome">Make workplace standards visible and sustainable.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="visual standards & workplace organisation guide make normal and abnormal obvious." href="/modules/visual_standards_workplace.html">
+            <span><span class="idx-name">Visual Standards & Workplace Organisation Guide</span><br><span class="idx-outcome">Make normal and abnormal obvious.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="value stream mapping kit see how work and information really flow." href="/modules/value_stream_mapping.html">
+            <span><span class="idx-name">Value Stream Mapping Kit</span><br><span class="idx-outcome">See how work and information really flow.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="kaizen event planner & charter pack turn an improvement opportunity into a controlled event." href="/modules/kaizen_event_planner.html">
+            <span><span class="idx-name">Kaizen Event Planner & Charter Pack</span><br><span class="idx-outcome">Turn an improvement opportunity into a controlled event.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="idea & suggestion system turn frontline ideas into visible action." href="/modules/idea_suggestion_system.html">
+            <span><span class="idx-name">Idea & Suggestion System</span><br><span class="idx-outcome">Turn frontline ideas into visible action.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="npi / launch readiness pack expose launch risks before production finds them." href="/modules/npi_launch_readiness.html">
+            <span><span class="idx-name">NPI / Launch Readiness Pack</span><br><span class="idx-outcome">Expose launch risks before production finds them.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="spaghetti diagrams / motion analysis see where movement is wasting time." href="/modules/spaghetti_diagrams_motion_analysis.html">
+            <span><span class="idx-name">Spaghetti Diagrams / Motion Analysis</span><br><span class="idx-outcome">See where movement is wasting time.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+        </div>
+      </div>
+      <div class="idx-group" id="Performance-and-Decision-Making">
+        <h2>Performance & Decision Making</h2>
+        <div class="idx-rows">
+          <a class="idx-row" data-search="kpi blueprint know what moved and why." href="/modules/kpi_blueprint_map.html">
+            <span><span class="idx-name">KPI Blueprint</span><br><span class="idx-outcome">Know what moved and why.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="kpi definitions & cascade guide make every number mean the same thing." href="/modules/kpi_definitions_cascade.html">
+            <span><span class="idx-name">KPI Definitions & Cascade Guide</span><br><span class="idx-outcome">Make every number mean the same thing.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="hoshin kanri / strategy deployment turn priorities into action at every level." href="/modules/hoshin_kanri_strategy_deployment.html">
+            <span><span class="idx-name">Hoshin Kanri / Strategy Deployment</span><br><span class="idx-outcome">Turn priorities into action at every level.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="waste & cost-of-quality calculator turn operational losses into money." href="/modules/waste_cost_of_quality.html">
+            <span><span class="idx-name">Waste & Cost-of-Quality Calculator</span><br><span class="idx-outcome">Turn operational losses into money.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="overtime & agency spend tracker see what extra labour is really costing." href="/modules/overtime_agency_spend.html">
+            <span><span class="idx-name">Overtime & Agency Spend Tracker</span><br><span class="idx-outcome">See what extra labour is really costing.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="understanding the p&l connect operational decisions to financial results." href="/modules/understanding_the_p_and_l.html">
+            <span><span class="idx-name">Understanding the P&L</span><br><span class="idx-outcome">Connect operational decisions to financial results.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="cost deployment focus improvement where the money is being lost." href="/modules/cost_deployment.html">
+            <span><span class="idx-name">Cost Deployment</span><br><span class="idx-outcome">Focus improvement where the money is being lost.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="energy & environmental waste find avoidable resource and energy loss." href="/modules/energy_and_environmental_waste.html">
+            <span><span class="idx-name">Energy & Environmental Waste</span><br><span class="idx-outcome">Find avoidable resource and energy loss.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+        </div>
+      </div>
+      <div class="idx-group" id="Wider-capability">
+        <h2>Wider capability</h2>
+        <div class="idx-rows">
+          <a class="idx-row" data-search="working with ai use ai productively without giving away control." href="/modules/working_with_ai.html">
+            <span><span class="idx-name">Working with AI</span><br><span class="idx-outcome">Use AI productively without giving away control.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="managing change that sticks turn a change into the new normal." href="/modules/managing_change.html">
+            <span><span class="idx-name">Managing Change That Sticks</span><br><span class="idx-outcome">Turn a change into the new normal.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="going digital digitise the process without digitising the waste." href="/modules/going_digital.html">
+            <span><span class="idx-name">Going Digital</span><br><span class="idx-outcome">Digitise the process without digitising the waste.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="industry 4.0 & iot basics understand where connected technology genuinely helps." href="/modules/industry_4_0_and_iot_basics.html">
+            <span><span class="idx-name">Industry 4.0 & IoT Basics</span><br><span class="idx-outcome">Understand where connected technology genuinely helps.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="data analysis basics turn operational data into useful decisions." href="/modules/data_analysis_basics.html">
+            <span><span class="idx-name">Data Analysis Basics</span><br><span class="idx-outcome">Turn operational data into useful decisions.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="business continuity basics know how the operation will respond when something fails." href="/modules/business_continuity_basics.html">
+            <span><span class="idx-name">Business Continuity Basics</span><br><span class="idx-outcome">Know how the operation will respond when something fails.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="running a project turn an objective into controlled execution." href="/modules/running_a_project.html">
+            <span><span class="idx-name">Running a Project</span><br><span class="idx-outcome">Turn an objective into controlled execution.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="engaging the wider business get the support operations needs to deliver." href="/modules/engaging_the_wider_business.html">
+            <span><span class="idx-name">Engaging the Wider Business</span><br><span class="idx-outcome">Get the support operations needs to deliver.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="hse system put safety and environmental control into the operating system." href="/modules/hse_system.html">
+            <span><span class="idx-name">HSE System</span><br><span class="idx-outcome">Put safety and environmental control into the operating system.</span></span>
+            <span class="idx-price mono">£349</span>
+          </a>
+          <a class="idx-row" data-search="safety observation & near-miss system act on warning signs before someone gets hurt." href="/modules/safety_observation_near_miss.html">
+            <span><span class="idx-name">Safety Observation & Near-Miss System</span><br><span class="idx-outcome">Act on warning signs before someone gets hurt.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+          <a class="idx-row" data-search="benchmarking compare performance without copying someone else's answer." href="/modules/benchmarking.html">
+            <span><span class="idx-name">Benchmarking</span><br><span class="idx-outcome">Compare performance without copying someone else's answer.</span></span>
+            <span class="idx-price mono">£179</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    (function(){
+      var input = document.getElementById('idx-search');
+      if (!input) return;
+      var rows = Array.prototype.slice.call(document.querySelectorAll('.idx-row[data-search]'));
+      input.addEventListener('input', function(){
+        var q = input.value.trim().toLowerCase();
+        rows.forEach(function(r){
+          r.style.display = (!q || r.getAttribute('data-search').indexOf(q) !== -1) ? '' : 'none';
+        });
+        document.querySelectorAll('.idx-group').forEach(function(g){
+          var anyVisible = Array.prototype.some.call(g.querySelectorAll('.idx-row'), function(r){ return r.style.display !== 'none'; });
+          g.style.display = anyVisible ? '' : 'none';
+        });
+      });
+    })();
+  </script>
+  
+</main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-links">
+      <a href="/modules/index.html">Modules</a>
+      <a href="/the-method.html">The Method</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/who-we-are.html">Who We Are</a>
+      <a href="/accessibility.html">Accessibility</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="https://healthcheck.opsteady.co.uk/">Health Check</a>
+    </div>
+    <div class="footer-legal">Opsteady is a trading name of Optimere Limited, registered in England and Wales, Company No. 17390203.</div>
+  </div>
+</footer>
+</body>
+</html>

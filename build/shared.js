@@ -1,10 +1,11 @@
 "use strict";
 /* Shared chrome (nav/footer) + head boilerplate, identical on every page.
    Primary nav per the Phase 2 architecture ruling (superseding the earlier
-   Site Structure doc §B.2 nav table): Health Check · Tools · How It Works ·
+   Site Structure doc §B.2 nav table): Health Check · Modules · How It Works ·
    Who We Are. Problems and Pricing are deliberately NOT in primary nav.
-   Customer-facing label for /interventions/... is "Tools" — the URL path
-   and internal "intervention(s)" terminology are unchanged (no URL churn). */
+   Customer-facing noun is MODULE (Matt's ruling, 5 Sep 2026), to differentiate
+   from the improvement-tools market. The URL path moved with it:
+   /modules/ -> /modules/, with a real _redirects layer. */
 
 const HC_URL = "https://healthcheck.opsteady.co.uk/";
 
@@ -26,7 +27,7 @@ function head({ title, description, path, ogImage }) {
 function nav(current) {
   const items = [
     { label: "Health Check", href: HC_URL, key: "health-check" },
-    { label: "Tools", href: "/interventions/index.html", key: "interventions" },
+    { label: "Modules", href: "/modules/index.html", key: "modules" },
     { label: "How It Works", href: "/the-method.html", key: "how-it-works" },
     { label: "Who We Are", href: "/who-we-are.html", key: "who-we-are" },
   ];
@@ -70,7 +71,7 @@ function footer() {
   return `<footer class="footer">
   <div class="shell">
     <div class="footer-links">
-      <a href="/interventions/index.html">Tools</a>
+      <a href="/modules/index.html">Modules</a>
       <a href="/the-method.html">The Method</a>
       <a href="/pricing.html">Pricing</a>
       <a href="/who-we-are.html">Who We Are</a>
@@ -103,10 +104,10 @@ ${footer()}
 }
 
 /* =========================================================
-   PACKAGE COMPONENT — Training / Main Tool / FAQ / Working
+   PACKAGE COMPONENT — Training / Main Guide / FAQ / Working
    Materials. One shared component so the customer learns this
    visual language once (homepage §4) and recognises it again on
-   every Tool page (compact variant). Restrained line-art icons,
+   every module page (compact variant). Restrained line-art icons,
    navy + amber accent only — no photography, per the brief's own
    "avoid four stock photographs" instruction.
 ========================================================= */
@@ -117,10 +118,10 @@ const PKG_ICONS = {
   materials: `<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg>`,
 };
 const PACKAGE_ITEMS = [
-  { key: "training", label: "Training", verb: "Learn it", copy: "Start with little or no prior knowledge. The training gets you ready to understand the subject and use the Tool with confidence." },
-  { key: "tool", label: "Main Tool", verb: "Put it to work", copy: "The complete deployment guide: what to do, why you're doing it, how to work through it and what good looks like." },
-  { key: "faq", label: "FAQ", verb: "Get unstuck", copy: "Practical answers to the questions, complications and uncertainties that could appear once you start using the Tool." },
-  { key: "materials", label: "Working Materials", verb: "Make it yours", copy: "Where the Tool needs them, you get fully customisable templates and working files. Adapt them to your operation rather than changing your operation to fit our paperwork." },
+  { key: "training", label: "Training", verb: "Learn it", copy: "Start with little or no prior knowledge. The training gets you ready to understand the subject and use the module with confidence." },
+  { key: "tool", label: "Main Guide", verb: "Put it to work", copy: "The complete deployment guide: what to do, why you're doing it, how to work through it and what good looks like." },
+  { key: "faq", label: "FAQ", verb: "Get unstuck", copy: "Practical answers to the questions, complications and uncertainties that could appear once you start using the module." },
+  { key: "materials", label: "Working Materials", verb: "Make it yours", copy: "Where the module needs them, you get fully customisable templates and working files. Adapt them to your operation rather than changing your operation to fit our paperwork." },
 ];
 function packageGrid({ compact = false } = {}) {
   const items = PACKAGE_ITEMS.map((i) => `<div class="pkg-item">
@@ -138,7 +139,7 @@ function packageGrid({ compact = false } = {}) {
    PHOTO HERO — shared interior-page hero. Photography-ready
    structure: media/scrim/content layers, so a real photograph
    is a plain <img> in the media layer -- no extra markup needed
-   once an asset exists. Where no asset is assigned (the Tools
+   once an asset exists. Where no asset is assigned (the Modules
    index -- no image from the approved 2026-08-31 photography set
    maps to it, and none is invented here), `.photo-hero-slot`'s
    on-brand gradient stands in instead of a bare/broken image.

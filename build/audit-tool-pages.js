@@ -1,13 +1,13 @@
-// Programmatic 70-Tool-page structural conformance audit (spec §20).
-// Reads every generated interventions/*.html (excluding index.html) and
-// checks it against the canonical Tool-page architecture. Does not touch
+// Programmatic 70-module-page structural conformance audit (spec §20).
+// Reads every generated modules/*.html (excluding index.html) and
+// checks it against the canonical module-page architecture. Does not touch
 // source files. Output is numeric PASS/EXCEPTION counts, never prose claims
 // of "all consistent" without counts.
 "use strict";
 const fs = require("fs");
 const path = require("path");
 
-const DIR = path.join(__dirname, "..", "interventions");
+const DIR = path.join(__dirname, "..", "modules");
 const files = fs
   .readdirSync(DIR)
   .filter((f) => f.endsWith(".html") && f !== "index.html")
@@ -87,7 +87,7 @@ for (const file of files) {
   check(/WHAT YOU GET|What [Yy]ou [Gg]et/.test(html), "missing What You Get heading");
 
   // 11. Common closing / Health Check band present
-  check(/class="[^"]*\biv-hc-band\b[^"]*"/.test(html), "missing closing Health Check/Related Tools band");
+  check(/class="[^"]*\biv-hc-band\b[^"]*"/.test(html), "missing closing Health Check/Related modules band");
   check(/Run the Health Check/i.test(html), "missing 'Run the Health Check' CTA text");
 
   // 12. Related tools present and capped at 4
@@ -125,9 +125,9 @@ for (const file of files) {
 const passCount = results.filter((r) => r.exceptions.length === 0).length;
 const failCount = results.length - passCount;
 
-console.log(`\n70-Tool-page structural conformance audit`);
+console.log(`\n70-module-page structural conformance audit`);
 console.log(`==========================================`);
-console.log(`${results.length} Tool pages audited, ${passCount} canonical PASS, ${failCount} EXCEPTION\n`);
+console.log(`${results.length} module pages audited, ${passCount} canonical PASS, ${failCount} EXCEPTION\n`);
 
 if (failCount > 0) {
   for (const r of results) {

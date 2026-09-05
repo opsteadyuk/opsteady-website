@@ -1,43 +1,55 @@
-# Opsteady redirects.
-#
-# THIS FILE IS A PROBE. It exists to answer one question with evidence rather
-# than documentation: does THIS deployment serve _redirects at all?
-#
-# Why the question is open. wrangler.toml declares only [assets] with a
-# directory and not_found_handling; there is no redirect configuration. The repo
-# has carried a `redirects.txt` for weeks, which nothing reads, and the redirects
-# it documents have therefore never worked. Verified by direct fetch 2026-09-05:
-#   https://opsteady.co.uk/catalogue          -> 404
-#   https://opsteady.co.uk/interest.html      -> 404
-#   https://opsteady.co.uk/site/pricing.html  -> 404
-# That `_redirects` is the filename Cloudflare Workers Static Assets reads is an
-# assertion from documentation, not evidence from this deployment.
-#
-# WHAT THIS FILE DELIBERATELY DOES NOT DO. It carries no rule that depends on the
-# /interventions/ -> /modules/ rename. Every target below resolves in the
-# structure that is live TODAY, so a visitor sees no change except that eight
-# paths which currently 404 begin working. If _redirects turns out not to be read
-# here, nothing has moved and nothing is lost.
-#
-# The rename's own rules follow in a second, separate publication, once this one
-# has been proved.
+# Opsteady redirects. Cloudflare reads THIS file (_redirects); it has never
+# read redirects.txt, which is retired as of 2026-09-05.
 
-# --- /catalogue: the first rename, whose redirects never fired --------------
-/catalogue              /interventions/index.html                 301
-/catalogue/:slug        /interventions/:slug.html                 301
+# --- 2026-09-05 rename: /interventions/ -> /modules/ ------------------------
+# TIDINESS, NOT CORRECTNESS. Cloudflare canonicalises .html to the extensionless
+# form with its own 307, PROVED by the probe publication: a control touching no
+# rule of ours still took a hop. So without the line below, an indexed
+# /interventions/foo.html lands via 301 then 307 - two hops, which harms neither
+# users nor indexing. The line removes an asymmetry in the table rather than a
+# defect on the site.
+#
+# UNVERIFIED WHEN WRITTEN, AND IT FAILS SAFE. Cloudflare placeholders match a
+# whole path segment, so ":slug.html" may not parse as "capture the part before
+# .html". If it does not match, the splat below catches it and the behaviour is
+# exactly what it would have been anyway. Verify which of the two actually fired
+# rather than reporting the splat's result as this rule's.
+/interventions/:slug.html  /modules/:slug               301
+# The splat preserves whatever form was indexed, with or without .html, so the
+# 70 module pages and the index that have been live since 2 September all land.
+/interventions/*        /modules/:splat                 301
+/interventions          /modules/                       301
 
-# --- legacy interest page ---------------------------------------------------
-/interest.html          /interventions/index.html                 301
-/interest               /interventions/index.html                 301
+# --- dead since the site/ -> root promotion (02_main_site 86acb52) ----------
+# The Health Check nav linked at /site/interventions/index.html and has been
+# returning 404 since that promotion. Verified 404 live 2026-09-05.
+#
+# ORDER IS LOAD-BEARING HERE. The two specific /site/interventions rules sit
+# ABOVE the general /site/* rule so they win: first match wins, and _redirects
+# rules are applied once per request rather than chained. Without them,
+# /site/interventions/index.html would match /site/* -> /interventions/index.html
+# and then need a SECOND request to reach /modules/index.html. Two hops where one
+# will do, on a path that is already broken.
+/site/interventions/*   /modules/:splat                 301
+/site/interventions     /modules/                       301
+#
+# The general rule, carried forward from the probe publication unchanged. It is
+# repeated here deliberately: this file is generated, so anything the probe
+# established and this generator does not emit would be silently removed by the
+# rename push.
+/site/*                 /:splat                         301
+
+# --- /catalogue: the FIRST rename, whose redirects never worked -------------
+# Pointed STRAIGHT at /modules/, never chained through /interventions/.
+/catalogue              /modules/                       301
+/catalogue/:slug        /modules/:slug                  301
+
+# --- legacy interest page --------------------------------------------------
+/interest.html          /modules/                       301
+/interest               /modules/                       301
 
 # --- worked-example pages removed 2026-09-02 (see PROJECT_STATE.md) --------
-# Repointed at the real page rather than a 301 chain into a 404.
-/case-studies           /interventions/bottleneck_analysis.html   301
-/case-studies/:slug     /interventions/bottleneck_analysis.html   301
-/worked-examples/*      /interventions/bottleneck_analysis.html   301
-
-# --- /site/*: dead since site/ was promoted to the repo root (86acb52) -----
-# The Health Check's cross-links all point here and have been 404 ever since.
-# /site/pricing.html -> /pricing.html, /site/interventions/index.html ->
-# /interventions/index.html. Both exist today.
-/site/*                 /:splat                                   301
+# Repointed at the real module page rather than a 301 chain into a 404.
+/case-studies           /modules/bottleneck_analysis    301
+/case-studies/:slug     /modules/bottleneck_analysis    301
+/worked-examples/*      /modules/bottleneck_analysis    301

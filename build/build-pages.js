@@ -7,7 +7,7 @@ const { w, page, HC_URL, loopSVGLight, packageGrid, photoHero } = require("./bui
 w("the-method.html", page({
   current: "how-it-works",
   title: "How Opsteady works",
-  description: "The full Opsteady customer journey: the Health Check, how findings become priorities, what a Tool actually gives you, and the improvement rhythm that keeps it going.",
+  description: "The full Opsteady customer journey: the Health Check, how findings become priorities, what a module actually gives you, and the improvement rhythm that keeps it going.",
   path: "/the-method",
   main: `
   ${photoHero({
@@ -57,7 +57,7 @@ w("the-method.html", page({
         <div>
           <div class="eyebrow">Step 2</div>
           <h2>From findings to priorities</h2>
-          <p>Every area the Health Check looks at connects to real Opsteady Tools built for exactly that area. Where your result shows a genuine gap, the relevant Tools are the ones it points you towards, not the whole catalogue, and not a guess.</p>
+          <p>Every area the Health Check looks at connects to real Opsteady modules built for exactly that area. Where your result shows a genuine gap, the relevant modules are the ones it points you towards, not the whole catalogue, and not a guess.</p>
           <p>Not everything gets flagged as urgent. Part of what the Health Check does is tell you what can reasonably wait, so you're not left trying to fix everything simultaneously with a team that has a day job to do. Sequencing takes account of what's most urgent, what depends on what already being in place, and how much your team can realistically absorb at once.</p>
           <p>This isn't a black box with total certainty about your operation. The Health Check gives you a clear, evidenced starting point and the reasoning behind it: the judgement about whether that's genuinely the right place to start for your site, today, still sits with you. That's deliberate. Nobody outside your operation has the full picture, and Opsteady doesn't pretend otherwise.</p>
         </div>
@@ -76,11 +76,11 @@ w("the-method.html", page({
   <section class="page-section full-copy">
     <div class="shell">
       <div class="eyebrow">Step 3</div>
-      <h2>What a Tool actually gives you</h2>
-      <p style="margin-bottom:14px;">Once you know what to work on, you move into a Tool: a complete package built so your own team can deploy it, not a consultant standing next to them. You don't need to already be an expert in the subject before you start.</p>
+      <h2>What a module actually gives you</h2>
+      <p style="margin-bottom:14px;">Once you know what to work on, you move into a module: a complete package built so your own team can deploy it, not a consultant standing next to them. You don't need to already be an expert in the subject before you start.</p>
       ${packageGrid()}
-      <p style="margin-top:32px;margin-bottom:14px;">Every Tool is available as an Essentials edition where it exists, and always as Pro. Essentials is a complete, ready-to-run version for the standard case, not a cut-down teaser. Pro goes further into the thinking behind the Tool: why it works, different ways to deploy it, what tends to go wrong, and the judgement needed when your situation isn't the standard case. Choose the depth that fits what you're trying to do, not a fixed default.</p>
-      <p>There is deliberately no salesperson or consultant who calls you to explain the rest. Everything you need to decide whether a Tool is right, and then to deploy it yourself once you've bought it, is either on its page or inside the package itself.</p>
+      <p style="margin-top:32px;margin-bottom:14px;">Every module is available as an Essentials edition where it exists, and always as Pro. Essentials is a complete, ready-to-run version for the standard case, not a cut-down teaser. Pro goes further into the thinking behind the module: why it works, different ways to deploy it, what tends to go wrong, and the judgement needed when your situation isn't the standard case. Choose the depth that fits what you're trying to do, not a fixed default.</p>
+      <p>There is deliberately no salesperson or consultant who calls you to explain the rest. Everything you need to decide whether a module is right, and then to deploy it yourself once you've bought it, is either on its page or inside the package itself.</p>
     </div>
   </section>
 
@@ -90,7 +90,7 @@ w("the-method.html", page({
         <div class="eyebrow">Step 4</div>
         <h2>The loop</h2>
         <p style="max-width:60ch;">Observe &amp; Learn <span class="arrow">→</span> Stabilise <span class="arrow">→</span> Improve <span class="arrow">→</span> Sustain <span class="arrow">→</span> back to Observe &amp; Learn.</p>
-        <p style="max-width:60ch;">This is how Opsteady approaches deployment and ongoing improvement, and it applies inside a single Tool as much as it does across your whole site. Understand what's actually happening before you change anything. Acting on assumptions is usually how the wrong thing gets fixed well. Get the situation stable enough to control before you try to improve it; improving something that isn't yet under control just adds noise. Improve from that stable baseline. Once something is genuinely sustained (holding without constant intervention), it's the right time to look at what's next, not before.</p>
+        <p style="max-width:60ch;">This is how Opsteady approaches deployment and ongoing improvement, and it applies inside a single module as much as it does across your whole site. Understand what's actually happening before you change anything. Acting on assumptions is usually how the wrong thing gets fixed well. Get the situation stable enough to control before you try to improve it; improving something that isn't yet under control just adds noise. Improve from that stable baseline. Once something is genuinely sustained (holding without constant intervention), it's the right time to look at what's next, not before.</p>
       </div>
       <div>${loopSVGLight}</div>
     </div>
@@ -103,8 +103,8 @@ w("the-method.html", page({
           <div class="eyebrow">Ongoing</div>
           <h2>A repeatable system, not a one-use diagnostic</h2>
           <p>Your site doesn't stand still once you've made an improvement. A constraint that's resolved stops being the priority; a new one becomes visible once the old one's out of the way; people, demand and equipment all change over time. That's why the Health Check is built to be rerun periodically rather than answered once.</p>
-          <p>Each time you run it, it looks at how the operation has moved: whether previous weak points have genuinely strengthened, whether priorities have shifted, and what deserves attention next. Opsteady is designed as a repeatable improvement system around your site, not a single funnel that ends once you've bought one Tool.</p>
-          <div style="margin-top:24px;display:flex;gap:20px;flex-wrap:wrap;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a><a class="btn-text" href="/interventions/index.html">Browse Tools <span class="arrow">→</span></a></div>
+          <p>Each time you run it, it looks at how the operation has moved: whether previous weak points have genuinely strengthened, whether priorities have shifted, and what deserves attention next. Opsteady is designed as a repeatable improvement system around your site, not a single funnel that ends once you've bought one module.</p>
+          <div style="margin-top:24px;display:flex;gap:20px;flex-wrap:wrap;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a><a class="btn-text" href="/modules/index.html">Browse modules <span class="arrow">→</span></a></div>
         </div>
         <div class="info-panel">
           <div class="info-panel-label mono">What changes over time</div>
