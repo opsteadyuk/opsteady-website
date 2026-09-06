@@ -5,7 +5,7 @@ The current production candidate is `02_main_site/site/`; the current approved s
 `02_main_site/wireframes/`. Neither lives here.
 
 For the full ruling on each generation below — what it was, what happened to it, and what (if
-anything) was carried forward from it — see `PROJECT_STATE.md`'s **"Website — implemented vs. intent"**
+anything) was carried forward from it — see `_history/PROJECT_STATE.md`'s **"Website — implemented vs. intent"**
 section (workspace root). That is the single authoritative account. This file does not restate it.
 
 ## What's here
@@ -27,7 +27,7 @@ Surfaced by the 2026-09-02 forensic consolidation audit
 (`C:\Users\Matt\Desktop\Opsteady_CONSOLIDATION_AUDIT\`): seven generations of website content were
 sitting as unarchived siblings of the current `site/` at the same directory depth, with no structural
 signal for which was current. Every one of them already carried an explicit superseded/rejected/
-not-approved ruling in `PROJECT_STATE.md` — the gap was purely structural, not a question of authority.
+not-approved ruling in `_history/PROJECT_STATE.md` — the gap was purely structural, not a question of authority.
 This move (`git mv`, history-preserving, reversible via the `pre-consolidation-2026-09-02` tag) closes
 that gap without touching a single byte of content.
 
@@ -37,5 +37,5 @@ It did not rename, restyle, re-evaluate, or judge the content of anything moved 
 `site/`, `wireframes/`, `brand/`, `fonts/`, `tokens.css`, `build/`, or `wrangler.toml` — all of which
 stay at the top level of `02_main_site/` because `site/`'s own generated pages actively reference
 `/fonts/`, `/tokens.css`, and `/brand/` at the repository root. It did not resolve the deployment-target
-decision (see `PROJECT_STATE.md`'s "DEPLOYMENT TARGET DECISION" entry) — that remains a separate,
+decision (see `_history/PROJECT_STATE.md`'s "DEPLOYMENT TARGET DECISION" entry) — that remains a separate,
 already-settled-but-deferred decision, unaffected by where these historical files happen to sit.

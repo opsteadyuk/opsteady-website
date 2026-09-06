@@ -359,4 +359,4 @@ w("404.html", page({
   `,
 }));
 
-console.log("Pricing, Who We Are, Health Check landing, Privacy, Terms, Accessibility, 404 written. Worked Example removed 2026-09-02, see PROJECT_STATE.md.");
+console.log("Pricing, Who We Are, Health Check landing, Privacy, Terms, Accessibility, 404 written. Worked Example removed 2026-09-02, see _history/PROJECT_STATE.md.");

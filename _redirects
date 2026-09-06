@@ -54,7 +54,7 @@
 /interest.html          /modules/                       301
 /interest               /modules/                       301
 
-# --- worked-example pages removed 2026-09-02 (see PROJECT_STATE.md) --------
+# --- worked-example pages removed 2026-09-02 (see _history/PROJECT_STATE.md) --------
 # Repointed at the real module page rather than a 301 chain into a 404.
 /case-studies           /modules/bottleneck_analysis    301
 /case-studies/:slug     /modules/bottleneck_analysis    301

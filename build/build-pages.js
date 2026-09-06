@@ -120,4 +120,4 @@ w("the-method.html", page({
   `,
 }));
 
-console.log("Method written. Problems section removed 2026-09-02, see PROJECT_STATE.md.");
+console.log("Method written. Problems section removed 2026-09-02, see _history/PROJECT_STATE.md.");
