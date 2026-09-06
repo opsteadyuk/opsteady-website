@@ -428,6 +428,7 @@ body.v6{margin:0;font-family:var(--ops-font-text);color:var(--ops-text-primary);
 .v6 .iv-buy{margin-top:26px;display:flex;flex-wrap:wrap;align-items:baseline;gap:20px;}
 .v6 .iv-price{font-family:var(--ops-font-display);font-weight:600;font-size:1.5rem;color:#fff;}
 .v6 .iv-price .showcase-note{color:var(--n6-pale);}
+.v6 .iv-buy-note{margin-top:12px;font-size:0.85rem;line-height:1.5;color:var(--n6-pale);max-width:64ch;}
 
 .v6 .iv-section{padding-block:44px;border-top:1px solid var(--ops-border-subtle);}
 .v6 .iv-section .eyebrow{display:block;margin-bottom:14px;}

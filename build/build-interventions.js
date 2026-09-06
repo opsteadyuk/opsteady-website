@@ -1,5 +1,6 @@
 "use strict";
 const { w, page, HC_URL, getModuleData, getCatalogueListing, packageGrid, photoHero, customerCategory, CATEGORY_ORDER, categoryAnchor } = require("./build.js");
+const { CHECKOUT_NOTICE } = require("./shared.js");
 
 /* ---- Module-category photography (Level 2), 2026-09-02 ----
    Every one of the 9 real customer categories (CATEGORY_ORDER in build.js)
@@ -347,6 +348,7 @@ for (const listed of listing) {
       <h1>${d.name}</h1>
       <p class="iv-situation">${proposition}</p>
       <div class="iv-buy" id="buy">${priceBlock}<a class="btn btn-primary on-light" href="/404.html">Buy now</a></div>
+      <p class="iv-buy-note">${CHECKOUT_NOTICE}</p>
     </div>
   </section>
 

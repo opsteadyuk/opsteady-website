@@ -9,6 +9,14 @@
 
 const HC_URL = "https://healthcheck.opsteady.co.uk/";
 
+/* Checkout notice, one string, shared by the pricing page (build-more-pages.js)
+   and every module page's Buy control (build-interventions.js), so a
+   regeneration cannot drop it. It was dropped once: added to pricing.html
+   directly in 37e2659 and lost when 4a1e34f regenerated the page. Wording is
+   Matt's, 6 September 2026 (Phase 0 item 1), superseding the 30 September
+   wording in D-COMM-03. */
+const CHECKOUT_NOTICE = "Checkout isn't live yet. The first modules go on sale in late October, with the full catalogue following over the months after. Prices shown are current guide prices and may change as we finish our review.";
+
 function head({ title, description, path, ogImage }) {
   return `<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +29,8 @@ function head({ title, description, path, ogImage }) {
 <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/source-sans-3-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/tokens.css">
-<link rel="stylesheet" href="/system.css">`;
+<link rel="stylesheet" href="/system.css">
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "cfa9dee48eee44a695bd6ba4e2a9083b"}'></script>`;
 }
 
 function nav(current) {
@@ -168,4 +177,4 @@ function photoHero({ eyebrow, h1, sub, image, spec }) {
   </section>`;
 }
 
-module.exports = { head, nav, footer, page, HC_URL, packageGrid, photoHero };
+module.exports = { head, nav, footer, page, HC_URL, CHECKOUT_NOTICE, packageGrid, photoHero };

@@ -1,5 +1,6 @@
 "use strict";
 const { w, page, HC_URL, photoHero } = require("./build.js");
+const { CHECKOUT_NOTICE } = require("./shared.js");
 
 /* ---- Pricing ---- */
 w("pricing.html", page({
@@ -25,6 +26,7 @@ w("pricing.html", page({
           <tr><td>A smaller number of deeper, cross-cutting modules</td><td>£179</td><td>£349</td></tr>
         </tbody>
       </table>
+      <p style="margin-top:14px;"><strong>${CHECKOUT_NOTICE}</strong></p>
       <p style="color:var(--ops-n60);font-size:0.9rem;margin-top:10px;">The price shown is the total price you pay &mdash; no tax is added on top at checkout. Purchases are processed by Lemon Squeezy, our merchant of record, who calculates and remits any tax that applies. See <a href="/terms.html">Terms of sale</a> for full detail.</p>
     </div>
   </section>
