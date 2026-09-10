@@ -81,12 +81,80 @@ function isTierBadgeArtifact(s) {
    989 non-citation parenthetical spans in the corpus before this
    pattern was finalised. Markdown emphasis and backtick code-spans
    are also normalised here since the guide-scrape path already
-   strips emphasis and Web_Copy content was never rendered before. */
-function stripWebCopyCitations(text) {
+   strips emphasis and Web_Copy content was never rendered before.
+
+   THIRD FORM, added 10 Sep 2026. 04_products e071cca (7 Sep) rewrote
+   2,050 cross-references from marks into human-readable section NAMES:
+   "(Pro §5)" became "(Build it)". Such a span carries no "§" and does
+   not open with Pro/Guide/FAQ/Training/Framing, so both tests above
+   miss it and 32 citations rendered in customer body copy on F2.1 and
+   F3.1. The stripper was not changed and did not need to be -- the
+   shape of its input changed underneath it.
+
+   THE THIRD TEST IS A LOOKUP, NOT A JUDGEMENT: a citation names a
+   section of THIS module's own guide, so the closed set is that guide's
+   own H2 headings, passed in by the caller. Nothing global is consulted
+   and nothing is enumerated here -- a pour that renames a section moves
+   the set with it. Scoping the set per module is what keeps it safe:
+   "(Works with)" strips on a module whose guide has that heading and
+   would survive on one that does not.
+
+   MEASURED ACROSS ALL 70 MODULES BEFORE AND AFTER: 266 parentheticals
+   reach customer copy. 32 match (F2.1 15, F3.1 17) and are removed; 234
+   are real content and are untouched, INCLUDING the genuine module
+   cross-references this must never eat -- "(OTIF & Right-First-Time
+   Dashboard)", "(Schedule Adherence Tracker)". No parenthetical matches
+   PARTLY, so there is no ambiguous case, and no guide H2 heading in the
+   catalogue collides with a register display name. */
+
+/** The closed set of section names one module's citations can name:
+ *  its own guide's H2 headings, normalised the way 00_SYSTEM's
+ *  html-build/converter/lib/sections.js normalises for identity --
+ *  leading number dropped, curly quotes and dashes folded, the "(Pro)"
+ *  tier suffix and the it's/it is contraction absorbed. Read from
+ *  sections.js as data; that file is not changed by this. */
+function normalizeSectionName(s) {
+  return s
+    .replace(/[‘’ʼ]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/[–—]/g, "-")
+    .replace(/\s*\((?:pro|essentials)\)\s*$/i, "")
+    .replace(/\bit's\b/gi, "it is")
+    .replace(/\s+/g, " ")
+    .replace(/\s*[.:;,]\s*$/, "")
+    .trim()
+    .toLowerCase();
+}
+function guideSectionNames(guideText) {
+  const out = new Set();
+  if (!guideText) return out;
+  for (const line of guideText.split(/\r?\n/)) {
+    const h = line.match(/^##\s+(.+?)\s*$/);
+    if (!h) continue;
+    const title = h[1].replace(/^\d+[.):\-\s]*/, "").trim();
+    if (title) out.add(normalizeSectionName(title));
+  }
+  return out;
+}
+/* A citation may name more than one section ("A; B") and may point
+   inside one ("Your first week, \"Monday\"" -- F3.1 s14's Monday item;
+   "Who this is for..., quoted box: \"...\""). Split on the semicolon,
+   drop a trailing quoted sub-locator, and require EVERY part to be a
+   known section name: a span that is part section name and part prose
+   is left alone rather than half-guessed. */
+const SUB_LOCATOR = /,\s*(?:[a-z][a-z \-]*:\s*)?["“][^"”]*["”]\s*$/i;
+function isSectionCitation(inner, sectionNames) {
+  if (!sectionNames || !sectionNames.size) return false;
+  const parts = inner.split(/\s*;\s*/).map((p) => p.replace(SUB_LOCATOR, "").trim()).filter(Boolean);
+  return parts.length > 0 && parts.every((p) => sectionNames.has(normalizeSectionName(p)));
+}
+
+function stripWebCopyCitations(text, sectionNames) {
   if (!text) return text;
   let out = text.replace(/\[[^\]]*\]/g, "");
   out = out.replace(/\*?\(([^)]*)\)\*?/g, (m, inner) => {
     if (/§/.test(inner) || /^\s*(pro|guide|faq|training|framing)\b/i.test(inner)) return "";
+    if (isSectionCitation(inner, sectionNames)) return "";
     return m;
   });
   out = stripMarkdownEmphasis(out);
@@ -141,15 +209,16 @@ const WEB_COPY_CUSTOMER_FIELDS = {
 /** Approved Web_Copy.md content for one module, or null if absent/not
  *  approved/incomplete -- callers fall back to the guide-scrape fields
  *  in that case, so a module without approved copy yet never breaks. */
-function getWebCopy(moduleId, folderPath) {
+function getWebCopy(moduleId, folderPath, guideText) {
   const file = path.join(ROOT, folderPath, `${moduleId}_Web_Copy.md`);
   if (!fs.existsSync(file)) return null;
   const { frontmatter, sections } = parseWebCopyMd(fs.readFileSync(file, "utf8"));
   if (frontmatter.status !== "approved") return null;
+  const sectionNames = guideSectionNames(guideText);
   const out = {};
   for (const [key, heading] of Object.entries(WEB_COPY_CUSTOMER_FIELDS)) {
     if (!sections[heading]) return null; // incomplete -- fall back rather than render a partial page
-    out[key] = stripWebCopyCitations(sections[heading]);
+    out[key] = stripWebCopyCitations(sections[heading], sectionNames);
   }
   return out;
 }
@@ -280,7 +349,15 @@ function getModuleData(moduleId) {
 
   const { guidePath, faqPath } = resolvePaths(m);
   let extra = {};
-  if (guidePath && fs.existsSync(guidePath)) extra = extractGuide(fs.readFileSync(guidePath, "utf8"));
+  /* The guide text is kept, not discarded after extractGuide: its H2
+     headings are the closed set stripWebCopyCitations needs to spot a
+     name-form citation. resolvePaths is reused rather than globbing for
+     "*_Guide.md" -- E2 and E5 name their guide something else. */
+  let guideText = "";
+  if (guidePath && fs.existsSync(guidePath)) {
+    guideText = fs.readFileSync(guidePath, "utf8");
+    extra = extractGuide(guideText);
+  }
   if (faqPath && fs.existsSync(faqPath)) extra.faq = extractFaq(fs.readFileSync(faqPath, "utf8"));
 
   const edges = (m.relationships.edges || [])
@@ -311,7 +388,7 @@ function getModuleData(moduleId) {
     materials: extra.materials || null,
     sample: extra.sample || null,
     faq: extra.faq || [],
-    webCopy: getWebCopy(m.module_id, m.implementation.folder_path),
+    webCopy: getWebCopy(m.module_id, m.implementation.folder_path, guideText),
   };
 }
 
