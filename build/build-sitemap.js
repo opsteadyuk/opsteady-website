@@ -7,7 +7,7 @@ const SITE = path.resolve(__dirname, "..");
 const BASE = "https://opsteady.co.uk";
 
 const staticRoutes = [
-  "/", "/the-method", "/modules", "/pricing", "/who-we-are",
+  "/", "/the-method", "/modules", "/who-we-are",
   "/health-check", "/terms", "/accessibility", "/privacy",
 ];
 
@@ -94,6 +94,28 @@ const redirects = `# Opsteady redirects. Cloudflare reads THIS file (_redirects)
 # --- legacy interest page --------------------------------------------------
 /interest.html          /modules/                       301
 /interest               /modules/                       301
+
+# --- /pricing removed 2026-09-10, Matt's ruling -----------------------------
+# The page is gone from the generator, so it is gone from the site. It was
+# CANONICAL AND INDEXED (it sat in the sitemap above until this same change)
+# and linked from the footer of EVERY page, so it has inbound links that
+# outlive it. Deleting it without these two lines turns every one of them
+# into a 404 -- which is the defect this change was made to remove, not one
+# to create on the way out.
+#
+# BOTH FORMS ARE REDIRECTED, deliberately. /pricing is what the sitemap
+# published and what a search result carries; /pricing.html is what the
+# footer link actually pointed at on every page, so it is the form a crawler
+# has followed most.
+#
+# TARGET IS /modules/, NOT /modules/index.html, WHICH IS WHAT NEXT.md ASKED
+# FOR. This file's own MEASURED note above records that /modules/index.html
+# takes a further 307 to /modules/, so naming it here would build in the
+# second hop that this file's governing rule -- "EVERY TARGET IS THE FINAL
+# DESTINATION" -- exists to prevent. One word to change back if that reading
+# is wrong.
+/pricing                /modules/                       301
+/pricing.html           /modules/                       301
 
 # --- worked-example pages removed 2026-09-02 (see _history/PROJECT_STATE.md) --------
 # Repointed at the real module page rather than a 301 chain into a 404.

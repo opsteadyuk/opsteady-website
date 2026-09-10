@@ -1,58 +1,5 @@
 "use strict";
 const { w, page, HC_URL, photoHero } = require("./build.js");
-const { CHECKOUT_NOTICE } = require("./shared.js");
-
-/* ---- Pricing ---- */
-w("pricing.html", page({
-  current: "pricing",
-  title: "Opsteady pricing",
-  description: "Straightforward pricing, explained plainly. No hidden costs, no sales call.",
-  path: "/pricing",
-  main: `
-  <section class="page-hero">
-    <div class="shell-narrow">
-      <div class="eyebrow on-navy">Pricing</div>
-      <h1>Straightforward pricing.</h1>
-      <p>Every module has its own price, shown on its own page. Most are Pro today, priced by depth and reach: Essentials editions are being added over time, and only shown where they actually exist.</p>
-    </div>
-  </section>
-  <section class="page-section">
-    <div class="shell-narrow">
-      <h2>What things cost</h2>
-      <table class="price-table">
-        <thead><tr><th></th><th>Essentials <span class="mono" style="font-weight:400;font-size:0.8rem;">(where available)</span></th><th>Pro</th></tr></thead>
-        <tbody>
-          <tr><td>Most modules</td><td>£89</td><td>£179</td></tr>
-          <tr><td>A smaller number of deeper, cross-cutting modules</td><td>£179</td><td>£349</td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top:14px;"><strong>${CHECKOUT_NOTICE}</strong></p>
-      <p style="color:var(--ops-n60);font-size:0.9rem;margin-top:10px;">The price shown is the total price you pay &mdash; no tax is added on top at checkout. Purchases are processed by Lemon Squeezy, our merchant of record, who calculates and remits any tax that applies. See <a href="/terms.html">Terms of sale</a> for full detail.</p>
-    </div>
-  </section>
-  <section class="page-section tint">
-    <div class="shell-narrow">
-      <h2>A small number of modules at a lower entry price</h2>
-      <p>These are available as detailed worked examples, at a lower entry Pro price. Not a discount. Not time-limited.</p>
-      <div class="showcase-list">
-        <div class="showcase-item"><span>Bottleneck Analysis Tool</span><span class="mono">£99</span></div>
-        <div class="showcase-item"><span>Skills Matrix &amp; Cross-Training Planner</span><span class="mono">£179</span></div>
-        <div class="showcase-item"><span>SQDC Performance Board Pack</span><span class="mono">£179</span></div>
-      </div>
-    </div>
-  </section>
-  <section class="page-section">
-    <div class="shell-narrow">
-      <h2>Where purchase happens</h2>
-      <p>Every module has its own price and buy action, showing only the edition actually available to buy.</p>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;">
-        <a class="btn btn-primary" href="/modules/bottleneck_analysis.html">See a representative example</a>
-        <a class="btn-text" href="/modules/index.html">Browse modules <span class="arrow">→</span></a>
-      </div>
-    </div>
-  </section>
-  `,
-}));
 
 /* ---- Who We Are — rewritten 2026-08-31 per the customer-experience-
    pass instruction to move closer to the stronger operational
@@ -212,7 +159,7 @@ w("terms.html", page({
       <h2>10. Immediate download and the cancellation waiver</h2>
       <p>Before you can pay, you must actively tick a box at checkout: "I want my download straight away, and I understand that means I give up my 14-day right to cancel. Opsteady's own 30-day refund policy still applies." The box is never pre-ticked.</p>
       <h2>11. Refunds</h2>
-      <p>Separately from the statutory cancellation right above, and more generous than it: ask within 30 days of purchase and you'll be refunded, no argument, no need to prove anything. Full detail on the <a href="/pricing.html">Pricing page</a>.</p>
+      <p>Separately from the statutory cancellation right above, and more generous than it: ask within 30 days of purchase and you'll be refunded, no argument, no need to prove anything.</p>
       <h2>12. Complaints</h2>
       <p>Email <a href="mailto:hello@opsteady.co.uk">hello@opsteady.co.uk</a> with what went wrong. Typical response time: within two working days. There is no complaints department. You'll hear back from the person who runs Opsteady.</p>
       <h2>13. Governing law</h2>
@@ -359,4 +306,4 @@ w("404.html", page({
   `,
 }));
 
-console.log("Pricing, Who We Are, Health Check landing, Privacy, Terms, Accessibility, 404 written. Worked Example removed 2026-09-02, see _history/PROJECT_STATE.md.");
+console.log("Who We Are, Health Check landing, Privacy, Terms, Accessibility, 404 written. Pricing removed 2026-09-10, Matt's ruling. Worked Example removed 2026-09-02, see _history/PROJECT_STATE.md.");
