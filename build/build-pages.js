@@ -79,8 +79,7 @@ w("the-method.html", page({
       <h2>What a module actually gives you</h2>
       <p style="margin-bottom:14px;">Once you know what to work on, you move into a module: a complete package built so your own team can deploy it, not a consultant standing next to them. You don't need to already be an expert in the subject before you start.</p>
       ${packageGrid()}
-      <p style="margin-top:32px;margin-bottom:14px;">Every module is available as an Essentials edition where it exists, and always as Pro. Essentials is a complete, ready-to-run version for the standard case, not a cut-down teaser. Pro goes further into the thinking behind the module: why it works, different ways to deploy it, what tends to go wrong, and the judgement needed when your situation isn't the standard case. Choose the depth that fits what you're trying to do, not a fixed default.</p>
-      <p>There is deliberately no salesperson or consultant who calls you to explain the rest. Everything you need to decide whether a module is right, and then to deploy it yourself once you've bought it, is either on its page or inside the package itself.</p>
+      <p style="margin-top:32px;">There is deliberately no salesperson or consultant who calls you to explain the rest. Everything you need to decide whether a module is right, and then to deploy it yourself once you've bought it, is either on its page or inside the package itself.</p>
     </div>
   </section>
 

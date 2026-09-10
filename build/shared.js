@@ -9,13 +9,24 @@
 
 const HC_URL = "https://healthcheck.opsteady.co.uk/";
 
-/* Checkout notice, one string, shared by the pricing page (build-more-pages.js)
-   and every module page's Buy control (build-interventions.js), so a
-   regeneration cannot drop it. It was dropped once: added to pricing.html
-   directly in 37e2659 and lost when 4a1e34f regenerated the page. Wording is
-   Matt's, 6 September 2026 (Phase 0 item 1), superseding the 30 September
-   wording in D-COMM-03. */
-const CHECKOUT_NOTICE = "Checkout isn't live yet. The first modules go on sale in late October, with the full catalogue following over the months after. Prices shown are current guide prices and may change as we finish our review.";
+/* Checkout notice, ONE STRING, ONE PLACE, still shared -- read by every
+   module page's buy area (build-interventions.js). It was centralised
+   because it had already been dropped once: added to pricing.html directly
+   in 37e2659 and lost when 4a1e34f regenerated the page. That warning stays
+   live, and the pricing page it names is itself now gone.
+
+   REWRITTEN 2026-09-10, Matt's ruling, replacing the 6 September wording
+   (which superseded D-COMM-03's 30 September wording). Three things came
+   out and none of them may come back without a decision behind it:
+     - "late October" -- a DATE ON A LIVE PAGE IS A COMMITMENT. It was made
+       before the tier removal, before the current pours and before pricing
+       was reopened. No date, and no forward promise of one.
+     - "the full catalogue following over the months after" -- the same
+       promise wearing a vaguer sleeve.
+     - "Prices shown are current guide prices" -- after PRICES_PUBLISHED
+       below, no prices are shown at all, so the sentence had nothing left
+       to describe. */
+const CHECKOUT_NOTICE = "Checkout isn't live yet, and pricing hasn't been set.";
 
 function head({ title, description, path, ogImage }) {
   return `<meta charset="UTF-8">
