@@ -42,14 +42,21 @@ function resolvePaths(m) {
 function stripMarkdownEmphasis(s) {
   return s.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/(^|\s)\*([^*\n]+)\*(?=\s|$)/g, "$1$2");
 }
-/* A tier-annotation line ("*Essentials and Pro*", "*Pro only*", etc.) sometimes
-   sits directly under the "What this is" heading, before the real paragraph.
+/* A tier-annotation line ("*Pro only*", "*Showcase*", etc.) sometimes sits
+   directly under the "What this is" heading, before the real paragraph.
    2026-09-02 audit found 2 modules (P4.5, P8.1) where this line was captured
    AS the first paragraph because the old skip pattern only matched an
    italic *(...)* form with parentheses. Broadened to match any single-line
-   italic annotation, and independently guard against one slipping through. */
+   italic annotation, and independently guard against one slipping through.
+   D-TIER-10, 9 September 2026, removed the second edition, so "essentials"
+   is dropped from the alternation with the rest of the tier plumbing.
+   MEASURED BEFORE REMOVING IT: across all 70 guide sources this guard
+   catches zero first paragraphs today, with or without that word, so the
+   built output does not move. The guard itself STAYS -- it is a defence
+   against source markdown this repository does not own, and a "Pro only"
+   or "Showcase" annotation line can still appear there. */
 function isTierBadgeArtifact(s) {
-  return /^(essentials|pro|showcase)([\s,&]+(essentials|pro|showcase))*$/i.test(s.trim());
+  return /^(pro|showcase)([\s,&]+(pro|showcase))*$/i.test(s.trim());
 }
 
 /* =========================================================
@@ -199,18 +206,23 @@ function stageContext(m, byId) {
     : `Sits inside ${m.classification.group}.`;
 }
 
-function priceForTier(m, tier, pricing) {
+/* One edition per module since D-TIER-10 (9 September 2026), so there is no
+   tier to select and this takes no tier argument. The register's bands carry
+   one figure each -- the `essentials` figure was deleted from both along with
+   the whole module.tier subtree -- so the branch that read it could only have
+   returned undefined. It is removed rather than left to fail quietly, and so
+   is hasEssentials(), which read module.tier.tier_structure and was the crash
+   that stopped this site building between 9 and 10 September 2026.
+   `was` is the standard band price shown beside a showcase module's own
+   price; null for everything else.
+   NOT RENDERED ANYWHERE TODAY -- see PRICES_PUBLISHED in shared.js. This
+   function is kept deliberately: prices return, and rebuilding the band
+   lookup and the showcase device from memory is the cost of deleting it. */
+function priceForTier(m, pricing) {
   const band = m.commercial.pricing_band;
   const standard = pricing[band];
-  if (tier === "pro") {
-    const isShowcase = !!m.commercial.showcase;
-    return { price: isShowcase ? m.commercial.showcase_price_pro : standard.pro, was: isShowcase ? standard.pro : null };
-  }
-  return { price: standard.essentials, was: null };
-}
-
-function hasEssentials(m) {
-  return m.tier.tier_structure === "pro_plus_essentials";
+  const isShowcase = !!m.commercial.showcase;
+  return { price: isShowcase ? m.commercial.showcase_price_pro : standard.pro, was: isShowcase ? standard.pro : null };
 }
 
 /* Deliverable-kind detection. 2026-09-02 audit found two real, compounding
@@ -287,12 +299,9 @@ function getModuleData(moduleId) {
     category: m.classification.category,
     group: m.classification.group,
     lead: !!m.classification.lead_module,
-    tierStructure: m.tier.tier_structure,
-    hasEssentials: hasEssentials(m),
     band: m.commercial.pricing_band,
     showcase: !!m.commercial.showcase,
-    pricePro: priceForTier(m, "pro", pricing),
-    priceEssentials: hasEssentials(m) ? priceForTier(m, "essentials", pricing) : null,
+    pricePro: priceForTier(m, pricing),
     stageProse: stageContext(m, byId),
     edges,
     inside: insideItems(m),
@@ -321,9 +330,8 @@ function getCatalogueListing() {
     lead: !!m.classification.lead_module,
     band: m.commercial.pricing_band,
     showcase: !!m.commercial.showcase,
-    pricePro: priceForTier(m, "pro", pricing).price,
-    priceProWas: priceForTier(m, "pro", pricing).was,
-    priceEssentials: hasEssentials(m) ? priceForTier(m, "essentials", pricing).price : null,
+    pricePro: priceForTier(m, pricing).price,
+    priceProWas: priceForTier(m, pricing).was,
   }));
 }
 
