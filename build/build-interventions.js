@@ -1,6 +1,6 @@
 "use strict";
 const { w, page, HC_URL, getModuleData, getCatalogueListing, packageGrid, photoHero, customerCategory, CATEGORY_ORDER, categoryAnchor } = require("./build.js");
-const { CHECKOUT_NOTICE } = require("./shared.js");
+const { CHECKOUT_NOTICE, PRICES_PUBLISHED } = require("./shared.js");
 
 /* ---- Module-category photography (Level 2), 2026-09-02 ----
    Every one of the 9 real customer categories (CATEGORY_ORDER in build.js)
@@ -89,7 +89,7 @@ const idxHtml = groupOrder.map((g) => {
         <div class="idx-rows">
           ${items.map((m) => `<a class="idx-row" data-search="${m.name.toLowerCase()} ${m.outcome.toLowerCase()}" href="/modules/${m.slug}.html">
             <span><span class="idx-name">${m.name}</span><br><span class="idx-outcome">${m.outcome}</span></span>
-            <span class="idx-price mono">${m.showcase ? `From £${m.pricePro}` : (m.priceEssentials ? `£${m.priceEssentials}–£${m.pricePro}` : `£${m.pricePro}`)}</span>
+            ${PRICES_PUBLISHED ? `<span class="idx-price mono">${m.showcase ? `From £${m.pricePro}` : `£${m.pricePro}`}</span>` : ""}
           </a>`).join("\n          ")}
         </div>
       </div>`;
@@ -122,6 +122,7 @@ w("modules/index.html", page({
         <input type="search" id="idx-search" class="idx-search" placeholder="Search: &quot;skills matrix,&quot; &quot;changeover,&quot; &quot;delivery&quot;..." aria-label="Search modules">
       </div>
       <p style="margin-top:14px;">Not sure which one? <a class="btn-text" href="${HC_URL}">Run the Health Check instead <span class="arrow">→</span></a></p>
+      ${PRICES_PUBLISHED ? "" : `<p style="margin-top:14px;">${CHECKOUT_NOTICE}</p>`}
       ${idxHtml}
     </div>
   </section>
@@ -326,11 +327,16 @@ for (const listed of listing) {
      standard price -- never as a struck-through "was" discount device
      (Experience Authority §15 / Phase 4 ruling §11: "do not invent
      scarcity," no was/now framing). One purchase-row component,
-     unchanged geometry regardless of tier/showcase state (spec §11). */
-  const priceBlock = d.hasEssentials
-    ? `<span class="iv-price">Essentials £${d.priceEssentials.price} · Pro £${d.pricePro.price}${d.pricePro.was ? ` <span class="showcase-note">(Showcase Pro price. Standard Pro price £${d.pricePro.was}.)</span>` : ""}</span>`
+     unchanged geometry regardless of showcase state (spec §11).
+
+     GATED ON PRICES_PUBLISHED (shared.js), which is false. While it is,
+     this renders "Pricing to be announced." -- NOT "Coming soon", which
+     would tell a visitor the wrong thing is missing. The module is not
+     coming soon; it exists. It is the price and the checkout that do not. */
+  const priceBlock = !PRICES_PUBLISHED
+    ? `<span class="iv-price">Pricing to be announced.</span>`
     : d.pricePro.was
-      ? `<span class="iv-price">Pro £${d.pricePro.price} <span class="showcase-note">(Showcase price. Standard Pro price £${d.pricePro.was}.)</span></span>`
+      ? `<span class="iv-price">£${d.pricePro.price} <span class="showcase-note">(Showcase price. Standard price £${d.pricePro.was}.)</span></span>`
       : `<span class="iv-price">£${d.pricePro.price}</span>`;
 
   const glance = atAGlancePanel(d).html;
@@ -347,7 +353,7 @@ for (const listed of listing) {
     <div class="shell">
       <h1>${d.name}</h1>
       <p class="iv-situation">${proposition}</p>
-      <div class="iv-buy" id="buy">${priceBlock}<a class="btn btn-primary on-light" href="/404.html">Buy now</a></div>
+      <div class="iv-buy" id="buy">${priceBlock}${PRICES_PUBLISHED ? `<a class="btn btn-primary on-light" href="/404.html">Buy now</a>` : ""}</div>
       <p class="iv-buy-note">${CHECKOUT_NOTICE}</p>
     </div>
   </section>
@@ -380,7 +386,7 @@ for (const listed of listing) {
   w(`modules/${d.slug}.html`, page({
     current: "modules",
     title: `${d.name} | Opsteady`,
-    description: `${d.outcome} ${d.hasEssentials ? `Essentials £${d.priceEssentials.price}, ` : ""}Pro £${d.pricePro.price}.`,
+    description: PRICES_PUBLISHED ? `${d.outcome} £${d.pricePro.price}.` : d.outcome,
     path: `/modules/${d.slug}`,
     main,
   }));

@@ -10,7 +10,8 @@
 const HC_URL = "https://healthcheck.opsteady.co.uk/";
 
 /* Checkout notice, ONE STRING, ONE PLACE, still shared -- read by every
-   module page's buy area (build-interventions.js). It was centralised
+   module page's buy area AND the modules index (build-interventions.js).
+   It was centralised
    because it had already been dropped once: added to pricing.html directly
    in 37e2659 and lost when 4a1e34f regenerated the page. That warning stays
    live, and the pricing page it names is itself now gone.
@@ -27,6 +28,39 @@ const HC_URL = "https://healthcheck.opsteady.co.uk/";
        below, no prices are shown at all, so the sentence had nothing left
        to describe. */
 const CHECKOUT_NOTICE = "Checkout isn't live yet, and pricing hasn't been set.";
+
+/* ONE SWITCH FOR THE WHOLE COMMERCIAL SURFACE. Matt's ruling, 10 September
+   2026: no price renders anywhere on this site until pricing is settled.
+
+   The price PLUMBING IS DELIBERATELY KEPT and is not dead code: priceForTier(),
+   the band lookup in the register and the showcase device all still compute.
+   They are simply not rendered. Prices return within weeks and rebuilding them
+   from memory is the cost of deleting them -- but dormant code that LOOKS live
+   is exactly what a sweep hunts, so the dormancy is named here rather than left
+   to be inferred from the absence of output.
+
+   FLIPPING THIS TO true TURNS BACK ON, in one change, all four of:
+     1. the module page hero price, including the showcase "standard price"
+        device (build-interventions.js);
+     2. the price on every module index card (build-interventions.js);
+     3. the price clause in every module page's meta description, which is
+        what Google and every shared-link preview show (build-interventions.js);
+     4. the homepage's "Clear pricing, shown before you buy" claim in the
+        "Why sites choose this" panel (build.js) -- gated rather than deleted,
+        because it is FALSE while no price is shown and TRUE again the moment
+        one is. The panel renders two items in the meantime, which still reads.
+
+   DO NOT FLIP IT UNTIL BOTH ARE TRUE:
+     - the pricing bands are ruled (they were reopened after D-TIER-10 removed
+       the second edition and each band was left carrying one figure);
+     - checkout exists. Until it does there is nothing to buy at any price, and
+       a price with no buy action is the state this ruling removed.
+
+   Also unread by any consumer today: module.commercial.price_pro_override,
+   added 2026-09-07 for P2.1. priceForTier() still computes the BAND price, so
+   that module would show the wrong figure the moment this flips. Settle it
+   before flipping, not after. */
+const PRICES_PUBLISHED = false;
 
 function head({ title, description, path, ogImage }) {
   return `<meta charset="UTF-8">
@@ -187,4 +221,4 @@ function photoHero({ eyebrow, h1, sub, image, spec }) {
   </section>`;
 }
 
-module.exports = { head, nav, footer, page, HC_URL, CHECKOUT_NOTICE, packageGrid, photoHero };
+module.exports = { head, nav, footer, page, HC_URL, CHECKOUT_NOTICE, PRICES_PUBLISHED, packageGrid, photoHero };

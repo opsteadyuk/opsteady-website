@@ -1,7 +1,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const { page, HC_URL, packageGrid, photoHero } = require("./shared.js");
+const { page, HC_URL, packageGrid, photoHero, PRICES_PUBLISHED } = require("./shared.js");
 const { getModuleData, getCatalogueListing, loadRegister } = require("./lib/product-data.js");
 
 const SITE = path.resolve(__dirname, ".."); // 02_main_site repo root — promoted 2026-09-02, write() paths are root-relative now, no "site/" prefix
@@ -182,8 +182,8 @@ const homeMain = `
           <div class="info-panel-label mono">Why sites choose this</div>
           <dl class="info-panel-list">
             <div><dt>No sales calls</dt></div>
-            <div><dt>Clear pricing, shown before you buy</dt></div>
-            <div><dt>Built by people who've run manufacturing operations, not consultants</dt></div>
+            ${PRICES_PUBLISHED ? `<div><dt>Clear pricing, shown before you buy</dt></div>
+            ` : ""}<div><dt>Built by people who've run manufacturing operations, not consultants</dt></div>
           </dl>
         </div>
       </div>
@@ -209,4 +209,4 @@ w("index.html", page({
 }));
 
 console.log("Homepage written. Continuing with remaining pages...");
-module.exports = { write, w, written, page, HC_URL, getModuleData, getCatalogueListing, loadRegister, loopSVG, loopSVGLight, packageGrid, photoHero, customerCategory, CATEGORY_ORDER, categoryAnchor };
+module.exports = { write, w, written, page, HC_URL, getModuleData, getCatalogueListing, loadRegister, loopSVG, loopSVGLight, packageGrid, photoHero, customerCategory, CATEGORY_ORDER, categoryAnchor, PRICES_PUBLISHED };
