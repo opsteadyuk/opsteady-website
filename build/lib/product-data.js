@@ -64,10 +64,33 @@ function isTierBadgeArtifact(s) {
    alongside the guide-scrape path above (extractGuide), never
    replacing it. 70/70 files validated 2026-09 as structurally
    identical: same frontmatter (module_id/tool_slug/status), same
-   nine `##` sections in the same order. Only six are customer-
-   facing (Hero proposition, Overview, Time, Who's involved, What
-   you'll need, Before you start) -- Sources and "Rejected alternate"
-   are internal citation/audit trail and must never reach the page.
+   nine `##` sections in the same order.
+
+   All nine accounted for, re-measured 2026-09-12 across all 70:
+     - SIX ARE RENDERED, always, via WEB_COPY_CUSTOMER_FIELDS below:
+       Hero proposition, Overview, Time, Who's involved, What you'll
+       need, Before you start.
+     - ONE IS PRESENT IN ALL 70 AND DELIBERATELY NOT RENDERED:
+       "Worked example". The tool page has exactly one contextual
+       callout slot, and the recorded decision in build-interventions.js
+       (contextualCallout) gives that slot to "Before you start"
+       wherever approved Web_Copy supplies it. The section stays in
+       the source file for reference. Rendering it is not a wiring
+       change -- it costs "Before you start" its slot -- so it is
+       Matt's to rule on, not this layer's to decide.
+     - TWO ARE NEVER RENDERED: "Sources" and "Rejected alternate"
+       are internal citation/audit trail and must never reach the page.
+
+   Four files additionally carry one module-specific section beyond the
+   nine (P2.1 carries two): 66 files have 9 headings, 3 have 10, 1 has 11.
+   None of those extras is rendered -- only the six named above are.
+
+   NOTE, measured 2026-09-12 and NOT a change made here: getWebCopy gates
+   on the FILE'S OWN front matter, not on the register. All 70 front
+   matters read `status: approved`, so all 70 modules render web copy
+   today, while 00_PRODUCT_REGISTER.yaml records only six as approved
+   (63 not_started, 1 in_progress). Reconciling the two gates is a
+   decision, not a fix; it is reported, not taken.
 ========================================================= */
 
 /* Every inline citation across all 70 files is either a bracketed
