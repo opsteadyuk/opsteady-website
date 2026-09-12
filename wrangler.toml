@@ -4,3 +4,12 @@ compatibility_date = "2026-01-01"
 [assets]
 directory = "."
 not_found_handling = "404-page"
+
+# Workers Logs (NEXT.md 2026-09-12 section 6, Matt approved 12 September).
+# Until this, no Worker log was retained at all, so every question about what
+# this Worker did on a past date was unanswerable. head_sampling_rate = 1
+# keeps every invocation rather than a sample. Adds no route, binding, secret
+# or environment variable.
+[observability]
+enabled = true
+head_sampling_rate = 1
