@@ -305,16 +305,27 @@ function stageContext(m, byId) {
    returned undefined. It is removed rather than left to fail quietly, and so
    is hasEssentials(), which read module.tier.tier_structure and was the crash
    that stopped this site building between 9 and 10 September 2026.
-   `was` is the standard band price shown beside a showcase module's own
-   price; null for everything else.
-   NOT RENDERED ANYWHERE TODAY -- see PRICES_PUBLISHED in shared.js. This
-   function is kept deliberately: prices return, and rebuilding the band
-   lookup and the showcase device from memory is the cost of deleting it. */
+   D-PRICE-05, Matt's ruling of 14 September 2026 -- "drop showcase pricing
+   entirely" -- removed the showcase branch and with it the `was` figure it
+   fed, so this returns the band price alone and every module renders it.
+   commercial.showcase and commercial.showcase_price_pro stay in the register,
+   read by nothing, until the run that migrates the remaining 46 rewrites it.
+   RENDERED ONLY FOR A MODULE THAT PASSES isSaleLive() below. */
 function priceForTier(m, pricing) {
   const band = m.commercial.pricing_band;
-  const standard = pricing[band];
-  const isShowcase = !!m.commercial.showcase;
-  return { price: isShowcase ? m.commercial.showcase_price_pro : standard.pro, was: isShowcase ? standard.pro : null };
+  return pricing[band].pro;
+}
+
+/* A2, 15 September 2026: publication is per module, not sitewide. Replaces
+   PRICES_PUBLISHED, the one boolean that turned the price, the Buy control,
+   the index-card price and the meta-description price clause on for all 70
+   at once. BOTH fields are required and neither is sufficient: the URL alone
+   would sell a module Matt has not released, and the flag alone is how a Buy
+   button reaches /404.html, which is the failure this shape designs out.
+   Both are absent from all 70 register entries today, so this is false for
+   every module and the built site is unchanged until Matt fills one in. */
+function isSaleLive(m) {
+  return !!(m.commercial.sale_live && m.commercial.checkout_url);
 }
 
 /* Deliverable-kind detection. 2026-09-02 audit found two real, compounding
@@ -400,8 +411,9 @@ function getModuleData(moduleId) {
     group: m.classification.group,
     lead: !!m.classification.lead_module,
     band: m.commercial.pricing_band,
-    showcase: !!m.commercial.showcase,
     pricePro: priceForTier(m, pricing),
+    saleLive: isSaleLive(m),
+    checkoutUrl: m.commercial.checkout_url || null,
     stageProse: stageContext(m, byId),
     edges,
     inside: insideItems(m),
@@ -429,9 +441,9 @@ function getCatalogueListing() {
     group: m.classification.group,
     lead: !!m.classification.lead_module,
     band: m.commercial.pricing_band,
-    showcase: !!m.commercial.showcase,
-    pricePro: priceForTier(m, pricing).price,
-    priceProWas: priceForTier(m, pricing).was,
+    pricePro: priceForTier(m, pricing),
+    saleLive: isSaleLive(m),
+    checkoutUrl: m.commercial.checkout_url || null,
   }));
 }
 
