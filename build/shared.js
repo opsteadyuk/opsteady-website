@@ -138,7 +138,7 @@ const PKG_ICONS = {
   materials: `<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 12h22M13 12v14" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="15.5" width="8" height="4" fill="var(--a6-tint)" stroke="none"/></svg>`,
 };
 const PACKAGE_ITEMS = [
-  { key: "training", label: "Training", verb: "Learn it", copy: "Start with little or no prior knowledge. The training gets you ready to understand the subject and use the module with confidence." },
+  { key: "training", label: "Primer", verb: "Learn it", copy: "Start with little or no prior knowledge. The training gets you ready to understand the subject and use the module with confidence." },
   { key: "tool", label: "Main Guide", verb: "Put it to work", copy: "The complete deployment guide: what to do, why you're doing it, how to work through it and what good looks like." },
   { key: "faq", label: "FAQ", verb: "Get unstuck", copy: "Practical answers to the questions, complications and uncertainties that could appear once you start using the module." },
   { key: "materials", label: "Working Materials", verb: "Make it yours", copy: "Where the module needs them, you get fully customisable templates and working files. Adapt them to your operation rather than changing your operation to fit our paperwork." },

@@ -6,6 +6,22 @@ const { getCatalogueListing } = require("./build.js");
 const SITE = path.resolve(__dirname, "..");
 const BASE = "https://opsteady.co.uk";
 
+// ---------------------------------------------------------------------------
+// THE MODULE SLUG REDIRECTS, READ FROM THE RENAME MAP RATHER THAN COPIED HERE.
+//
+// 42 module slugs moved in the rename. Every one of those URLs has been live
+// since 2 September, so without these rules all 42 return 404 at the moment
+// the rename is published — and because this file is GENERATED, a hand-added
+// row would be silently removed by the next build. The map has to be read.
+//
+// SAME ROOT RESOLUTION AS build/lib/product-data.js, which already reads
+// across the repository boundary into 04_products. That file sits one level
+// deeper (build/lib), so it resolves three levels up; this one sits in build,
+// so it resolves two. Both land on the workspace root. The CSV is NOT copied
+// into this repository: one copy of the map, which cannot drift from itself.
+const ROOT = path.resolve(__dirname, "..", "..");
+const SLUG_MAP_PATH = path.join(ROOT, "_intake", "SLUG-REDIRECTS.csv");
+
 const staticRoutes = [
   "/", "/the-method", "/modules", "/who-we-are",
   "/health-check", "/terms", "/accessibility", "/privacy",
@@ -20,6 +36,52 @@ const routes = [
 const urlset = routes.map((r) => `  <url><loc>${BASE}${r === "/" ? "" : r}</loc></url>`).join("\n");
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlset}\n</urlset>\n`;
 fs.writeFileSync(path.join(SITE, "sitemap.xml"), xml, "utf8");
+
+// ---------------------------------------------------------------------------
+// BUILD THE MODULE RULES, AND REFUSE TO EMIT A REDIRECT THAT LANDS ON A 404.
+//
+// EVERY TARGET IS CHECKED AGAINST A LIVE canonical_slug AND THE BUILD FAILS
+// LOUDLY IF ONE DOES NOT RESOLVE. A redirect whose target no longer exists is
+// worse than no redirect: it turns one 404 into a 301 into a 404, and it does
+// it silently. This check is what stops the layer rotting the NEXT time a slug
+// moves — the map and the register are two files, and nothing else makes them
+// agree.
+//
+// BOTH PATH FORMS ARE EMITTED FOR EVERY ROW, deliberately. The sitemap above
+// publishes EXTENSIONLESS paths; every built page links to .html paths. Both
+// are reachable, so both must redirect. A Cloudflare placeholder matches a
+// WHOLE PATH SEGMENT, so ":slug.html" does not parse as "capture the part
+// before .html" — a rule of exactly that shape was written once, measured
+// inert on the live site, and removed (see the note in the block below). Two
+// literal rules per row is the only form that covers both. An unnecessary
+// rule is harmless; a missing one is a 404.
+if (!fs.existsSync(SLUG_MAP_PATH)) {
+  throw new Error(`_redirects: slug rename map not found at ${SLUG_MAP_PATH}. The module redirects cannot be generated, and emitting the file without them would 404 every renamed module URL.`);
+}
+const slugRows = fs.readFileSync(SLUG_MAP_PATH, "utf8").trim().split(/\r?\n/)
+  .slice(1)                                   // drop the `old,new` header
+  .map((line) => line.split(",").map((c) => c.trim()))
+  .filter((cols) => cols.length >= 2 && cols[0] && cols[1]);
+
+const liveSlugs = new Set(listing.map((m) => m.slug));
+const unresolved = slugRows.filter(([, next]) => !liveSlugs.has(next));
+if (unresolved.length) {
+  throw new Error(
+    `_redirects: ${unresolved.length} redirect target(s) are not a current canonical_slug in 00_PRODUCT_REGISTER.yaml — ` +
+    unresolved.map(([was, next]) => `${was} -> ${next}`).join(", ") +
+    `. Fix the map or the register; do not publish a 301 into a 404.`
+  );
+}
+
+// Column widths are computed, not guessed: the longest slug here is longer
+// than anything in the hand-written block below, so a fixed width would break
+// the alignment of exactly the rows that are hardest to read.
+const modPatterns = slugRows.flatMap(([was]) => [`/modules/${was}`, `/modules/${was}.html`]);
+const padTo = Math.max(...modPatterns.map((p) => p.length)) + 2;
+const moduleRules = slugRows.map(([was, next]) =>
+  `${`/modules/${was}`.padEnd(padTo)}${`/modules/${next}`.padEnd(padTo)}301\n` +
+  `${`/modules/${was}.html`.padEnd(padTo)}${`/modules/${next}.html`.padEnd(padTo)}301`
+).join("\n");
 
 // ---------------------------------------------------------------------------
 // THE REDIRECT LAYER.
@@ -41,6 +103,26 @@ fs.writeFileSync(path.join(SITE, "sitemap.xml"), xml, "utf8");
 // otherwise point at a 301 that points at a 301.
 const redirects = `# Opsteady redirects. Cloudflare reads THIS file (_redirects); it has never
 # read redirects.txt, which is retired as of 2026-09-05.
+
+# --- module slug rename: 42 rows, both path forms each ----------------------
+# GENERATED from _intake/SLUG-REDIRECTS.csv in 04_products. Do not hand-edit:
+# this file is written by build/build-sitemap.js and a hand-added row is
+# silently removed by the next build. Change the CSV instead.
+#
+# EVERY TARGET WAS CHECKED AGAINST A LIVE canonical_slug WHEN THIS WAS
+# WRITTEN. The build refuses to emit the file if one does not resolve.
+#
+# PLACED FIRST, ABOVE EVERY WILDCARD. Two reasons, and the first is the one
+# that matters: no rule below can match a /modules/ path at all — the splats
+# are /interventions/*, /site/interventions/*, /site/* and /worked-examples/*,
+# and none of them has a /modules/ prefix — so these cannot be shadowed
+# wherever they sit. They are first anyway because THIS FILE'S OWN MEASURED
+# NOTE BELOW records ordering behaving differently from how it was asserted
+# (/site/* matched before two specific rules written above it). Given that,
+# "specific literal paths, above everything, with no wildcard over them" is
+# the only placement that does not depend on an ordering claim this file has
+# already had to correct once.
+${moduleRules}
 
 # --- 2026-09-05 rename: /interventions/ -> /modules/ ------------------------
 # An "/interventions/:slug.html -> /modules/:slug" line was added here and then
@@ -134,4 +216,7 @@ const stale = path.join(SITE, "redirects.txt");
 if (fs.existsSync(stale)) { fs.unlinkSync(stale); console.log("redirects.txt removed (retired — never read by anything)."); }
 
 console.log(`sitemap.xml written — ${routes.length} routes.`);
-console.log("_redirects written.");
+// The rule count is printed, not left to be counted by hand: a redirect layer
+// that silently loses rules is the exact failure this generator exists to fix.
+const ruleCount = redirects.split("\n").filter((l) => l.trim() && !l.trim().startsWith("#")).length;
+console.log(`_redirects written — ${ruleCount} rules (${slugRows.length} module rows x 2 path forms = ${slugRows.length * 2}, plus ${ruleCount - slugRows.length * 2} hand-written).`);
