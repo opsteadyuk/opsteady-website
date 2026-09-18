@@ -1,6 +1,109 @@
 # Opsteady redirects. Cloudflare reads THIS file (_redirects); it has never
 # read redirects.txt, which is retired as of 2026-09-05.
 
+# --- module slug rename: 42 rows, both path forms each ----------------------
+# GENERATED from _intake/SLUG-REDIRECTS.csv in 04_products. Do not hand-edit:
+# this file is written by build/build-sitemap.js and a hand-added row is
+# silently removed by the next build. Change the CSV instead.
+#
+# EVERY TARGET WAS CHECKED AGAINST A LIVE canonical_slug WHEN THIS WAS
+# WRITTEN. The build refuses to emit the file if one does not resolve.
+#
+# PLACED FIRST, ABOVE EVERY WILDCARD. Two reasons, and the first is the one
+# that matters: no rule below can match a /modules/ path at all — the splats
+# are /interventions/*, /site/interventions/*, /site/* and /worked-examples/*,
+# and none of them has a /modules/ prefix — so these cannot be shadowed
+# wherever they sit. They are first anyway because THIS FILE'S OWN MEASURED
+# NOTE BELOW records ordering behaving differently from how it was asserted
+# (/site/* matched before two specific rules written above it). Given that,
+# "specific literal paths, above everything, with no wildcard over them" is
+# the only placement that does not depend on an ordering claim this file has
+# already had to correct once.
+/modules/kpi_blueprint_map                                       /modules/kpi_map                                                 301
+/modules/kpi_blueprint_map.html                                  /modules/kpi_map.html                                            301
+/modules/kpi_definitions_cascade                                 /modules/kpis                                                    301
+/modules/kpi_definitions_cascade.html                            /modules/kpis.html                                               301
+/modules/set_standards                                           /modules/standards                                               301
+/modules/set_standards.html                                      /modules/standards.html                                          301
+/modules/hoshin_kanri_strategy_deployment                        /modules/strategy_deployment                                     301
+/modules/hoshin_kanri_strategy_deployment.html                   /modules/strategy_deployment.html                                301
+/modules/training_competency_signoff                             /modules/training_competency                                     301
+/modules/training_competency_signoff.html                        /modules/training_competency.html                                301
+/modules/absenteeism_attendance_and_short_term_cover             /modules/absence                                                 301
+/modules/absenteeism_attendance_and_short_term_cover.html        /modules/absence.html                                            301
+/modules/labour_planning_shift_pattern                           /modules/labour_planning                                         301
+/modules/labour_planning_shift_pattern.html                      /modules/labour_planning.html                                    301
+/modules/operator_standard_work_and_job_instruction              /modules/op_standard_work                                        301
+/modules/operator_standard_work_and_job_instruction.html         /modules/op_standard_work.html                                   301
+/modules/recognition_and_engagement_system                       /modules/engagement_recognition                                  301
+/modules/recognition_and_engagement_system.html                  /modules/engagement_recognition.html                             301
+/modules/ergonomics_and_workplace_design                         /modules/workstation_design                                      301
+/modules/ergonomics_and_workplace_design.html                    /modules/workstation_design.html                                 301
+/modules/tiered_meeting_structure                                /modules/tiered_meetings                                         301
+/modules/tiered_meeting_structure.html                           /modules/tiered_meetings.html                                    301
+/modules/sqdc_performance_board                                  /modules/sqdc_boards                                             301
+/modules/sqdc_performance_board.html                             /modules/sqdc_boards.html                                        301
+/modules/layered_leadership_standard_work_and_gemba_rhythm       /modules/leadership_standard_work                                301
+/modules/layered_leadership_standard_work_and_gemba_rhythm.html  /modules/leadership_standard_work.html                           301
+/modules/layered_process_audit                                   /modules/layered_process_audits                                  301
+/modules/layered_process_audit.html                              /modules/layered_process_audits.html                             301
+/modules/action_and_countermeasure_tracking_system               /modules/action_tracking                                         301
+/modules/action_and_countermeasure_tracking_system.html          /modules/action_tracking.html                                    301
+/modules/non_conformance_tracker                                 /modules/non_conformance                                         301
+/modules/non_conformance_tracker.html                            /modules/non_conformance.html                                    301
+/modules/customer_complaint_and_feedback_system                  /modules/customer_complaints                                     301
+/modules/customer_complaint_and_feedback_system.html             /modules/customer_complaints.html                                301
+/modules/poka_yoke_and_andon_escalation                          /modules/poka_yoke_andon                                         301
+/modules/poka_yoke_and_andon_escalation.html                     /modules/poka_yoke_andon.html                                    301
+/modules/spc_basics_and_fmea                                     /modules/spc_fmea                                                301
+/modules/spc_basics_and_fmea.html                                /modules/spc_fmea.html                                           301
+/modules/supplier_quality_and_incoming_control                   /modules/supplier_quality                                        301
+/modules/supplier_quality_and_incoming_control.html              /modules/supplier_quality.html                                   301
+/modules/production_schedule_adherence                           /modules/schedule_adherence                                      301
+/modules/production_schedule_adherence.html                      /modules/schedule_adherence.html                                 301
+/modules/inventory_and_materials_control_pack                    /modules/inventory_materials                                     301
+/modules/inventory_and_materials_control_pack.html               /modules/inventory_materials.html                                301
+/modules/otif_rft_dashboard                                      /modules/otif_rft                                                301
+/modules/otif_rft_dashboard.html                                 /modules/otif_rft.html                                           301
+/modules/smed_changeover_reduction_toolkit                       /modules/smed                                                    301
+/modules/smed_changeover_reduction_toolkit.html                  /modules/smed.html                                               301
+/modules/kanban_and_pull_system_design                           /modules/kanban_pull                                             301
+/modules/kanban_and_pull_system_design.html                      /modules/kanban_pull.html                                        301
+/modules/pm_schedule_builder                                     /modules/pm_compliance                                           301
+/modules/pm_schedule_builder.html                                /modules/pm_compliance.html                                      301
+/modules/oee_management_and_loss_analysis                        /modules/oee_loss_analysis                                       301
+/modules/oee_management_and_loss_analysis.html                   /modules/oee_loss_analysis.html                                  301
+/modules/full_tpm_pillars_pack                                   /modules/tpm                                                     301
+/modules/full_tpm_pillars_pack.html                              /modules/tpm.html                                                301
+/modules/5s_audit_pack                                           /modules/5s_audit                                                301
+/modules/5s_audit_pack.html                                      /modules/5s_audit.html                                           301
+/modules/visual_standards_workplace                              /modules/visual_standards                                        301
+/modules/visual_standards_workplace.html                         /modules/visual_standards.html                                   301
+/modules/kaizen_event_planner                                    /modules/kaizen_events                                           301
+/modules/kaizen_event_planner.html                               /modules/kaizen_events.html                                      301
+/modules/idea_suggestion_system                                  /modules/ideas_suggestions                                       301
+/modules/idea_suggestion_system.html                             /modules/ideas_suggestions.html                                  301
+/modules/eight_wastes_timwoods                                   /modules/eight_wastes                                            301
+/modules/eight_wastes_timwoods.html                              /modules/eight_wastes.html                                       301
+/modules/npi_launch_readiness                                    /modules/npi_launch                                              301
+/modules/npi_launch_readiness.html                               /modules/npi_launch.html                                         301
+/modules/basic_problem_solving_5_why                             /modules/five_why                                                301
+/modules/basic_problem_solving_5_why.html                        /modules/five_why.html                                           301
+/modules/spaghetti_diagrams_motion_analysis                      /modules/motion_analysis                                         301
+/modules/spaghetti_diagrams_motion_analysis.html                 /modules/motion_analysis.html                                    301
+/modules/waste_cost_of_quality                                   /modules/cost_of_quality                                         301
+/modules/waste_cost_of_quality.html                              /modules/cost_of_quality.html                                    301
+/modules/industry_4_0_and_iot_basics                             /modules/industry_40_iot                                         301
+/modules/industry_4_0_and_iot_basics.html                        /modules/industry_40_iot.html                                    301
+/modules/data_analysis_basics                                    /modules/data_analysis                                           301
+/modules/data_analysis_basics.html                               /modules/data_analysis.html                                      301
+/modules/business_continuity_basics                              /modules/business_continuity                                     301
+/modules/business_continuity_basics.html                         /modules/business_continuity.html                                301
+/modules/hse_system                                              /modules/hse                                                     301
+/modules/hse_system.html                                         /modules/hse.html                                                301
+/modules/safety_observation_near_miss                            /modules/safety_observations                                     301
+/modules/safety_observation_near_miss.html                       /modules/safety_observations.html                                301
+
 # --- 2026-09-05 rename: /interventions/ -> /modules/ ------------------------
 # An "/interventions/:slug.html -> /modules/:slug" line was added here and then
 # REMOVED, because it could never fire: Cloudflare placeholders match a WHOLE

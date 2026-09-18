@@ -8,61 +8,61 @@
   <url><loc>https://opsteady.co.uk/terms</loc></url>
   <url><loc>https://opsteady.co.uk/accessibility</loc></url>
   <url><loc>https://opsteady.co.uk/privacy</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/kpi_blueprint_map</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/kpi_definitions_cascade</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/set_standards</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/kpi_map</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/kpis</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/standards</loc></url>
   <url><loc>https://opsteady.co.uk/modules/culture</loc></url>
   <url><loc>https://opsteady.co.uk/modules/visual_management_foundations</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/hoshin_kanri_strategy_deployment</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/strategy_deployment</loc></url>
   <url><loc>https://opsteady.co.uk/modules/skills_matrix</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/training_competency_signoff</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/training_competency</loc></url>
   <url><loc>https://opsteady.co.uk/modules/onboarding_induction</loc></url>
   <url><loc>https://opsteady.co.uk/modules/team_leader_development</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/absenteeism_attendance_and_short_term_cover</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/labour_planning_shift_pattern</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/operator_standard_work_and_job_instruction</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/recognition_and_engagement_system</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/ergonomics_and_workplace_design</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/absence</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/labour_planning</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/op_standard_work</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/engagement_recognition</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/workstation_design</loc></url>
   <url><loc>https://opsteady.co.uk/modules/coaching_skills_for_leaders</loc></url>
   <url><loc>https://opsteady.co.uk/modules/shift_handover</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/tiered_meeting_structure</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/sqdc_performance_board</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/tiered_meetings</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/sqdc_boards</loc></url>
   <url><loc>https://opsteady.co.uk/modules/supervisor_standard_work</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/layered_leadership_standard_work_and_gemba_rhythm</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/layered_process_audit</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/action_and_countermeasure_tracking_system</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/non_conformance_tracker</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/customer_complaint_and_feedback_system</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/poka_yoke_and_andon_escalation</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/spc_basics_and_fmea</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/supplier_quality_and_incoming_control</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/leadership_standard_work</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/layered_process_audits</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/action_tracking</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/non_conformance</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/customer_complaints</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/poka_yoke_andon</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/spc_fmea</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/supplier_quality</loc></url>
   <url><loc>https://opsteady.co.uk/modules/bottleneck_analysis</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/production_schedule_adherence</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/schedule_adherence</loc></url>
   <url><loc>https://opsteady.co.uk/modules/capacity_planning</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/inventory_and_materials_control_pack</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/otif_rft_dashboard</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/smed_changeover_reduction_toolkit</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/kanban_and_pull_system_design</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/inventory_materials</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/otif_rft</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/smed</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/kanban_pull</loc></url>
   <url><loc>https://opsteady.co.uk/modules/heijunka_and_takt_time</loc></url>
   <url><loc>https://opsteady.co.uk/modules/yamazumi_line_balancing</loc></url>
   <url><loc>https://opsteady.co.uk/modules/downtime_tracking_pareto</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/pm_schedule_builder</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/pm_compliance</loc></url>
   <url><loc>https://opsteady.co.uk/modules/maintenance_response</loc></url>
   <url><loc>https://opsteady.co.uk/modules/autonomous_maintenance</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/oee_management_and_loss_analysis</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/full_tpm_pillars_pack</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/5s_audit_pack</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/visual_standards_workplace</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/oee_loss_analysis</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/tpm</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/5s_audit</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/visual_standards</loc></url>
   <url><loc>https://opsteady.co.uk/modules/value_stream_mapping</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/kaizen_event_planner</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/idea_suggestion_system</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/kaizen_events</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/ideas_suggestions</loc></url>
   <url><loc>https://opsteady.co.uk/modules/a3_problem_solving</loc></url>
   <url><loc>https://opsteady.co.uk/modules/root_cause_analysis</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/eight_wastes_timwoods</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/npi_launch_readiness</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/basic_problem_solving_5_why</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/spaghetti_diagrams_motion_analysis</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/waste_cost_of_quality</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/eight_wastes</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/npi_launch</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/five_why</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/motion_analysis</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/cost_of_quality</loc></url>
   <url><loc>https://opsteady.co.uk/modules/overtime_agency_spend</loc></url>
   <url><loc>https://opsteady.co.uk/modules/understanding_the_p_and_l</loc></url>
   <url><loc>https://opsteady.co.uk/modules/cost_deployment</loc></url>
@@ -70,12 +70,12 @@
   <url><loc>https://opsteady.co.uk/modules/working_with_ai</loc></url>
   <url><loc>https://opsteady.co.uk/modules/managing_change</loc></url>
   <url><loc>https://opsteady.co.uk/modules/going_digital</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/industry_4_0_and_iot_basics</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/data_analysis_basics</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/business_continuity_basics</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/industry_40_iot</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/data_analysis</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/business_continuity</loc></url>
   <url><loc>https://opsteady.co.uk/modules/running_a_project</loc></url>
   <url><loc>https://opsteady.co.uk/modules/engaging_the_wider_business</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/hse_system</loc></url>
-  <url><loc>https://opsteady.co.uk/modules/safety_observation_near_miss</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/hse</loc></url>
+  <url><loc>https://opsteady.co.uk/modules/safety_observations</loc></url>
   <url><loc>https://opsteady.co.uk/modules/benchmarking</loc></url>
 </urlset>
