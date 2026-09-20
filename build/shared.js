@@ -29,6 +29,38 @@ const HC_URL = "https://healthcheck.opsteady.co.uk/";
        lib/product-data.js) no price was shown, so it described nothing. */
 const CHECKOUT_NOTICE = "Checkout isn't live yet, and pricing hasn't been set.";
 
+// WHAT A MODULE THAT IS NOT FOR SALE SAYS. It appears in THREE places now, so
+// it lives here rather than in any one builder: the module page where a price
+// would be, the index's price column, and /terms, which QUOTES it back to the
+// reader ("Where it shows ..., there is nothing to buy"). That third use is
+// why this is a shared constant and not a string: a terms page quoting wording
+// the site no longer uses is the same class of defect as the one this whole
+// change set exists to remove, and it nearly shipped that way — the first cut
+// of the terms copy quoted the OLD wording after the index had moved on.
+//
+// WHY NOT "Pricing to be announced.", the module page's previous wording, which
+// would have introduced no new copy at all: `.idx-price` is
+// `white-space:nowrap` with NO responsive override anywhere in system.css, and
+// `.idx-row` is a flex row that surrenders whatever the price cell takes.
+// Measured at a 390px viewport: `.shell` has 16px gutters, so the row is 358px,
+// and the longest name on the index is 60 characters ("Maintenance Response:
+// Restore Fast, Do Not Normalise Failure"). A 23-character monospace string at
+// 12.5px takes roughly 173px and cannot give any back, leaving under half the
+// row for that name. Fifteen characters takes roughly 113px instead.
+//
+// THE HONEST BOUNDARY: no page was rendered at phone width. MEASURED — the cell
+// cannot wrap, nothing overrides it at any breakpoint, the row is 358px and the
+// longest name is 60 characters. ESTIMATED — the pixel width of either string
+// in the real monospace face. The shorter string was chosen because it is
+// strictly safer on a layout measured to be unresponsive, not because the
+// longer one was proved to break.
+//
+// IT SATISFIES THE EXISTING RULING, which bans "Coming soon" because that tells
+// a visitor the MODULE is missing when the module exists and it is the price
+// and the checkout that do not. This names the SALE, which is the distinction
+// that ruling draws in its own last sentence.
+const NOT_FOR_SALE = "Not on sale yet";
+
 function head({ title, description, path, ogImage }) {
   return `<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -200,4 +232,4 @@ function photoHero({ eyebrow, h1, sub, image, spec }) {
   </section>`;
 }
 
-module.exports = { head, nav, footer, page, HC_URL, CHECKOUT_NOTICE, packageGrid, photoHero };
+module.exports = { head, nav, footer, page, HC_URL, CHECKOUT_NOTICE, NOT_FOR_SALE, packageGrid, photoHero };

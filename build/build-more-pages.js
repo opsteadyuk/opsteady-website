@@ -1,5 +1,6 @@
 "use strict";
 const { w, page, HC_URL, photoHero } = require("./build.js");
+const { NOT_FOR_SALE } = require("./shared.js");
 
 /* ---- Who We Are — rewritten 2026-08-31 per the customer-experience-
    pass instruction to move closer to the stronger operational
@@ -111,7 +112,7 @@ w("terms.html", page({
     <div class="shell">
       <div class="eyebrow on-navy">Terms of sale</div>
       <h1>Terms of sale</h1>
-      <p>What you're agreeing to when you buy from Opsteady. Modules are released one at a time. Where a module shows a price and a Buy button, these terms apply in full to that purchase. Where it shows &ldquo;Pricing to be announced&rdquo;, there is nothing to buy yet.</p>
+      <p>What you're agreeing to when you buy from Opsteady. Modules are released one at a time. Where a module shows a price and a Buy button, these terms apply in full to that purchase. Where it shows &ldquo;${NOT_FOR_SALE}&rdquo;, there is nothing to buy.</p>
     </div>
   </section>
   <section class="page-section full-copy">
