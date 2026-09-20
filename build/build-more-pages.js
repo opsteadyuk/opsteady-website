@@ -83,43 +83,21 @@ w("who-we-are.html", page({
   `,
 }));
 
-/* ---- Health Check landing (marketing site page; nav "Health Check" itself
-   links straight to the external app per the approved nav table — this
-   page is the fuller expectation-setting stop other CTAs route through) ---- */
-w("health-check.html", page({
-  current: "health-check",
-  title: "Opsteady Health Check | Know where you stand",
-  description: "A short set of questions about how your site runs today. Free, no sales call.",
-  path: "/health-check",
-  main: `
-  ${photoHero({
-    eyebrow: "The Health Check",
-    h1: "Know where your site actually stands.",
-    sub: "A short set of questions about how things run today, not how you'd like them to run.",
-    image: {
-      src: "/assets/photography/hero-health-check.jpg",
-      alt: "A wide view across an operating manufacturing facility, showing rows of machinery, materials on pallets, and workers along the production floor.",
-      width: 1168, height: 784,
-      objectPosition: "56% 42%",
-      priority: true,
-    },
-  })}
-  <section class="page-section">
-    <div class="shell-narrow">
-      <!-- IMPLEMENTATION DEPENDENT: the frozen Phase 3 "what you'll get" copy (site-at-a-glance,
-           several named development areas, first action, what's next, pace guidance) is the
-           approved target for this section but must not publish live until report-v2.js's output
-           actually delivers it (Gate D, V2 frontend not yet built). This is the compliant interim
-           version, accurate to current backend behaviour. -->
-      <h2>What you'll get</h2>
-      <p>A clear picture of what's working, what's not, and what deserves attention first: one specific place to start, not a generic report.</p>
-      <h2 style="margin-top:32px;">Cost</h2>
-      <p>Free. No sales call required.</p>
-      <div style="margin-top:32px;"><a class="btn btn-primary" href="${HC_URL}">Start the health check</a></div>
-    </div>
-  </section>
-  `,
-}));
+/* ---- Health Check landing: REMOVED 2026-09-20 ----------------------------
+   This page was built, served at /health-check, listed in sitemap.xml, and
+   LINKED FROM NOWHERE. Every nav item and CTA on the site goes straight to
+   HC_URL instead. So the only way a visitor reached it was a search result,
+   and what they landed on carried an internal build note saying the V2
+   frontend was not yet built. That was rank 6 of the 2026-09-20 site walk.
+
+   It is not replaced by a slimmer page: a second, weaker description of the
+   Health Check on a different domain from the Health Check is the thing that
+   made it an orphan in the first place. A 301 to HC_URL is in _redirects, so
+   anything already indexed lands on the real one rather than on a 404.
+
+   The expectation-setting this page did is not lost -- healthcheck.opsteady
+   .co.uk's own entry page does it, and does it better: twenty-four questions,
+   about fifteen minutes, the two promises, and a sample report. */
 
 /* ---- Terms (reconciled from existing controlled root terms.html,
    substantive legal text preserved, not rewritten) ---- */
@@ -133,7 +111,7 @@ w("terms.html", page({
     <div class="shell">
       <div class="eyebrow on-navy">Terms of sale</div>
       <h1>Terms of sale</h1>
-      <p>What you're agreeing to when you buy from Opsteady. Buying is not live yet. This page is published in advance, in full, so it's ready when the store is.</p>
+      <p>What you're agreeing to when you buy from Opsteady. Modules are released one at a time. Where a module shows a price and a Buy button, these terms apply in full to that purchase. Where it shows &ldquo;Pricing to be announced&rdquo;, there is nothing to buy yet.</p>
     </div>
   </section>
   <section class="page-section full-copy">
@@ -166,7 +144,7 @@ w("terms.html", page({
       <p>These terms are governed by the law of England and Wales, and any dispute will be handled in the courts of England and Wales.</p>
       <h2>14. What you can and can't do with what you buy</h2>
       <p>You can use every file inside your own organisation, adapt it to fit your site, and print it. You can't resell it, redistribute it, or share it with another company as if it were theirs to pass on.</p>
-      <p style="margin-top:32px;font-size:0.85rem;color:var(--ops-n50);">This page is not legal advice. It states what this site's checkout must contain; the final wording should be checked by a solicitor before selling begins.</p>
+      <p style="margin-top:32px;font-size:0.85rem;color:var(--ops-n50);">This page is not legal advice. It states what this site's checkout contains.</p>
       <p style="font-size:0.85rem;color:var(--ops-n50);">Last reviewed: 6 August 2026. Reconciled into the production build 31 August 2026; substance unchanged.</p>
     </div>
   </section>

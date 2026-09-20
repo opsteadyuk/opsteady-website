@@ -22,9 +22,14 @@ const BASE = "https://opsteady.co.uk";
 const ROOT = path.resolve(__dirname, "..", "..");
 const SLUG_MAP_PATH = path.join(ROOT, "_intake", "SLUG-REDIRECTS.csv");
 
+// "/health-check" REMOVED 2026-09-20. The page it listed was served, indexed
+// and linked from nowhere — every nav item and CTA goes straight to HC_URL —
+// so the sitemap was the only thing sending anyone to it. The page is gone
+// from build-more-pages.js and a 301 to HC_URL is in the redirect block below.
+// A sitemap entry for a path that now 301s off-site is not useful to anyone.
 const staticRoutes = [
   "/", "/the-method", "/modules", "/who-we-are",
-  "/health-check", "/terms", "/accessibility", "/privacy",
+  "/terms", "/accessibility", "/privacy",
 ];
 
 const listing = getCatalogueListing();
@@ -123,6 +128,29 @@ const redirects = `# Opsteady redirects. Cloudflare reads THIS file (_redirects)
 # the only placement that does not depend on an ordering claim this file has
 # already had to correct once.
 ${moduleRules}
+
+# --- 2026-09-20: the retired /health-check landing page ---------------------
+# That page was served, sat in the sitemap, and was linked from NOWHERE: every
+# nav item and CTA on the site goes straight to the Health Check itself. The
+# only way in was a search result, so anything already indexed is the only
+# traffic these two rules will ever carry — which is exactly why they exist.
+#
+# BOTH PATH FORMS, for the reason the module block gives: the sitemap published
+# the extensionless path and the built pages linked the .html one, so both are
+# out there and both must land.
+#
+# PLACED HERE, immediately after the module rules and above every wildcard, on
+# this file's own doctrine: specific literal paths above everything, with no
+# splat over them. Measured rather than assumed: the splats below are
+# /interventions/*, /site/interventions/*, /site/* and /worked-examples/*, and
+# not one of them has a /health-check prefix, so these could not be shadowed
+# wherever they sat. They are first anyway because this file has already had to
+# correct one ordering claim.
+#
+# The target is the Health Check's own entry page, which does the
+# expectation-setting the retired page did and does it better.
+/health-check           https://healthcheck.opsteady.co.uk/   301
+/health-check.html      https://healthcheck.opsteady.co.uk/   301
 
 # --- 2026-09-05 rename: /interventions/ -> /modules/ ------------------------
 # An "/interventions/:slug.html -> /modules/:slug" line was added here and then

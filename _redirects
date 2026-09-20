@@ -104,6 +104,29 @@
 /modules/safety_observation_near_miss                            /modules/safety_observations                                     301
 /modules/safety_observation_near_miss.html                       /modules/safety_observations.html                                301
 
+# --- 2026-09-20: the retired /health-check landing page ---------------------
+# That page was served, sat in the sitemap, and was linked from NOWHERE: every
+# nav item and CTA on the site goes straight to the Health Check itself. The
+# only way in was a search result, so anything already indexed is the only
+# traffic these two rules will ever carry — which is exactly why they exist.
+#
+# BOTH PATH FORMS, for the reason the module block gives: the sitemap published
+# the extensionless path and the built pages linked the .html one, so both are
+# out there and both must land.
+#
+# PLACED HERE, immediately after the module rules and above every wildcard, on
+# this file's own doctrine: specific literal paths above everything, with no
+# splat over them. Measured rather than assumed: the splats below are
+# /interventions/*, /site/interventions/*, /site/* and /worked-examples/*, and
+# not one of them has a /health-check prefix, so these could not be shadowed
+# wherever they sat. They are first anyway because this file has already had to
+# correct one ordering claim.
+#
+# The target is the Health Check's own entry page, which does the
+# expectation-setting the retired page did and does it better.
+/health-check           https://healthcheck.opsteady.co.uk/   301
+/health-check.html      https://healthcheck.opsteady.co.uk/   301
+
 # --- 2026-09-05 rename: /interventions/ -> /modules/ ------------------------
 # An "/interventions/:slug.html -> /modules/:slug" line was added here and then
 # REMOVED, because it could never fire: Cloudflare placeholders match a WHOLE

@@ -11,6 +11,28 @@ const write = (rel, html) => {
   fs.writeFileSync(full, html, "utf8");
   return rel;
 };
+// THE ROLLOUT POSITION. Added 2026-09-20 on Matt's approval, and it is a
+// POSITIONING statement rather than a defect fix. A visitor told here that
+// modules are released one at a time reads the sixty-nine "Pricing to be
+// announced" notices as a release schedule; a visitor who discovers it by
+// scanning a blank column reads the IDENTICAL pages as a half-built site. The
+// pages do not differ; only the framing does.
+//
+// PLACED LAST IN THE HERO, immediately before the CTAs, so it is met before
+// either button is clicked — and it is what EVIDENCES the "Clear pricing,
+// shown before you buy" claim further down the page, which was true but
+// unsupported by anything a visitor could see.
+//
+// DELIBERATELY NOT INFLATED: no claim about a standard, no "fully tested", no
+// date, and no "from £129" — there is exactly one price and a range would be
+// inventing one. It lives here as a JS constant rather than inline because
+// this file's own rule is that no served page carries build commentary, so the
+// reasoning cannot go in the markup beside it.
+//
+// TWO FACTS TO RE-CHECK IF EITHER MOVES: the count of seventy, and that the
+// KPI Map is the module that is on sale.
+const ROLLOUT_LINE = "Seventy modules, released one at a time as each is finished. The KPI Map is available now.";
+
 const written = [];
 const w = (rel, html) => { written.push(write(rel, html)); };
 
@@ -114,6 +136,7 @@ const homeMain = `
       <p class="hero-line">Consultants, courses, Google, or hope. Those are usually the options.</p>
       <p class="hero-sub">Opsteady helps you choose the right tools, and the right order to deploy them, with the thinking already built in. It starts with your Health Check to show where improvement is actually needed, what can wait, and how much change your team can realistically take on right now.</p>
       <p class="hero-sub">Free information, template shops and generic AI will give you methods and examples. <strong class="hero-emph">They don't know your site.</strong></p>
+      <p class="hero-line">${ROLLOUT_LINE}</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="${HC_URL}">Start the health check</a>
         <a class="btn-text on-navy" href="/modules/index.html">Browse modules <span class="arrow">→</span></a>

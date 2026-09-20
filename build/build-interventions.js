@@ -2,6 +2,31 @@
 const { w, page, HC_URL, getModuleData, getCatalogueListing, packageGrid, photoHero, customerCategory, CATEGORY_ORDER, categoryAnchor } = require("./build.js");
 const { CHECKOUT_NOTICE } = require("./shared.js");
 
+// WHAT A MODULE THAT IS NOT FOR SALE SAYS, in ONE place, because it now
+// appears twice: on the module page where a price would be, and in the index's
+// price column where sixty-nine rows previously carried an EMPTY span. A blank
+// cell reads as data nobody filled in; that was rank 2 of the 2026-09-20 site
+// walk. One constant so the two can never drift apart.
+//
+// WHY NOT "Pricing to be announced.", which is the module page's own previous
+// wording and would have introduced no new copy: `.idx-price` is
+// `white-space:nowrap` with NO responsive override anywhere in system.css, and
+// `.idx-row` is a flex row that gives whatever the price cell takes. Measured
+// at a 390px viewport: `.shell` has 16px gutters, so the row is 358px, and the
+// longest module name on the index is 60 characters ("Maintenance Response:
+// Restore Fast, Do Not Normalise Failure"). A 23-character monospace string at
+// 12.5px takes roughly 173px of that row and cannot give any of it back, which
+// leaves under half the width for a 60-character name. Fifteen characters
+// takes roughly 113px instead.
+//
+// THE HONEST BOUNDARY: no page was rendered at phone width. What is MEASURED
+// is that the cell cannot wrap, that nothing overrides it at any breakpoint,
+// the 358px row and the 60-character name. What is ESTIMATED is the pixel
+// width of either string in the real monospace face. The shorter string was
+// chosen because it is strictly safer on a layout measured to be unresponsive,
+// not because the longer one was proved to break.
+const NOT_FOR_SALE = "Not on sale yet";
+
 /* ---- Module-category photography (Level 2), 2026-09-02 ----
    Every one of the 9 real customer categories (CATEGORY_ORDER in build.js)
    now has an assigned photograph from the approved signature-manufacturing
@@ -89,7 +114,7 @@ const idxHtml = groupOrder.map((g) => {
         <div class="idx-rows">
           ${items.map((m) => `<a class="idx-row" data-search="${m.name.toLowerCase()} ${m.outcome.toLowerCase()}" href="/modules/${m.slug}.html">
             <span><span class="idx-name">${m.name}</span><br><span class="idx-outcome">${m.outcome}</span></span>
-            ${m.saleLive ? `<span class="idx-price mono">£${m.pricePro}</span>` : ""}
+            ${m.saleLive ? `<span class="idx-price mono">£${m.pricePro}</span>` : `<span class="idx-price mono">${NOT_FOR_SALE}</span>`}
           </a>`).join("\n          ")}
         </div>
       </div>`;
@@ -330,11 +355,20 @@ for (const listed of listing) {
      and Phase 4 ruling §11 ("do not invent scarcity") forbade anyway.
 
      GATED PER MODULE on d.saleLive (A2, 15 September 2026). While a module
-     is not live this renders "Pricing to be announced." -- NOT "Coming soon",
-     which would tell a visitor the wrong thing is missing. The module is not
-     coming soon; it exists. It is the price and the checkout that do not. */
+     is not live this renders NOT_FOR_SALE -- NOT "Coming soon", which would
+     tell a visitor the wrong thing is missing. The module is not coming soon;
+     it exists. It is the price and the checkout that do not.
+
+     CHANGED 2026-09-20 from "Pricing to be announced." to NOT_FOR_SALE, and
+     the ruling above is the reason it is SAFE rather than the reason it is
+     forbidden: that ruling bans wording implying the MODULE is missing, and
+     "Not on sale yet" names the SALE, which is the distinction it draws in its
+     own last sentence. The shorter string was required by the index, where the
+     same words now appear and where the cell cannot wrap -- see NOT_FOR_SALE's
+     own note. Both pages say the same thing because they read from one
+     constant. */
   const priceBlock = !d.saleLive
-    ? `<span class="iv-price">Pricing to be announced.</span>`
+    ? `<span class="iv-price">${NOT_FOR_SALE}</span>`
     : `<span class="iv-price">£${d.pricePro}</span>`;
 
   const glance = atAGlancePanel(d).html;

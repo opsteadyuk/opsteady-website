@@ -172,12 +172,24 @@ function photoHero({ eyebrow, h1, sub, image, spec }) {
   const media = image
     ? `<img src="${image.src}" alt="${image.alt}" width="${image.width}" height="${image.height}" style="object-position:${image.objectPosition || "50% 50%"};" loading="eager" fetchpriority="${image.priority ? "high" : "auto"}" decoding="${image.priority ? "sync" : "async"}">`
     : `<div class="photo-hero-slot"></div>`;
-  const govComment = spec
-    ? `<!-- GOVERNED IMAGE SLOT (not yet sourced, 02_brand/110_photography.md §10.2a).
-       ${spec} -->
-  `
-    : "";
-  return `${govComment}<section class="photo-hero">
+  // `spec` IS DOCUMENTATION AND IS DELIBERATELY NOT EMITTED, since 2026-09-20.
+  //
+  // It used to render as an HTML comment into the page, which shipped an
+  // internal repository path (02_brand/110_photography.md §10.2a), a quoted
+  // Matt ruling and a stale "(not yet sourced)" parenthetical to every visitor
+  // who viewed source. That was rank 9 of the 2026-09-20 site walk.
+  //
+  // THE RULE, applied across this repository: a comment may reach a served page
+  // ONLY if a browser or assistive technology acts on it — a conditional
+  // comment, a licence header. Everything explaining WHY the code is as it is
+  // belongs to a maintainer, and a maintainer reads this file, not the output.
+  //
+  // The governance text is NOT lost and NOT deleted: callers still pass it, it
+  // still sits in the source beside the page it governs, and it is now a
+  // string constant in the generator instead of a comment in the product. Read
+  // `spec:` in build-pages.js and build-more-pages.js.
+  void spec;
+  return `<section class="photo-hero">
     <div class="photo-hero-media">${media}</div>
     <div class="photo-hero-scrim"></div>
     <div class="photo-hero-content shell">
